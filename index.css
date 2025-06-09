@@ -1294,42 +1294,42 @@ body.light-theme {
     padding: 0 10px;
   }
 }
+
 /* --- Mobile-specific CSS Adjustments (within your @media (max-width: 768px) block) --- */
 @media (max-width: 768px) {
 
     /* --- General Body Padding Adjustment --- */
     body {
-        /* Maintain padding-top to ensure content clears the fixed header */
+        /* This padding ensures your main content starts below your fixed header elements.
+           It's crucial for preventing content from being hidden under the header. */
         padding-top: 170px !important;
-        /* Reduced padding-bottom to minimize space above the music controller/footer.
-           This will make content end closer to the fixed elements. */
-        padding-bottom: 200px !important; /* Reduced from 250px */
+        /* This padding ensures the bottom content (like the last songs section)
+           is visible above the fixed music controller and footer navigation. */
+        padding-bottom: 250px !important;
     }
 
-    /* --- Header & Search Bar Container --- */
+    /* --- Fixed Header Container (Holds Hemisphere Title/Icon and Search Bar) --- */
     .fixed {
         position: fixed;
         top: 0;
-        left: 0;
+        left: 0; /* Align the fixed container to the very left edge */
         right: 0;
-        z-index: 1000;
-        /* Adjusted padding: 0px top, 0px left/right, 10px bottom.
-           This helps the dark theme button go higher and minimizes top space within the fixed header. */
-        padding: 0 0 10px 0 !important;
+        z-index: 1000; /* Ensure it's above general content */
+        padding: 10px 0; /* Vertical padding for the whole fixed header area */
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent);
         display: flex;
-        flex-direction: column; /* Stack logo/title section and search bar section */
+        flex-direction: column; /* Stack logo/title section and search bar section vertically */
         align-items: center; /* Center these stacked sections horizontally */
     }
 
-    /* --- Hemisphere Title and Icon: "stick to the website" --- */
+    /* --- Hemisphere Title and Icon: "on the left side of the corner.. beside headphones only" --- */
     .header-container {
         width: 100%;
         display: flex;
         justify-content: flex-start !important; /* Force alignment to the very left */
         align-items: center;
-        margin-bottom: 15px; /* Keep a bit of space below the header line */
-        padding-left: 0 !important; /* Remove all padding from the left edge of the container */
+        margin-bottom: 15px; /* Spacing below the title/icon line */
+        padding-left: 0 !important; /* **CRITICAL:** Remove all padding from the left edge of this container */
         box-sizing: border-box;
     }
 
@@ -1340,21 +1340,20 @@ body.light-theme {
     .image1 {
         height: 50px;
         width: auto;
-        margin-left: 0px !important; /* Set to 0 to make it truly stick to the left edge */
+        margin-left: 5px !important; /* Minimal margin to slightly offset from the absolute left edge */
     }
     .title {
         font-size: 1.6em;
         margin-top: 5px;
-        margin-left: 2px !important; /* Very small margin to be right beside the icon */
+        margin-left: 2px !important; /* Very small margin to place it right beside the icon */
         text-align: left !important;
     }
 
-    /* Search Bar Specific Styles */
+    /* --- Search Bar Specific Styles (Centered below header title/icon) --- */
     .search-container {
-        width: 80% !important;
-        max-width: 300px !important;
-        /* Reduced bottom margin to 0px to minimize space below it */
-        margin: 0 auto 0 auto !important; /* From 5px to 0px */
+        width: 80% !important; /* Slightly reduced width */
+        max-width: 300px !important; /* Adjusted max width */
+        margin: 0 auto 5px auto !important; /* Centers it horizontally, reduces bottom margin */
         background-color: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 25px;
@@ -1382,15 +1381,15 @@ body.light-theme {
         margin-right: 8px;
     }
 
-    /* --- Dark/Light Theme Icon: "shift my dark theme button more upwards" --- */
+    /* --- Dark/Light Theme Button: "more upper top right more upper of the website above the hemisphere title" --- */
     /* IMPORTANT: Replace '.theme-toggle-button' (and '#yourThemeToggleButtonId')
        with the actual class or ID of your dark/light theme switch in your HTML. */
     .theme-toggle-button,
     #yourThemeToggleButtonId {
-        position: absolute;
-        top: 0px !important; /* Set to 0, combined with .fixed padding change, should be highest */
-        right: 15px !important;
-        z-index: 1001 !important;
+        position: fixed !important; /* **CRITICAL:** Fixed positioning relative to the viewport */
+        top: 5px !important; /* Position it 5px from the absolute top of the screen */
+        right: 5px !important; /* Position it 5px from the absolute right of the screen */
+        z-index: 9999 !important; /* Extremely high z-index to ensure it's always on top of everything */
         width: 35px !important;
         height: 35px !important;
         display: flex;
@@ -1409,13 +1408,13 @@ body.light-theme {
     }
 
 
-    /* --- Music Controller --- */
+    /* --- Music Controller (positioned at bottom, shifted left slightly) --- */
     #music-controller {
         width: 95%;
-        left: 48% !important; /* Shifted slightly left */
-        transform: translateX(-50%) !important;
-        bottom: 80px;
-        height: 100px !important;
+        left: 48% !important; /* Shifted slightly left from center */
+        transform: translateX(-50%) !important; /* Maintain centering relative to new left */
+        bottom: 80px; /* Position above footer */
+        height: 100px !important; /* Increased height */
         background-color: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(10px);
         border-radius: 15px;
@@ -1447,7 +1446,7 @@ body.light-theme {
         padding: 0 !important;
     }
 
-    /* Style the thumb (dragger) */
+    /* Style the progress bar dragger (thumb) */
     #music-controller .progress-bar-container input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
@@ -1469,26 +1468,28 @@ body.light-theme {
         box-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
     }
 
-    /* --- Image Rows: Horizontal Scrolling --- */
+    /* --- Image Rows: "all these images should be visible together... only I can scroll down" --- */
+    /* **CRITICAL:** This makes image items wrap within their rows, forming a grid,
+       and removes horizontal scrolling from individual rows. The whole page will scroll vertically. */
     .albums-row,
     .trending-row,
     .mashup-row,
     .overseas-row,
     .bhakti-row {
         display: flex;
-        flex-wrap: nowrap !important; /* Ensures images stay on a single horizontal line */
-        overflow-x: auto !important; /* Enables horizontal scrolling for the rows */
-        -webkit-overflow-scrolling: touch; /* Smooth touch scrolling */
+        flex-wrap: wrap !important; /* **CRITICAL:** Images will now wrap to the next line */
+        overflow-x: hidden !important; /* **CRITICAL:** Disable horizontal scrolling */
+        -webkit-overflow-scrolling: auto; /* Adjust scrolling behavior as horizontal is removed */
         scrollbar-width: none; /* Hide scrollbar for Firefox */
         -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
-        padding: 10px; /* Padding around the row of items */
-        gap: 20px !important; /* Spacing between horizontally scrolled items */
-        justify-content: flex-start !important; /* Align items to the start for horizontal scroll */
+        padding: 10px; /* Keep padding around the items within the row */
+        gap: 15px !important; /* Spacing between wrapped image items */
+        justify-content: center !important; /* Center the image items within their wrapped row */
         align-items: flex-start;
-        scroll-snap-type: x mandatory !important; /* Enable scroll snapping */
+        scroll-snap-type: none !important; /* No horizontal snap needed */
     }
 
-    /* Hide horizontal scrollbar for Webkit browsers (Chrome, Safari) */
+    /* Ensure no horizontal scrollbar for Webkit browsers */
     .albums-row::-webkit-scrollbar,
     .trending-row::-webkit-scrollbar,
     .mashup-row::-webkit-scrollbar,
@@ -1504,13 +1505,13 @@ body.light-theme {
     .overseas-row > div,
     .bhakti-row > div {
         flex-shrink: 0 !important; /* Prevent items from shrinking */
-        width: 140px !important;
-        height: 180px !important;
+        width: 140px !important; /* Fixed width for each image item */
+        height: 180px !important; /* Fixed height for the item container */
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        scroll-snap-align: start !important; /* Enable scroll snap for horizontal scrolling */
+        scroll-snap-align: none !important; /* No snap needed for vertical scrolling */
     }
 
     .album-img,
@@ -1525,14 +1526,13 @@ body.light-theme {
         margin-bottom: 8px;
     }
 
-    /* --- Reduce Space between Search Container and Top Albums (Minimized as much as possible) --- */
+    /* Reduce Space between Search Container and Content Sections (Headings) */
     .heading3, .heading4, .fixed3 h1, .fixed4 h1, .head1 h1 {
         font-size: 1.4em;
         margin-left: 10px;
-        /* Set to 0px to eliminate space directly above headings */
-        padding-top: 0px !important;
-        margin-top: 0px !important;
-        margin-bottom: 10px !important; /* Keep consistent space below heading */
+        padding-top: 5px !important;
+        margin-top: 5px !important;
+        margin-bottom: 10px !important;
     }
 
     .main-content-section {
@@ -1540,7 +1540,7 @@ body.light-theme {
         margin-top: 0 !important;
     }
 
-    /* --- Footer Position Fix --- */
+    /* --- Footer Position Fix (Confirmed by user) --- */
     /* IMPORTANT: Replace '.bottom-nav' with the actual class/ID of your footer/bottom navigation bar */
     .bottom-nav,
     footer {
@@ -1548,7 +1548,7 @@ body.light-theme {
         bottom: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        z-index: 1050 !important;
+        z-index: 1050 !important; /* Ensure it's above music controller and content */
         background-color: rgba(0, 0, 0, 0.9) !important;
         padding: 10px 0 !important;
         display: flex !important;
