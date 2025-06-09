@@ -1296,6 +1296,11 @@ body.light-theme {
 }
 
 /* --- Mobile-specific CSS Adjustments (within your @media (max-width: 768px) block) --- */
+/*
+   **IMPORTANT:** This entire block MUST be placed at the very end of your
+   last loaded CSS file (e.g., index.css, or a dedicated mobile.css linked last in HTML)
+   to ensure these styles override any other conflicting rules.
+*/
 @media (max-width: 768px) {
 
     /* --- General Body Padding Adjustment --- */
@@ -1312,8 +1317,8 @@ body.light-theme {
     .fixed {
         position: fixed;
         top: 0;
-        left: 0; /* Align the fixed container to the very left edge */
-        right: 0;
+        left: 0 !important; /* Ensure it's aligned to the very left edge, overriding any -15px */
+        right: 0 !important; /* Ensure it spans to the very right edge */
         z-index: 1000; /* Ensure it's above general content */
         padding: 10px 0; /* Vertical padding for the whole fixed header area */
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent);
