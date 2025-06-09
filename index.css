@@ -1299,8 +1299,7 @@ body.light-theme {
 
     /* --- General Body Padding Adjustment --- */
     body {
-        /* Increased padding-top to ensure ALL content (including wrapped images)
-           starts well below the fixed header (logo, title, search bar, theme toggle). */
+        /* Maintain padding-top to ensure content clears the fixed header */
         padding-top: 170px !important;
         /* Maintain padding-bottom for fixed music controller AND fixed footer */
         padding-bottom: 250px !important;
@@ -1310,7 +1309,7 @@ body.light-theme {
     .fixed {
         position: fixed;
         top: 0;
-        left: 0;
+        left: 0; /* Ensures it's aligned to the very left edge */
         right: 0;
         z-index: 1000;
         padding: 10px 0; /* Vertical padding for the whole fixed header */
@@ -1320,8 +1319,7 @@ body.light-theme {
         align-items: center; /* Center these stacked sections horizontally */
     }
 
-    /* --- Hemisphere Title and Icon: "Shift the icon more left side and title hemisphere too..
-           the hemisphere title should be beside headphones only" --- */
+    /* --- Hemisphere Title and Icon: "on the left side of the corner.. beside headphones only" --- */
     .header-container {
         width: 100%;
         display: flex;
@@ -1339,7 +1337,7 @@ body.light-theme {
     .image1 {
         height: 50px;
         width: auto;
-        margin-left: 10px !important; /* Explicit left margin for the icon to provide slight spacing from edge */
+        margin-left: 5px !important; /* Reduced to 5px for closer to the corner */
     }
     .title {
         font-size: 1.6em;
@@ -1380,13 +1378,13 @@ body.light-theme {
         margin-right: 8px;
     }
 
-    /* --- Dark/Light Theme Icon: "shift the dark theme button more upwards" --- */
+    /* --- Dark/Light Theme Icon: "shift my dark theme button more above" --- */
     /* IMPORTANT: Replace '.theme-toggle-button' (and '#yourThemeToggleButtonId')
        with the actual class or ID of your dark/light theme switch in your HTML. */
     .theme-toggle-button,
     #yourThemeToggleButtonId {
         position: absolute;
-        top: 0px !important; /* Moved even further up (from 5px) */
+        top: -5px !important; /* Moved even further up (can try -10px if needed) */
         right: 15px !important; /* Keep right position */
         z-index: 1001 !important;
         width: 35px !important;
@@ -1467,26 +1465,26 @@ body.light-theme {
         box-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
     }
 
-    /* --- Image Rows: "make my images stable so I don't need to scroll.. I can only scroll when I want to go down" --- */
+    /* --- Image Rows: "be them horizontal na" (reverting to horizontal scroll) --- */
     .albums-row,
     .trending-row,
     .mashup-row,
     .overseas-row,
     .bhakti-row {
         display: flex;
-        flex-wrap: wrap !important; /* CRITICAL: Images will now wrap to the next line */
-        overflow-x: hidden !important; /* CRITICAL: Disable horizontal scrolling */
-        -webkit-overflow-scrolling: auto; /* Adjust scrolling behavior as horizontal is removed */
+        flex-wrap: nowrap !important; /* REVERTED: Images will now stay on a single line */
+        overflow-x: auto !important; /* REVERTED: Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Enable smooth touch scrolling for horizontal */
         scrollbar-width: none; /* Hide scrollbar for Firefox */
         -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
         padding: 10px; /* Keep padding around the row of items */
-        gap: 15px !important; /* Consistent spacing between wrapped items */
-        justify-content: center !important; /* Center items within the wrapped row */
+        gap: 20px !important; /* Spacing between horizontally scrolled items */
+        justify-content: flex-start !important; /* Align items to the start for horizontal scroll */
         align-items: flex-start;
-        scroll-snap-type: none !important; /* No horizontal snap needed */
+        scroll-snap-type: x mandatory !important; /* Re-enable scroll snap for horizontal scrolling */
     }
 
-    /* Ensure no horizontal scrollbar for Webkit, even if overflow-x is hidden */
+    /* Ensure no horizontal scrollbar for Webkit, even if overflow-x is hidden (for consistency) */
     .albums-row::-webkit-scrollbar,
     .trending-row::-webkit-scrollbar,
     .mashup-row::-webkit-scrollbar,
@@ -1501,14 +1499,14 @@ body.light-theme {
     .mashup-row > div,
     .overseas-row > div,
     .bhakti-row > div {
-        flex-shrink: 0 !important;
+        flex-shrink: 0 !important; /* Ensure items don't shrink in horizontal layout */
         width: 140px !important;
         height: 180px !important;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        scroll-snap-align: none !important; /* No snap needed for vertical scrolling */
+        scroll-snap-align: start !important; /* Re-enable scroll snap for horizontal scrolling */
     }
 
     .album-img,
