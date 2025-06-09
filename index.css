@@ -1177,120 +1177,114 @@ body.light-theme {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== MOBILE RESPONSIVENESS FIXES (ULTIMATE ATTEMPT 2.0) ===== */
+/* ===== MOBILE RESPONSIVENESS FIXES (FINAL ATTEMPT - Horizontal Scroll Images) ===== */
 @media (max-width: 768px) {
 
   /*
   ** Global Body and HTML Reset for Maximum Control
   */
   html, body {
-    height: 100% !important; /* Ensure html/body take full viewport height */
+    height: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow-x: hidden !important; /* Prevent all horizontal scrolling */
-    background-size: cover !important; /* Ensure background fills */
-    background-attachment: fixed !important; /* Keep background fixed */
+    overflow-x: hidden !important; /* Ensure no horizontal scroll from body itself */
+    background-size: cover !important;
+    background-attachment: fixed !important;
   }
 
   body {
-    /* Adjusted padding-top to account for the fixed header's new height */
-    padding-top: 70px !important; /* Set to fixed header height */
+    /* Adjusted padding-top based on the fixed header's final height */
+    padding-top: 65px !important; /* Slightly reduced as header is more compact */
     padding-bottom: 200px !important; /* Ensures content scrolls above music controller & nav */
-    /* Other body styles (background, color) from user's index.css should persist */
   }
 
   /*
-  ** Fixed Header Container: Precise Grid Layout for Icon/Title and Button
+  ** Fixed Header Container: Precise Positioning for Contents
   */
   .fixed {
     position: fixed !important;
     top: 0 !important;
-    left: 0 !important;
+    left: 0 !important; /* **CRITICAL:** Override any -15px offset from base CSS */
     right: 0 !important;
-    z-index: 99999 !important; /* Highest z-index */
+    z-index: 99999 !important;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent) !important;
-    height: 70px !important; /* **CRITICAL:** Fixed height for consistency */
-    display: grid !important; /* **CRITICAL:** Use CSS Grid for precise positioning */
-    grid-template-columns: 1fr auto !important; /* One column for header-container, auto for theme button */
-    align-items: center !important; /* Vertically center items in the grid */
-    padding: 0 10px !important; /* **CRITICAL:** Padding only left/right, top/bottom managed by height */
+    height: 65px !important; /* **CRITICAL:** Fixed height for consistency */
+    display: flex !important; /* Using flexbox for main header alignment */
+    flex-direction: row !important;
+    align-items: center !important; /* Vertically center items */
+    justify-content: flex-start !important; /* **CRITICAL:** Align main content to the left */
+    padding: 0 10px !important; /* Overall left/right padding for the fixed header */
     box-sizing: border-box !important;
   }
 
   /*
-  ** Hemisphere Title and Icon: More Left, Compact
+  ** Hemisphere Title and Icon: Shifted More Left, Compact
   */
   .header-container {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: flex-start !important; /* Align to the left within its grid cell */
+    justify-content: flex-start !important;
     gap: 5px !important; /* Small gap between icon and title */
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-    /* This element is now the first column in the .fixed grid */
+    flex-grow: 1 !important; /* Allows it to take available space */
+    /* Padding/margin controlled by parent .fixed */
   }
 
   .image1 {
-    height: 45px !important; /* **CRITICAL:** Smaller icon size */
-    width: 45px !important;
-    object-fit: contain !important; /* Ensure icon is fully visible, not cropped */
-    margin-right: 0px !important; /* Space controlled by parent .header-container gap */
-    margin-left: 0px !important;
+    height: 40px !important; /* **CRITICAL:** Even smaller icon size */
+    width: 40px !important;
+    object-fit: contain !important;
+    margin: 0 !important; /* No additional margins here */
   }
 
   .title {
-    font-size: 1.3em !important; /* **CRITICAL:** Smaller title to prevent overlap */
+    font-size: 1.2em !important; /* **CRITICAL:** Smaller title font size */
     letter-spacing: 1px !important;
     margin: 0 !important;
-    white-space: nowrap !important; /* Prevent title from wrapping */
-    overflow: hidden !important; /* Hide overflow if text is too long */
-    text-overflow: ellipsis !important; /* Add ellipsis for long titles */
-    max-width: calc(100% - 55px) !important; /* **CRITICAL:** Limit title width to prevent overlap (45px icon + 10px buffer) */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: calc(100% - 50px) !important; /* Limit title width for potential overlap */
   }
 
   /*
-  ** Dark Theme Button: Shifted to Extreme Right, no overlap (positioned by grid)
+  ** Dark Theme Button: Shifted More Right, No Overlap (Absolute Positioning)
   */
   /* IMPORTANT: Ensure this selector matches your actual HTML button's class/ID */
   .theme-toggle-button,
   #yourThemeToggleButtonId {
-    position: relative !important; /* It's relative within the grid cell */
-    top: auto !important;
-    right: auto !important;
-    left: auto !important;
-    bottom: auto !important;
-    z-index: 1 !important; /* Relative z-index within grid */
-    padding: 0 !important; /* Padding handled by button's size */
-    background-color: transparent !important; /* Make button background transparent to avoid extra bulk */
-    border: none !important; /* Remove border */
+    position: absolute !important; /* **CRITICAL:** Absolute position within the .fixed header */
+    top: 50% !important; /* Vertically center */
+    right: 10px !important; /* **CRITICAL:** Position from the right edge of the header */
+    transform: translateY(-50%) !important; /* Adjust for perfect vertical centering */
+    z-index: 100000 !important; /* Even higher z-index to ensure visibility */
+    background-color: transparent !important;
+    border: none !important;
     border-radius: 50% !important;
-    width: 35px !important; /* **CRITICAL:** Consistent size */
-    height: 35px !important; /* **CRITICAL:** Consistent size */
+    width: 35px !important; /* Consistent size */
+    height: 35px !important; /* Consistent size */
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    justify-self: end !important; /* **CRITICAL:** Pushes button to the far right of its grid cell */
-    margin-left: 5px !important; /* Small margin to the left of the button */
+    padding: 0 !important;
   }
   .theme-toggle-button img,
   #yourThemeToggleButtonId img {
-    width: 25px !important; /* Icon size */
-    height: 25px !important; /* Icon size */
+    width: 25px !important;
+    height: 25px !important;
     object-fit: contain !important;
   }
-
 
   /*
   ** Search Bar: Above Top Albums (in main content flow, compact)
   */
   .search-container {
     width: 90% !important;
-    margin: 10px auto !important; /* **CRITICAL:** Consistent vertical margins */
+    margin: 10px auto 5px auto !important; /* **CRITICAL:** Reduced bottom margin to bring it closer to Top Albums */
     background-color: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 25px !important;
-    padding: 8px 15px !important; /* Reduced padding */
+    padding: 8px 15px !important;
     display: flex !important;
     align-items: center !important;
     box-sizing: border-box !important;
@@ -1310,22 +1304,22 @@ body.light-theme {
   }
 
   /*
-  ** Section Headings (e.g., "Top Albums"): Reduced Size for Visibility
+  ** Section Headings (e.g., "Top Albums"): Reduced Size and Precise Positioning
   */
   .heading3,
   .heading4,
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.1em !important; /* **CRITICAL:** Smallest font size for maximum visibility */
+    font-size: 1.0em !important; /* **CRITICAL:** Even smaller font size for visibility */
     text-align: left !important;
     padding: 0 10px !important;
-    margin-top: 5px !important; /* **CRITICAL:** Minimal top margin */
-    margin-bottom: 5px !important; /* **CRITICAL:** Minimal bottom margin */
+    margin-top: 5px !important; /* Minimal top margin */
+    margin-bottom: 5px !important; /* Minimal bottom margin */
   }
 
   /*
-  ** Image Rows: All in Grid, Equal Small Size, No Horizontal Scroll
+  ** Image Rows: All in a single HORIZONTAL SCROLLING LINE
   */
   .albums-row,
   .trending-row,
@@ -1333,16 +1327,16 @@ body.light-theme {
   .overseas-row,
   .bhakti-row {
     display: flex !important;
-    flex-wrap: wrap !important; /* **CRITICAL:** Force items to wrap to a new line */
-    overflow-x: hidden !important; /* **CRITICAL:** Hide horizontal scrollbar */
-    -webkit-overflow-scrolling: auto !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-    padding: 10px !important;
-    gap: 8px !important; /* **CRITICAL:** Even smaller gap for tighter grid */
-    justify-content: center !important; /* Center items in the grid */
+    flex-wrap: nowrap !important; /* **CRITICAL:** Prevents wrapping, forces horizontal layout */
+    overflow-x: auto !important; /* **CRITICAL:** Enables horizontal scrolling */
+    -webkit-overflow-scrolling: touch !important; /* Smooth scrolling for iOS */
+    scrollbar-width: none !important; /* For Firefox */
+    -ms-overflow-style: none !important; /* For IE/Edge */
+    padding: 0 10px !important; /* Padding for the scrollable row itself */
+    gap: 10px !important; /* Spacing between images in the row */
+    justify-content: flex-start !important; /* Align items to the start of the scroll container */
     align-items: flex-start !important;
-    scroll-snap-type: none !important;
+    scroll-snap-type: none !important; /* Removed scroll-snap for smoother scrolling */
   }
 
   /* Hide scrollbar for Webkit browsers */
@@ -1361,32 +1355,34 @@ body.light-theme {
   .mashup-row > div,
   .overseas-row > div,
   .bhakti-row > div {
-    flex-shrink: 0 !important;
-    width: 100px !important; /* **CRITICAL:** Smallest width for item container */
-    height: 140px !important; /* Adjusted height for item container (image + text) */
+    flex-shrink: 0 !important; /* **CRITICAL:** Prevents items from shrinking in horizontal row */
+    width: 95px !important; /* **CRITICAL:** Consistent width for horizontal item container */
+    height: 130px !important; /* Adjusted height for item container (image + text) */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
+    min-width: 0 !important; /* Allow item to shrink if needed (though flex-shrink:0 tries to prevent it) */
+    scroll-snap-align: none !important; /* Removed scroll-snap */
   }
 
   /*
-  ** Image Thumbnails: Consistent 100x100px Size for All (MAXIMUM SPECIFICITY)
+  ** Image Thumbnails: Consistent 95x95px Size for All (MAXIMUM SPECIFICITY)
   */
   .album-img,
   .mashup-row img,
   .trending-row img,
   .overseas-row img,
   .bhakti-row img {
-    width: 100px !important; /* **CRITICAL:** Smallest image width */
-    height: 100px !important; /* **CRITICAL:** Smallest image height, overriding 'height: auto' */
+    width: 95px !important; /* **CRITICAL:** Image width for horizontal scroll */
+    height: 95px !important; /* **CRITICAL:** Image height for horizontal scroll, overriding 'height: auto' */
     object-fit: cover !important; /* Ensure images fill space without distortion */
     border-radius: 8px !important;
-    margin-bottom: 5px !important; /* Reduced margin below image */
+    margin-bottom: 5px !important;
   }
 
   /*
-  ** Music Controller and Nav Bar
+  ** Music Controller and Nav Bar (Keeping previous adjustments)
   */
   #music-controller {
     width: 90% !important;
