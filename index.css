@@ -1294,37 +1294,35 @@ body.light-theme {
     padding: 0 10px;
   }
 }
-
 /* --- Mobile-specific CSS Adjustments (within your @media (max-width: 768px) block) --- */
 @media (max-width: 768px) {
 
     /* --- General Body Padding Adjustment (Crucial for fixed headers/footers) --- */
     body {
-        /* Increased padding-top to push content below the new header layout.
-           Adjust this value if your header height changes significantly. */
+        /* Increased padding-top to ensure content clears the header (logo+search) */
         padding-top: 150px;
-        /* Ensure enough space for the music controller and bottom navigation. */
-        padding-bottom: 200px;
+        /* Adjusted padding-bottom to account for BOTH fixed music controller AND fixed footer */
+        padding-bottom: 250px; /* Music Controller (100px) + Footer (approx 60px) + margin = ~250px */
     }
 
     /* --- Header & Search Bar Fixes: "Top Middle" & Overlapping Theme Toggle --- */
     .fixed {
         position: fixed; /* Keep fixed */
         top: 0;
-        left: 0; /* Ensure it starts from the left edge */
+        left: 0; /* CRITICAL: Ensure it's not offset. Was -15px in index.css. */
         right: 0;
         z-index: 1000;
-        padding: 10px 0; /* Vertical padding */
+        padding: 10px 0; /* Vertical padding for the whole fixed header */
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent); /* Darker background */
         display: flex;
-        flex-direction: column; /* Stack header sections (logo/title, then search bar) */
-        align-items: center; /* Center items horizontally */
+        flex-direction: column; /* Stack logo/title section and search bar section */
+        align-items: center; /* Center these stacked sections horizontally */
     }
 
     /* This container holds your logo and title, which will be centered at the top */
     .header-container {
-        width: 100%; /* Take full width */
-        display: flex; /* Keep logo and title side-by-side if structured that way */
+        width: 100%; /* Allows flex content to distribute within it */
+        display: flex;
         justify-content: center; /* Center logo and title horizontally */
         align-items: center;
         margin-bottom: 15px; /* Space between logo/title and search bar */
@@ -1343,15 +1341,15 @@ body.light-theme {
         margin-top: 5px; /* Space below logo */
     }
 
-    /* Search Bar Specific Styles: Slightly decreased size and centered */
+    /* Search Bar Specific Styles: "Slightly reduced size" and centered */
     .search-container {
-        width: 85%; /* SLIGHTLY DECREASED WIDTH */
-        max-width: 320px; /* Adjusted max width for a cleaner look */
-        margin: 0 auto; /* CRUCIAL: This centers it horizontally */
-        background-color: rgba(255, 255, 255, 0.15); /* Lighter background for visibility */
-        border: 1px solid rgba(255, 255, 255, 0.3); /* More visible border */
-        border-radius: 25px; /* More rounded corners */
-        padding: 10px 15px; /* Good padding inside the search bar */
+        width: 80% !important; /* SLIGHTLY REDUCED WIDTH, using !important for override */
+        max-width: 300px !important; /* Adjusted max width */
+        margin: 0 auto !important; /* CRUCIAL: This centers it horizontally, using !important */
+        background-color: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 25px;
+        padding: 10px 15px;
         display: flex;
         align-items: center;
         box-sizing: border-box; /* Include padding/border in the element's total width */
@@ -1375,17 +1373,18 @@ body.light-theme {
         margin-right: 8px;
     }
 
-    /* Theme Toggle Button Fix: Positioned to avoid overlap */
-    /* IMPORTANT: You NEED to find the actual class or ID of your theme toggle button.
-       I'm using '.theme-toggle-button' as an example. Replace this with your actual selector! */
-    .theme-toggle-button, /* If it's a div, button, or img wrapper */
-    #yourThemeToggleButtonId { /* If it has a specific ID */
+    /* Theme Toggle Button Fix: "Shift the dark light theme at the top right of the website" */
+    /* IMPORTANT: You MUST replace '.theme-toggle-button' (and '#yourThemeToggleButtonId')
+       with the actual class or ID of your dark/light theme switch in your HTML.
+       Inspect your HTML to find the correct selector for this element. */
+    .theme-toggle-button,
+    #yourThemeToggleButtonId {
         position: absolute; /* Position it absolutely within the fixed header */
-        top: 15px; /* Adjust vertical position from top */
-        right: 15px; /* Adjust horizontal position from right */
-        z-index: 1001; /* Ensure it's on top of other elements */
-        width: 40px; /* Fixed size for a consistent touch target */
-        height: 40px;
+        top: 15px !important; /* Adjust vertical position from top, using !important */
+        right: 15px !important; /* Adjust horizontal position from right, using !important */
+        z-index: 1001 !important; /* Ensure it's on top of all other elements */
+        width: 35px !important; /* Slightly smaller size for mobile */
+        height: 35px !important; /* Slightly smaller size for mobile */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1397,62 +1396,62 @@ body.light-theme {
     /* If your theme toggle is just an <img> tag within its container */
     .theme-toggle-button img,
     #yourThemeToggleButtonId img {
-        width: 25px; /* Size of the icon inside the button */
-        height: 25px;
-        object-fit: contain; /* Ensure the image fits without cropping */
+        width: 22px !important; /* Size of the icon inside the button */
+        height: 22px !important;
+        object-fit: contain !important; /* Ensure the image fits without cropping */
     }
 
 
-    /* --- Music Controller Dragger Fix: "Inside the music controller" --- */
+    /* --- Music Controller Dragger Fix: "Still outside" and "increase size slightly from upper side" --- */
     #music-controller {
-        width: 95%; /* Slightly wider for better fit of progress bar */
+        width: 95%; /* Keep width */
         left: 50%;
         transform: translateX(-50%); /* Ensure it's perfectly centered */
-        bottom: 80px; /* Adjust this value if it still overlaps your bottom nav */
-        background-color: rgba(0, 0, 0, 0.7); /* Example: semi-transparent dark background */
-        backdrop-filter: blur(10px); /* Optional: add a blur effect */
+        bottom: 80px; /* Keep consistent with body padding. Adjust if it overlaps bottom nav. */
+        height: 100px !important; /* Increased height to expand "from upper side" */
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
         border-radius: 15px;
         padding: 10px;
-        box-sizing: border-box; /* CRUCIAL: Include padding in the element's total width */
-        overflow: hidden; /* CRUCIAL: Hide anything that goes outside its bounds */
-        display: flex; /* Enable flex for internal layout of controller elements */
-        flex-direction: column; /* Stack elements inside vertically */
-        justify-content: center; /* Center content vertically */
-        align-items: center; /* Center content horizontally */
+        box-sizing: border-box !important; /* CRITICAL: Include padding in the element's total width */
+        overflow: hidden !important; /* CRITICAL: Hide anything that goes outside its bounds */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around; /* Distribute content vertically */
+        align-items: center;
     }
 
     #music-controller .progress-bar-container {
-        width: 100%; /* Make sure this container takes full width of #music-controller */
-        padding: 0 10px; /* Add horizontal padding *inside* this container */
-        box-sizing: border-box; /* CRUCIAL: Include padding in width */
-        margin: 0; /* Explicitly remove any default margins */
-        margin-top: 8px; /* Adjust spacing above the progress bar */
-        margin-bottom: 5px; /* Adjust spacing below the progress bar */
+        /* Adjusted width calculation to ensure it fits perfectly within the padding of #music-controller */
+        width: calc(100% - 20px) !important; /* 100% minus 10px padding on each side of #music-controller */
+        margin: 0 10px !important; /* Use margin to center within #music-controller, matching its padding */
+        padding: 0 !important; /* Remove any internal padding from this container */
+        box-sizing: border-box !important; /* Crucial for width calculation */
     }
 
     #music-controller .progress-bar-container input[type="range"] {
-        width: 100%; /* Make the slider fill its container, respecting padding */
-        -webkit-appearance: none; /* Remove default styling for Chrome/Safari */
+        width: 100% !important; /* Must fill its container */
+        -webkit-appearance: none;
         appearance: none;
         height: 5px; /* Height of the track */
         background: rgba(250, 250, 250, 0.3); /* Track background */
         border-radius: 5px;
         outline: none;
-        margin: 0; /* CRUCIAL: Explicitly remove any browser default margins on the input */
-        padding: 0; /* Explicitly remove any browser default padding on the input */
+        margin: 0 !important; /* CRUCIAL: Explicitly remove ANY browser default margins on the input */
+        padding: 0 !important; /* CRUCIAL: Explicitly remove ANY browser default padding on the input */
     }
 
     /* Style the thumb (dragger) */
     #music-controller .progress-bar-container input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 18px; /* Size of the dragger (slightly larger for touch) */
+        width: 18px; /* Size of the dragger */
         height: 18px;
-        background: #00eaff; /* Dragger color (your highlight color) */
-        border-radius: 50%; /* Make it round */
-        cursor: grab; /* Indicate it's draggable */
+        background: #00eaff; /* Dragger color */
+        border-radius: 50%;
+        cursor: grab;
         margin-top: -6.5px; /* Adjust to center vertically on the track */
-        box-shadow: 0 0 8px rgba(0, 234, 255, 0.7); /* More prominent glow */
+        box-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
     }
 
     #music-controller .progress-bar-container input[type="range"]::-moz-range-thumb {
@@ -1470,20 +1469,20 @@ body.light-theme {
     .mashup-row,
     .overseas-row,
     .bhakti-row {
-        display: flex; /* Ensure it's a flex container */
-        flex-wrap: nowrap !important; /* CRUCIAL: Force no wrapping, override any other !important */
-        overflow-x: auto; /* Enable horizontal scrolling */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-        scrollbar-width: none; /* Hide scrollbar for Firefox */
-        -ms-overflow-style: none;  /* Hide scrollbar for IE/Edge */
-        padding: 10px; /* Keep overall padding */
-        gap: 20px; /* Consistent gap between items */
-        justify-content: flex-start; /* Align items to the start, letting overflow handle the rest */
-        align-items: flex-start; /* Align items to the top if they have different heights */
-        scroll-snap-type: x mandatory; /* Optional: Snap to items as you scroll */
+        display: flex;
+        flex-wrap: nowrap !important; /* CRUCIAL: Force no wrapping */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 10px;
+        gap: 20px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        scroll-snap-type: x mandatory;
     }
 
-    /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+    /* Hide scrollbar for Webkit browsers */
     .albums-row::-webkit-scrollbar,
     .trending-row::-webkit-scrollbar,
     .mashup-row::-webkit-scrollbar,
@@ -1493,31 +1492,31 @@ body.light-theme {
     }
 
     /* Enforce consistent size for EACH album/song item container */
-    /* IMPORTANT: Please add a consistent class like 'album-item' to each of your
-       album/song card divs in your HTML. If you cannot, the current selector
-       `> div` assumes they are direct div children of the row. */
-    .album-item, /* Use this if you have a wrapper for each album/song */
-    .trending-row > div, /* Example for direct child divs */
+    /* IMPORTANT: Add a consistent class like 'album-item' to each of your
+       album/song card divs in your HTML if you haven't already. */
+    .album-item,
+    .trending-row > div,
     .mashup-row > div,
     .overseas-row > div,
     .bhakti-row > div {
-        flex-shrink: 0; /* Prevent items from shrinking when scrolling */
-        width: 140px; /* Fixed width for the entire item container */
-        height: 180px; /* Sufficient height to hold image and text */
-        display: flex; /* Make the item itself a flex container */
-        flex-direction: column; /* Stack image and text vertically */
-        align-items: center; /* Center image and text horizontally within the item */
-        text-align: center; /* Center text */
-        scroll-snap-align: start; /* Optional: Snap to the start of each item */
+        flex-shrink: 0 !important; /* Prevent items from shrinking */
+        width: 140px !important; /* Fixed width for the entire item container */
+        height: 180px !important; /* Sufficient height to hold image and text */
+        display: flex !important; /* Make the item itself a flex container */
+        flex-direction: column !important; /* Stack image and text vertically */
+        align-items: center !important; /* Center image and text horizontally within the item */
+        text-align: center !important; /* Center text */
+        scroll-snap-align: start;
     }
 
     /* Enforce consistent size and fit for the IMAGES themselves */
+    /* The !important is critical here if 'height: auto !important' is in your general CSS */
     .album-img,
     .mashup-row img,
     .trending-row img,
     .overseas-row img,
     .bhakti-row img {
-        width: 140px !important; /* CRUCIAL: Fixed width, overriding all others */
+        width: 140px !important; /* CRUCIAL: Fixed width */
         height: 140px !important; /* CRUCIAL: Fixed height for square images */
         object-fit: cover !important; /* CRUCIAL: Ensure images fill the area without distortion */
         border-radius: 8px; /* Example: slight rounded corners */
@@ -1527,19 +1526,38 @@ body.light-theme {
     /* Adjust text styles for album/song titles to fit better */
     .album-text h3,
     .album-text p {
-        font-size: 0.9em; /* Slightly smaller font */
-        white-space: normal; /* Allow text to wrap if too long */
+        font-size: 0.9em;
+        white-space: normal;
         overflow: hidden;
-        text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+        text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 2; /* Limit to 2 lines */
+        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
 
     /* Further adjust heading sizes for mobile if needed */
     .heading3, .heading4, .fixed3 h1, .fixed4 h1, .head1 h1 {
-        font-size: 1.4em; /* Smaller headings for mobile */
+        font-size: 1.4em;
         margin-left: 10px;
         padding-top: 10px;
+    }
+
+    /* --- Footer Position Fix: "make my footer position fix" --- */
+    /* IMPORTANT: Replace '.bottom-nav' with the actual class/ID of your footer/bottom navigation bar */
+    .bottom-nav, /* Common class for bottom navigation */
+    footer { /* If it's a semantic footer tag */
+        position: fixed !important; /* Make it fixed */
+        bottom: 0 !important; /* Pin it to the bottom */
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1050 !important; /* Ensure it's above music controller and content */
+        background-color: rgba(0, 0, 0, 0.9) !important; /* Dark background */
+        padding: 10px 0 !important; /* Adjust vertical padding */
+        display: flex !important;
+        justify-content: space-around !important; /* Distribute navigation items */
+        align-items: center !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        height: 60px !important; /* Example height, adjust as needed */
     }
 }
