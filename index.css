@@ -1176,7 +1176,7 @@ body.light-theme {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
-/* ===== MOBILE RESPONSIVENESS FIXES (Adjusted Search Bar Position) ===== */
+/* ===== MOBILE RESPONSIVENESS FIXES (MATCHING IMAGE EXACTLY) ===== */
 @media (max-width: 768px) {
 
   /*
@@ -1211,7 +1211,7 @@ body.light-theme {
     flex-direction: row !important;
     align-items: center !important; /* Vertically center items */
     justify-content: flex-start !important; /* Align content to the left */
-    padding: 0 10px !important; /* Overall left/right padding for the fixed header */
+    padding: 0 5px !important; /* **CRITICAL:** Reduced overall left/right padding for elements to go more to edges */
     box-sizing: border-box !important;
   }
 
@@ -1254,7 +1254,7 @@ body.light-theme {
   #yourThemeToggleButtonId { /* Added #yourThemeToggleButtonId as a common placeholder */
     position: absolute !important; /* Absolute position within the .fixed header */
     top: 50% !important; /* Vertically center */
-    right: 10px !important; /* Position from the right edge of the header */
+    right: 5px !important; /* **CRITICAL:** Position from the right edge of the header, closer to edge */
     transform: translateY(-50%) !important; /* Adjust for perfect vertical centering */
     z-index: 100000 !important; /* Even higher z-index to ensure visibility */
     background-color: transparent !important;
@@ -1275,11 +1275,11 @@ body.light-theme {
   }
 
   /*
-  ** Search Bar: Above Top Albums (fine-tuned vertical spacing)
+  ** Search Bar: Middle of website & little bit above top albums
   */
   .search-container {
     width: 90% !important;
-    margin: 10px auto 15px auto !important; /* **CRITICAL:** Increased bottom margin to 15px */
+    margin: 10px auto 8px auto !important; /* **CRITICAL:** Reduced bottom margin for tighter spacing above headings */
     background-color: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 25px !important;
@@ -1304,7 +1304,7 @@ body.light-theme {
 
   /*
   ** Section Headings (e.g., "Top Albums", "Trending", "Mashup", "Overseas", "Bhakti")
-  ** All centered, and consistent font size for relevant ones.
+  ** All left-aligned and consistent font size as per image.
   */
   .heading3, /* Likely "Top Albums" */
   .heading4, /* Likely "Trending Mashup", "Overseas Songs" */
@@ -1312,23 +1312,11 @@ body.light-theme {
   .fixed4 h1,
   .head1 h1 {
     font-size: 1.0em !important; /* Consistent small font size for all these headings */
-    text-align: center !important; /* **CRITICAL:** All headings centered now */
+    text-align: left !important; /* **CRITICAL:** All headings are now LEFT-ALIGNED as per image */
     padding: 5px 10px !important; /* Added padding-top to give space from search bar */
     margin-top: 0px !important; /* Set top margin to 0 */
     margin-bottom: 5px !important; /* Small bottom margin */
   }
-
-  /* Specific adjustment for "Trending Songs" heading, assuming it's another Hx or class */
-  /* If Trending Songs has a unique class, use that. Otherwise, it falls under the above. */
-  /* Example if it's .trending-songs-title: */
-  /* .trending-songs-title {
-       font-size: 1.0em !important;
-       text-align: center !important;
-       padding: 5px 10px !important;
-       margin-top: 0px !important;
-       margin-bottom: 5px !important;
-     }
-  */
 
   /*
   ** Image Rows: All in a single HORIZONTAL SCROLLING LINE
@@ -1345,7 +1333,7 @@ body.light-theme {
     scrollbar-width: none !important; /* For Firefox */
     -ms-overflow-style: none !important; /* For IE/Edge */
     padding: 0 10px !important; /* Padding for the scrollable row itself */
-    gap: 12px !important; /* **CRITICAL:** Adjusted gap for better horizontal spacing */
+    gap: 12px !important; /* Adjusted gap for better horizontal spacing */
     justify-content: flex-start !important; /* Align items to the start of the scroll container */
     align-items: flex-start !important;
     scroll-snap-type: none !important; /* Removed scroll-snap for smoother scrolling */
@@ -1368,13 +1356,13 @@ body.light-theme {
   .overseas-row > div,
   .bhakti-row > div {
     flex-shrink: 0 !important; /* **CRITICAL:** Prevents items from shrinking in horizontal row */
-    width: 100px !important; /* **CRITICAL:** Consistent width for horizontal item container */
-    height: 140px !important; /* Adjusted height for item container (image + text) */
+    width: 100px !important; /* **CRITICAL:** Consistent width for horizontal item container (image + text) */
+    height: 140px !important; /* Adjusted height for item container */
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    min-width: 0 !important; /* Allow item to shrink if needed (though flex-shrink:0 prevents it mostly) */
+    align-items: center !important; /* Center content within each album container */
+    text-align: center !important; /* Center text below image */
+    min-width: 0 !important;
     scroll-snap-align: none !important; /* Removed scroll-snap */
   }
 
@@ -1394,7 +1382,7 @@ body.light-theme {
   }
 
   /*
-  ** Music Controller and Nav Bar (Keeping previous adjustments)
+  ** Music Controller and Nav Bar (Keeping previous adjustments, matching image)
   */
   #music-controller {
     width: 90% !important;
