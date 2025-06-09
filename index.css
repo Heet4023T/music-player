@@ -1297,21 +1297,20 @@ body.light-theme {
 /* --- Mobile-specific CSS Adjustments (within your @media (max-width: 768px) block) --- */
 @media (max-width: 768px) {
 
-    /* --- General Body Padding Adjustment (CRITICAL for fixed headers/footers) --- */
+    /* --- General Body Padding Adjustment --- */
     body {
-        /* Increased padding-top to ensure ALL content (including images)
-           starts well below the fixed header (logo, title, search bar, theme toggle).
-           This should stop images from appearing to "go upwards" under the header. */
-        padding-top: 170px !important; /* Increased from 150px/160px for more clearance */
-        /* Maintain padding-bottom to account for fixed music controller AND fixed footer */
-        padding-bottom: 250px !important; /* Added !important to ensure override */
+        /* Increased padding-top to ensure ALL content (including wrapped images)
+           starts well below the fixed header (logo, title, search bar, theme toggle). */
+        padding-top: 170px !important;
+        /* Maintain padding-bottom for fixed music controller AND fixed footer */
+        padding-bottom: 250px !important;
     }
 
     /* --- Header & Search Bar Fixes --- */
     .fixed {
         position: fixed;
         top: 0;
-        left: 0; /* Ensures it's aligned to the very left edge */
+        left: 0;
         right: 0;
         z-index: 1000;
         padding: 10px 0; /* Vertical padding for the whole fixed header */
@@ -1321,36 +1320,38 @@ body.light-theme {
         align-items: center; /* Center these stacked sections horizontally */
     }
 
-    /* --- Hemisphere Title and Icon: "whole hemisphere title and icon on the left side of website" --- */
+    /* --- Hemisphere Title and Icon: "Shift the icon more left side and title hemisphere too..
+           the hemisphere title should be beside headphones only" --- */
     .header-container {
         width: 100%;
         display: flex;
         justify-content: flex-start !important; /* Force alignment to the very left */
         align-items: center;
         margin-bottom: 15px;
-        padding-left: 10px !important; /* Minimal padding from the left edge */
+        padding-left: 0 !important; /* Remove all padding from the left edge of the container */
         box-sizing: border-box;
     }
 
     .title-logo {
-        margin: 0 !important; /* Ensure no default margin pushes it from the left */
+        margin: 0 !important; /* Ensure no default margin pushes it */
         padding: 0 !important; /* Ensure no default padding pushes it */
     }
     .image1 {
         height: 50px;
         width: auto;
+        margin-left: 10px !important; /* Explicit left margin for the icon to provide slight spacing from edge */
     }
     .title {
         font-size: 1.6em;
         margin-top: 5px;
-        margin-left: 8px !important; /* Maintain small separation from icon */
-        text-align: left !important; /* Ensure text itself is left-aligned */
+        margin-left: 2px !important; /* Very small margin to be right beside the icon */
+        text-align: left !important;
     }
 
-    /* Search Bar Specific Styles: "slightly reduce my size of search bar" and centered */
+    /* Search Bar Specific Styles */
     .search-container {
-        width: 80% !important; /* SLIGHTLY REDUCED WIDTH */
-        max-width: 300px !important; /* Adjusted max width */
+        width: 80% !important;
+        max-width: 300px !important;
         margin: 0 auto 5px auto !important; /* Reduced bottom margin to decrease space below it */
         background-color: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.3);
@@ -1379,13 +1380,13 @@ body.light-theme {
         margin-right: 8px;
     }
 
-    /* --- Dark/Light Theme Icon: "shift my dark theme light icon more upper side" --- */
+    /* --- Dark/Light Theme Icon: "shift the dark theme button more upwards" --- */
     /* IMPORTANT: Replace '.theme-toggle-button' (and '#yourThemeToggleButtonId')
        with the actual class or ID of your dark/light theme switch in your HTML. */
     .theme-toggle-button,
     #yourThemeToggleButtonId {
         position: absolute;
-        top: 5px !important; /* Moved further up */
+        top: 0px !important; /* Moved even further up (from 5px) */
         right: 15px !important; /* Keep right position */
         z-index: 1001 !important;
         width: 35px !important;
@@ -1466,33 +1467,35 @@ body.light-theme {
         box-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
     }
 
-    /* --- Horizontal Image Rows with Consistent Sizes --- */
+    /* --- Image Rows: "make my images stable so I don't need to scroll.. I can only scroll when I want to go down" --- */
     .albums-row,
     .trending-row,
     .mashup-row,
     .overseas-row,
     .bhakti-row {
         display: flex;
-        flex-wrap: nowrap !important;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        padding: 10px;
-        gap: 20px;
-        justify-content: flex-start;
+        flex-wrap: wrap !important; /* CRITICAL: Images will now wrap to the next line */
+        overflow-x: hidden !important; /* CRITICAL: Disable horizontal scrolling */
+        -webkit-overflow-scrolling: auto; /* Adjust scrolling behavior as horizontal is removed */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+        padding: 10px; /* Keep padding around the row of items */
+        gap: 15px !important; /* Consistent spacing between wrapped items */
+        justify-content: center !important; /* Center items within the wrapped row */
         align-items: flex-start;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: none !important; /* No horizontal snap needed */
     }
 
+    /* Ensure no horizontal scrollbar for Webkit, even if overflow-x is hidden */
     .albums-row::-webkit-scrollbar,
     .trending-row::-webkit-scrollbar,
     .mashup-row::-webkit-scrollbar,
     .overseas-row::-webkit-scrollbar,
     .bhakti-row::-webkit-scrollbar {
-        display: none;
+        display: none !important;
     }
 
+    /* Image item containers and images should retain their fixed size */
     .album-item,
     .trending-row > div,
     .mashup-row > div,
@@ -1505,7 +1508,7 @@ body.light-theme {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        scroll-snap-align: start;
+        scroll-snap-align: none !important; /* No snap needed for vertical scrolling */
     }
 
     .album-img,
@@ -1518,17 +1521,6 @@ body.light-theme {
         object-fit: cover !important;
         border-radius: 8px;
         margin-bottom: 8px;
-    }
-
-    .album-text h3,
-    .album-text p {
-        font-size: 0.9em;
-        white-space: normal;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
     }
 
     /* Reduce Space between Search Container and Content Sections */
