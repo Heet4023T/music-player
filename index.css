@@ -1176,8 +1176,7 @@ body.light-theme {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
-
-/* ===== MOBILE RESPONSIVENESS FIXES (FINAL ATTEMPT - Horizontal Scroll Images) ===== */
+/* ===== MOBILE RESPONSIVENESS FIXES (Adjusted Search Bar Position) ===== */
 @media (max-width: 768px) {
 
   /*
@@ -1193,8 +1192,7 @@ body.light-theme {
   }
 
   body {
-    /* Adjusted padding-top based on the fixed header's final height */
-    padding-top: 65px !important; /* Slightly reduced as header is more compact */
+    padding-top: 65px !important; /* Based on the fixed header's final height */
     padding-bottom: 200px !important; /* Ensures content scrolls above music controller & nav */
   }
 
@@ -1204,15 +1202,15 @@ body.light-theme {
   .fixed {
     position: fixed !important;
     top: 0 !important;
-    left: 0 !important; /* **CRITICAL:** Override any -15px offset from base CSS */
+    left: 0 !important; /* **CRITICAL:** Override any -15px offset from base CSS from base .fixed */
     right: 0 !important;
     z-index: 99999 !important;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent) !important;
-    height: 65px !important; /* **CRITICAL:** Fixed height for consistency */
-    display: flex !important; /* Using flexbox for main header alignment */
+    height: 65px !important; /* Fixed height for consistency */
+    display: flex !important;
     flex-direction: row !important;
     align-items: center !important; /* Vertically center items */
-    justify-content: flex-start !important; /* **CRITICAL:** Align main content to the left */
+    justify-content: flex-start !important; /* Align content to the left */
     padding: 0 10px !important; /* Overall left/right padding for the fixed header */
     box-sizing: border-box !important;
   }
@@ -1227,18 +1225,19 @@ body.light-theme {
     justify-content: flex-start !important;
     gap: 5px !important; /* Small gap between icon and title */
     flex-grow: 1 !important; /* Allows it to take available space */
-    /* Padding/margin controlled by parent .fixed */
+    padding-left: 0 !important; /* Ensure no extra left padding */
+    margin-left: 0 !important; /* Ensure no extra left margin */
   }
 
   .image1 {
-    height: 40px !important; /* **CRITICAL:** Even smaller icon size */
+    height: 40px !important; /* Even smaller icon size */
     width: 40px !important;
     object-fit: contain !important;
     margin: 0 !important; /* No additional margins here */
   }
 
   .title {
-    font-size: 1.2em !important; /* **CRITICAL:** Smaller title font size */
+    font-size: 1.2em !important; /* Smaller title font size */
     letter-spacing: 1px !important;
     margin: 0 !important;
     white-space: nowrap !important;
@@ -1252,17 +1251,17 @@ body.light-theme {
   */
   /* IMPORTANT: Ensure this selector matches your actual HTML button's class/ID */
   .theme-toggle-button,
-  #yourThemeToggleButtonId {
-    position: absolute !important; /* **CRITICAL:** Absolute position within the .fixed header */
+  #yourThemeToggleButtonId { /* Added #yourThemeToggleButtonId as a common placeholder */
+    position: absolute !important; /* Absolute position within the .fixed header */
     top: 50% !important; /* Vertically center */
-    right: 10px !important; /* **CRITICAL:** Position from the right edge of the header */
+    right: 10px !important; /* Position from the right edge of the header */
     transform: translateY(-50%) !important; /* Adjust for perfect vertical centering */
     z-index: 100000 !important; /* Even higher z-index to ensure visibility */
     background-color: transparent !important;
     border: none !important;
     border-radius: 50% !important;
-    width: 35px !important; /* Consistent size */
-    height: 35px !important; /* Consistent size */
+    width: 35px !important;
+    height: 35px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -1276,11 +1275,11 @@ body.light-theme {
   }
 
   /*
-  ** Search Bar: Above Top Albums (in main content flow, compact)
+  ** Search Bar: Above Top Albums (fine-tuned vertical spacing)
   */
   .search-container {
     width: 90% !important;
-    margin: 10px auto 5px auto !important; /* **CRITICAL:** Reduced bottom margin to bring it closer to Top Albums */
+    margin: 10px auto 15px auto !important; /* **CRITICAL:** Increased bottom margin to 15px */
     background-color: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 25px !important;
@@ -1304,19 +1303,32 @@ body.light-theme {
   }
 
   /*
-  ** Section Headings (e.g., "Top Albums"): Reduced Size and Precise Positioning
+  ** Section Headings (e.g., "Top Albums", "Trending", "Mashup", "Overseas", "Bhakti")
+  ** All centered, and consistent font size for relevant ones.
   */
-  .heading3,
-  .heading4,
+  .heading3, /* Likely "Top Albums" */
+  .heading4, /* Likely "Trending Mashup", "Overseas Songs" */
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.0em !important; /* **CRITICAL:** Even smaller font size for visibility */
-    text-align: left !important;
-    padding: 0 10px !important;
-    margin-top: 5px !important; /* Minimal top margin */
-    margin-bottom: 5px !important; /* Minimal bottom margin */
+    font-size: 1.0em !important; /* Consistent small font size for all these headings */
+    text-align: center !important; /* **CRITICAL:** All headings centered now */
+    padding: 5px 10px !important; /* Added padding-top to give space from search bar */
+    margin-top: 0px !important; /* Set top margin to 0 */
+    margin-bottom: 5px !important; /* Small bottom margin */
   }
+
+  /* Specific adjustment for "Trending Songs" heading, assuming it's another Hx or class */
+  /* If Trending Songs has a unique class, use that. Otherwise, it falls under the above. */
+  /* Example if it's .trending-songs-title: */
+  /* .trending-songs-title {
+       font-size: 1.0em !important;
+       text-align: center !important;
+       padding: 5px 10px !important;
+       margin-top: 0px !important;
+       margin-bottom: 5px !important;
+     }
+  */
 
   /*
   ** Image Rows: All in a single HORIZONTAL SCROLLING LINE
@@ -1333,7 +1345,7 @@ body.light-theme {
     scrollbar-width: none !important; /* For Firefox */
     -ms-overflow-style: none !important; /* For IE/Edge */
     padding: 0 10px !important; /* Padding for the scrollable row itself */
-    gap: 10px !important; /* Spacing between images in the row */
+    gap: 12px !important; /* **CRITICAL:** Adjusted gap for better horizontal spacing */
     justify-content: flex-start !important; /* Align items to the start of the scroll container */
     align-items: flex-start !important;
     scroll-snap-type: none !important; /* Removed scroll-snap for smoother scrolling */
@@ -1356,26 +1368,26 @@ body.light-theme {
   .overseas-row > div,
   .bhakti-row > div {
     flex-shrink: 0 !important; /* **CRITICAL:** Prevents items from shrinking in horizontal row */
-    width: 95px !important; /* **CRITICAL:** Consistent width for horizontal item container */
-    height: 130px !important; /* Adjusted height for item container (image + text) */
+    width: 100px !important; /* **CRITICAL:** Consistent width for horizontal item container */
+    height: 140px !important; /* Adjusted height for item container (image + text) */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    min-width: 0 !important; /* Allow item to shrink if needed (though flex-shrink:0 tries to prevent it) */
+    min-width: 0 !important; /* Allow item to shrink if needed (though flex-shrink:0 prevents it mostly) */
     scroll-snap-align: none !important; /* Removed scroll-snap */
   }
 
   /*
-  ** Image Thumbnails: Consistent 95x95px Size for All (MAXIMUM SPECIFICITY)
+  ** Image Thumbnails: Consistent 100x100px Size for All (MAXIMUM SPECIFICITY)
   */
   .album-img,
   .mashup-row img,
   .trending-row img,
   .overseas-row img,
   .bhakti-row img {
-    width: 95px !important; /* **CRITICAL:** Image width for horizontal scroll */
-    height: 95px !important; /* **CRITICAL:** Image height for horizontal scroll, overriding 'height: auto' */
+    width: 100px !important; /* **CRITICAL:** Image width for horizontal scroll */
+    height: 100px !important; /* **CRITICAL:** Image height for horizontal scroll, overriding 'height: auto' */
     object-fit: cover !important; /* Ensure images fill space without distortion */
     border-radius: 8px !important;
     margin-bottom: 5px !important;
