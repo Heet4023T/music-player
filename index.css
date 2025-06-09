@@ -1177,17 +1177,18 @@ body.light-theme {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== MOBILE RESPONSIVENESS FIXES ===== */
-/* --- CONSOLIDATED MOBILE-SPECIFIC CSS ADJUSTMENTS (FOR SCREENS UP TO 768px WIDE) --- */
+/* --- MOBILE-SPECIFIC CSS ADJUSTMENTS (MAXIMUM SPECIFICITY) --- */
 @media (max-width: 768px) {
 
     /* --- General Body Padding (Ensures content clears fixed header and footer) --- */
     html body {
-        padding-top: 170px !important;
-        padding-bottom: 250px !important;
+        /* Adjusted padding-top because the search bar is no longer in the fixed header */
+        padding-top: 90px !important; /* Adjust based on remaining fixed header height */
+        padding-bottom: 250px !important; /* Ensures content scrolls above music controller & nav */
+        overflow-x: hidden !important; /* Prevent any horizontal scroll on the body */
     }
 
-    /* --- Fixed Header Container (Holds Hemisphere Title/Icon and Search Bar) --- */
+    /* --- Fixed Header Container (Now ONLY holds Hemisphere Title/Icon and Theme Button) --- */
     .fixed {
         position: fixed !important;
         top: 0 !important;
@@ -1197,18 +1198,19 @@ body.light-theme {
         padding: 10px 0 !important; /* Top/bottom padding for the fixed header itself */
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent) !important;
         display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
+        flex-direction: column !important; /* Still column to allow potential elements */
+        align-items: flex-start !important; /* Align children to the start (left) */
         box-sizing: border-box !important;
+        height: auto !important; /* Allow height to adjust to content */
     }
 
-    /* --- Hemisphere Title and Icon: Far Left Corner --- */
+    /* --- Hemisphere Title and Icon: Extreme Left Corner --- */
     .header-container {
         width: 100% !important;
         display: flex !important;
         justify-content: flex-start !important; /* Force alignment to the very left */
         align-items: center !important;
-        margin-bottom: 15px !important; /* Spacing below the title/icon line */
+        margin-bottom: 0px !important; /* Remove bottom margin if present */
         padding-left: 0 !important; /* **CRITICAL:** Remove all padding from the left edge */
         box-sizing: border-box !important;
     }
@@ -1220,7 +1222,7 @@ body.light-theme {
     .image1 {
         height: 50px !important;
         width: auto !important;
-        margin-left: 5px !important; /* Minimal margin from the absolute left edge */
+        margin-left: 0px !important; /* **CRITICAL:** Place at absolute left edge */
     }
     .title {
         font-size: 1.6em !important;
@@ -1229,11 +1231,12 @@ body.light-theme {
         text-align: left !important;
     }
 
-    /* --- Search Bar Specific Styles (Centered, **Minimized Space Below**) --- */
+    /* --- Search Container: Moved to Middle of Website (Scrollable Content) --- */
     .search-container {
         width: 80% !important;
         max-width: 300px !important;
-        margin: 0 auto 0 auto !important; /* **CRITICAL:** Set bottom margin to 0 for minimal space */
+        /* Adjust these margins to visually center it vertically after the fixed header */
+        margin: 20px auto 20px auto !important; /* **CRITICAL:** Added top/bottom margin for middle placement */
         background-color: rgba(255, 255, 255, 0.15) !important;
         border: 1px solid rgba(255, 255, 255, 0.3) !important;
         border-radius: 25px !important;
@@ -1241,7 +1244,8 @@ body.light-theme {
         display: flex !important;
         align-items: center !important;
         box-sizing: border-box !important;
-        z-index: 999 !important;
+        position: relative !important; /* Ensure it's part of the normal flow */
+        z-index: 1 !important; /* Below fixed header/button */
     }
 
     #search-input {
@@ -1376,20 +1380,20 @@ body.light-theme {
         display: none !important;
     }
 
-    /* Image item containers (wrappers around image + text) - MAXIMUM SPECIFICITY */
+    /* Image item containers (wrappers around image + text) */
     html body .album-item,
     html body .trending-row > div,
     html body .mashup-row > div,
     html body .overseas-row > div,
     html body .bhakti-row > div {
-        flex-shrink: 0 !important; /* Prevent items from shrinking */
-        width: 140px !important; /* Fixed width for each image item container */
-        height: 180px !important; /* Fixed height for the item container (image + text space) */
+        flex-shrink: 0 !important;
+        width: 140px !important;
+        height: 180px !important; /* Height for the item container (image + text) */
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
-        scroll-snap-align: none !important; /* No snap needed for vertical scrolling */
+        scroll-snap-align: none !important;
     }
 
     /* --- Image Thumbnails: Consistent 140x140px Size for All (MAXIMUM SPECIFICITY) --- */
@@ -1405,12 +1409,13 @@ body.light-theme {
         margin-bottom: 8px !important;
     }
 
-    /* --- Section Headings (e.g., "Top Albums") - MINIMIZED SPACE --- */
+    /* --- Section Headings (e.g., "Top Albums") --- */
+    /* **CRITICAL:** Removed top margin to minimize space from search bar */
     .heading3, .heading4, .fixed3 h1, .fixed4 h1, .head1 h1 {
         font-size: 1.4em !important;
         margin-left: 10px !important;
-        padding-top: 5px !important; /* Minimal padding from element above */
-        margin-top: 0px !important; /* **CRITICAL:** Removed top margin to minimize space from search bar */
+        padding-top: 5px !important;
+        margin-top: 0px !important; /* **CRITICAL:** Removed top margin to reduce space */
         margin-bottom: 10px !important;
     }
 
