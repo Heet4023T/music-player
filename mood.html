@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/ds9gy7K4/Screenshot-2025-05-17-013654-removebg-preview.png">
+    <title>Music App - Hemisphere</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="mood.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="theme.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    
+</head>
+<body>
+
+<div class="fixed">
+    <div class="header-container">
+        <div class="title-logo">
+            <img src="https://i.ibb.co/ds9gy7K4/Screenshot-2025-05-17-013654-removebg-preview.png"
+                    alt="Hemisphere Logo" border="0" height="80px" class="image1">
+            <h1 class="title">HEMISPHERE</h1>
+        </div>
+
+        <div class="theme-toggle">
+            <button id="theme-toggle-btn">
+                <i class="bi bi-moon-fill" id="theme-icon"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="nav">
+    <a href="index.html" class="nav-item" id="home-nav" onclick="loadPage('index.html')">
+        <img src="https://i.ibb.co/60Qb9CfX/5874117.png" alt="Home" class="nav-icon">
+        <span>HOME</span>
+    </a>
+
+    <a href="mood.html" class="nav-item active" id="mood-nav" onclick="loadPage('mood.html')">
+        <img src="https://i.ibb.co/B2YvzHpZ/18760635.png" alt="Mood" class="nav-icon">
+        <span>MOOD</span>
+    </a>
+
+    <a href="like.html" class="nav-item" id="liked-nav" onclick="loadPage('like.html')">
+        <img src="https://i.ibb.co/R4pNKRWT/heres-some-playlist-icons-in-the-style-of-liked-songs-you-v0-cahrrr1is8ee1.webp" 
+              alt="Liked Songs" 
+              class="nav-icon liked-icon">
+        <span>LIKED</span>
+    </a>
+</div>
+
+<div class="mood-selection-container">
+    <h2 class="mood-heading">Select Your Mood</h2>
+    <div class="mood-buttons-grid">
+        <button class="mood-button happy" data-mood="happy">
+            <span class="emoji">😊</span> Happy
+        </button>
+        <button class="mood-button sad" data-mood="sad">
+            <span class="emoji">😔</span> Sad
+        </button>
+        <button class="mood-button Energetic" data-mood="Energetic">
+            <span class="emoji">⚡</span> Energetic
+        </button>
+        <button class="mood-button guilt" data-mood="guilt">
+            <span class="emoji">😞</span> Guilt
+        </button>
+    </div>
+</div>
+
+<div class="song-list-container">
+    <h3 id="current-mood-title">Songs for Your Mood </h3>
+    <ul id="mood-song-list">
+        <li class="placeholder-song">Select a mood to see songs...</li>
+    </ul>
+</div>
+
+<div id="music-controller">
+    <div class="controller-main-row">
+        <img id="controller-album-art" src="" alt="Album Art">
+        <div id="controller-song-info">
+            <div id="controller-song-title">No song playing</div>
+            <div id="controller-song-artist"></div> </div>
+    <div class="controller-buttons">
+        <button id="controller-prev" title="Previous">
+            <i class="bi bi-skip-backward-fill"></i>
+        </button>
+        <button id="controller-play-pause" title="Play/Pause">
+            <i id="play-pause-icon" class="bi bi-play-fill"></i>
+        </button>
+        <button id="controller-next" title="Next">
+            <i class="bi bi-skip-forward-fill"></i>
+        </button>
+        <button id="controller-like-btn" title="Like/Unlike Song">
+                <i id="like-icon" class="bi bi-heart"></i>
+            </button>
+        
+    </div>
+    </div>
+    <div class="controller-progress-row">
+        <input type="range" id="controller-progress" min="0" max="100" value="0" step="0.1">
+        <div id="controller-time">0:00 / 0:00</div>
+    </div>
+</div>
+
+<script src="player.js"></script>
+<script>
+    
+    const moodSongs = {
+        happy: [
+            { title: 'Badtameez Dil', artist: 'Pritam, Benny Dayal, Shefali Alvares', src: 'audio/Badtameez Dil - Yeh Jawaani Hai Deewani 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/M/MV5BODA4MjM2ODk4OF5BMl5BanBnXkFtZTcwNDgzODk1OQ@@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Balam Pichkari', artist: 'Pritam, Vishal Dadlani, Shalmali Kholgade', src: 'audio/Balam Pichkari - Yeh Jawaani Hai Deewani 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/M/MV5BODA4MjM2ODk4OF5BMl5BanBnXkFtZTcwNDgzODk1OQ@@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Dhinka Chika', artist: 'Sajid-Wajid, Amrita Kak, Mika Singh', src: 'audio/Dhinka Chika - Ready 128 Kbps.mp3', albumArt: 'https://friendshipforevergvr.wordpress.com/wp-content/uploads/2011/05/ready-movie2.jpg?w=584' },
+            { title: 'Galat Baat Hai', artist: 'Pritam, Neeti Mohan, Arijit Singh', src: 'audio/Galat Baat Hai - Main Tera Hero 128 Kbps.mp3', albumArt: 'https://i.ibb.co/LdpRtWj7/Main-Tera-Hero-2014-500x500.jpg' },
+            { title: 'Make Some Noise For The Desi Boyz', artist: 'Pritam, K.K., Bob', src: 'audio/Make Some Noise For The Desi Boyz - Desi Boyz 128 Kbps.mp3', albumArt: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYgFgfwo3mK3E0SaxF_NNzfpQPRiKooKQKcQ&s' },
+            { title: 'Selfie Le Le Re', artist: 'Pritam, Vishal Dadlani, Nakash Aziz', src: 'audio/Selfie Le Le Re - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Shanivaar Raati', artist: 'Pritam, Arijit Singh, Shalmali Kholgade', src: 'audio/Shanivaar Raati - Main Tera Hero 128 Kbps.mp3', albumArt: 'https://i.ibb.co/LdpRtWj7/Main-Tera-Hero-2014-500x500.jpg' },
+            { title: 'Zinda Banda', artist: 'Anirudh Ravichander', src: 'audio/Zinda Banda.mp3', albumArt: 'https://resizing.flixster.com/lej1aNFjcromN2hYS5-638hSJ-k=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiOWE5MWYxLTc0MzctNGNjZi1hMjE0LWNhZmZiMDU2M2RhMS5qcGc=' },
+            { title: 'Aaj Ki Party', artist: 'Pritam, Mika Singh', src: 'audio/Aaj Ki Party - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Chammak Challo', artist: 'Akon, Hamsika Iyer, Vishal-Shekhar', src: 'audio/Chammak Challo - Ra-One 128 Kbps.mp3', albumArt: 'https://i.ibb.co/1YDwJTSn/ra-one.jpg' },
+            { title: 'Chor Bazari Phir Se Bhool Chuk Maaf', artist: 'Pritam, Neeraj Shridhar, Sunidhi Chauhan', src: 'audio/Chor Bazari Phir Se Bhool Chuk Maaf (pagalall.com).mp3', albumArt: 'https://i.ibb.co/SDqVQPRL/Chor-Bazari-Phir-Se-Bhool-Chuk-Maaf-pagalall-com.webp' },
+            { title: 'Dilliwaali Girlfriend', artist: 'Pritam, Arijit Singh, Sunidhi Chauhan', src: 'audio/Dilliwaali Girlfriend - Yeh Jawaani Hai Deewani 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/M/MV5BODA4MjM2ODk4OF5BMl5BanBnXkFtZTcwNDgzODk1OQ@@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Haan Ke Haan', artist: 'Vishal Dadlani, Payal Dev', src: 'audio/Haan Ke Haan - Maharaj 128 Kbps.mp3', albumArt: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmnch0mFZCSfP0JuXTgdx7P1tUTgGB-xvw3IaNPRXIXmVSXgX_AIMvLbZa8EZ3Sm6muAtcIQ' },
+            { title: 'Humko Pyar Hua (Chal Chale)', artist: 'Pritam, Rahat Fateh Ali Khan, Shreya Ghoshal', src: 'audio/Humko Pyar Hua (Chal Chale) - Ready 128 Kbps.mp3', albumArt: 'https://friendshipforevergvr.wordpress.com/wp-content/uploads/2011/05/ready-movie2.jpg?w=584' },
+            { title: 'Janu Meri Jaan', artist: 'Shankar-Jaikishan', src: 'audio/Janu Meri Jaan - Shaan 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/9/94/Shaan_1980_poster.jpg' },
+            { title: 'No Entry Ishq Di Galli Vich', artist: 'Anu Malik, Alisha Chinai', src: 'audio/No Entry Ishq Di Galli Vich - No Entry 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/0/01/No_Entry_poster.jpg' },
+            { title: 'Not Ramaiya Vastavaiya', artist: 'Anirudh Ravichander, Vishal Dadlani, Shilpa Rao', src: 'audio/Not Ramaiya Vastavaiya - Jawan 128 Kbps (1).mp3', albumArt: 'https://resizing.flixster.com/lej1aNFjcromN2hYS5-638hSJ-k=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiOWE5MWYxLTc0MzctNGNjZi1hMjE0LWNhZmZiMDU2M2RhMS5qcGc=' },
+            { title: 'Palat - Tera Hero Idhar Hai', artist: 'Sajid-Wajid, Arijit Singh', src: 'audio/Palat - Tera Hero Idhar Hai - Main Tera Hero 128 Kbps.mp3', albumArt: 'https://i.ibb.co/LdpRtWj7/Main-Tera-Hero-2014-500x500.jpg' },
+            { title: 'Radhe Radhe', artist: 'Meet Bros, Amit Gupta', src: 'audio/Radhe Radhe - Dream Girl 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/6/6e/Dream_Girl.png' },
+            { title: 'Tujh Mein Rab Dikhta Hai', artist: 'Salim-Sulaiman, Roop Kumar Rathod', src: 'audio/Tujh Mein Rab Dikhta Hai.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Rab_Ne_Bana_Di_Jodi.jpg/250px-Rab_Ne_Bana_Di_Jodi.jpg' },
+            { title: 'Yeh Dosti Hum Nahin (Happy Version)', artist: 'Kishore Kumar, Manna Dey', src: 'audio/Yeh Dosti Hum Nahin (Happy Version - Sholay 128 Kbps.mp3', albumArt: 'https://i.ibb.co/nNfS0GGn/sholay-remake-v0-7zv7h7pqai2d1.webp' },
+            { title: 'Tharki Chokro', artist: 'Swanand Kirkire, Shreya Ghoshal', src: 'audio/Tharki Chokro - PK 128 Kbps.mp3', albumArt: 'https://i.ibb.co/PGr1kRjn/PK-poster-1.jpg' },
+        ],
+        sad: [
+            { title: 'Behti Hawa Sa Tha Woh', artist: 'Shantanu Moitra, Shreya Ghoshal, Swanand Kirkire', src: 'audio/Behti Hawa Sa Tha Woh - 3 Idiots 128 Kbps.mp3', albumArt: 'https://cdn.prod.website-files.com/6169ea3dffbc473de935d4fc/6792ae827b25bc756d13efe2_Screenshot%202025-01-23%20at%203.03.35%E2%80%AFPM.png' },
+            { title: 'Bhare Naina', artist: 'Vishal-Shekhar, Nandini Srikar', src: 'audio/Bhare Naina - Ra-One 128 Kbps.mp3', albumArt: 'https://i.ibb.co/1YDwJTSn/ra-one.jpg' },
+            { title: 'Dildaara (Stand By Me)', artist: 'Vishal-Shekhar, Shafqat Amanat Ali', src: 'audio/Dildaara (Stand By Me) - Ra-One 128 Kbps.mp3', albumArt: 'https://i.ibb.co/1YDwJTSn/ra-one.jpg' },
+            { title: 'Hua Main', artist: 'Pritam, Raghav Chaitanya', src: 'audio/Hua Main - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/M-U-XavSH_8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBR5uV_y33eOtktJkupVS9g4e9PHw' },
+            { title: 'Kabira', artist: 'Pritam, Tochi Raina, Rekha Bhardwaj', src: 'audio/Kabira - Yeh Jawaani Hai Deewani 128 Kbps.mp3', albumArt: 'https://i.ibb.co/N2R5gGW2/sddefault.jpg' },
+            { title: 'Kaise Hua', artist: 'Vishal Mishra', src: 'audio/Kaise Hua - Kabir Singh 128 Kbps.mp3', albumArt: 'https://i.ibb.co/7tFTJRpP/maxresdefault-2.jpg' },
+            { title: 'Milne-Hai-Mujhse-Aayi', artist: 'Arijit Singh', src: 'audio/Milne-Hai-Mujhse-Aayi-MassTamilan.io.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/4/4f/Aashiqui_2.jpeg' },
+            { title: 'Papa Meri Jaan', artist: 'Pritam, Sonu Nigam', src: 'audio/Papa Meri Jaan - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/zTmQeQSwwbk/maxresdefault.jpg' },
+            { title: 'Pehle Bhi Main', artist: 'Pritam, Vishal Mishra', src: 'audio/Pehle Bhi Main - Animal 128 Kbps.mp3', albumArt: 'https://i.ibb.co/VYQWszG7/sddefault-1.jpg' },
+            { title: 'Zindagi Kuch Toh Bata', artist: 'Pritam, Rahat Fateh Ali Khan, Rekha Bhardwaj', src: 'audio/Zindagi Kuch Toh Bata - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Tere Mast Mast Do Nain', artist: 'Rahat Fateh Ali Khan', src: 'audio/Tere Mast Mast Do Nain - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
+            { title: 'Teri Meri Kahaani', artist: 'Palak Muchhal', src: 'audio/Teri Meri Kahaani - Palak Muchhal Version - Gabbar Is Back 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/c/c7/Gabbar_is_back_first_look.jpg' },
+            
+        ],
+        Energetic: [
+            { title: 'Arjan Vailly', artist: 'Bhupinder Babbal', src: 'audio/Arjan Vailly - Animal 128 Kbps.mp3', albumArt: 'https://c.saavncdn.com/862/Arjan-Vailly-From-ANIMAL-Hindi-2023-20231118001003-500x500.jpg' },
+            { title: 'Aziz\'s Introduction', artist: 'Harshavardan Rameshwar', src: 'audio/Aziz\'s Introduction.mp3', albumArt: 'https://i.ytimg.com/vi/g27TPboqE_M/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDAHsUIjwA-nYeLZsuqR-InY4hq4A' },
+            { title: 'Badass', artist: 'Anirudh Ravichander', src: 'audio/Badass.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Bloody Sweet', artist: 'Anirudh Ravichander', src: 'audio/Bloody Sweet.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Dum Hai To Rok Ke Bata', artist: 'Devi Sri Prasad', src: 'audio/Dum Hai To Rok Ke Bata - Pushpa 2 The Rule 128 Kbps.mp3', albumArt: 'https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg' },
+            { title: 'Glimpse of Antony Das', artist: 'Anirudh Ravichander', src: 'audio/Glimpse of Antony Das.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Glimpse of Harold Das', artist: 'Anirudh Ravichander', src: 'audio/Glimpse of Harold Das.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Haiwaan', artist: 'Harshavardan Rameshwar', src: 'audio/Haiwaan - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/RIz96zpbeBI/maxresdefault.jpg' },
+            { title: 'Heading To Kill Jeeja', artist: 'Harshavardan Rameshwar', src: 'audio/Heading To Kill Jeeja.mp3', albumArt: 'https://i.ytimg.com/vi/tsQK4uL1rdc/maxresdefault.jpg' },
+            { title: 'Heading To Scotland', artist: 'Harshavardan Rameshwar', src: 'audio/Heading To Scotland.mp3', albumArt: 'https://i.ytimg.com/vi/PIu3u71e9sU/maxresdefault.jpg' },
+            { title: 'Jawan Title Track', artist: 'Anirudh Ravichander', src: 'audio/Jawan Title Track - Jawan 128 Kbps.mp3', albumArt: 'https://resizing.flixster.com/lej1aNFjcromN2hYS5-638hSJ-k=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiOWE5MWYxLTc0MzctNGNjZi1hMjE0LWNhZmZiMDU2M2RhMS5qcGc=' },
+            { title: 'Kaali Mahaa Kaali', artist: 'Devi Sri Prasad', src: 'audio/Kaali Mahaa Kaali - Pushpa 2 The Rule 128 Kbps.mp3', albumArt: 'https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg' },
+            { title: 'Killing Jeeja', artist: 'Harshavardan Rameshwar', src: 'audio/Killing Jeeja.mp3', albumArt: 'https://www.fridaywall.com/wp-content/uploads/2023/12/GABwALrXIAAPM0p.jpg' },
+            { title: 'Leo Das Entry', artist: 'Anirudh Ravichander', src: 'audio/Leo Das Entry.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Lokiverse 2.0', artist: 'Anirudh Ravichander', src: 'audio/Lokiverse 2.0.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Naa Ready', artist: 'Anirudh Ravichander, Thalapathy Vijay', src: 'audio/Naa Ready.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Nude Walk', artist: 'Harshavardan Rameshwar', src: 'audio/Nude Walk.mp3', albumArt: 'https://c.saavncdn.com/172/ANIMAL-Hindi-2024-20240123131002-500x500.jpg' },
+            { title: 'Once Upon A Time', artist: 'Anirudh Ravichander', src: 'audio/Once Upon A Time.mp3', albumArt: 'https://anandkumarrsonfilms.com/wp-content/uploads/2022/07/vikram-poster.jpg' },
+            { title: 'Peelings', artist: 'Devi Sri Prasad', src: 'audio/Peelings - Pushpa 2 The Rule 128 Kbps.mp3', albumArt: 'https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg' },
+            { title: 'Pushpa Pushpa', artist: 'Devi Sri Prasad', src: 'audio/Pushpa Pushpa - Pushpa 2 The Rule 128 Kbps.mp3', albumArt: 'https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg' },
+            { title: 'Quit Karna', artist: 'Anirudh Ravichander', src: 'audio/Quit Karna - Vijay the Master 128 Kbps.mp3', albumArt: 'https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg' },
+            { title: 'Range Rover Entry', artist: 'Harshavardan Rameshwar', src: 'audio/Range Rover Entry.mp3', albumArt: 'https://c.saavncdn.com/172/ANIMAL-Hindi-2024-20240123131002-500x500.jpg' },
+            { title: 'Ratata', artist: 'Anirudh Ravichander', src: 'audio/Ratata.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Rifle Warning', artist: 'Harshavardan Rameshwar', src: 'audio/Rifle Warning.mp3', albumArt: 'https://i.ytimg.com/vi/bkednCfm3a0/maxresdefault.jpg' },
+            { title: 'Roaring War Machine', artist: 'Harshavardan Rameshwar', src: 'audio/Roaring War Machine.mp3', albumArt: 'https://i.ytimg.com/vi/1dcK9Dybz8I/maxresdefault.jpg' },
+            { title: 'Rolex Theme', artist: 'Anirudh Ravichander', src: 'audio/Rolex Theme (PenduJatt.Com.Se).mp3', albumArt: 'https://anandkumarrsonfilms.com/wp-content/uploads/2022/07/vikram-poster.jpg' },
+            { title: 'Saari Duniya Jalaa Denge', artist: 'B Praak', src: 'audio/Saari Duniya Jalaa Denge - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/6OXfgu8uKnE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCUOWHKe2t6W8Bm_XQZ9PDpvucftQ' },
+            { title: 'Tabbar Brothers Unite', artist: 'Harshavardan Rameshwar', src: 'audio/Tabbar Brothers Unite.mp3', albumArt: 'https://i.ytimg.com/vi/ObJ5eGOeztc/maxresdefault.jpg' },
+            { title: 'Vaastav Theme 1', artist: 'Jatin-Lalit', src: 'audio/Vaastav Theme 1 - Vaastav The Reality 128 Kbps.mp3', albumArt: 'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p68252_p_v8_ad.jpg' },
+            { title: 'Vaastav Theme 2', artist: 'Jatin-Lalit', src: 'audio/Vaastav Theme 2 - Vaastav The Reality 128 Kbps.mp3', albumArt: 'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p68252_p_v8_ad.jpg' },
+            { title: 'Veera Dheera', artist: 'Santosh Narayan', src: 'audio/Veera Dheera.mp3', albumArt: 'https://m.media-amazon.com/images/M/MV5BMTM3ZGUwYTEtZTI5NS00ZmMyLTk2YmQtMWU4YjlhZTI3NjRjXkEyXkFqcGc@._V1_.jpg' },
+            { title: 'Vikram Title Track', artist: 'Anirudh Ravichander', src: 'audio/Vikram Title Track.mp3', albumArt: 'https://anandkumarrsonfilms.com/wp-content/uploads/2022/07/vikram-poster.jpg' },
+            { title: 'Vikram X Jailer X Leo X Jawan Mega Mashup', artist: 'DJ Dalal London, VDJ Mahe', src: 'audio/Vikram X Jailer X Leo X Jawan _ Mega Mashup _ DJ Dalal London _ Rajnikanth x SRK x Kamal H x Vijay.mp3', albumArt: 'https://i.ytimg.com/vi/IaL_Vlvad98/maxresdefault.jpg' },
+            { title: 'Abrars Entry Jamal Kudu', artist: 'Harshavardan Rameshwar', src: 'audio/Abrars Entry Jamal Kudu - Animal 128 Kbps.mp3', albumArt: 'https://c.saavncdn.com/624/Abrar-s-Entry-Jamal-Kudu-From-ANIMAL-Hindi-2023-20231206121002-500x500.jpg' },
+            { title: 'Alpha Male', artist: 'Harshavardan Rameshwar', src: 'audio/Alpha Male.mp3', albumArt: 'https://www.fridaywall.com/wp-content/uploads/2023/12/GABwALrXIAAPM0p.jpg' },
+            { title: 'ANIMAL Meeting ANIMAL', artist: 'Harshavardhan Rameshwar', src: 'audio/ANIMAL Meeting ANIMAL.mp3', albumArt: 'https://www.fridaywall.com/wp-content/uploads/2023/12/GABwALrXIAAPM0p.jpg' },
+            { title: 'ANIMAL Title Music', artist: 'Harshavardan Rameshwar', src: 'audio/ANIMAL Title Music.mp3', albumArt: 'https://www.fridaywall.com/wp-content/uploads/2023/12/GABwALrXIAAPM0p.jpg' },
+            { title: 'Animal X Kgf Mega Mashup', artist: 'DJ Dalal London & VDJ Mahe', src: 'audio/Animal X Kgf Mega Mashup – Bobby Deol X Yash X Ranbir Kapoor Mashup By DJ DALAL LONDON & VDJ Mahe.mp3', albumArt: 'https://i.ytimg.com/vi/gT2dM0HEveg/maxresdefault.jpg' },
+            { title: 'Master Coming', artist: 'Anirudh Ravichander', src: 'audio/Master Coming - Vijay the Master 128 Kbps.mp3', albumArt: 'https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg' },
+            { title: 'Master Raid', artist: 'Anirudh Ravichander', src: 'audio/Master Raid - Vijay the Master 128 Kbps.mp3', albumArt: 'https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg' },
+{ title: 'Monster Song Clean Version', artist: 'Ravi Basrur', src: 'audio/SpotiDownloader.com - Monster Song Clean Version (From _KGF Chapter 2 - Tamil_) - Ravi Basrur.mp3', albumArt: 'https://i.ytimg.com/vi/WsBGgvpO-xM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCXswg5D73-EU1Hva9AiUjOlg93QQ' },
+            { title: ' Toofan', artist: 'Ravi Barsur', src: 'audio/SpotiDownloader.com - Toofan - Sandesh Datta Naik.mp3', albumArt: 'https://i.ibb.co/39jxsLPM/images.jpg' },
+        ],
+        guilt: [
+            { title: 'Bhar Do Jholi Meri', artist: 'Pritam, Adnan Sami', src: 'audio/Bhar Do Jholi Meri - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'O Rangrez', artist: 'Shreya Ghoshal', src: 'audio/O Rangrez - Bhaag Milkha Bhaag 128 Kbps.mp3', albumArt: 'https://www.shazam.com/mkimage/image/thumb/Music221/v4/a0/2c/a2/a02ca25f-2d02-e296-0578-93a5b32b0adf/196872829877.jpg/1275x1275bb-60.webp' },
+            { title: 'Tu Chahiye', artist: 'Pritam, Atif Aslam', src: 'audio/Tu Chahiye - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Tu Jo Mila', artist: 'Pritam, K.K.', src: 'audio/Tu Jo Mila - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Chori Kiya Re Jiya (Male)', artist: 'Sajid-Wajid, Sonu Nigam, Shreya Ghoshal', src: 'audio/Chori Kiya Re Jiya (Male) - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
+            { title: 'Dabangg Theme', artist: 'Sajid-Wajid', src: 'audio/Dabangg Theme - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
+         
+            { title: 'Phir Milenge Chalte Chalte', artist: 'Sonu Nigam', src: 'audio/Phir Milenge Chalte Chalte.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Rab_Ne_Bana_Di_Jodi.jpg/250px-Rab_Ne_Bana_Di_Jodi.jpg' },
+
+        ]
+    };
+
+    const moodButtons = document.querySelectorAll('.mood-button');
+    const moodSongList = document.getElementById('mood-song-list');
+    const currentMoodTitle = document.getElementById('current-mood-title');
+
+    function displaySongs(mood) {
+        const songs = moodSongs[mood];
+        moodSongList.innerHTML = ''; // Clear previous songs
+
+        if (songs && songs.length > 0) {
+            currentMoodTitle.textContent = `${mood.charAt(0).toUpperCase() + mood.slice(1)} Songs`;
+            songs.forEach((song, index) => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('song-item');
+                listItem.setAttribute('data-index', index);
+                listItem.setAttribute('data-mood', mood);
+                listItem.innerHTML = `
+                    <img src="${song.albumArt || 'https://via.placeholder.com/50'}" alt="Album Art" class="song-album-art">
+                    <div class="song-details">
+                        <div class="song-title">${song.title}</div>
+                        <div class="song-artist">${song.artist}</div>
+                    </div>
+                    <button class="play-song-btn" data-index="${index}" data-mood="${mood}">
+                        <i class="bi bi-play-circle-fill"></i>
+                    </button>
+                `;
+                moodSongList.appendChild(listItem);
+            });
+            addPlayButtonListeners();
+
+            // Add click listeners to entire song-item to play song
+            document.querySelectorAll('.song-item').forEach(item => {
+                item.addEventListener('click', (event) => {
+                    // Prevent triggering when clicking the play button itself (to avoid double calls)
+                    if (event.target.closest('.play-song-btn')) return;
+
+                    const mood = item.getAttribute('data-mood');
+                    const index = parseInt(item.getAttribute('data-index'));
+                    if (typeof window.loadMoodPlaylistAndPlay === 'function') {
+                        window.loadMoodPlaylistAndPlay(moodSongs[mood], index);
+                    }
+                });
+            });
+        } else {
+            currentMoodTitle.textContent = `No Songs for ${mood.charAt(0).toUpperCase() + mood.slice(1)}`;
+            moodSongList.innerHTML = '<li class="placeholder-song">No songs available for this mood.</li>';
+        }
+    }
+
+    function addPlayButtonListeners() {
+        document.querySelectorAll('.play-song-btn').forEach(button => {
+            button.onclick = (event) => {
+                const mood = event.currentTarget.dataset.mood;
+                const index = parseInt(event.currentTarget.dataset.index);
+                const songsToPlay = moodSongs[mood];
+
+                if (songsToPlay && songsToPlay.length > index) {
+                    // Assuming your player.js has a function to load and play a playlist
+                    // You might need to adjust this call based on your actual player.js structure
+                    // For example, if player.js has a 'loadPlaylistAndPlay(playlistArray, startIndex)' function
+                    if (typeof window.loadMoodPlaylistAndPlay === 'function') {
+                        window.loadMoodPlaylistAndPlay(songsToPlay, index);
+                    } else {
+                        // Fallback: Manually update global playlist and play
+                        window.playlist = songsToPlay;
+                        window.playlistIndex = index;
+                        window.loadSong(window.playlist[window.playlistIndex]); // Assuming loadSong exists in player.js
+                        window.playCurrentSong(); // Assuming playCurrentSong exists in player.js
+                    }
+                }
+            };
+        });
+    }
+
+    moodButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            moodButtons.forEach(btn => btn.classList.remove('active-mood'));
+            // Add active class to the clicked button
+            button.classList.add('active-mood');
+            const mood = button.dataset.mood;
+            displaySongs(mood);
+        });
+    });
+
+    // Optional: Load a default mood's songs on page load
+  // Example in mood.html script (assuming player.js is loaded)
+document.addEventListener('DOMContentLoaded', () => {
+    // Example for dynamically loaded album/trending songs
+    // You would loop through your song elements and attach listeners
+    document.querySelectorAll('.song-item').forEach(songItem => {
+        songItem.addEventListener('click', () => {
+            const songSrc = songItem.dataset.src; // Assuming you store the song path in a data-src attribute
+            const songTitle = songItem.dataset.title;
+            const songArtist = songItem.dataset.artist;
+            const albumArtSrc = songItem.dataset.albumArt;
+
+            if (songSrc) {
+                loadAndPlaySong(songSrc, songTitle, songArtist, albumArtSrc);
+            }
+        });
+    });
+
+    // You can also add logic here for your mood-based playlists,
+    // ensuring they call loadAndPlaySong with the correct song data.
+});
+
+    // Extend player.js functionality if needed (add this to your player.js or after player.js script in mood.html)
+    // This is a hypothetical function for player.js. You might need to adapt it.
+    if (typeof window.loadMoodPlaylistAndPlay === 'undefined') {
+        window.loadMoodPlaylistAndPlay = function(newPlaylist, startIndex) {
+            window.playlist = newPlaylist; // Update the global playlist
+            window.playlistIndex = startIndex; // Set the starting index
+            window.loadSong(window.playlist[window.playlistIndex]); // Load the selected song
+            window.loadCurrentSong = window.playlist[window.playlistIndex]; // Also update current song for controller
+            window.playCurrentSong(); // Start playing
+        };
+    }
+
+</script>
+
+
+</body>
+</html>

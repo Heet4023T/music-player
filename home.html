@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App - Hemisphere</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script src="theme.js" defer></script>
+
+</head>
+<body>
+
+<div class="fixed">
+    <div class="header-container">
+        <div class="title-logo">
+            <img src="https://i.ibb.co/ds9gy7K4/Screenshot-2025-05-17-013654-removebg-preview.png"
+                 alt="Hemisphere Logo" border="0" height="80px" class="image1">
+            <h1 class="title">HEMISPHERE</h1>
+        </div>
+
+        <div class="theme-toggle" style="position: absolute; top: 58px; right: 40px; z-index: 1001;">
+            <button id="theme-toggle-btn">
+                <i class="bi bi-moon-fill" id="theme-icon"></i>
+            </button>
+        </div>
+
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <i class="bi bi-search search-icon"></i>
+                <input type="text" placeholder="Search songs..." id="main-search" autocomplete="off" />
+                <div id="search-results" class="search-results" 
+                     style="display:none; position:absolute; background: #282828; border:1px solid #444; max-height:200px; overflow-y:auto; width:calc(100% - 40px); z-index:1000; left: 20px; top: 45px; border-radius: 8px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="newSongs-album-view">
+    <button class="back-button" onclick="closeAlbumView('newSongs')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://placehold.co/150x150/000000/FFFFFF?text=New+Songs" alt="New Songs" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">New Songs Collection</h1>
+            <p>2024 • 12 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('newSongs', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Tharki Chokro</div>
+            <div class="song-duration">3:45</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Galat Baat Hai</div>
+            <div class="song-duration">4:12</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Palat - Tera Hero Idhar Hai</div>
+            <div class="song-duration">3:58</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Shanivaar Raati</div>
+            <div class="song-duration">3:30</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Naa Ready</div>
+            <div class="song-duration">4:15</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 5)">
+            <div class="song-number">6</div>
+            <div class="song-details">Leo Das Entry</div>
+            <div class="song-duration">3:40</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 6)">
+            <div class="song-number">7</div>
+            <div class="song-details">Ratata</div>
+            <div class="song-duration">3:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 7)">
+            <div class="song-number">8</div>
+            <div class="song-details">Lokiverse 2.0</div>
+            <div class="song-duration">3:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 8)">
+            <div class="song-number">9</div>
+            <div class="song-details">Bloody Sweet</div>
+            <div class="song-duration">4:05</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 9)">
+            <div class="song-number">10</div>
+            <div class="song-details">Glimpse of Harold Das</div>
+            <div class="song-duration">3:45</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 10)">
+            <div class="song-number">11</div>
+            <div class="song-details">Glimpse of Antony Das</div>
+            <div class="song-duration">3:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('newSongs', 11)">
+            <div class="song-number">12</div>
+            <div class="song-details">Badass</div>
+            <div class="song-duration">4:10</div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed2">
+    <div class="head1">
+        <h1 class="heading" style="position: relative; top: 10px"> TOP ALBUMS 💽 </h1>
+        <div class="albums-row">
+            <div class="album-container">
+                <img src="https://i.ibb.co/ttxyNmv/animal-rashmika-mandanna-featured.jpg" 
+                     alt="Animal" 
+                     class="album-img" 
+                     onclick="openAlbumView('animal')">
+            </div>
+            
+            <img src="https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg" 
+                 alt="Master" 
+                 class="album-img"
+                 onclick="openAlbumView('master')">
+            <img src="https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg" 
+                 alt="Bajrangi Bhaijaan" 
+                 class="album-img"
+                 onclick="openAlbumView('bajrangi')">
+            <img src="https://i.ibb.co/1YDwJTSn/ra-one.jpg" 
+                 alt="Ra.One" 
+                 class="album-img"
+                 onclick="openAlbumView('raone')">
+            <img src="https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg" 
+                 alt="Dabangg" 
+                 class="album-img"
+                 onclick="openAlbumView('dabangg')">
+
+            <img src="https://friendshipforevergvr.wordpress.com/wp-content/uploads/2011/05/ready-movie2.jpg?w=584" 
+                 alt="Ready" 
+                 class="album-img"
+                 onclick="openAlbumView('ready')">
+
+            <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pushpa--the-rise-et00129538-08-12-2021-01-21-46.jpg" 
+                 alt="pushpa 1" 
+                 class="album-img"
+                 onclick="openAlbumView('pushpaTherise')">
+
+            <img src="https://i.ibb.co/39jxsLPM/images.jpg"
+                 alt="Kgf 2" 
+                 class="album-img"
+                 onclick="openAlbumView('kgf2')">
+
+            <img src="https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg"
+                 alt="pushpa 2" 
+                 class="album-img"
+                 onclick="openAlbumView('pushpa2')">
+
+            <img src="https://i.ibb.co/nNfS0GGn/sholay-remake-v0-7zv7h7pqai2d1.webp"
+                 alt="sholay" 
+                 class="album-img"
+                 onclick="openAlbumView('sholay')">
+        </div>
+    </div>
+</div>
+
+<div class="fixed3">
+    <h1 class="heading2"> TRENDING SONGS 🔥 </h1>
+    <div class="trending-row">
+        <img src="https://i.ibb.co/WNxBJKCm/hq720.jpg" 
+             alt="Laal Pari" 
+             onclick="playTrendingSong('laalPari')"
+             style="cursor: pointer;" id="house">
+
+        <img src="https://i.ibb.co/HTzVcvQH/maxresdefault.jpg" 
+             alt="Ishq Hai" 
+             onclick="playTrendingSong('ishqHai')"
+             style="cursor: pointer;">
+             
+        <img src="https://i.ibb.co/r2MyM6xT/hq720-1.jpg" 
+             alt="Dil E Nadaan" 
+             onclick="playTrendingSong('dilENadaan')"
+             style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/SDqVQPRL/Chor-Bazari-Phir-Se-Bhool-Chuk-Maaf-pagalall-com.webp" 
+             alt="Chor Bazari" 
+             onclick="playTrendingSong('chorBazari')"
+             style="cursor: pointer;">
+             
+        <img src="https://i.ibb.co/T9cvgcT/ab67616d0000b273ff602926eb81f594fc034034.jpg" 
+             alt="Uyi Amma" 
+             onclick="playTrendingSong('uyiAmma')"
+             style="cursor: pointer;">
+        <img src="https://i.ibb.co/21mLZQXw/hq720-2.jpg" 
+             alt="Namo Namo" 
+             onclick="playTrendingSong('namonamo')"
+             style="cursor: pointer;">
+             
+        <img src="https://i.ibb.co/Lz1W1R8P/maxresdefault-1.jpg" 
+        alt="Aaya Re Toofan" 
+        onclick="playTrendingSong('aayaReToofan')"
+        style="cursor:pointer;">
+
+        <img src="https://i.ibb.co/N2R5gGW2/sddefault.jpg" 
+        alt="kabira"
+        onclick="playTrendingSong('kabira')"
+        style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/7tFTJRpP/maxresdefault-2.jpg" 
+             alt="Kaise Hua" 
+             onclick="playTrendingSong('kaiseHua')"
+             style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/VYQWszG7/sddefault-1.jpg" 
+             alt="Pehle Bhi Main" 
+             onclick="playTrendingSong('pehleBhiMain')"
+             style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/DD1XhDvy/hq720-3.jpg" 
+             alt="Hua Main" 
+             onclick="playTrendingSong('huaMain')"
+             style="cursor: pointer;">
+    </div>
+</div>
+
+<div class="fixed4">
+    <h1 class="heading3"> TRENDING MASHUPS 🔀 </h1>
+    <div class="mashup-row">
+        <img src="https://i.ibb.co/tPhDfZ6P/maxresdefault-3.jpg" 
+             alt="Vikram X Jailer X Leo X Jawan" 
+             onclick="playMashup('vikram x jailer x leo x jawan')"
+             style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/7Nd5hWgG/maxresdefault-4.jpg" 
+             alt="Aarambh Hai Prachand" 
+             onclick="playMashup('nfshope')"
+             style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/JwHW9LPR/maxresdefault-5.jpg" 
+             alt="Animal X KGF" 
+             onclick="playMashup('animal x kgf')"
+             style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/TxMLQ6h1/hq720-4.jpg" 
+             alt="KGF vs RRR vs PUSHPA" 
+             onclick="playMashup('kgf vs rrr vs pushpa')"
+             style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/VcxDnzSY/maxresdefault-7.jpg" 
+             alt="Arjan Vailly X Panga" 
+             onclick="playMashup('panga x arjan vailly')"
+             style="cursor: pointer;">
+
+        <img src="https://i.ibb.co/C39jXFLH/maxresdefault-6.jpg" 
+             alt="Ishq Hai X O Rangrez" 
+             onclick="playMashup('ishq hai x orangrez')"
+             style="cursor: pointer;">
+
+             
+
+
+    </div>
+</div>
+
+
+<div class="fixed5">
+    <h1 class="heading4">  DIVE INTO THE WORLD OF BHAKTI SONGS 🙏 </h1>
+    <div class="bhakti-row">
+         <img src="https://i.ytimg.com/vi/DiTEqiEm_VU/hqdefault.jpg"
+             alt="Hanuman Chalisa" 
+             onclick="playbhakti('Hanuman Chalisa')"
+             style="cursor: pointer;">
+
+              <img src="https://i1.sndcdn.com/artworks-S2BgDFKwCzxZWdHi-ZqXd1Q-t500x500.jpg" 
+             alt="Ram Siya Ram" 
+             onclick="playbhakti('Ram Siya Ram')"
+             style="cursor: pointer;">
+
+              <img src="https://c.saavncdn.com/353/Shree-Krishan-Sharanam-Mamah-1994-500x500.jpg" 
+             alt="Shree Krishna Sharanam Mamah" 
+             onclick="playbhakti('Shree Krishna Sharanam Mamah')"
+             style="cursor: pointer;">
+
+              <img src="https://pendujatt.com.se/uploads/album/navkar-mantra-one-hour-chanting.webp" 
+             alt="Navkar Mantra" 
+             onclick="playbhakti('Navkar Mantra')"
+             style="cursor: pointer;">
+
+             <img src="https://i.ibb.co/S94157n/Whats-App-Image-2025-05-30-at-02-15-39-6f20adab.jpg" 
+             alt="achyutam keshavam" 
+             onclick="playbhakti('achyutam keshavam')"
+             style="cursor: pointer;">
+
+              <img src="https://a10.gaanacdn.com/gn_img/albums/koMWQ7BKqL/oMWQ85d43q/size_m.jpg" 
+             alt="Gayatri Mantra" 
+             onclick="playbhakti('Gayatri Manatra')"
+             style="cursor: pointer;">
+
+              <img src="https://s1.dmcdn.net/v/IUnAG1ZeKRDWYnlbr/x1080" 
+             alt="sankat mochan naam tiharo" 
+             onclick="playbhakti('sankat mochan naam tiharo')"
+             style="cursor: pointer;">
+
+              <img src="https://a10.gaanacdn.com/gn_img/albums/YoEWlwa3zX/EWlw9zwy3z/size_m.webp" 
+             alt="Shendur Lal Chadhayo " 
+             onclick="playbhakti('Shendur Lal Chadhayo')"
+             style="cursor: pointer;">
+
+              <img src="https://i.ibb.co/gFSJhCdC/Whats-App-Image-2025-05-30-at-02-28-51-a27e4770.jpg" 
+             alt="Tu mane bhagwan ek vardan aapi de" 
+             onclick="playbhakti('Tu mane bhagwan ek vardan aapi de')"
+             style="cursor: pointer;">
+
+              <img src="https://i.ytimg.com/vi/9NK7OTKEJvc/maxresdefault.jpg" 
+             alt="karupur gauravam " 
+             onclick="playbhakti('karupur gauravam')"
+             style="cursor: pointer;">
+
+              <img src="https://static.qobuz.com/images/covers/98/88/0190374418898_600.jpg" 
+             alt="shiv tandav stotram " 
+             onclick="playbhakti('shiv tandav stotram')"
+             style="cursor: pointer;">
+
+              <img src="https://i.ibb.co/R40TNDNV/Whats-App-Image-2025-05-30-at-02-40-12-adb7750d.jpg" 
+             alt="adharam madhuram" 
+             onclick="playbhakti('adharam madhuram')"
+             style="cursor: pointer;">
+
+             <img src="https://i.ytimg.com/vi/eGHv7mXEpHk/sddefault.jpg?v=66e50ea0" 
+             alt="Deva Shree Ganesha" 
+             onclick="playbhakti('Deva Shree Ganesha')"
+             style="cursor: pointer;">
+
+               <img src="https://i.ytimg.com/vi/8jff2wz3Hpk/maxresdefault.jpg" 
+             alt="Mourya Mourya re" 
+             onclick="playbhakti('Mourya Mourya re')"
+             style="cursor: pointer;">
+
+             <img src="https://c.saavncdn.com/082/Hum-Katha-Sunate-Ram-Sakal-Gun-Dham-Ki-Hindi-2023-20230602142650-500x500.jpg" 
+             alt="Hum katha sunaate" 
+             onclick="playbhakti('Hum katha sunaate')"
+             style="cursor: pointer;">
+
+              <img src="https://c.saavncdn.com/981/Yada-Yada-Hi-Dharmasya-Sanskrit-2021-20211011224715-500x500.jpg" 
+             alt="Yada-Yada-Hi-Dharmasya" 
+             onclick="playbhakti('Yada-Yada-Hi-Dharmasya')"
+             style="cursor: pointer;">
+
+               <img src="https://i.ibb.co/kg7z6GCV/Whats-App-Image-2025-05-30-at-02-52-20-c93712c8.jpg" 
+             alt="kijo kesari ke laal" 
+             onclick="playbhakti('kijo kesari ke laal')"
+             style="cursor: pointer;">
+
+             <img src="https://a10.gaanacdn.com/gn_img/albums/koMWQBbqLE/MWQ7l8DMKq/size_m.jpg" 
+             alt="mangal bhavan amangal hari " 
+             onclick="playbhakti('mangal bhavan amangal hari')"
+             style="cursor: pointer;">
+             </div>
+             </div>
+
+             <div class="fixed6">
+    <h1 class="heading5">  Overseas Songs 🎶 </h1>
+    <div class="overseas-row">
+         <img src="https://i.ytimg.com/vi/DOWZ65w0rHU/sddefault.jpg"
+             alt="Unholy" 
+             onclick="playover('Unholy')"
+             style="cursor: pointer;">
+
+                <img src="https://i.ytimg.com/vi/4adZ7AguVcw/sddefault.jpg"
+             alt="Blue" 
+             onclick="playover('Blue')"
+             style="cursor: pointer;">
+
+
+                <img src="https://i.ytimg.com/vi/cPdAtGce54g/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCDQJaBe_53GnSv79F9oN44uJTizA"
+             alt="Perfect" 
+             onclick="playover('Perfect')"
+             style="cursor: pointer;">
+
+                <img src="https://i.ytimg.com/vi/6Le_Q8I-MC8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBSg6lORlnluJKm1D9AWDQzbCUgng"
+             alt="Despactio" 
+             onclick="playover('Despactio')"
+             style="cursor: pointer;">
+
+                <img src="https://i.ytimg.com/vi/pm8TTOd4b88/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBLUT-R30gfiTJaisKu6WZu2rSJ3A"
+             alt="1985" 
+             onclick="playover('1985')"
+             style="cursor: pointer;">
+
+                <img src="https://i.ytimg.com/vi/wjdgk9uJXwY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCF8GlHYHhNJQRJIMZfKOCDPZqBeA"
+             alt="Agora hills" 
+             onclick="playover('Agora hills')"
+             style="cursor: pointer;">
+
+                <img src="https://i.ytimg.com/vi/h3h035Eyz5A/sddefault.jpg"
+             alt="Unstoppable" 
+             onclick="playover('Unstoppable')"
+             style="cursor: pointer;">
+
+              
+
+                <img src="https://i.ytimg.com/vi/lrIKt5uDWZo/maxresdefault.jpg"
+             alt="Cheri Cheri Lady" 
+             onclick="playover('Cheri Cheri Lady')"
+             style="cursor: pointer;">
+
+                <img src="https://i.scdn.co/image/ab67616d0000b2737d8135f3a9c09b966c978860"
+             alt="Until I Found You " 
+             onclick="playover('Until I Found You')"
+             style="cursor: pointer;">
+
+                <img src="https://i.ytimg.com/vi/iawgB2CDCrw/maxresdefault.jpg"
+             alt="Flowers" 
+             onclick="playover('Flowers')"
+             style="cursor: pointer;">
+
+                <img src="https://i.ytimg.com/vi/g7X9X6TlrUo/maxresdefault.jpg"
+             alt="Woman" 
+             onclick="playover('Woman')"
+             style="cursor: pointer;">
+
+                <img src="https://i.ytimg.com/vi/25ROFXjoaAU/maxresdefault.jpg"
+             alt="Closer" 
+             onclick="playover('Closer')"
+             style="cursor: pointer;">
+
+             <img src="https://i.ytimg.com/vi/HCq1OcAEAm0/hqdefault.jpg"
+             alt="Industry Baby" 
+             onclick="playover('Industry Baby')"
+             style="cursor: pointer;">
+
+             <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/StevieWonderIJustCalledToSayILoveYou7InchFrenchSingleCover.jpg"
+             alt="I just called to say I love you" 
+             onclick="playover('I just called to say I love you')"
+             style="cursor: pointer;">
+
+              <img src="https://i.ytimg.com/vi/a3Px9JmkPLY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC2PIntkiuc9gSEvOfr7k277HpBYg"
+             alt="Summertime Sadness" 
+             onclick="playover('Summertime Sadness')"
+             style="cursor: pointer;">
+
+             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTICEUygwre-JtSVL4R17KwtABrYn0vKyoi3q6zpfBiNqxtCN0lB_TumxQHNn6DGPPvTCU&usqp=CAU"
+             onclick="playover('Night Changes')"
+             style="cursor: pointer;">
+             </div>
+             </div>
+
+             <div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000;">
+    <span id="modal-close" style="position:absolute; top:20px; right:30px; font-size:40px; color:white; cursor:pointer;">&times;</span>
+    <img id="modal-image" src="" alt="Album Image" style="max-width:90vw; max-height:90vh; border-radius:10px; box-shadow:0 0 20px rgba(255,255,255,0.5);">
+</div>
+
+<div id="music-controller">
+    <div class="controller-main-row">
+        <img id="controller-album-art" src="" alt="Album Art">
+        <div id="controller-song-info">
+            <div id="controller-song-title">No song playing</div>
+            <div id="controller-song-artist"></div> </div>
+    <div class="controller-buttons">
+        <button id="controller-prev" title="Previous">
+            <i class="bi bi-skip-backward-fill"></i>
+        </button>
+        <button id="controller-play-pause" title="Play/Pause">
+            <i id="play-pause-icon" class="bi bi-play-fill"></i>
+        </button>
+        <button id="controller-next" title="Next">
+            <i class="bi bi-skip-forward-fill"></i>
+        </button>
+       <button id="controller-like-btn" title="Like/Unlike Song">
+                <i id="like-icon" class="bi bi-heart"></i>
+            </button>
+       
+        
+    </div>
+    </div>
+    <div class="controller-progress-row">
+        <input type="range" id="controller-progress" min="0" max="100" value="0" step="0.1">
+        <div id="controller-time">0:00 / 0:00</div>
+    </div>
+</div>
+
+
+       
+        
+    
+
+<div class="nav">
+   <a href="index.html" class="nav-item" id="home-nav" onclick="loadPage('index.html')">
+        <img src="https://i.ibb.co/60Qb9CfX/5874117.png" alt="Home" class="nav-icon">
+        <span>HOME</span>
+    </a>
+
+   <a href="mood.html" class="nav-item" id="mood-nav" onclick="loadPage('mood.html')">
+        <img src="https://i.ibb.co/B2YvzHpZ/18760635.png" alt="Mood" class="nav-icon">
+        <span>MOOD</span>
+    </a>
+    
+    <a href="like.html" class="nav-item" id="liked-nav">
+        <img src="https://i.ibb.co/R4pNKRWT/heres-some-playlist-icons-in-the-style-of-liked-songs-you-v0-cahrrr1is8g1.webp" 
+             alt="Liked Songs" 
+             class="nav-icon liked-icon">
+        <span>LIKED</span>
+    </a>
+</div>
+
+<script src="player.js"></script>
+
+<div class="album-view" id="animal-album-view">
+    <button class="back-button" onclick="closeAlbumView('animal')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://i.ibb.co/ttxyNmv/animal-rashmika-mandanna-featured.jpg" alt="Animal" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Animal</h1>
+            <p>2023 • 23 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSongInIframe('animal', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Abrars Entry Jamal Kudu</div>
+            <div class="song-duration">3:45</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Saari Duniya Jalaa Denge</div>
+            <div class="song-duration">4:12</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Pehle Bhi Main</div>
+            <div class="song-duration">3:58</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Kashmir</div>
+            <div class="song-duration">3:30</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Haiwaan</div>
+            <div class="song-duration">4:15</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 5)">
+            <div class="song-number">6</div>
+            <div class="song-details">Arjan Vailly</div>
+            <div class="song-duration">3:40</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 6)">
+            <div class="song-number">7</div>
+            <div class="song-details">Papa Meri Jaan</div>
+            <div class="song-duration">4:05</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 7)">
+            <div class="song-number">8</div>
+            <div class="song-details">Satranga</div>
+            <div class="song-duration">3:55</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 8)">
+            <div class="song-number">9</div>
+            <div class="song-details">Hua Main</div>
+            <div class="song-duration">3:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 9)">
+            <div class="song-number">10</div>
+            <div class="song-details">Tabbar Brothers Unite</div>
+            <div class="song-duration">3:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 10)">
+            <div class="song-number">11</div>
+            <div class="song-details">Salute The Champion</div>
+            <div class="song-duration">4:05</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 11)">
+            <div class="song-number">12</div>
+            <div class="song-details">Roaring War Machine</div>
+            <div class="song-duration">3:45</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 12)">
+            <div class="song-number">13</div>
+            <div class="song-details">Rifle Warning</div>
+            <div class="song-duration">3:40</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 13)">
+            <div class="song-number">14</div>
+            <div class="song-details">Range Rover Entry</div>
+            <div class="song-duration">3:55</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 14)">
+            <div class="song-number">15</div>
+            <div class="song-details">Nude Walk</div>
+            <div class="song-duration">3:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 15)">
+            <div class="song-number">16</div>
+            <div class="song-details">Killing Jeeja</div>
+            <div class="song-duration">3:45</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 16)">
+            <div class="song-number">17</div>
+            <div class="song-details">Heading To Scotland</div>
+            <div class="song-duration">3:40</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 17)">
+            <div class="song-number">18</div>
+            <div class="song-details">Heading To Kill Jeeja</div>
+            <div class="song-duration">3:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 18)">
+            <div class="song-number">19</div>
+            <div class="song-details">Aziz's Introduction</div>
+            <div class="song-duration">3:45</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 19)">
+            <div class="song-number">20</div>
+            <div class="song-details">ANIMAL Meeting ANIMAL</div>
+            <div class="song-duration">3:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 20)">
+            <div class="song-number">21</div>
+            <div class="song-details">Aatmanirbhar Bharat</div>
+            <div class="song-duration">2:24</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 21)">
+            <div class="song-number">22</div>
+            <div class="song-details">Animal Title Music</div>
+            <div class="song-duration">1:22</div>
+        </div>
+        <div class="song-item" onclick="playSong('animal', 22)">
+            <div class="song-number">23</div>
+            <div class="song-details">Alpha Male</div>
+            <div class="song-duration">1:10</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="master-album-view">
+    <button class="back-button" onclick="closeAlbumView('master')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg" alt="Master" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Master</h1>
+            <p>2021 • 8 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('master', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Chhoti Story</div>
+            <div class="song-duration">3:45</div>
+        </div>
+        <div class="song-item" onclick="playSong('master', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Beat of Master</div>
+            <div class="song-duration">4:12</div>
+        </div>
+        <div class="song-item" onclick="playSong('master', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Dhool Tash Baja Baja</div>
+            <div class="song-duration">3:58</div>
+        </div>
+        <div class="song-item" onclick="playSong('master', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Master Coming</div>
+            <div class="song-duration">3:30</div>
+        </div>
+        <div class="song-item" onclick="playSong('master', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Master Raid</div>
+            <div class="song-duration">4:15</div>
+        </div>
+        <div class="song-item" onclick="playSong('master', 5)">
+            <div class="song-number">6</div>
+            <div class="song-details">Quit Karna</div>
+            <div class="song-duration">3:40</div>
+        </div>
+        <div class="song-item" onclick="playSong('master', 6)">
+            <div class="song-number">7</div>
+            <div class="song-details">Roshini Se Bhar Utah</div>
+            <div class="song-duration">4:05</div>
+        </div>
+        <div class="song-item" onclick="playSong('master', 7)">
+            <div class="song-number">8</div>
+            <div class="song-details">Woh Muskaana Aakhon Ka</div>
+            <div class="song-duration">3:55</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="bajrangi-album-view">
+    <button class="back-button" onclick="closeAlbumView('bajrangi')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    
+    <div class="album-header">
+        <img src="https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg" alt="Bajrangi Bhaijaan" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Bajrangi Bhaijaan</h1>
+            <p>2015 • 7 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('bajrangi', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Chicken Kuk-Doo-Koo</div>
+            <div class="song-duration">4:12</div>
+        </div>
+        <div class="song-item" onclick="playSong('bajrangi', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Bhar Do Jholi Meri</div>
+            <div class="song-duration">5:15</div>
+        </div>
+        <div class="song-item" onclick="playSong('bajrangi', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Aaj Ki Party</div>
+            <div class="song-duration">4:40</div>
+        </div>
+        <div class="song-item" onclick="playSong('bajrangi', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Zindagi Kuch Toh Bata</div>
+            <div class="song-duration">4:22</div>
+        </div>
+        <div class="song-item" onclick="playSong('bajrangi', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Tu Jo Mila</div>
+            <div class="song-duration">4:04</div>
+        </div>
+        <div class="song-item" onclick="playSong('bajrangi', 5)">
+            <div class="song-number">6</div>
+            <div class="song-details">Tu Chahiye</div>
+            <div class="song-duration">4:34</div>
+        </div>
+        <div class="song-item" onclick="playSong('bajrangi', 6)">
+            <div class="song-number">7</div>
+            <div class="song-details">Selfie Le Le Re</div>
+            <div class="song-duration">3:56</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="raone-album-view">
+    <button class="back-button" onclick="closeAlbumView('raone')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://i.ibb.co/1YDwJTSn/ra-one.jpg" alt="Ra.One" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Ra.One</h1>
+            <p>2011 • 9 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('raone', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Bhare Naina</div>
+            <div class="song-duration">5:12</div>
+        </div>
+        <div class="song-item" onclick="playSong('raone', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Chammak Challo</div>
+            <div class="song-duration">3:47</div>
+        </div>
+        <div class="song-item" onclick="playSong('raone', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Comes The Light (Theme)</div>
+            <div class="song-duration">4:15</div>
+        </div>
+        <div class="song-item" onclick="playSong('raone', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Criminal</div>
+            <div class="song-duration">4:23</div>
+        </div>
+        <div class="song-item" onclick="playSong('raone', 4)">
+                 <div class="song-number">5</div>
+            <div class="song-details">Dildaara (Stand By Me)</div>
+            <div class="song-duration">4:10</div>
+        </div>
+        <div class="song-item" onclick="playSong('raone', 5)">
+            <div class="song-number">6</div>
+            <div class="song-details">I'm On (Theme)</div>
+            <div class="song-duration">3:56</div>
+        </div>
+        <div class="song-item" onclick="playSong('raone', 6)">
+            <div class="song-number">7</div>
+            <div class="song-details">Jiya Mora Ghabraaye</div>
+            <div class="song-duration">4:45</div>
+        </div>
+        <div class="song-item" onclick="playSong('raone', 7)">
+            <div class="song-number">8</div>
+            <div class="song-details">Right By Your Side</div>
+            <div class="song-duration">3:58</div>
+        </div>
+        <div class="song-item" onclick="playSong('raone', 8)">
+            <div class="song-number">9</div>
+            <div class="song-details">Song Of The End (Theme)</div>
+            <div class="song-duration">4:32</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="dabangg-album-view">
+    <button class="back-button" onclick="closeAlbumView('dabangg')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg" alt="dabangg" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Dabangg</h1>
+            <p>2010 • 6 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('dabangg', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Tere Mast Mast Do Nain</div>
+            <div class="song-duration">5:59</div>
+        </div>
+        <div class="song-item" onclick="playSong('dabangg', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Munni Badnaam Hui Darling (Female)</div>
+            <div class="song-duration">5:07</div>
+        </div>
+        <div class="song-item" onclick="playSong('dabangg', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Humka Peeni Hai Peeni</div>
+            <div class="song-duration">5:15</div>
+        </div>
+        <div class="song-item" onclick="playSong('dabangg', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Dabangg Theme</div>
+            <div class="song-duration">2:48</div>
+        </div>
+        <div class="song-item" onclick="playSong('dabangg', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Chori Kiya Re Jiya (Male)</div>
+            <div class="song-duration">4:48</div>
+        </div>
+        <div class="song-item" onclick="playSong('dabangg', 5)">
+            <div class="song-number">6</div>
+            <div class="song-details">Udd Udd Dabaang</div>
+            <div class="song-duration">4:13</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="ready-album-view">
+    <button class="back-button" onclick="closeAlbumView('ready')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://friendshipforevergvr.wordpress.com/wp-content/uploads/2011/05/ready-movie2.jpg?w=584" alt="ready" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Ready</h1>
+            <p>2011 • 4 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('ready', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Character Dheela (Ishq Ke Naam)</div>
+            <div class="song-duration">3:47</div>
+        </div>
+        <div class="song-item" onclick="playSong('ready', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Meri Ada Bhi (Ishq Ne Mere)</div>
+            <div class="song-duration">4:05</div>
+        </div>
+        <div class="song-item" onclick="playSong('ready', 2)">
+             <div class="song-number">3</div>
+            <div class="song-details">Humko Pyar Hua (Chal Chale)</div>
+            <div class="song-duration">5:28</div>
+        </div>
+        <div class="song-item" onclick="playSong('ready', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Dhinka Chika</div>
+            <div class="song-duration">4:32</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="pushpaTherise-album-view">
+    <button class="back-button" onclick="closeAlbumView('pushpaTherise')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pushpa--the-rise-et00129538-08-12-2021-01-21-46.jpg" alt="pushpa" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Pushpa</h1>
+            <p>2021 • 4 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('pushpaTherise', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Jaago Jaago Bakre</div>
+            <div class="song-duration">4:55</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpaTherise', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Saami Saami</div>
+            <div class="song-duration">3:47</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpaTherise', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Oo Bolega Ya Oo Oo Bolega</div>
+            <div class="song-duration">3:46</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpaTherise', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Eyy Bidda Ye Mera Adda</div>
+            <div class="song-duration">3:56</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpaTherise', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Srivalli - Pushpa</div>
+            <div class="song-duration">3:41</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="kgf2-album-view">
+    <button class="back-button" onclick="closeAlbumView('kgf2')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://i.ibb.co/39jxsLPM/images.jpg" alt="Kgf 2" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Kgf 2</h1>
+            <p>2022 • 5 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('kgf2', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Falak Tu Garaj Tu - Suchetha Basrur</div>
+            <div class="song-duration">2:50</div>
+        </div>
+        <div class="song-item" onclick="playSong('kgf2', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Mehabooba - Ananya Bhat</div>
+            <div class="song-duration">3:32</div>
+        </div>
+        <div class="song-item" onclick="playSong('kgf2', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Monster Song Clean Version (From _KGF Chapter 2 - Tamil_) - Ravi Basrur</div>
+            <div class="song-duration">2:40</div>
+        </div>
+        <div class="song-item" onclick="playSong('kgf2', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Toofan - Sandesh Datta Naik</div>
+            <div class="song-duration">3:33</div>
+        </div>
+        <div class="song-item" onclick="playSong('kgf2', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Sulthan - Brijesh Shandilya</div>
+            <div class="song-duration">3:45</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="pushpa2-album-view">
+    <button class="back-button" onclick="closeAlbumView('pushpa2')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg" alt="pushpa2" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Pushpa 2 - The Rule</h1>
+            <p>2024 • 6 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('pushpa2', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Dum Hai To Rok Ke Bata</div>
+            <div class="song-duration">1:33</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpa2', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Kaali Mahaa Kaali</div>
+            <div class="song-duration">3:28</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpa2', 2)">
+             <div class="song-number">3</div>
+            <div class="song-details">Peelings</div>
+            <div class="song-duration">4:07</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpa2', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Angaaron</div>
+            <div class="song-duration">4:20</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpa2', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Pushpa Pushpa</div>
+            <div class="song-duration">4:16</div>
+        </div>
+        <div class="song-item" onclick="playSong('pushpa2', 5)">
+            <div class="song-number">6</div>
+            <div class="song-details">KISSIK Song</div>
+            <div class="song-duration">4:12</div>
+        </div>
+    </div>
+</div>
+
+<div class="album-view" id="sholay-album-view">
+    <button class="back-button" onclick="closeAlbumView('sholay')">
+        <i class="bi bi-arrow-left"></i>
+    </button>
+    <div class="album-header">
+        <img src="https://i.ibb.co/nNfS0GGn/sholay-remake-v0-7zv7h7pqai2d1.webp" alt="pushpa2" class="album-cover">
+        <div class="album-info">
+            <span>Album</span>
+            <h1 class="album-title">Sholay</h1>
+            <p>1975 • 5 songs</p>
+        </div>
+    </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('sholay', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Yeh Dosti Hum Nahin (Happy Version)</div>
+            <div class="song-duration">5:21</div>
+        </div>
+        <div class="song-item" onclick="playSong('sholay', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Title Music (Sholay)</div>
+            <div class="song-duration">2:46</div>
+        </div>
+        <div class="song-item" onclick="playSong('sholay', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Holi Ke Din </div>
+            <div class="song-duration">5:42</div>
+        </div>
+        <div class="song-item" onclick="playSong('sholay', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Haa Jab Tak Hai Jaan</div>
+            <div class="song-duration">5:26</div>
+        </div>
+        <div class="song-item" onclick="playSong('sholay', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Mehbooba Mehbooba Sholay</div>
+            <div class="song-duration">3:54</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
+mood.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music App - Hemisphere</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="mood.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="theme.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    
+</head>
+<body>
+
+<div class="fixed">
+    <div class="header-container">
+        <div class="title-logo">
+            <img src="https://i.ibb.co/ds9gy7K4/Screenshot-2025-05-17-013654-removebg-preview.png"
+                    alt="Hemisphere Logo" border="0" height="80px" class="image1">
+            <h1 class="title">HEMISPHERE</h1>
+        </div>
+
+        <div class="theme-toggle">
+            <button id="theme-toggle-btn">
+                <i class="bi bi-moon-fill" id="theme-icon"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="nav">
+    <a href="index.html" class="nav-item" id="home-nav" onclick="loadPage('index.html')">
+        <img src="https://i.ibb.co/60Qb9CfX/5874117.png" alt="Home" class="nav-icon">
+        <span>HOME</span>
+    </a>
+
+    <a href="mood.html" class="nav-item active" id="mood-nav" onclick="loadPage('mood.html')">
+        <img src="https://i.ibb.co/B2YvzHpZ/18760635.png" alt="Mood" class="nav-icon">
+        <span>MOOD</span>
+    </a>
+
+    <a href="like.html" class="nav-item" id="liked-nav" onclick="loadPage('like.html')">
+        <img src="https://i.ibb.co/R4pNKRWT/heres-some-playlist-icons-in-the-style-of-liked-songs-you-v0-cahrrr1is8ee1.webp" 
+              alt="Liked Songs" 
+              class="nav-icon liked-icon">
+        <span>LIKED</span>
+    </a>
+</div>
+
+<div class="mood-selection-container">
+    <h2 class="mood-heading">Select Your Mood</h2>
+    <div class="mood-buttons-grid">
+        <button class="mood-button happy" data-mood="happy">
+            <span class="emoji">😊</span> Happy
+        </button>
+        <button class="mood-button sad" data-mood="sad">
+            <span class="emoji">😔</span> Sad
+        </button>
+        <button class="mood-button Energetic" data-mood="Energetic">
+            <span class="emoji">⚡</span> Energetic
+        </button>
+        <button class="mood-button guilt" data-mood="guilt">
+            <span class="emoji">😞</span> Guilt
+        </button>
+    </div>
+</div>
+
+<div class="song-list-container">
+    <h3 id="current-mood-title">Songs for Your Mood </h3>
+    <ul id="mood-song-list">
+        <li class="placeholder-song">Select a mood to see songs...</li>
+    </ul>
+</div>
+
+<div id="music-controller">
+    <div class="controller-main-row">
+        <img id="controller-album-art" src="" alt="Album Art">
+        <div id="controller-song-info">
+            <div id="controller-song-title">No song playing</div>
+            <div id="controller-song-artist"></div> </div>
+    <div class="controller-buttons">
+        <button id="controller-prev" title="Previous">
+            <i class="bi bi-skip-backward-fill"></i>
+        </button>
+        <button id="controller-play-pause" title="Play/Pause">
+            <i id="play-pause-icon" class="bi bi-play-fill"></i>
+        </button>
+        <button id="controller-next" title="Next">
+            <i class="bi bi-skip-forward-fill"></i>
+        </button>
+        <button id="controller-like-btn" title="Like/Unlike Song">
+                <i id="like-icon" class="bi bi-heart"></i>
+            </button>
+        
+    </div>
+    </div>
+    <div class="controller-progress-row">
+        <input type="range" id="controller-progress" min="0" max="100" value="0" step="0.1">
+        <div id="controller-time">0:00 / 0:00</div>
+    </div>
+</div>
+
+<script src="player.js"></script>
+<script>
+    
+    const moodSongs = {
+        happy: [
+            { title: 'Badtameez Dil', artist: 'Pritam, Benny Dayal, Shefali Alvares', src: 'audio/Badtameez Dil - Yeh Jawaani Hai Deewani 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/M/MV5BODA4MjM2ODk4OF5BMl5BanBnXkFtZTcwNDgzODk1OQ@@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Balam Pichkari', artist: 'Pritam, Vishal Dadlani, Shalmali Kholgade', src: 'audio/Balam Pichkari - Yeh Jawaani Hai Deewani 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/M/MV5BODA4MjM2ODk4OF5BMl5BanBnXkFtZTcwNDgzODk1OQ@@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Dhinka Chika', artist: 'Sajid-Wajid, Amrita Kak, Mika Singh', src: 'audio/Dhinka Chika - Ready 128 Kbps.mp3', albumArt: 'https://friendshipforevergvr.wordpress.com/wp-content/uploads/2011/05/ready-movie2.jpg?w=584' },
+            { title: 'Galat Baat Hai', artist: 'Pritam, Neeti Mohan, Arijit Singh', src: 'audio/Galat Baat Hai - Main Tera Hero 128 Kbps.mp3', albumArt: 'https://i.ibb.co/LdpRtWj7/Main-Tera-Hero-2014-500x500.jpg' },
+            { title: 'Make Some Noise For The Desi Boyz', artist: 'Pritam, K.K., Bob', src: 'audio/Make Some Noise For The Desi Boyz - Desi Boyz 128 Kbps.mp3', albumArt: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYgFgfwo3mK3E0SaxF_NNzfpQPRiKooKQKcQ&s' },
+            { title: 'Selfie Le Le Re', artist: 'Pritam, Vishal Dadlani, Nakash Aziz', src: 'audio/Selfie Le Le Re - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Shanivaar Raati', artist: 'Pritam, Arijit Singh, Shalmali Kholgade', src: 'audio/Shanivaar Raati - Main Tera Hero 128 Kbps.mp3', albumArt: 'https://i.ibb.co/LdpRtWj7/Main-Tera-Hero-2014-500x500.jpg' },
+            { title: 'Zinda Banda', artist: 'Anirudh Ravichander', src: 'audio/Zinda Banda.mp3', albumArt: 'https://resizing.flixster.com/lej1aNFjcromN2hYS5-638hSJ-k=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiOWE5MWYxLTc0MzctNGNjZi1hMjE0LWNhZmZiMDU2M2RhMS5qcGc=' },
+            { title: 'Aaj Ki Party', artist: 'Pritam, Mika Singh', src: 'audio/Aaj Ki Party - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Chammak Challo', artist: 'Akon, Hamsika Iyer, Vishal-Shekhar', src: 'audio/Chammak Challo - Ra-One 128 Kbps.mp3', albumArt: 'https://i.ibb.co/1YDwJTSn/ra-one.jpg' },
+            { title: 'Chor Bazari Phir Se Bhool Chuk Maaf', artist: 'Pritam, Neeraj Shridhar, Sunidhi Chauhan', src: 'audio/Chor Bazari Phir Se Bhool Chuk Maaf (pagalall.com).mp3', albumArt: 'https://i.ibb.co/SDqVQPRL/Chor-Bazari-Phir-Se-Bhool-Chuk-Maaf-pagalall-com.webp' },
+            { title: 'Dilliwaali Girlfriend', artist: 'Pritam, Arijit Singh, Sunidhi Chauhan', src: 'audio/Dilliwaali Girlfriend - Yeh Jawaani Hai Deewani 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/M/MV5BODA4MjM2ODk4OF5BMl5BanBnXkFtZTcwNDgzODk1OQ@@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Haan Ke Haan', artist: 'Vishal Dadlani, Payal Dev', src: 'audio/Haan Ke Haan - Maharaj 128 Kbps.mp3', albumArt: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmnch0mFZCSfP0JuXTgdx7P1tUTgGB-xvw3IaNPRXIXmVSXgX_AIMvLbZa8EZ3Sm6muAtcIQ' },
+            { title: 'Humko Pyar Hua (Chal Chale)', artist: 'Pritam, Rahat Fateh Ali Khan, Shreya Ghoshal', src: 'audio/Humko Pyar Hua (Chal Chale) - Ready 128 Kbps.mp3', albumArt: 'https://friendshipforevergvr.wordpress.com/wp-content/uploads/2011/05/ready-movie2.jpg?w=584' },
+            { title: 'Janu Meri Jaan', artist: 'Shankar-Jaikishan', src: 'audio/Janu Meri Jaan - Shaan 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/9/94/Shaan_1980_poster.jpg' },
+            { title: 'No Entry Ishq Di Galli Vich', artist: 'Anu Malik, Alisha Chinai', src: 'audio/No Entry Ishq Di Galli Vich - No Entry 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/0/01/No_Entry_poster.jpg' },
+            { title: 'Not Ramaiya Vastavaiya', artist: 'Anirudh Ravichander, Vishal Dadlani, Shilpa Rao', src: 'audio/Not Ramaiya Vastavaiya - Jawan 128 Kbps (1).mp3', albumArt: 'https://resizing.flixster.com/lej1aNFjcromN2hYS5-638hSJ-k=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiOWE5MWYxLTc0MzctNGNjZi1hMjE0LWNhZmZiMDU2M2RhMS5qcGc=' },
+            { title: 'Palat - Tera Hero Idhar Hai', artist: 'Sajid-Wajid, Arijit Singh', src: 'audio/Palat - Tera Hero Idhar Hai - Main Tera Hero 128 Kbps.mp3', albumArt: 'https://i.ibb.co/LdpRtWj7/Main-Tera-Hero-2014-500x500.jpg' },
+            { title: 'Radhe Radhe', artist: 'Meet Bros, Amit Gupta', src: 'audio/Radhe Radhe - Dream Girl 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/6/6e/Dream_Girl.png' },
+            { title: 'Tujh Mein Rab Dikhta Hai', artist: 'Salim-Sulaiman, Roop Kumar Rathod', src: 'audio/Tujh Mein Rab Dikhta Hai.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Rab_Ne_Bana_Di_Jodi.jpg/250px-Rab_Ne_Bana_Di_Jodi.jpg' },
+            { title: 'Yeh Dosti Hum Nahin (Happy Version)', artist: 'Kishore Kumar, Manna Dey', src: 'audio/Yeh Dosti Hum Nahin (Happy Version - Sholay 128 Kbps.mp3', albumArt: 'https://i.ibb.co/nNfS0GGn/sholay-remake-v0-7zv7h7pqai2d1.webp' },
+            { title: 'Tharki Chokro', artist: 'Swanand Kirkire, Shreya Ghoshal', src: 'audio/Tharki Chokro - PK 128 Kbps.mp3', albumArt: 'https://i.ibb.co/PGr1kRjn/PK-poster-1.jpg' },
+        ],
+        sad: [
+            { title: 'Behti Hawa Sa Tha Woh', artist: 'Shantanu Moitra, Shreya Ghoshal, Swanand Kirkire', src: 'audio/Behti Hawa Sa Tha Woh - 3 Idiots 128 Kbps.mp3', albumArt: 'https://cdn.prod.website-files.com/6169ea3dffbc473de935d4fc/6792ae827b25bc756d13efe2_Screenshot%202025-01-23%20at%203.03.35%E2%80%AFPM.png' },
+            { title: 'Bhare Naina', artist: 'Vishal-Shekhar, Nandini Srikar', src: 'audio/Bhare Naina - Ra-One 128 Kbps.mp3', albumArt: 'https://i.ibb.co/1YDwJTSn/ra-one.jpg' },
+            { title: 'Dildaara (Stand By Me)', artist: 'Vishal-Shekhar, Shafqat Amanat Ali', src: 'audio/Dildaara (Stand By Me) - Ra-One 128 Kbps.mp3', albumArt: 'https://i.ibb.co/1YDwJTSn/ra-one.jpg' },
+            { title: 'Hua Main', artist: 'Pritam, Raghav Chaitanya', src: 'audio/Hua Main - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/M-U-XavSH_8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBR5uV_y33eOtktJkupVS9g4e9PHw' },
+            { title: 'Kabira', artist: 'Pritam, Tochi Raina, Rekha Bhardwaj', src: 'audio/Kabira - Yeh Jawaani Hai Deewani 128 Kbps.mp3', albumArt: 'https://i.ibb.co/N2R5gGW2/sddefault.jpg' },
+            { title: 'Kaise Hua', artist: 'Vishal Mishra', src: 'audio/Kaise Hua - Kabir Singh 128 Kbps.mp3', albumArt: 'https://i.ibb.co/7tFTJRpP/maxresdefault-2.jpg' },
+            { title: 'Milne-Hai-Mujhse-Aayi', artist: 'Arijit Singh', src: 'audio/Milne-Hai-Mujhse-Aayi-MassTamilan.io.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/4/4f/Aashiqui_2.jpeg' },
+            { title: 'Papa Meri Jaan', artist: 'Pritam, Sonu Nigam', src: 'audio/Papa Meri Jaan - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/zTmQeQSwwbk/maxresdefault.jpg' },
+            { title: 'Pehle Bhi Main', artist: 'Pritam, Vishal Mishra', src: 'audio/Pehle Bhi Main - Animal 128 Kbps.mp3', albumArt: 'https://i.ibb.co/VYQWszG7/sddefault-1.jpg' },
+            { title: 'Zindagi Kuch Toh Bata', artist: 'Pritam, Rahat Fateh Ali Khan, Rekha Bhardwaj', src: 'audio/Zindagi Kuch Toh Bata - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Tere Mast Mast Do Nain', artist: 'Rahat Fateh Ali Khan', src: 'audio/Tere Mast Mast Do Nain - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
+            { title: 'Teri Meri Kahaani', artist: 'Palak Muchhal', src: 'audio/Teri Meri Kahaani - Palak Muchhal Version - Gabbar Is Back 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/c/c7/Gabbar_is_back_first_look.jpg' },
+            
+        ],
+        Energetic: [
+            { title: 'Arjan Vailly', artist: 'Bhupinder Babbal', src: 'audio/Arjan Vailly - Animal 128 Kbps.mp3', albumArt: 'https://c.saavncdn.com/862/Arjan-Vailly-From-ANIMAL-Hindi-2023-20231118001003-500x500.jpg' },
+            { title: 'Aziz\'s Introduction', artist: 'Harshavardan Rameshwar', src: 'audio/Aziz\'s Introduction.mp3', albumArt: 'https://i.ytimg.com/vi/g27TPboqE_M/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDAHsUIjwA-nYeLZsuqR-InY4hq4A' },
+            { title: 'Badass', artist: 'Anirudh Ravichander', src: 'audio/Badass.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Bloody Sweet', artist: 'Anirudh Ravichander', src: 'audio/Bloody Sweet.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Dum Hai To Rok Ke Bata', artist: 'Devi Sri Prasad', src: 'audio/Dum Hai To Rok Ke Bata - Pushpa 2 The Rule 128 Kbps.mp3', albumArt: 'https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg' },
+            { title: 'Glimpse of Antony Das', artist: 'Anirudh Ravichander', src: 'audio/Glimpse of Antony Das.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Glimpse of Harold Das', artist: 'Anirudh Ravichander', src: 'audio/Glimpse of Harold Das.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Haiwaan', artist: 'Harshavardan Rameshwar', src: 'audio/Haiwaan - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/RIz96zpbeBI/maxresdefault.jpg' },
+            { title: 'Heading To Kill Jeeja', artist: 'Harshavardan Rameshwar', src: 'audio/Heading To Kill Jeeja.mp3', albumArt: 'https://i.ytimg.com/vi/tsQK4uL1rdc/maxresdefault.jpg' },
+            { title: 'Heading To Scotland', artist: 'Harshavardan Rameshwar', src: 'audio/Heading To Scotland.mp3', albumArt: 'https://i.ytimg.com/vi/PIu3u71e9sU/maxresdefault.jpg' },
+            { title: 'Jawan Title Track', artist: 'Anirudh Ravichander', src: 'audio/Jawan Title Track - Jawan 128 Kbps.mp3', albumArt: 'https://resizing.flixster.com/lej1aNFjcromN2hYS5-638hSJ-k=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiOWE5MWYxLTc0MzctNGNjZi1hMjE0LWNhZmZiMDU2M2RhMS5qcGc=' },
+            { title: 'Kaali Mahaa Kaali', artist: 'Devi Sri Prasad', src: 'audio/Kaali Mahaa Kaali - Pushpa 2 The Rule 128 Kbps.mp3', albumArt: 'https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg' },
+            { title: 'Killing Jeeja', artist: 'Harshavardan Rameshwar', src: 'audio/Killing Jeeja.mp3', albumArt: 'https://www.fridaywall.com/wp-content/uploads/2023/12/GABwALrXIAAPM0p.jpg' },
+            { title: 'Leo Das Entry', artist: 'Anirudh Ravichander', src: 'audio/Leo Das Entry.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Lokiverse 2.0', artist: 'Anirudh Ravichander', src: 'audio/Lokiverse 2.0.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Naa Ready', artist: 'Anirudh Ravichander, Thalapathy Vijay', src: 'audio/Naa Ready.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Nude Walk', artist: 'Harshavardan Rameshwar', src: 'audio/Nude Walk.mp3', albumArt: 'https://c.saavncdn.com/172/ANIMAL-Hindi-2024-20240123131002-500x500.jpg' },
+            { title: 'Once Upon A Time', artist: 'Anirudh Ravichander', src: 'audio/Once Upon A Time.mp3', albumArt: 'https://anandkumarrsonfilms.com/wp-content/uploads/2022/07/vikram-poster.jpg' },
+            { title: 'Peelings', artist: 'Devi Sri Prasad', src: 'audio/Peelings - Pushpa 2 The Rule 128 Kbps.mp3', albumArt: 'https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg' },
+            { title: 'Pushpa Pushpa', artist: 'Devi Sri Prasad', src: 'audio/Pushpa Pushpa - Pushpa 2 The Rule 128 Kbps.mp3', albumArt: 'https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg' },
+            { title: 'Quit Karna', artist: 'Anirudh Ravichander', src: 'audio/Quit Karna - Vijay the Master 128 Kbps.mp3', albumArt: 'https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg' },
+            { title: 'Range Rover Entry', artist: 'Harshavardan Rameshwar', src: 'audio/Range Rover Entry.mp3', albumArt: 'https://c.saavncdn.com/172/ANIMAL-Hindi-2024-20240123131002-500x500.jpg' },
+            { title: 'Ratata', artist: 'Anirudh Ravichander', src: 'audio/Ratata.mp3', albumArt: 'https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg' },
+            { title: 'Rifle Warning', artist: 'Harshavardan Rameshwar', src: 'audio/Rifle Warning.mp3', albumArt: 'https://i.ytimg.com/vi/bkednCfm3a0/maxresdefault.jpg' },
+            { title: 'Roaring War Machine', artist: 'Harshavardan Rameshwar', src: 'audio/Roaring War Machine.mp3', albumArt: 'https://i.ytimg.com/vi/1dcK9Dybz8I/maxresdefault.jpg' },
+            { title: 'Rolex Theme', artist: 'Anirudh Ravichander', src: 'audio/Rolex Theme (PenduJatt.Com.Se).mp3', albumArt: 'https://anandkumarrsonfilms.com/wp-content/uploads/2022/07/vikram-poster.jpg' },
+            { title: 'Saari Duniya Jalaa Denge', artist: 'B Praak', src: 'audio/Saari Duniya Jalaa Denge - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/6OXfgu8uKnE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCUOWHKe2t6W8Bm_XQZ9PDpvucftQ' },
+            { title: 'Tabbar Brothers Unite', artist: 'Harshavardan Rameshwar', src: 'audio/Tabbar Brothers Unite.mp3', albumArt: 'https://i.ytimg.com/vi/ObJ5eGOeztc/maxresdefault.jpg' },
+            { title: 'Vaastav Theme 1', artist: 'Jatin-Lalit', src: 'audio/Vaastav Theme 1 - Vaastav The Reality 128 Kbps.mp3', albumArt: 'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p68252_p_v8_ad.jpg' },
+            { title: 'Vaastav Theme 2', artist: 'Jatin-Lalit', src: 'audio/Vaastav Theme 2 - Vaastav The Reality 128 Kbps.mp3', albumArt: 'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p68252_p_v8_ad.jpg' },
+            { title: 'Veera Dheera', artist: 'Santosh Narayan', src: 'audio/Veera Dheera.mp3', albumArt: 'https://m.media-amazon.com/images/M/MV5BMTM3ZGUwYTEtZTI5NS00ZmMyLTk2YmQtMWU4YjlhZTI3NjRjXkEyXkFqcGc@._V1_.jpg' },
+            { title: 'Vikram Title Track', artist: 'Anirudh Ravichander', src: 'audio/Vikram Title Track.mp3', albumArt: 'https://anandkumarrsonfilms.com/wp-content/uploads/2022/07/vikram-poster.jpg' },
+            { title: 'Vikram X Jailer X Leo X Jawan Mega Mashup', artist: 'DJ Dalal London, VDJ Mahe', src: 'audio/Vikram X Jailer X Leo X Jawan _ Mega Mashup _ DJ Dalal London _ Rajnikanth x SRK x Kamal H x Vijay.mp3', albumArt: 'https://i.ytimg.com/vi/IaL_Vlvad98/maxresdefault.jpg' },
+            { title: 'Abrars Entry Jamal Kudu', artist: 'Harshavardan Rameshwar', src: 'audio/Abrars Entry Jamal Kudu - Animal 128 Kbps.mp3', albumArt: 'https://c.saavncdn.com/624/Abrar-s-Entry-Jamal-Kudu-From-ANIMAL-Hindi-2023-20231206121002-500x500.jpg' },
+            { title: 'Alpha Male', artist: 'Harshavardan Rameshwar', src: 'audio/Alpha Male.mp3', albumArt: 'https://www.fridaywall.com/wp-content/uploads/2023/12/GABwALrXIAAPM0p.jpg' },
+            { title: 'ANIMAL Meeting ANIMAL', artist: 'Harshavardhan Rameshwar', src: 'audio/ANIMAL Meeting ANIMAL.mp3', albumArt: 'https://www.fridaywall.com/wp-content/uploads/2023/12/GABwALrXIAAPM0p.jpg' },
+            { title: 'ANIMAL Title Music', artist: 'Harshavardan Rameshwar', src: 'audio/ANIMAL Title Music.mp3', albumArt: 'https://www.fridaywall.com/wp-content/uploads/2023/12/GABwALrXIAAPM0p.jpg' },
+            { title: 'Animal X Kgf Mega Mashup', artist: 'DJ Dalal London & VDJ Mahe', src: 'audio/Animal X Kgf Mega Mashup – Bobby Deol X Yash X Ranbir Kapoor Mashup By DJ DALAL LONDON & VDJ Mahe.mp3', albumArt: 'https://i.ytimg.com/vi/gT2dM0HEveg/maxresdefault.jpg' },
+            { title: 'Master Coming', artist: 'Anirudh Ravichander', src: 'audio/Master Coming - Vijay the Master 128 Kbps.mp3', albumArt: 'https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg' },
+            { title: 'Master Raid', artist: 'Anirudh Ravichander', src: 'audio/Master Raid - Vijay the Master 128 Kbps.mp3', albumArt: 'https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg' },
+{ title: 'Monster Song Clean Version', artist: 'Ravi Basrur', src: 'audio/SpotiDownloader.com - Monster Song Clean Version (From _KGF Chapter 2 - Tamil_) - Ravi Basrur.mp3', albumArt: 'https://i.ytimg.com/vi/WsBGgvpO-xM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCXswg5D73-EU1Hva9AiUjOlg93QQ' },
+            { title: ' Toofan', artist: 'Ravi Barsur', src: 'audio/SpotiDownloader.com - Toofan - Sandesh Datta Naik.mp3', albumArt: 'https://i.ibb.co/39jxsLPM/images.jpg' },
+        ],
+        guilt: [
+            { title: 'Bhar Do Jholi Meri', artist: 'Pritam, Adnan Sami', src: 'audio/Bhar Do Jholi Meri - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'O Rangrez', artist: 'Shreya Ghoshal', src: 'audio/O Rangrez - Bhaag Milkha Bhaag 128 Kbps.mp3', albumArt: 'https://www.shazam.com/mkimage/image/thumb/Music221/v4/a0/2c/a2/a02ca25f-2d02-e296-0578-93a5b32b0adf/196872829877.jpg/1275x1275bb-60.webp' },
+            { title: 'Tu Chahiye', artist: 'Pritam, Atif Aslam', src: 'audio/Tu Chahiye - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Tu Jo Mila', artist: 'Pritam, K.K.', src: 'audio/Tu Jo Mila - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
+            { title: 'Chori Kiya Re Jiya (Male)', artist: 'Sajid-Wajid, Sonu Nigam, Shreya Ghoshal', src: 'audio/Chori Kiya Re Jiya (Male) - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
+            { title: 'Dabangg Theme', artist: 'Sajid-Wajid', src: 'audio/Dabangg Theme - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
+         
+            { title: 'Phir Milenge Chalte Chalte', artist: 'Sonu Nigam', src: 'audio/Phir Milenge Chalte Chalte.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Rab_Ne_Bana_Di_Jodi.jpg/250px-Rab_Ne_Bana_Di_Jodi.jpg' },
+
+        ]
+    };
+
+    const moodButtons = document.querySelectorAll('.mood-button');
+    const moodSongList = document.getElementById('mood-song-list');
+    const currentMoodTitle = document.getElementById('current-mood-title');
+
+    function displaySongs(mood) {
+        const songs = moodSongs[mood];
+        moodSongList.innerHTML = ''; // Clear previous songs
+
+        if (songs && songs.length > 0) {
+            currentMoodTitle.textContent = `${mood.charAt(0).toUpperCase() + mood.slice(1)} Songs`;
+            songs.forEach((song, index) => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('song-item');
+                listItem.setAttribute('data-index', index);
+                listItem.setAttribute('data-mood', mood);
+                listItem.innerHTML = `
+                    <img src="${song.albumArt || 'https://via.placeholder.com/50'}" alt="Album Art" class="song-album-art">
+                    <div class="song-details">
+                        <div class="song-title">${song.title}</div>
+                        <div class="song-artist">${song.artist}</div>
+                    </div>
+                    <button class="play-song-btn" data-index="${index}" data-mood="${mood}">
+                        <i class="bi bi-play-circle-fill"></i>
+                    </button>
+                `;
+                moodSongList.appendChild(listItem);
+            });
+            addPlayButtonListeners();
+
+            // Add click listeners to entire song-item to play song
+            document.querySelectorAll('.song-item').forEach(item => {
+                item.addEventListener('click', (event) => {
+                    // Prevent triggering when clicking the play button itself (to avoid double calls)
+                    if (event.target.closest('.play-song-btn')) return;
+
+                    const mood = item.getAttribute('data-mood');
+                    const index = parseInt(item.getAttribute('data-index'));
+                    if (typeof window.loadMoodPlaylistAndPlay === 'function') {
+                        window.loadMoodPlaylistAndPlay(moodSongs[mood], index);
+                    }
+                });
+            });
+        } else {
+            currentMoodTitle.textContent = `No Songs for ${mood.charAt(0).toUpperCase() + mood.slice(1)}`;
+            moodSongList.innerHTML = '<li class="placeholder-song">No songs available for this mood.</li>';
+        }
+    }
+
+    function addPlayButtonListeners() {
+        document.querySelectorAll('.play-song-btn').forEach(button => {
+            button.onclick = (event) => {
+                const mood = event.currentTarget.dataset.mood;
+                const index = parseInt(event.currentTarget.dataset.index);
+                const songsToPlay = moodSongs[mood];
+
+                if (songsToPlay && songsToPlay.length > index) {
+                    // Assuming your player.js has a function to load and play a playlist
+                    // You might need to adjust this call based on your actual player.js structure
+                    // For example, if player.js has a 'loadPlaylistAndPlay(playlistArray, startIndex)' function
+                    if (typeof window.loadMoodPlaylistAndPlay === 'function') {
+                        window.loadMoodPlaylistAndPlay(songsToPlay, index);
+                    } else {
+                        // Fallback: Manually update global playlist and play
+                        window.playlist = songsToPlay;
+                        window.playlistIndex = index;
+                        window.loadSong(window.playlist[window.playlistIndex]); // Assuming loadSong exists in player.js
+                        window.playCurrentSong(); // Assuming playCurrentSong exists in player.js
+                    }
+                }
+            };
+        });
+    }
+
+    moodButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            moodButtons.forEach(btn => btn.classList.remove('active-mood'));
+            // Add active class to the clicked button
+            button.classList.add('active-mood');
+            const mood = button.dataset.mood;
+            displaySongs(mood);
+        });
+    });
+
+    // Optional: Load a default mood's songs on page load
+  // Example in mood.html script (assuming player.js is loaded)
+document.addEventListener('DOMContentLoaded', () => {
+    // Example for dynamically loaded album/trending songs
+    // You would loop through your song elements and attach listeners
+    document.querySelectorAll('.song-item').forEach(songItem => {
+        songItem.addEventListener('click', () => {
+            const songSrc = songItem.dataset.src; // Assuming you store the song path in a data-src attribute
+            const songTitle = songItem.dataset.title;
+            const songArtist = songItem.dataset.artist;
+            const albumArtSrc = songItem.dataset.albumArt;
+
+            if (songSrc) {
+                loadAndPlaySong(songSrc, songTitle, songArtist, albumArtSrc);
+            }
+        });
+    });
+
+    // You can also add logic here for your mood-based playlists,
+    // ensuring they call loadAndPlaySong with the correct song data.
+});
+
+    // Extend player.js functionality if needed (add this to your player.js or after player.js script in mood.html)
+    // This is a hypothetical function for player.js. You might need to adapt it.
+    if (typeof window.loadMoodPlaylistAndPlay === 'undefined') {
+        window.loadMoodPlaylistAndPlay = function(newPlaylist, startIndex) {
+            window.playlist = newPlaylist; // Update the global playlist
+            window.playlistIndex = startIndex; // Set the starting index
+            window.loadSong(window.playlist[window.playlistIndex]); // Load the selected song
+            window.loadCurrentSong = window.playlist[window.playlistIndex]; // Also update current song for controller
+            window.playCurrentSong(); // Start playing
+        };
+    }
+
+</script>
+
+
+</body>
+</html>
+like.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music App - Hemisphere</title>
+    <link rel="stylesheet" href="like.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="theme.js" defer></script>
+    
+</head>
+<body>
+
+<div class="fixed">
+    <div class="header-container">
+        <div class="title-logo">
+            <img src="https://i.ibb.co/ds9gy7K4/Screenshot-2025-05-17-013654-removebg-preview.png"
+                 alt="Hemisphere Logo" border="0" height="80px" class="image1">
+            <h1 class="title" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">HEMISPHERE</h1>
+        </div>
+
+      
+
+
+
+        <div class="theme-toggle">
+            <button id="theme-toggle-btn">
+                <i class="bi bi-moon-fill" id="theme-icon"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="nav">
+    <a href="index.html" class="nav-item" id="home-nav" onclick="loadPage('index.html')">
+        <img src="https://i.ibb.co/60Qb9CfX/5874117.png" alt="Home" class="nav-icon">
+        <span>HOME</span>
+    </a>
+
+    <a href="mood.html" class="nav-item" id="mood-nav" onclick="loadPage('mood.html')">
+        <img src="https://i.ibb.co/B2YvzHpZ/18760635.png" alt="Mood" class="nav-icon">
+        <span>MOOD</span>
+    </a>
+
+    <a href="like.html" class="nav-item active" id="liked-nav" onclick="loadPage('like.html')">
+        <img src="https://i.ibb.co/sdQCKnJy/ab67706c0000da84e913f0317b78a75653c17e22.jpg" 
+             alt="Liked Songs" 
+             class="nav-icon liked-icon">
+        <span>LIKED</span>
+    </a>
+</div>
+<div id="music-controller">
+    <div class="controller-main-row">
+        <img id="controller-album-art" src="" alt="Album Art">
+        <div id="controller-song-info">
+            <div id="controller-song-title">No song playing</div>
+            <div id="controller-song-artist"></div>
+        </div>
+        <div class="controller-buttons">
+            <button id="controller-prev" title="Previous">
+                <i class="bi bi-skip-backward-fill"></i>
+            </button>
+            <button id="controller-play-pause" title="Play/Pause">
+                <i id="play-pause-icon" class="bi bi-play-fill"></i>
+            </button>
+            <button id="controller-next" title="Next">
+                <i class="bi bi-skip-forward-fill"></i>
+            </button>
+            <button id="controller-like-btn" title="Like/Unlike Song">
+                <i id="like-icon" class="bi bi-heart"></i>
+            </button>
+        </div>
+    </div>
+    <div class="controller-progress-row">
+        <input type="range" id="controller-progress" min="0" max="100" value="0" step="0.1">
+        <div id="controller-time">0:00 / 0:00</div>
+    </div>
+</div>
+
+
+<div id="page-content">
+    <div class="liked-songs-container">
+        <h2><i class="bi bi-heart-fill" style="color: #ff0050; margin-right: 10px;"></i>LIKED SONGS</h2>
+        <div class="search-container" style="max-width: 400px; margin: 0 auto 20px auto; position: relative;">
+            <div class="search-input-wrapper" style="position: relative;">
+                <i class="bi bi-search search-icon"></i>
+                <input type="text" placeholder="Search liked songs..." id="liked-search" autocomplete="off" style="width: 100%; padding-left: 30px;"/>
+                <div id="liked-search-results" class="search-results" 
+                     style="display:none; position:absolute; background: #282828; border:1px solid #444; max-height:200px; overflow-y:auto; width:100%; z-index:1000; top: 35px; border-radius: 8px;">
+                </div>
+            </div>
+        </div>
+        <div id="liked-songs-list"></div>
+    </div>
+</div>
+
+
+
+<script src="player.js"></script>
+
+</body>
+</html>
+
+
+             
+           
+
+
+
+
+
+
+             
+
+
+
+             
+       
