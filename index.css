@@ -1295,7 +1295,7 @@ body.light-theme {
   }
 }
 
-     /* --- Mobile-specific CSS Adjustments (within your @media (max-width: 768px) block) --- */
+/* --- Mobile-specific CSS Adjustments (within your @media (max-width: 768px) block) --- */
 @media (max-width: 768px) {
 
     /* --- General Body Padding Adjustment (Crucial for fixed headers/footers) --- */
@@ -1307,30 +1307,31 @@ body.light-theme {
         padding-bottom: 200px;
     }
 
-    /* --- Header & Search Bar Fixes: "Top Middle" --- */
+    /* --- Header & Search Bar Fixes: "Top Middle" & Overlapping Theme Toggle --- */
     .fixed {
-        /* Make the fixed header a flex container to manage its children */
+        position: fixed; /* Keep fixed */
+        top: 0;
+        left: 0; /* Ensure it starts from the left edge */
+        right: 0;
+        z-index: 1000;
+        padding: 10px 0; /* Vertical padding */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent); /* Darker background */
         display: flex;
-        /* Stack header elements vertically to allow search bar to be on its own line */
-        flex-direction: column;
-        /* Center items horizontally within the fixed header */
-        align-items: center;
-        padding: 15px 0; /* Adjust overall padding for the fixed header */
-        /* Darker background for better visibility, especially for the search bar */
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), transparent);
+        flex-direction: column; /* Stack header sections (logo/title, then search bar) */
+        align-items: center; /* Center items horizontally */
     }
 
-    /* This container holds your logo and title */
+    /* This container holds your logo and title, which will be centered at the top */
     .header-container {
-        width: 100%; /* Take full width to allow centering */
-        display: flex; /* Keep logo and title side-by-side */
+        width: 100%; /* Take full width */
+        display: flex; /* Keep logo and title side-by-side if structured that way */
         justify-content: center; /* Center logo and title horizontally */
         align-items: center;
         margin-bottom: 15px; /* Space between logo/title and search bar */
     }
 
     .title-logo {
-        margin: 0; /* Remove specific margins if any */
+        margin: 0; /* Remove any previous margins */
         text-align: center; /* Ensure logo/title are centered */
     }
     .image1 {
@@ -1342,51 +1343,78 @@ body.light-theme {
         margin-top: 5px; /* Space below logo */
     }
 
-    /* Search Bar Specific Styles */
+    /* Search Bar Specific Styles: Slightly decreased size and centered */
     .search-container {
-        width: 90%; /* Make search bar take up most of the width */
-        max-width: 380px; /* Limit max width for a cleaner look */
-        margin: 0 auto; /* This crucial line centers it horizontally */
+        width: 85%; /* SLIGHTLY DECREASED WIDTH */
+        max-width: 320px; /* Adjusted max width for a cleaner look */
+        margin: 0 auto; /* CRUCIAL: This centers it horizontally */
         background-color: rgba(255, 255, 255, 0.15); /* Lighter background for visibility */
         border: 1px solid rgba(255, 255, 255, 0.3); /* More visible border */
         border-radius: 25px; /* More rounded corners */
         padding: 10px 15px; /* Good padding inside the search bar */
-        display: flex; /* Ensure search icon and input are aligned */
+        display: flex;
         align-items: center;
         box-sizing: border-box; /* Include padding/border in the element's total width */
+        z-index: 999; /* Ensure it's below the theme toggle if needed */
     }
 
     #search-input {
-        color: #fff; /* White text for input */
-        background-color: transparent; /* Transparent background */
-        border: none; /* No input border */
-        outline: none; /* No outline on focus */
-        flex-grow: 1; /* Make input fill available space */
+        color: #fff;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        flex-grow: 1;
         font-size: 1em;
-        padding: 0; /* Remove internal padding */
+        padding: 0;
     }
     #search-input::placeholder {
-        color: rgba(255, 255, 255, 0.7); /* Lighter placeholder */
+        color: rgba(255, 255, 255, 0.7);
     }
     .search-icon {
-        color: rgba(255, 255, 255, 0.8); /* Icon color */
-        margin-right: 8px; /* Space between icon and text */
+        color: rgba(255, 255, 255, 0.8);
+        margin-right: 8px;
+    }
+
+    /* Theme Toggle Button Fix: Positioned to avoid overlap */
+    /* IMPORTANT: You NEED to find the actual class or ID of your theme toggle button.
+       I'm using '.theme-toggle-button' as an example. Replace this with your actual selector! */
+    .theme-toggle-button, /* If it's a div, button, or img wrapper */
+    #yourThemeToggleButtonId { /* If it has a specific ID */
+        position: absolute; /* Position it absolutely within the fixed header */
+        top: 15px; /* Adjust vertical position from top */
+        right: 15px; /* Adjust horizontal position from right */
+        z-index: 1001; /* Ensure it's on top of other elements */
+        width: 40px; /* Fixed size for a consistent touch target */
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+        border-radius: 50%; /* Make it round */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+    }
+    /* If your theme toggle is just an <img> tag within its container */
+    .theme-toggle-button img,
+    #yourThemeToggleButtonId img {
+        width: 25px; /* Size of the icon inside the button */
+        height: 25px;
+        object-fit: contain; /* Ensure the image fits without cropping */
     }
 
 
-    /* --- Music Controller Dragger (Progress Bar) Fixes: "Inside the music controller" --- */
+    /* --- Music Controller Dragger Fix: "Inside the music controller" --- */
     #music-controller {
         width: 95%; /* Slightly wider for better fit of progress bar */
         left: 50%;
         transform: translateX(-50%); /* Ensure it's perfectly centered */
         bottom: 80px; /* Adjust this value if it still overlaps your bottom nav */
-        /* Ensure there's a background color for the controller itself to make the dragger visible against it */
         background-color: rgba(0, 0, 0, 0.7); /* Example: semi-transparent dark background */
         backdrop-filter: blur(10px); /* Optional: add a blur effect */
-        border-radius: 15px; /* Optional: rounded corners */
-        padding: 10px; /* Ensure internal padding */
-        box-sizing: border-box; /* Crucial: Include padding in the element's total width */
-        overflow: hidden; /* Hide any content that goes outside its bounds */
+        border-radius: 15px;
+        padding: 10px;
+        box-sizing: border-box; /* CRUCIAL: Include padding in the element's total width */
+        overflow: hidden; /* CRUCIAL: Hide anything that goes outside its bounds */
         display: flex; /* Enable flex for internal layout of controller elements */
         flex-direction: column; /* Stack elements inside vertically */
         justify-content: center; /* Center content vertically */
@@ -1395,8 +1423,9 @@ body.light-theme {
 
     #music-controller .progress-bar-container {
         width: 100%; /* Make sure this container takes full width of #music-controller */
-        padding: 0 10px; /* Add horizontal padding *inside* the container */
-        box-sizing: border-box; /* Crucial for including padding in width */
+        padding: 0 10px; /* Add horizontal padding *inside* this container */
+        box-sizing: border-box; /* CRUCIAL: Include padding in width */
+        margin: 0; /* Explicitly remove any default margins */
         margin-top: 8px; /* Adjust spacing above the progress bar */
         margin-bottom: 5px; /* Adjust spacing below the progress bar */
     }
@@ -1406,11 +1435,11 @@ body.light-theme {
         -webkit-appearance: none; /* Remove default styling for Chrome/Safari */
         appearance: none;
         height: 5px; /* Height of the track */
-        background: rgba(250, 250, 250, 0.3); /* Track background (lighter grey for visibility) */
+        background: rgba(250, 250, 250, 0.3); /* Track background */
         border-radius: 5px;
         outline: none;
-        margin: 0; /* Remove default margin */
-        padding: 0;
+        margin: 0; /* CRUCIAL: Explicitly remove any browser default margins on the input */
+        padding: 0; /* Explicitly remove any browser default padding on the input */
     }
 
     /* Style the thumb (dragger) */
@@ -1435,20 +1464,20 @@ body.light-theme {
         box-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
     }
 
-    /* --- Horizontal Image Rows with Equal Spaces --- */
+    /* --- Horizontal Image Rows with Equal and CONSISTENT Sizes --- */
     .albums-row,
     .trending-row,
     .mashup-row,
     .overseas-row,
     .bhakti-row {
         display: flex; /* Ensure it's a flex container */
-        flex-wrap: nowrap !important; /* CRUCIAL: Force no wrapping, override if necessary */
+        flex-wrap: nowrap !important; /* CRUCIAL: Force no wrapping, override any other !important */
         overflow-x: auto; /* Enable horizontal scrolling */
         -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
         scrollbar-width: none; /* Hide scrollbar for Firefox */
         -ms-overflow-style: none;  /* Hide scrollbar for IE/Edge */
         padding: 10px; /* Keep overall padding */
-        gap: 20px; /* Increased gap for better, consistent spacing between items */
+        gap: 20px; /* Consistent gap between items */
         justify-content: flex-start; /* Align items to the start, letting overflow handle the rest */
         align-items: flex-start; /* Align items to the top if they have different heights */
         scroll-snap-type: x mandatory; /* Optional: Snap to items as you scroll */
@@ -1463,31 +1492,36 @@ body.light-theme {
         display: none;
     }
 
-    /* Ensure individual album items maintain their size for consistent layout */
-    /* Add a class like 'album-item' to each of your song/album containers in HTML.
-       If you don't have a specific class, you might need to use a direct child selector
-       like `.albums-row > div` if each album/song is a direct `div` inside the row. */
+    /* Enforce consistent size for EACH album/song item container */
+    /* IMPORTANT: Please add a consistent class like 'album-item' to each of your
+       album/song card divs in your HTML. If you cannot, the current selector
+       `> div` assumes they are direct div children of the row. */
     .album-item, /* Use this if you have a wrapper for each album/song */
     .trending-row > div, /* Example for direct child divs */
     .mashup-row > div,
     .overseas-row > div,
     .bhakti-row > div {
         flex-shrink: 0; /* Prevent items from shrinking when scrolling */
-        width: 140px; /* Set a consistent width for each item (adjust as needed) */
+        width: 140px; /* Fixed width for the entire item container */
+        height: 180px; /* Sufficient height to hold image and text */
+        display: flex; /* Make the item itself a flex container */
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center; /* Center image and text horizontally within the item */
+        text-align: center; /* Center text */
         scroll-snap-align: start; /* Optional: Snap to the start of each item */
-        text-align: center; /* Center content within the item */
     }
 
-    /* Re-apply image sizes, ensure they are square for consistency */
+    /* Enforce consistent size and fit for the IMAGES themselves */
     .album-img,
     .mashup-row img,
     .trending-row img,
     .overseas-row img,
     .bhakti-row img {
-        width: 140px !important; /* IMPORTANT: Use !important here if your general CSS has it too */
-        height: 140px !important; /* IMPORTANT: Use !important here if your general CSS has it too */
-        object-fit: cover; /* Ensure images cover the area without distortion */
+        width: 140px !important; /* CRUCIAL: Fixed width, overriding all others */
+        height: 140px !important; /* CRUCIAL: Fixed height for square images */
+        object-fit: cover !important; /* CRUCIAL: Ensure images fill the area without distortion */
         border-radius: 8px; /* Example: slight rounded corners */
+        margin-bottom: 8px; /* Space between image and text */
     }
 
     /* Adjust text styles for album/song titles to fit better */
@@ -1507,62 +1541,5 @@ body.light-theme {
         font-size: 1.4em; /* Smaller headings for mobile */
         margin-left: 10px;
         padding-top: 10px;
-    }
-}
-
-/* Optional: For very small screens, e.g., older or smaller smartphones */
-@media (max-width: 480px) {
-    body {
-        padding-top: 130px;
-        padding-bottom: 180px;
-    }
-
-    .header-container {
-        gap: 10px;
-    }
-
-    .search-container {
-        width: 95%; /* Make search bar slightly wider for very small screens */
-        padding: 8px 12px;
-    }
-
-    #music-controller {
-        bottom: 70px; /* Adjust music controller position for smaller screens */
-        height: 80px; /* Adjust height */
-    }
-
-    #music-controller img#controller-album-art {
-        width: 50px;
-        height: 50px;
-    }
-
-    .album-img,
-    .mashup-row img,
-    .trending-row img,
-    .overseas-row img,
-    .bhakti-row img {
-        width: 110px !important; /* Even smaller image size for tiny screens */
-        height: 110px !important;
-    }
-
-    .album-item,
-    .trending-row > div,
-    .mashup-row > div,
-    .overseas-row > div,
-    .bhakti-row > div {
-        width: 110px; /* Match item width to image size */
-    }
-
-    .heading3, .heading4, .fixed3 h1, .fixed4 h1, .head1 h1 {
-        font-size: 1.2em;
-    }
-
-    .title {
-        font-size: 1.2em;
-    }
-}
-
-    .title {
-        font-size: 1.3em;
     }
 }
