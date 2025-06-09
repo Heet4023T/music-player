@@ -1177,7 +1177,8 @@ body.light-theme {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* --- MOBILE-SPECIFIC CSS ADJUSTMENTS (MAXIMUM SPECIFICITY) --- */
+/* ===== MOBILE RESPONSIVENESS FIXES ===== */
+/* --- CONSOLIDATED MOBILE-SPECIFIC CSS ADJUSTMENTS (FOR SCREENS UP TO 768px WIDE) --- */
 @media (max-width: 768px) {
 
     /* --- General Body Padding (Ensures content clears fixed header and footer) --- */
@@ -1188,7 +1189,7 @@ body.light-theme {
 
     /* --- Fixed Header Container (Holds Hemisphere Title/Icon and Search Bar) --- */
     .fixed {
-        position: fixed !important; /* Ensure it stays fixed */
+        position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
@@ -1348,8 +1349,7 @@ body.light-theme {
         box-shadow: 0 0 8px rgba(0, 234, 255, 0.7) !important;
     }
 
-    /* --- Image Rows: Grid Layout, No Horizontal Scroll --- */
-    /* **CRITICAL:** These styles use extreme specificity to force images to wrap into a grid and remove horizontal scrolling. */
+    /* --- Image Rows: Grid Layout, No Horizontal Scroll (MAXIMUM SPECIFICITY) --- */
     html body .albums-row,
     html body .trending-row,
     html body .mashup-row,
@@ -1376,12 +1376,12 @@ body.light-theme {
         display: none !important;
     }
 
-    /* Image item containers (wrappers around image + text) */
+    /* Image item containers (wrappers around image + text) - MAXIMUM SPECIFICITY */
     html body .album-item,
     html body .trending-row > div,
-102 html body .mashup-row > div,
-103 html body .overseas-row > div,
-104 html body .bhakti-row > div {
+    html body .mashup-row > div,
+    html body .overseas-row > div,
+    html body .bhakti-row > div {
         flex-shrink: 0 !important; /* Prevent items from shrinking */
         width: 140px !important; /* Fixed width for each image item container */
         height: 180px !important; /* Fixed height for the item container (image + text space) */
@@ -1392,8 +1392,7 @@ body.light-theme {
         scroll-snap-align: none !important; /* No snap needed for vertical scrolling */
     }
 
-    /* --- Image Thumbnails: Consistent 140x140px Size for All --- */
-    /* **CRITICAL:** Extremely specific selectors to force image dimensions and object-fit */
+    /* --- Image Thumbnails: Consistent 140x140px Size for All (MAXIMUM SPECIFICITY) --- */
     html body .albums-row .album-item .album-img,
     html body .trending-row > div img,
     html body .mashup-row > div img,
@@ -1406,7 +1405,7 @@ body.light-theme {
         margin-bottom: 8px !important;
     }
 
-    /* --- Section Headings (e.g., "Top Albums", "Trending", etc.) --- */
+    /* --- Section Headings (e.g., "Top Albums") - MINIMIZED SPACE --- */
     .heading3, .heading4, .fixed3 h1, .fixed4 h1, .head1 h1 {
         font-size: 1.4em !important;
         margin-left: 10px !important;
