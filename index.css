@@ -1296,11 +1296,6 @@ body.light-theme {
 }
 
 /* --- Mobile-specific CSS Adjustments (within your @media (max-width: 768px) block) --- */
-/*
-   **IMPORTANT:** This entire block MUST be placed at the very end of your
-   last loaded CSS file (e.g., index.css, or a dedicated mobile.css linked last in HTML)
-   to ensure these styles override any other conflicting rules.
-*/
 @media (max-width: 768px) {
 
     /* --- General Body Padding Adjustment --- */
@@ -1317,8 +1312,8 @@ body.light-theme {
     .fixed {
         position: fixed;
         top: 0;
-        left: 0 !important; /* Ensure it's aligned to the very left edge, overriding any -15px */
-        right: 0 !important; /* Ensure it spans to the very right edge */
+        left: 0; /* Align the fixed container to the very left edge */
+        right: 0;
         z-index: 1000; /* Ensure it's above general content */
         padding: 10px 0; /* Vertical padding for the whole fixed header area */
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent);
@@ -1358,7 +1353,7 @@ body.light-theme {
     .search-container {
         width: 80% !important; /* Slightly reduced width */
         max-width: 300px !important; /* Adjusted max width */
-        margin: 0 auto 5px auto !important; /* Centers it horizontally, reduces bottom margin */
+        margin: 0 auto 0 auto !important; /* **CRITICAL:** Reduced bottom margin to 0 to minimize space below it */
         background-color: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 25px;
@@ -1392,8 +1387,8 @@ body.light-theme {
     .theme-toggle-button,
     #yourThemeToggleButtonId {
         position: fixed !important; /* **CRITICAL:** Fixed positioning relative to the viewport */
-        top: 5px !important; /* Position it 5px from the absolute top of the screen */
-        right: 5px !important; /* Position it 5px from the absolute right of the screen */
+        top: 0px !important; /* Position it at the absolute top of the screen */
+        right: 0px !important; /* Position it at the absolute right of the screen */
         z-index: 9999 !important; /* Extremely high z-index to ensure it's always on top of everything */
         width: 35px !important;
         height: 35px !important;
@@ -1404,6 +1399,7 @@ body.light-theme {
         border-radius: 50%;
         border: 1px solid rgba(255, 255, 255, 0.2);
         cursor: pointer;
+        padding: 5px !important; /* Add some internal padding for visual spacing from corner */
     }
     .theme-toggle-button img,
     #yourThemeToggleButtonId img {
@@ -1473,7 +1469,7 @@ body.light-theme {
         box-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
     }
 
-    /* --- Image Rows: "all these images should be visible together... only I can scroll down" --- */
+    /* --- Image Rows: "all images should be visible together... no horizontal scroll" --- */
     /* **CRITICAL:** This makes image items wrap within their rows, forming a grid,
        and removes horizontal scrolling from individual rows. The whole page will scroll vertically. */
     .albums-row,
@@ -1511,7 +1507,7 @@ body.light-theme {
     .bhakti-row > div {
         flex-shrink: 0 !important; /* Prevent items from shrinking */
         width: 140px !important; /* Fixed width for each image item */
-        height: 180px !important; /* Fixed height for the item container */
+        height: 180px !important; /* Fixed height for the item container (image + text space) */
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -1519,25 +1515,26 @@ body.light-theme {
         scroll-snap-align: none !important; /* No snap needed for vertical scrolling */
     }
 
+    /* **CRITICAL:** Ensure all images are the same size (140x140px) */
     .album-img,
     .mashup-row img,
     .trending-row img,
     .overseas-row img,
     .bhakti-row img {
         width: 140px !important;
-        height: 140px !important;
-        object-fit: cover !important;
+        height: 140px !important; /* **CRITICAL:** Override 'height: auto' from index.css */
+        object-fit: cover !important; /* Ensure images fill the space without distortion */
         border-radius: 8px;
         margin-bottom: 8px;
     }
 
-    /* Reduce Space between Search Container and Content Sections (Headings) */
+    /* Section Headings (e.g., "Top Albums", "Trending", etc.) */
     .heading3, .heading4, .fixed3 h1, .fixed4 h1, .head1 h1 {
         font-size: 1.4em;
         margin-left: 10px;
-        padding-top: 5px !important;
-        margin-top: 5px !important;
-        margin-bottom: 10px !important;
+        padding-top: 5px !important; /* Small padding from element above */
+        margin-top: 5px !important; /* **CRITICAL:** Small margin to reduce space from search bar */
+        margin-bottom: 10px !important; /* Spacing below the heading */
     }
 
     .main-content-section {
