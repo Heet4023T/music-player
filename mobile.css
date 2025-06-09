@@ -1,0 +1,181 @@
+/* --- Mobile-specific CSS (adjust max-width as needed for your target devices) --- */
+
+/* This targets screens up to 768px wide, which covers most tablets and smartphones in portrait mode */
+@media (max-width: 768px) {
+
+    /* Adjust padding for the fixed header to prevent content overlap */
+    /* Assuming your main content is directly below the fixed header */
+    body {
+        /* Increase padding-top to push content below the fixed header */
+        /* Adjust this value based on the actual height of your fixed header on mobile */
+        padding-top: 100px; /* Example: If your fixed header is around 80-90px tall */
+        padding-bottom: 250px; /* Ensure enough space for music controller and bottom nav */
+    }
+
+    /* Fixed header adjustments */
+    .fixed {
+        padding: 10px; /* Reduce padding for smaller screens */
+        left: 0; /* Ensure it's not offset on mobile */
+        right: 0;
+        top: 0;
+        /* Make sure the background covers the full width if there were any issues */
+        background-size: 100% 100%;
+    }
+
+    .header-container {
+        flex-direction: row; /* Keep elements in a row if space allows, or use column if needed */
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px; /* Adjust header padding */
+    }
+
+    .title-logo {
+        margin-left: 0; /* Remove left margin if present */
+    }
+
+    .image1 {
+        height: 50px; /* Adjust logo size */
+        width: auto;
+    }
+
+    .title {
+        font-size: 1.5em; /* Adjust title font size */
+        letter-spacing: 1px;
+    }
+
+    .search-container {
+        width: 150px; /* Adjust search bar width if it's too wide */
+        padding: 5px 10px;
+    }
+
+    #search-input {
+        font-size: 0.8em; /* Smaller font for search input */
+    }
+
+    /* Music Controller adjustments */
+    #music-controller {
+        width: 95%; /* Make it slightly narrower for better mobile fit */
+        bottom: 80px; /* Position it above the bottom navigation bar */
+        height: 90px; /* Adjust height if needed */
+        padding: 10px;
+        left: 50%;
+        transform: translateX(-50%); /* Center the music controller */
+    }
+
+    #music-controller img#controller-album-art {
+        width: 60px; /* Make album art slightly larger than current 50px */
+        height: 60px;
+    }
+
+    .controls button img {
+        width: 25px; /* Adjust control button icons size */
+        height: 25px;
+    }
+
+    .progress-bar-container {
+        margin-top: 5px; /* Adjust spacing */
+    }
+
+    /* Navigation bar adjustments (assuming this is the fixed bottom bar) */
+    .nav-bar {
+        height: 70px; /* Ensure consistent height for the nav bar */
+        padding: 0; /* Remove extra padding */
+    }
+
+    .nav-list {
+        gap: 0; /* Reduce gap between nav items */
+        justify-content: space-around; /* Distribute items evenly */
+        width: 100%;
+    }
+
+    .nav-item {
+        flex: 1; /* Allow items to take equal space */
+        text-align: center;
+        padding: 5px 0; /* Adjust padding */
+    }
+
+    .nav-icon {
+        width: 22px; /* Adjust icon size */
+        height: 22px;
+        margin-bottom: 3px; /* Space between icon and text */
+        margin-right: 0; /* Remove right margin */
+    }
+
+    .nav-item span {
+        font-size: 0.7em; /* Smaller font for nav text */
+    }
+
+    /* Section headings and content containers */
+    .heading3, .heading4, .fixed3 h1, .fixed4 h1, .head1 h1 {
+        font-size: 1.5em; /* Smaller headings for mobile */
+        margin-left: 10px; /* Adjust margin if needed */
+        padding-top: 10px; /* Add some padding above headings if they touch the top */
+    }
+
+    /* Adjust row padding and gap for album/song sections */
+    .albums-row,
+    .trending-row,
+    .mashup-row,
+    .overseas-row,
+    .bhakti-row {
+        padding: 8px; /* Reduce overall padding */
+        gap: 8px; /* Reduce gap between items in rows */
+        flex-wrap: wrap; /* Allow items to wrap to the next line */
+        justify-content: center; /* Center items when they wrap */
+    }
+
+    /* Adjust album/song image sizes */
+    .album-img,
+    .mashup-row img,
+    .trending-row img,
+    .overseas-row img,
+    .bhakti-row img {
+        width: 120px !important; /* Smaller image size */
+        height: 120px !important; /* Keep aspect ratio */
+    }
+
+    .album-text h3,
+    .album-text p {
+        font-size: 0.8em; /* Smaller font for album/song titles and artists */
+    }
+
+    /* Specific adjustments for "Bhakti Songs" if it's still an issue */
+    /* Ensure the Bhakti songs section has enough space above the music controller */
+    .bhakti-row {
+        margin-bottom: 120px; /* Add extra bottom margin to prevent overlap with music controller */
+    }
+}
+
+/* Optional: For very small screens, e.g., older or smaller smartphones */
+@media (max-width: 480px) {
+    body {
+        padding-top: 90px; /* Slightly less padding for very small screens if header is smaller */
+        padding-bottom: 220px;
+    }
+
+    #music-controller {
+        bottom: 70px;
+        height: 80px;
+    }
+
+    .album-img,
+    .mashup-row img,
+    .trending-row img,
+    .overseas-row img,
+    .bhakti-row img {
+        width: 100px !important; /* Even smaller image size for tiny screens */
+        height: 100px !important;
+    }
+
+    .heading3, .heading4, .fixed3 h1, .fixed4 h1, .head1 h1 {
+        font-size: 1.3em;
+    }
+
+    .title {
+        font-size: 1.3em;
+    }
+
+    .search-container {
+        width: 120px; /* Make search bar even narrower */
+    }
+}
