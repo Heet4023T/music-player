@@ -1371,7 +1371,7 @@ body.light-theme {
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.1em !important; /* Increased general heading size */
+    font-size: 1.0em !important; /* Increased general heading size */
     text-align: center !important;
     padding: 5px 10px !important;
     margin-top: 30px !important; /* Default margin-top for most headings */
@@ -1382,22 +1382,7 @@ body.light-theme {
     text-overflow: ellipsis !important;
   }
 
-  /* **CRITICAL:** ONLY push "Top Albums" heading further down (assuming it uses .heading3) */
-  .heading3 {
-    margin-top: 40px !important; /* Increased only for Top Albums (if it's .heading3) */
-    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for Top Albums heading */
-  }
-
-  /* **CRITICAL:** Increased font size for "Trending Songs" */
-  .heading4 {
-    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for Trending Songs heading */
-  }
-
-  /* **CRITICAL:** Increased font size for "Overseas Songs" heading */
-  .overseas-songs-heading, .heading5 {
-    font-size: 0.9em !important; /* **CRITICAL:** Increased font size for overseas songs */
-  }
-
+ 
 
   /* **CRITICAL:** Style for section descriptions (like "Dive into world of Bhakti Songs") */
   /* You MUST add 'class="section-description"' to the HTML tag for this text */
