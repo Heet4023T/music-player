@@ -1235,7 +1235,7 @@ body.light-theme {
     display: flex !important;
     align-items: center !important;
     gap: 5px !important; /* Gap between image and title */
-    margin-left: 10px !important; /* **CRITICAL:** Shift title-logo group slightly right from edge */
+    margin-left: 10px !important; /* Shift title-logo group slightly right from edge */
   }
 
   .image1 {
@@ -1293,7 +1293,7 @@ body.light-theme {
     top: 75px !important; /* Positioned right below the fixed header (65px header + 10px gap) */
     left: 50% !important; /* Center horizontally relative to viewport */
     transform: translateX(-50%) !important; /* Adjust for perfect horizontal centering */
-    width: 95% !important; /* **CRITICAL:** Increased width for more space */
+    width: 95% !important; /* Increased width for more space */
     z-index: 99998 !important; /* Ensure it's above content but below the main header */
     box-sizing: border-box !important;
     margin: 0 !important; /* Remove any desktop margins that might interfere */
@@ -1314,14 +1314,14 @@ body.light-theme {
   }
 
   #main-search {
-    /* **CRITICAL:** Removed width: 100% and rely on flex-grow for proper spacing */
+    /* Removed width: 100% and rely on flex-grow for proper spacing */
     flex-grow: 1 !important; /* Ensure it takes remaining space */
     color: #fff !important;
     background-color: transparent !important;
     border: none !important;
     outline: none !important;
     font-size: 0.9em !important;
-    padding: 0 0 0 2px !important; /* **CRITICAL:** Added small left padding for placeholder text */
+    padding: 0 0 0 28px !important; /* **CRITICAL:** Increased left padding for placeholder text, fixing overlap */
     box-sizing: border-box !important;
   }
   .search-icon {
@@ -1329,14 +1329,6 @@ body.light-theme {
     margin-right: 8px !important; /* Ensures space between icon and input */
     font-size: 1.1em !important; /* Adjust search icon size */
   }
-
-    #main-search::placeholder {
-    color: rgba(255, 255, 255, 0.7); 
-    font-size: 12px;
-    line-height: 20px;
-    vertical-align: middle;
-}
-
 
   /* Search results dropdown positioning (relative to the absolutely positioned search bar) */
   #search-results {
@@ -1382,7 +1374,7 @@ body.light-theme {
     scrollbar-width: none !important; /* For Firefox */
     -ms-overflow-style: none !important; /* For IE/Edge */
     padding: 0 10px !important; /* Padding for the container itself */
-    gap: 10px !important; /* **CRITICAL:** Consistent slightly reduced spacing between items */
+    gap: 10px !important; /* Consistent slightly reduced spacing between items */
     justify-content: flex-start !important; /* Align content to the start for scrolling */
     align-items: flex-start !important;
     scroll-snap-type: x mandatory !important; /* For smooth item snapping on scroll */
@@ -1405,8 +1397,8 @@ body.light-theme {
   .overseas-row > div,
   .bhakti-row > div {
     flex-shrink: 0 !important; /* Prevent items from shrinking in horizontal scroll */
-    width: 120px !important; /* **CRITICAL:** Consistent reduced width for item container */
-    height: 160px !important; /* **CRITICAL:** Consistent reduced height for item container (image + text) */
+    width: 120px !important; /* Consistent reduced width for item container */
+    height: 160px !important; /* Consistent reduced height for item container (image + text) */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important; /* Center image/text within each item container */
@@ -1423,8 +1415,8 @@ body.light-theme {
   .trending-row img,
   .overseas-row img,
   .bhakti-row img {
-    width: 120px !important; /* **CRITICAL:** Reduced image width */
-    height: 120px !important; /* **CRITICAL:** Reduced image height */
+    width: 120px !important; /* Reduced image width */
+    height: 120px !important; /* Reduced image height */
     object-fit: cover !important; /* Ensure images fill space without distortion */
     border-radius: 8px !important;
     margin-bottom: 8px !important;
@@ -1455,15 +1447,15 @@ body.light-theme {
   #music-controller p,
   #music-controller span,
   #music-controller .song-details > *,
-  #music-controller .song-title, /* Added common song title/artist classes if they exist */
+  #music-controller .song-title,
   #music-controller .artist-name {
-    font-size: 0.75em !important; /* **CRITICAL:** Reduced font size to ensure visibility */
-    white-space: normal !important; /* **CRITICAL:** Allow text to wrap to next line */
+    font-size: 0.75em !important; /* Reduced font size to ensure visibility */
+    white-space: normal !important; /* Allow text to wrap to next line */
     text-align: center !important; /* Center align the text */
     max-width: 100% !important; /* Ensure it doesn't overflow its container */
-    overflow: hidden !important; /* Hide overflow */
-    text-overflow: ellipsis !important; /* Add ellipsis for extremely long text that still won't fit */
-    line-height: 1.2em !important; /* **CRITICAL:** Added for better line spacing if text wraps */
+    overflow: visible !important; /* **CRITICAL:** Ensure text is not hidden */
+    text-overflow: clip !important; /* **CRITICAL:** Prevent ellipsis, allow full text */
+    line-height: 1.2em !important; /* Added for better line spacing if text wraps */
     margin: 0 !important; /* Remove any default margins */
     padding: 0 !important; /* Remove any default padding */
   }
