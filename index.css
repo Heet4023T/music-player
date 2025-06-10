@@ -1368,10 +1368,11 @@ body.light-theme {
   */
   .heading4,
   .heading5,
+. fixed2 h1
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.0em !important; /* Increased general heading size */
+    font-size: 1.1em !important; /* Increased general heading size */
     text-align: center !important;
     padding: 5px 10px !important;
     margin-top: 30px !important; /* Default margin-top for most headings */
