@@ -1177,7 +1177,6 @@ body.light-theme {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-
 /* ===== MOBILE RESPONSIVENESS FIXES (MATCHING IMAGE EXACTLY) ===== */
 @media (max-width: 768px) {
 
@@ -1195,7 +1194,7 @@ body.light-theme {
 
   body {
     /* Adjusted body padding to account for fixed header + absolutely positioned search bar */
-    padding-top: 125px !important;
+    padding-top: 130px !important; /* Increased for more space below header and search bar */
     padding-bottom: 200px !important; /* Ensures content scrolls above music controller & nav */
   }
 
@@ -1236,6 +1235,7 @@ body.light-theme {
     display: flex !important;
     align-items: center !important;
     gap: 5px !important; /* Gap between image and title */
+    margin-left: 10px !important; /* **CRITICAL:** Shift title-logo group slightly right from edge */
   }
 
   .image1 {
@@ -1256,13 +1256,13 @@ body.light-theme {
   }
 
   /*
-  ** Dark Theme Button: Shifted to Extreme Right (within Fixed Header)
+  ** Dark Theme Button: Shifted Upwards and to Extreme Right (within Fixed Header)
   */
   .theme-toggle { /* Targeting the theme-toggle div */
     position: absolute !important; /* Absolute position within the .fixed header */
-    top: 50% !important; /* Vertically center (overrides inline style) */
-    right: 5px !important; /* Position from the right edge (overrides inline style) */
-    transform: translateY(-50%) !important; /* Adjust for perfect vertical centering */
+    top: 10px !important; /* **CRITICAL:** Shifted more upwards (overrides inline style) */
+    right: 0px !important; /* **CRITICAL:** Shifted more right (overrides inline style) */
+    transform: none !important; /* Remove translateY as 'top' is no longer 50% */
     z-index: 100000 !important; /* Super high z-index to be on top of everything */
     background-color: transparent !important; /* Ensure background is transparent */
     border: none !important;
@@ -1290,7 +1290,7 @@ body.light-theme {
   */
   .fixed .header-container .search-container { /* Targeting the search-container specifically when nested */
     position: absolute !important; /* Take it out of normal flow for mobile */
-    top: 65px !important; /* Position it right below the fixed header's height */
+    top: 75px !important; /* **CRITICAL:** Positioned right below the fixed header (65px header + 10px gap) */
     left: 50% !important; /* Center horizontally relative to viewport */
     transform: translateX(-50%) !important; /* Adjust for perfect horizontal centering */
     width: 90% !important; /* Set its width for mobile */
@@ -1359,7 +1359,7 @@ body.light-theme {
   }
 
   /*
-  ** Image Rows: Now a WRAPPING GRID as per image
+  ** Image Rows: Now HORIZONTAL SCROLLING (NOT GRID)
   */
   .albums-row,
   .trending-row,
@@ -1367,16 +1367,16 @@ body.light-theme {
   .overseas-row,
   .bhakti-row {
     display: flex !important; /* Ensure flexbox */
-    flex-wrap: wrap !important; /* **CRITICAL:** Force items to wrap to a new line (grid layout) */
-    overflow-x: hidden !important; /* Hide horizontal scrollbar as it's a wrapping grid */
-    -webkit-overflow-scrolling: auto !important; /* Adjust scroll behavior */
+    flex-wrap: nowrap !important; /* **CRITICAL:** Force items to stay in a single row (horizontal scroll) */
+    overflow-x: auto !important; /* **CRITICAL:** Enable horizontal scrollbar */
+    -webkit-overflow-scrolling: touch !important; /* Improves scroll feel on iOS */
     scrollbar-width: none !important; /* For Firefox */
     -ms-overflow-style: none !important; /* For IE/Edge */
     padding: 0 10px !important; /* Padding for the container itself */
-    gap: 12px !important; /* Consistent spacing between items in the grid */
-    justify-content: center !important; /* Center items in the grid */
+    gap: 12px !important; /* Consistent spacing between items */
+    justify-content: flex-start !important; /* Align content to the start for scrolling */
     align-items: flex-start !important;
-    scroll-snap-type: none !important; /* Disable scroll snapping */
+    scroll-snap-type: x mandatory !important; /* **CRITICAL:** For smooth item snapping on scroll */
   }
 
   /* Hide scrollbar for Webkit browsers */
@@ -1395,7 +1395,7 @@ body.light-theme {
   .mashup-row > div,
   .overseas-row > div,
   .bhakti-row > div {
-    flex-shrink: 0 !important; /* Prevent items from shrinking */
+    flex-shrink: 0 !important; /* Prevent items from shrinking in horizontal scroll */
     width: 140px !important; /* **CRITICAL:** Consistent width for item container as per image */
     height: 180px !important; /* Consistent height for item container (image + text) */
     display: flex !important;
@@ -1403,7 +1403,7 @@ body.light-theme {
     align-items: center !important; /* Center image/text within each item container */
     text-align: center !important; /* Center text below image */
     min-width: 0 !important;
-    scroll-snap-align: none !important; /* Removed scroll-snap */
+    scroll-snap-align: start !important; /* **CRITICAL:** Snap each item to the start of the scroll area */
   }
 
   /*
@@ -1480,4 +1480,3 @@ body.light-theme {
     font-size: 14px !important;
   }
 }
-
