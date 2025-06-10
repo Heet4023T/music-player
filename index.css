@@ -1228,7 +1228,7 @@ body.light-theme {
     gap: 5px !important; /* Small gap between icon and title */
     flex-grow: 1 !important; /* Allows it to take available space */
     padding-left: 0 !important; /* Ensure no extra left padding */
-    margin-left: 0 !important; /* Ensure no extra left margin */
+    margin-left: 3 !important; /* Ensure no extra left margin */
   }
 
   .image1 {
