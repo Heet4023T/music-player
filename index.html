@@ -1,1074 +1,1557 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music App - Hemisphere</title>
-  <link rel="icon" type="image/png" href="https://i.ibb.co/ds9gy7K4/Screenshot-2025-05-17-013654-removebg-preview.png">
-
- <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <script src="theme.js" defer></script>
-
-</head>
-<body>
-
-<div class="fixed">
-    <div class="header-container">
-        <div class="title-logo">
-            <img src="https://i.ibb.co/ds9gy7K4/Screenshot-2025-05-17-013654-removebg-preview.png"
-                 alt="Hemisphere Logo" border="0" height="80px" class="image1">
-            <h1 class="title">HEMISPHERE</h1>
-        </div>
-
-        <div class="theme-toggle" style="position: absolute; top: 58px; right: 40px; z-index: 1001;">
-            <button id="theme-toggle-btn">
-                <i class="bi bi-moon-fill" id="theme-icon"></i>
-            </button>
-        </div>
-
-        <div class="search-container">
-            <div class="search-input-wrapper">
-                <i class="bi bi-search search-icon"></i>
-                <input type="text" placeholder="Search songs..." id="main-search" autocomplete="off" />
-                <div id="search-results" class="search-results" 
-                     style="display:none; position:absolute; background: #282828; border:1px solid #444; max-height:200px; overflow-y:auto; width:calc(100% - 40px); z-index:1000; left: 20px; top: 45px; border-radius: 8px;">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="newSongs-album-view">
-    <button class="back-button" onclick="closeAlbumView('newSongs')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://placehold.co/150x150/000000/FFFFFF?text=New+Songs" alt="New Songs" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">New Songs Collection</h1>
-            <p>2024 • 12 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('newSongs', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Tharki Chokro</div>
-            <div class="song-duration">3:45</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Galat Baat Hai</div>
-            <div class="song-duration">4:12</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Palat - Tera Hero Idhar Hai</div>
-            <div class="song-duration">3:58</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Shanivaar Raati</div>
-            <div class="song-duration">3:30</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Naa Ready</div>
-            <div class="song-duration">4:15</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 5)">
-            <div class="song-number">6</div>
-            <div class="song-details">Leo Das Entry</div>
-            <div class="song-duration">3:40</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 6)">
-            <div class="song-number">7</div>
-            <div class="song-details">Ratata</div>
-            <div class="song-duration">3:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 7)">
-            <div class="song-number">8</div>
-            <div class="song-details">Lokiverse 2.0</div>
-            <div class="song-duration">3:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 8)">
-            <div class="song-number">9</div>
-            <div class="song-details">Bloody Sweet</div>
-            <div class="song-duration">4:05</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 9)">
-            <div class="song-number">10</div>
-            <div class="song-details">Glimpse of Harold Das</div>
-            <div class="song-duration">3:45</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 10)">
-            <div class="song-number">11</div>
-            <div class="song-details">Glimpse of Antony Das</div>
-            <div class="song-duration">3:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('newSongs', 11)">
-            <div class="song-number">12</div>
-            <div class="song-details">Badass</div>
-            <div class="song-duration">4:10</div>
-        </div>
-    </div>
-</div>
-
-<div class="fixed2">
-    <div class="head1">
-        <h1 class="heading" style="position: relative; top: 10px"> TOP ALBUMS 💽 </h1>
-        <div class="albums-row">
-            <div class="album-container">
-                <img src="https://i.ibb.co/ttxyNmv/animal-rashmika-mandanna-featured.jpg" 
-                     alt="Animal" 
-                     class="album-img" 
-                     onclick="openAlbumView('animal')">
-            </div>
-            
-            <img src="https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg" 
-                 alt="Master" 
-                 class="album-img"
-                 onclick="openAlbumView('master')">
-            <img src="https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg" 
-                 alt="Bajrangi Bhaijaan" 
-                 class="album-img"
-                 onclick="openAlbumView('bajrangi')">
-            <img src="https://i.ibb.co/1YDwJTSn/ra-one.jpg" 
-                 alt="Ra.One" 
-                 class="album-img"
-                 onclick="openAlbumView('raone')">
-            <img src="https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg" 
-                 alt="Dabangg" 
-                 class="album-img"
-                 onclick="openAlbumView('dabangg')">
-
-            <img src="https://friendshipforevergvr.wordpress.com/wp-content/uploads/2011/05/ready-movie2.jpg?w=584" 
-                 alt="Ready" 
-                 class="album-img"
-                 onclick="openAlbumView('ready')">
-
-            <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pushpa--the-rise-et00129538-08-12-2021-01-21-46.jpg" 
-                 alt="pushpa 1" 
-                 class="album-img"
-                 onclick="openAlbumView('pushpaTherise')">
-
-            <img src="https://i.ibb.co/39jxsLPM/images.jpg"
-                 alt="Kgf 2" 
-                 class="album-img"
-                 onclick="openAlbumView('kgf2')">
-
-            <img src="https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg"
-                 alt="pushpa 2" 
-                 class="album-img"
-                 onclick="openAlbumView('pushpa2')">
-
-            <img src="https://i.ibb.co/nNfS0GGn/sholay-remake-v0-7zv7h7pqai2d1.webp"
-                 alt="sholay" 
-                 class="album-img"
-                 onclick="openAlbumView('sholay')">
-        </div>
-    </div>
-</div>
-
-<div class="fixed3">
-    <h1 class="heading2"> TRENDING SONGS 🔥 </h1>
-    <div class="trending-row">
-        <img src="https://i.ibb.co/WNxBJKCm/hq720.jpg" 
-             alt="Laal Pari" 
-             onclick="playTrendingSong('laalPari')"
-             style="cursor: pointer;" id="house">
-
-        <img src="https://i.ibb.co/HTzVcvQH/maxresdefault.jpg" 
-             alt="Ishq Hai" 
-             onclick="playTrendingSong('ishqHai')"
-             style="cursor: pointer;">
-             
-        <img src="https://i.ibb.co/r2MyM6xT/hq720-1.jpg" 
-             alt="Dil E Nadaan" 
-             onclick="playTrendingSong('dilENadaan')"
-             style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/SDqVQPRL/Chor-Bazari-Phir-Se-Bhool-Chuk-Maaf-pagalall-com.webp" 
-             alt="Chor Bazari" 
-             onclick="playTrendingSong('chorBazari')"
-             style="cursor: pointer;">
-             
-        <img src="https://i.ibb.co/T9cvgcT/ab67616d0000b273ff602926eb81f594fc034034.jpg" 
-             alt="Uyi Amma" 
-             onclick="playTrendingSong('uyiAmma')"
-             style="cursor: pointer;">
-        <img src="https://i.ibb.co/21mLZQXw/hq720-2.jpg" 
-             alt="Namo Namo" 
-             onclick="playTrendingSong('namonamo')"
-             style="cursor: pointer;">
-             
-        <img src="https://i.ibb.co/Lz1W1R8P/maxresdefault-1.jpg" 
-        alt="Aaya Re Toofan" 
-        onclick="playTrendingSong('aayaReToofan')"
-        style="cursor:pointer;">
-
-        <img src="https://i.ibb.co/N2R5gGW2/sddefault.jpg" 
-        alt="kabira"
-        onclick="playTrendingSong('kabira')"
-        style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/7tFTJRpP/maxresdefault-2.jpg" 
-             alt="Kaise Hua" 
-             onclick="playTrendingSong('kaiseHua')"
-             style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/VYQWszG7/sddefault-1.jpg" 
-             alt="Pehle Bhi Main" 
-             onclick="playTrendingSong('pehleBhiMain')"
-             style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/DD1XhDvy/hq720-3.jpg" 
-             alt="Hua Main" 
-             onclick="playTrendingSong('huaMain')"
-             style="cursor: pointer;">
-    </div>
-</div>
-
-<div class="fixed4">
-    <h1 class="heading3"> TRENDING MASHUPS 🔀 </h1>
-    <div class="mashup-row">
-        <img src="https://i.ibb.co/tPhDfZ6P/maxresdefault-3.jpg" 
-             alt="Vikram X Jailer X Leo X Jawan" 
-             onclick="playMashup('vikram x jailer x leo x jawan')"
-             style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/7Nd5hWgG/maxresdefault-4.jpg" 
-             alt="Aarambh Hai Prachand" 
-             onclick="playMashup('nfshope')"
-             style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/JwHW9LPR/maxresdefault-5.jpg" 
-             alt="Animal X KGF" 
-             onclick="playMashup('animal x kgf')"
-             style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/TxMLQ6h1/hq720-4.jpg" 
-             alt="KGF vs RRR vs PUSHPA" 
-             onclick="playMashup('kgf vs rrr vs pushpa')"
-             style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/VcxDnzSY/maxresdefault-7.jpg" 
-             alt="Arjan Vailly X Panga" 
-             onclick="playMashup('panga x arjan vailly')"
-             style="cursor: pointer;">
-
-        <img src="https://i.ibb.co/C39jXFLH/maxresdefault-6.jpg" 
-             alt="Ishq Hai X O Rangrez" 
-             onclick="playMashup('ishq hai x orangrez')"
-             style="cursor: pointer;">
-
-             
-
-
-    </div>
-</div>
-
-
-<div class="fixed5">
-    <h1 class="heading4">  WORLD OF BHAKTI SONGS 🙏 </h1>
-    <div class="bhakti-row">
-         <img src="https://i.ytimg.com/vi/DiTEqiEm_VU/hqdefault.jpg"
-             alt="Hanuman Chalisa" 
-             onclick="playbhakti('Hanuman Chalisa')"
-             style="cursor: pointer;">
-
-              <img src="https://i1.sndcdn.com/artworks-S2BgDFKwCzxZWdHi-ZqXd1Q-t500x500.jpg" 
-             alt="Ram Siya Ram" 
-             onclick="playbhakti('Ram Siya Ram')"
-             style="cursor: pointer;">
-
-              <img src="https://c.saavncdn.com/353/Shree-Krishan-Sharanam-Mamah-1994-500x500.jpg" 
-             alt="Shree Krishna Sharanam Mamah" 
-             onclick="playbhakti('Shree Krishna Sharanam Mamah')"
-             style="cursor: pointer;">
-
-              <img src="https://pendujatt.com.se/uploads/album/navkar-mantra-one-hour-chanting.webp" 
-             alt="Navkar Mantra" 
-             onclick="playbhakti('Navkar Mantra')"
-             style="cursor: pointer;">
-
-             <img src="https://i.ibb.co/S94157n/Whats-App-Image-2025-05-30-at-02-15-39-6f20adab.jpg" 
-             alt="achyutam keshavam" 
-             onclick="playbhakti('achyutam keshavam')"
-             style="cursor: pointer;">
-
-              <img src="https://a10.gaanacdn.com/gn_img/albums/koMWQ7BKqL/oMWQ85d43q/size_m.jpg" 
-             alt="Gayatri Mantra" 
-             onclick="playbhakti('Gayatri Manatra')"
-             style="cursor: pointer;">
-
-              <img src="https://s1.dmcdn.net/v/IUnAG1ZeKRDWYnlbr/x1080" 
-             alt="sankat mochan naam tiharo" 
-             onclick="playbhakti('sankat mochan naam tiharo')"
-             style="cursor: pointer;">
-
-              <img src="https://a10.gaanacdn.com/gn_img/albums/YoEWlwa3zX/EWlw9zwy3z/size_m.webp" 
-             alt="Shendur Lal Chadhayo " 
-             onclick="playbhakti('Shendur Lal Chadhayo')"
-             style="cursor: pointer;">
-
-              <img src="https://i.ibb.co/gFSJhCdC/Whats-App-Image-2025-05-30-at-02-28-51-a27e4770.jpg" 
-             alt="Tu mane bhagwan ek vardan aapi de" 
-             onclick="playbhakti('Tu mane bhagwan ek vardan aapi de')"
-             style="cursor: pointer;">
-
-              <img src="https://i.ytimg.com/vi/9NK7OTKEJvc/maxresdefault.jpg" 
-             alt="karupur gauravam " 
-             onclick="playbhakti('karupur gauravam')"
-             style="cursor: pointer;">
-
-              <img src="https://static.qobuz.com/images/covers/98/88/0190374418898_600.jpg" 
-             alt="shiv tandav stotram " 
-             onclick="playbhakti('shiv tandav stotram')"
-             style="cursor: pointer;">
-
-              <img src="https://i.ibb.co/R40TNDNV/Whats-App-Image-2025-05-30-at-02-40-12-adb7750d.jpg" 
-             alt="adharam madhuram" 
-             onclick="playbhakti('adharam madhuram')"
-             style="cursor: pointer;">
-
-             <img src="https://i.ytimg.com/vi/eGHv7mXEpHk/sddefault.jpg?v=66e50ea0" 
-             alt="Deva Shree Ganesha" 
-             onclick="playbhakti('Deva Shree Ganesha')"
-             style="cursor: pointer;">
-
-               <img src="https://i.ytimg.com/vi/8jff2wz3Hpk/maxresdefault.jpg" 
-             alt="Mourya Mourya re" 
-             onclick="playbhakti('Mourya Mourya re')"
-             style="cursor: pointer;">
-
-             <img src="https://c.saavncdn.com/082/Hum-Katha-Sunate-Ram-Sakal-Gun-Dham-Ki-Hindi-2023-20230602142650-500x500.jpg" 
-             alt="Hum katha sunaate" 
-             onclick="playbhakti('Hum katha sunaate')"
-             style="cursor: pointer;">
-
-              <img src="https://c.saavncdn.com/981/Yada-Yada-Hi-Dharmasya-Sanskrit-2021-20211011224715-500x500.jpg" 
-             alt="Yada-Yada-Hi-Dharmasya" 
-             onclick="playbhakti('Yada-Yada-Hi-Dharmasya')"
-             style="cursor: pointer;">
-
-               <img src="https://i.ibb.co/kg7z6GCV/Whats-App-Image-2025-05-30-at-02-52-20-c93712c8.jpg" 
-             alt="kijo kesari ke laal" 
-             onclick="playbhakti('kijo kesari ke laal')"
-             style="cursor: pointer;">
-
-             <img src="https://a10.gaanacdn.com/gn_img/albums/koMWQBbqLE/MWQ7l8DMKq/size_m.jpg" 
-             alt="mangal bhavan amangal hari " 
-             onclick="playbhakti('mangal bhavan amangal hari')"
-             style="cursor: pointer;">
-             </div>
-             </div>
-
-             <div class="fixed6">
-    <h1 class="heading5">  Overseas Songs 🎶 </h1>
-    <div class="overseas-row">
-         <img src="https://i.ytimg.com/vi/DOWZ65w0rHU/sddefault.jpg"
-             alt="Unholy" 
-             onclick="playover('Unholy')"
-             style="cursor: pointer;">
-
-                <img src="https://i.ytimg.com/vi/4adZ7AguVcw/sddefault.jpg"
-             alt="Blue" 
-             onclick="playover('Blue')"
-             style="cursor: pointer;">
-
-
-                <img src="https://i.ytimg.com/vi/cPdAtGce54g/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCDQJaBe_53GnSv79F9oN44uJTizA"
-             alt="Perfect" 
-             onclick="playover('Perfect')"
-             style="cursor: pointer;">
-
-                <img src="https://i.ytimg.com/vi/6Le_Q8I-MC8/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBSg6lORlnluJKm1D9AWDQzbCUgng"
-             alt="Despactio" 
-             onclick="playover('Despactio')"
-             style="cursor: pointer;">
-
-                <img src="https://i.ytimg.com/vi/pm8TTOd4b88/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBLUT-R30gfiTJaisKu6WZu2rSJ3A"
-             alt="1985" 
-             onclick="playover('1985')"
-             style="cursor: pointer;">
-
-                <img src="https://i.ytimg.com/vi/wjdgk9uJXwY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCF8GlHYHhNJQRJIMZfKOCDPZqBeA"
-             alt="Agora hills" 
-             onclick="playover('Agora hills')"
-             style="cursor: pointer;">
-
-                <img src="https://i.ytimg.com/vi/h3h035Eyz5A/sddefault.jpg"
-             alt="Unstoppable" 
-             onclick="playover('Unstoppable')"
-             style="cursor: pointer;">
-
-              
-
-                <img src="https://i.ytimg.com/vi/lrIKt5uDWZo/maxresdefault.jpg"
-             alt="Cheri Cheri Lady" 
-             onclick="playover('Cheri Cheri Lady')"
-             style="cursor: pointer;">
-
-                <img src="https://i.scdn.co/image/ab67616d0000b2737d8135f3a9c09b966c978860"
-             alt="Until I Found You " 
-             onclick="playover('Until I Found You')"
-             style="cursor: pointer;">
-
-                <img src="https://i.ytimg.com/vi/iawgB2CDCrw/maxresdefault.jpg"
-             alt="Flowers" 
-             onclick="playover('Flowers')"
-             style="cursor: pointer;">
-
-                <img src="https://i.ytimg.com/vi/g7X9X6TlrUo/maxresdefault.jpg"
-             alt="Woman" 
-             onclick="playover('Woman')"
-             style="cursor: pointer;">
-
-                <img src="https://i.ytimg.com/vi/25ROFXjoaAU/maxresdefault.jpg"
-             alt="Closer" 
-             onclick="playover('Closer')"
-             style="cursor: pointer;">
-
-             <img src="https://i.ytimg.com/vi/HCq1OcAEAm0/hqdefault.jpg"
-             alt="Industry Baby" 
-             onclick="playover('Industry Baby')"
-             style="cursor: pointer;">
-
-             <img src="https://upload.wikimedia.org/wikipedia/en/b/b1/StevieWonderIJustCalledToSayILoveYou7InchFrenchSingleCover.jpg"
-             alt="I just called to say I love you" 
-             onclick="playover('I just called to say I love you')"
-             style="cursor: pointer;">
-
-              <img src="https://i.ytimg.com/vi/a3Px9JmkPLY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC2PIntkiuc9gSEvOfr7k277HpBYg"
-             alt="Summertime Sadness" 
-             onclick="playover('Summertime Sadness')"
-             style="cursor: pointer;">
-
-             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTICEUygwre-JtSVL4R17KwtABrYn0vKyoi3q6zpfBiNqxtCN0lB_TumxQHNn6DGPPvTCU&usqp=CAU"
-             onclick="playover('Night Changes')"
-             style="cursor: pointer;">
-             </div>
-             </div>
-
-             <div id="image-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000;">
-    <span id="modal-close" style="position:absolute; top:20px; right:30px; font-size:40px; color:white; cursor:pointer;">&times;</span>
-    <img id="modal-image" src="" alt="Album Image" style="max-width:90vw; max-height:90vh; border-radius:10px; box-shadow:0 0 20px rgba(255,255,255,0.5);">
-</div>
-
-<div id="music-controller">
-    <div class="controller-main-row">
-        <img id="controller-album-art" src="" alt="Album Art">
-        <div id="controller-song-info">
-            <div id="controller-song-title">No song playing</div>
-            <div id="controller-song-artist"></div> </div>
-    <div class="controller-buttons">
-        <button id="controller-prev" title="Previous">
-            <i class="bi bi-skip-backward-fill"></i>
-        </button>
-        <button id="controller-play-pause" title="Play/Pause">
-            <i id="play-pause-icon" class="bi bi-play-fill"></i>
-        </button>
-        <button id="controller-next" title="Next">
-            <i class="bi bi-skip-forward-fill"></i>
-        </button>
-       <button id="controller-like-btn" title="Like/Unlike Song">
-                <i id="like-icon" class="bi bi-heart"></i>
-            </button>
-       
-        
-    </div>
-    </div>
-    <div class="controller-progress-row">
-        <input type="range" id="controller-progress" min="0" max="100" value="0" step="0.1">
-        <div id="controller-time">0:00 / 0:00</div>
-    </div>
-</div>
-
-
-       
-        
-    
-
-<div class="nav">
-   <a href="index.html" class="nav-item" id="home-nav" onclick="loadPage('index.html')">
-        <img src="https://i.ibb.co/60Qb9CfX/5874117.png" alt="Home" class="nav-icon">
-        <span>HOME</span>
-    </a>
-
-   <a href="mood.html" class="nav-item" id="mood-nav" onclick="loadPage('mood.html')">
-        <img src="https://i.ibb.co/B2YvzHpZ/18760635.png" alt="Mood" class="nav-icon">
-        <span>MOOD</span>
-    </a>
-    
-    <a href="like.html" class="nav-item" id="liked-nav">
-        <img src="https://i.ibb.co/R4pNKRWT/heres-some-playlist-icons-in-the-style-of-liked-songs-you-v0-cahrrr1is8g1.webp" 
-             alt="Liked Songs" 
-             class="nav-icon liked-icon">
-        <span>LIKED</span>
-    </a>
-</div>
-
-<script src="player.js"></script>
-
-<div class="album-view" id="animal-album-view">
-    <button class="back-button" onclick="closeAlbumView('animal')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://i.ibb.co/ttxyNmv/animal-rashmika-mandanna-featured.jpg" alt="Animal" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Animal</h1>
-            <p>2023 • 23 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('animal', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Abrars Entry Jamal Kudu</div>
-            <div class="song-duration">3:45</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Saari Duniya Jalaa Denge</div>
-            <div class="song-duration">4:12</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Pehle Bhi Main</div>
-            <div class="song-duration">3:58</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Kashmir</div>
-            <div class="song-duration">3:30</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Haiwaan</div>
-            <div class="song-duration">4:15</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 5)">
-            <div class="song-number">6</div>
-            <div class="song-details">Arjan Vailly</div>
-            <div class="song-duration">3:40</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 6)">
-            <div class="song-number">7</div>
-            <div class="song-details">Papa Meri Jaan</div>
-            <div class="song-duration">4:05</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 7)">
-            <div class="song-number">8</div>
-            <div class="song-details">Satranga</div>
-            <div class="song-duration">3:55</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 8)">
-            <div class="song-number">9</div>
-            <div class="song-details">Hua Main</div>
-            <div class="song-duration">3:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 9)">
-            <div class="song-number">10</div>
-            <div class="song-details">Tabbar Brothers Unite</div>
-            <div class="song-duration">3:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 10)">
-            <div class="song-number">11</div>
-            <div class="song-details">Salute The Champion</div>
-            <div class="song-duration">4:05</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 11)">
-            <div class="song-number">12</div>
-            <div class="song-details">Roaring War Machine</div>
-            <div class="song-duration">3:45</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 12)">
-            <div class="song-number">13</div>
-            <div class="song-details">Rifle Warning</div>
-            <div class="song-duration">3:40</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 13)">
-            <div class="song-number">14</div>
-            <div class="song-details">Range Rover Entry</div>
-            <div class="song-duration">3:55</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 14)">
-            <div class="song-number">15</div>
-            <div class="song-details">Nude Walk</div>
-            <div class="song-duration">3:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 15)">
-            <div class="song-number">16</div>
-            <div class="song-details">Killing Jeeja</div>
-            <div class="song-duration">3:45</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 16)">
-            <div class="song-number">17</div>
-            <div class="song-details">Heading To Scotland</div>
-            <div class="song-duration">3:40</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 17)">
-            <div class="song-number">18</div>
-            <div class="song-details">Heading To Kill Jeeja</div>
-            <div class="song-duration">3:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 18)">
-            <div class="song-number">19</div>
-            <div class="song-details">Aziz's Introduction</div>
-            <div class="song-duration">3:45</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 19)">
-            <div class="song-number">20</div>
-            <div class="song-details">ANIMAL Meeting ANIMAL</div>
-            <div class="song-duration">3:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 20)">
-            <div class="song-number">21</div>
-            <div class="song-details">Aatmanirbhar Bharat</div>
-            <div class="song-duration">2:24</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 21)">
-            <div class="song-number">22</div>
-            <div class="song-details">Animal Title Music</div>
-            <div class="song-duration">1:22</div>
-        </div>
-        <div class="song-item" onclick="playSong('animal', 22)">
-            <div class="song-number">23</div>
-            <div class="song-details">Alpha Male</div>
-            <div class="song-duration">1:10</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="master-album-view">
-    <button class="back-button" onclick="closeAlbumView('master')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg" alt="Master" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Master</h1>
-            <p>2021 • 8 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('master', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Chhoti Story</div>
-            <div class="song-duration">3:45</div>
-        </div>
-        <div class="song-item" onclick="playSong('master', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Beat of Master</div>
-            <div class="song-duration">4:12</div>
-        </div>
-        <div class="song-item" onclick="playSong('master', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Dhool Tash Baja Baja</div>
-            <div class="song-duration">3:58</div>
-        </div>
-        <div class="song-item" onclick="playSong('master', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Master Coming</div>
-            <div class="song-duration">3:30</div>
-        </div>
-        <div class="song-item" onclick="playSong('master', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Master Raid</div>
-            <div class="song-duration">4:15</div>
-        </div>
-        <div class="song-item" onclick="playSong('master', 5)">
-            <div class="song-number">6</div>
-            <div class="song-details">Quit Karna</div>
-            <div class="song-duration">3:40</div>
-        </div>
-        <div class="song-item" onclick="playSong('master', 6)">
-            <div class="song-number">7</div>
-            <div class="song-details">Roshini Se Bhar Utah</div>
-            <div class="song-duration">4:05</div>
-        </div>
-        <div class="song-item" onclick="playSong('master', 7)">
-            <div class="song-number">8</div>
-            <div class="song-details">Woh Muskaana Aakhon Ka</div>
-            <div class="song-duration">3:55</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="bajrangi-album-view">
-    <button class="back-button" onclick="closeAlbumView('bajrangi')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    
-    <div class="album-header">
-        <img src="https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg" alt="Bajrangi Bhaijaan" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Bajrangi Bhaijaan</h1>
-            <p>2015 • 7 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('bajrangi', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Chicken Kuk-Doo-Koo</div>
-            <div class="song-duration">4:12</div>
-        </div>
-        <div class="song-item" onclick="playSong('bajrangi', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Bhar Do Jholi Meri</div>
-            <div class="song-duration">5:15</div>
-        </div>
-        <div class="song-item" onclick="playSong('bajrangi', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Aaj Ki Party</div>
-            <div class="song-duration">4:40</div>
-        </div>
-        <div class="song-item" onclick="playSong('bajrangi', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Zindagi Kuch Toh Bata</div>
-            <div class="song-duration">4:22</div>
-        </div>
-        <div class="song-item" onclick="playSong('bajrangi', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Tu Jo Mila</div>
-            <div class="song-duration">4:04</div>
-        </div>
-        <div class="song-item" onclick="playSong('bajrangi', 5)">
-            <div class="song-number">6</div>
-            <div class="song-details">Tu Chahiye</div>
-            <div class="song-duration">4:34</div>
-        </div>
-        <div class="song-item" onclick="playSong('bajrangi', 6)">
-            <div class="song-number">7</div>
-            <div class="song-details">Selfie Le Le Re</div>
-            <div class="song-duration">3:56</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="raone-album-view">
-    <button class="back-button" onclick="closeAlbumView('raone')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://i.ibb.co/1YDwJTSn/ra-one.jpg" alt="Ra.One" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Ra.One</h1>
-            <p>2011 • 9 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('raone', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Bhare Naina</div>
-            <div class="song-duration">5:12</div>
-        </div>
-        <div class="song-item" onclick="playSong('raone', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Chammak Challo</div>
-            <div class="song-duration">3:47</div>
-        </div>
-        <div class="song-item" onclick="playSong('raone', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Comes The Light (Theme)</div>
-            <div class="song-duration">4:15</div>
-        </div>
-        <div class="song-item" onclick="playSong('raone', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Criminal</div>
-            <div class="song-duration">4:23</div>
-        </div>
-        <div class="song-item" onclick="playSong('raone', 4)">
-                 <div class="song-number">5</div>
-            <div class="song-details">Dildaara (Stand By Me)</div>
-            <div class="song-duration">4:10</div>
-        </div>
-        <div class="song-item" onclick="playSong('raone', 5)">
-            <div class="song-number">6</div>
-            <div class="song-details">I'm On (Theme)</div>
-            <div class="song-duration">3:56</div>
-        </div>
-        <div class="song-item" onclick="playSong('raone', 6)">
-            <div class="song-number">7</div>
-            <div class="song-details">Jiya Mora Ghabraaye</div>
-            <div class="song-duration">4:45</div>
-        </div>
-        <div class="song-item" onclick="playSong('raone', 7)">
-            <div class="song-number">8</div>
-            <div class="song-details">Right By Your Side</div>
-            <div class="song-duration">3:58</div>
-        </div>
-        <div class="song-item" onclick="playSong('raone', 8)">
-            <div class="song-number">9</div>
-            <div class="song-details">Song Of The End (Theme)</div>
-            <div class="song-duration">4:32</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="dabangg-album-view">
-    <button class="back-button" onclick="closeAlbumView('dabangg')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg" alt="dabangg" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Dabangg</h1>
-            <p>2010 • 6 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('dabangg', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Tere Mast Mast Do Nain</div>
-            <div class="song-duration">5:59</div>
-        </div>
-        <div class="song-item" onclick="playSong('dabangg', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Munni Badnaam Hui Darling (Female)</div>
-            <div class="song-duration">5:07</div>
-        </div>
-        <div class="song-item" onclick="playSong('dabangg', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Humka Peeni Hai Peeni</div>
-            <div class="song-duration">5:15</div>
-        </div>
-        <div class="song-item" onclick="playSong('dabangg', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Dabangg Theme</div>
-            <div class="song-duration">2:48</div>
-        </div>
-        <div class="song-item" onclick="playSong('dabangg', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Chori Kiya Re Jiya (Male)</div>
-            <div class="song-duration">4:48</div>
-        </div>
-        <div class="song-item" onclick="playSong('dabangg', 5)">
-            <div class="song-number">6</div>
-            <div class="song-details">Udd Udd Dabaang</div>
-            <div class="song-duration">4:13</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="ready-album-view">
-    <button class="back-button" onclick="closeAlbumView('ready')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://friendshipforevergvr.wordpress.com/wp-content/uploads/2011/05/ready-movie2.jpg?w=584" alt="ready" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Ready</h1>
-            <p>2011 • 4 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('ready', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Character Dheela (Ishq Ke Naam)</div>
-            <div class="song-duration">3:47</div>
-        </div>
-        <div class="song-item" onclick="playSong('ready', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Meri Ada Bhi (Ishq Ne Mere)</div>
-            <div class="song-duration">4:05</div>
-        </div>
-        <div class="song-item" onclick="playSong('ready', 2)">
-             <div class="song-number">3</div>
-            <div class="song-details">Humko Pyar Hua (Chal Chale)</div>
-            <div class="song-duration">5:28</div>
-        </div>
-        <div class="song-item" onclick="playSong('ready', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Dhinka Chika</div>
-            <div class="song-duration">4:32</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="pushpaTherise-album-view">
-    <button class="back-button" onclick="closeAlbumView('pushpaTherise')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pushpa--the-rise-et00129538-08-12-2021-01-21-46.jpg" alt="pushpa" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Pushpa</h1>
-            <p>2021 • 4 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('pushpaTherise', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Jaago Jaago Bakre</div>
-            <div class="song-duration">4:55</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpaTherise', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Saami Saami</div>
-            <div class="song-duration">3:47</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpaTherise', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Oo Bolega Ya Oo Oo Bolega</div>
-            <div class="song-duration">3:46</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpaTherise', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Eyy Bidda Ye Mera Adda</div>
-            <div class="song-duration">3:56</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpaTherise', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Srivalli - Pushpa</div>
-            <div class="song-duration">3:41</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="kgf2-album-view">
-    <button class="back-button" onclick="closeAlbumView('kgf2')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://i.ibb.co/39jxsLPM/images.jpg" alt="Kgf 2" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Kgf 2</h1>
-            <p>2022 • 5 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('kgf2', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Falak Tu Garaj Tu - Suchetha Basrur</div>
-            <div class="song-duration">2:50</div>
-        </div>
-        <div class="song-item" onclick="playSong('kgf2', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Mehabooba - Ananya Bhat</div>
-            <div class="song-duration">3:32</div>
-        </div>
-        <div class="song-item" onclick="playSong('kgf2', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Monster Song Clean Version (From _KGF Chapter 2 - Tamil_) - Ravi Basrur</div>
-            <div class="song-duration">2:40</div>
-        </div>
-        <div class="song-item" onclick="playSong('kgf2', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Toofan - Sandesh Datta Naik</div>
-            <div class="song-duration">3:33</div>
-        </div>
-        <div class="song-item" onclick="playSong('kgf2', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Sulthan - Brijesh Shandilya</div>
-            <div class="song-duration">3:45</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="pushpa2-album-view">
-    <button class="back-button" onclick="closeAlbumView('pushpa2')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://i.ibb.co/G37FNT07/Pushpa-2-The-Rule-Hindi-2024-20241205211002-500x500.jpg" alt="pushpa2" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Pushpa 2 - The Rule</h1>
-            <p>2024 • 6 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('pushpa2', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Dum Hai To Rok Ke Bata</div>
-            <div class="song-duration">1:33</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpa2', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Kaali Mahaa Kaali</div>
-            <div class="song-duration">3:28</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpa2', 2)">
-             <div class="song-number">3</div>
-            <div class="song-details">Peelings</div>
-            <div class="song-duration">4:07</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpa2', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Angaaron</div>
-            <div class="song-duration">4:20</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpa2', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Pushpa Pushpa</div>
-            <div class="song-duration">4:16</div>
-        </div>
-        <div class="song-item" onclick="playSong('pushpa2', 5)">
-            <div class="song-number">6</div>
-            <div class="song-details">KISSIK Song</div>
-            <div class="song-duration">4:12</div>
-        </div>
-    </div>
-</div>
-
-<div class="album-view" id="sholay-album-view">
-    <button class="back-button" onclick="closeAlbumView('sholay')">
-        <i class="bi bi-arrow-left"></i>
-    </button>
-    <div class="album-header">
-        <img src="https://i.ibb.co/nNfS0GGn/sholay-remake-v0-7zv7h7pqai2d1.webp" alt="pushpa2" class="album-cover">
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">Sholay</h1>
-            <p>1975 • 5 songs</p>
-        </div>
-    </div>
-    <div class="album-songs">
-        <div class="song-item" onclick="playSong('sholay', 0)">
-            <div class="song-number">1</div>
-            <div class="song-details">Yeh Dosti Hum Nahin (Happy Version)</div>
-            <div class="song-duration">5:21</div>
-        </div>
-        <div class="song-item" onclick="playSong('sholay', 1)">
-            <div class="song-number">2</div>
-            <div class="song-details">Title Music (Sholay)</div>
-            <div class="song-duration">2:46</div>
-        </div>
-        <div class="song-item" onclick="playSong('sholay', 2)">
-            <div class="song-number">3</div>
-            <div class="song-details">Holi Ke Din </div>
-            <div class="song-duration">5:42</div>
-        </div>
-        <div class="song-item" onclick="playSong('sholay', 3)">
-            <div class="song-number">4</div>
-            <div class="song-details">Haa Jab Tak Hai Jaan</div>
-            <div class="song-duration">5:26</div>
-        </div>
-        <div class="song-item" onclick="playSong('sholay', 4)">
-            <div class="song-number">5</div>
-            <div class="song-details">Mehbooba Mehbooba Sholay</div>
-            <div class="song-duration">3:54</div>
-        </div>
-    </div>
-</div>
-
-
-
-
-</body>
-</html>
+body {
+    margin: 0;
+    padding: 0; 
+    min-height: 100vh; /* Changed from height to min-height to allow content to grow */
+    width: 100%;
+    background: linear-gradient(180deg, #000000 0%, #0a0a2e 40%, #005eff 100%);
+
+    /* --- Corrected padding-bottom based on music controller's highest point --- */
+    padding-bottom: 300px; /* Increased padding to allow scrolling and visibility of bhakti songs */
+    /* This ensures your content scrolls above both the music controller and the nav bar */
+    /* --- End Correction --- */
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%; /* Fix gradient scaling */
+    color: #fff;
+    overflow-x: hidden; /* Prevent scroll causing dark gap */
+
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: -15px; /* Adjusted for potential slight offset */
+    right: 0;
+    z-index: 1000;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    padding: 20px 20px; 
+    margin-left: -20px; 
+}
+
+.title-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.title {
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: 5px;
+    color: #00eaff;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.8),
+                 0 0 20px rgba(0, 234, 255, 0.5),
+                 0 0 30px rgba(0, 234, 255, 0.3);
+}
+
+.image1 {
+    height: 80px; 
+    z-index: 2;
+}
+
+.fixed2{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    bottom : -20px;
+    left: 10px;
+    font-size: 13px;
+    margin-top: 100px; 
+    padding: 0;
+}
+ 
+.search-container {
+    position: relative;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    background: rgba(28, 28, 28, 0.95); 
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 8px;
+    color: rgba(255, 255, 255, 0.7); 
+    font-size: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#main-search {
+    background: none;
+    border: none;
+    color: white;
+    width: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 13px; 
+    padding-left: 25px;
+    outline: none;
+    line-height: 20px;
+    height: 20px;
+}
+
+#main-search::placeholder {
+    color: rgba(255, 255, 255, 0.7); 
+    font-size: 12px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+.search-container:hover,
+.search-container:focus-within {
+    background: rgba(28, 28, 28, 0.7);
+    border-color: transparent;
+}
+
+.light-theme #main-search::placeholder {
+color: rgba(10, 10, 46, 1);
+}
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    margin-top: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: white; /* Changed to white for visibility against dark background */
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: white; /* Ensure text color is white */
+}
+
+.search-result-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.result-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 12px;
+    object-fit: cover;
+}
+
+.result-info {
+    flex: 1;
+}
+
+.result-title {
+    color: white; /* Ensure text color is white */
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.result-album {
+    color: #b3b3b3; /* Slightly lighter for album name */
+    font-size: 12px;
+}
+
+#main-search:-webkit-autofill,
+#main-search:-webkit-autofill:hover, 
+#main-search:-webkit-autofill:focus {
+    -webkit-text-fill-color: white; /* Ensure autofill text is white */
+    -webkit-box-shadow: 0 0 0px 1000px rgba(28, 28, 28, 0.95) inset; /* Match search container background */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+#main-search-btn {
+    display: none;
+}
+
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px; 
+    background: rgba(18, 18, 18, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px; 
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-icon {
+    width: 22px; 
+    height: 22px; 
+    margin-right: 6px; 
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.nav-item span {
+    font-size: 12px; 
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.nav-item:hover .nav-icon,
+.nav-item:hover .liked-icon,
+.nav-item.active .nav-icon,
+.nav-item.active .liked-icon {
+    filter: invert(56%) sepia(73%) saturate(1533%) hue-rotate(190deg) brightness(120%) contrast(97%)
+            drop-shadow(0 0 4px rgba(33, 150, 243, 0.8));
+    transform: scale(1.1);
+}
+
+#mood-nav.active .nav-icon {
+    filter: invert(56%) sepia(73%) saturate(1533%) hue-rotate(190deg) brightness(120%) contrast(97%)
+            drop-shadow(0 0 4px rgba(33, 150, 243, 0.8));
+}
+
+.nav-item.active span {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active .nav-icon {
+    filter: brightness(0) invert(1);
+    transform: scale(1.1);
+}
+
+.nav-item.active span {
+    color: #fff;
+}
+
+.nav-item:not(.active):hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item:hover .nav-icon {
+    filter: brightness(0) invert(0.9);
+}
+
+.nav-item:hover .liked-icon {
+    filter: brightness(1) invert(0.9);
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+.nav-item.active svg path {
+    fill: url(#activeGradient);
+}
+
+.nav-item:not(.active) svg path {
+    fill: rgba(255, 255, 255, 0.7);
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-item#home-nav svg path {
+    fill: url(#homeGradient);
+}
+
+.nav-item#mood-nav svg path {
+    fill: url(#moodGradient);
+}
+
+.nav-item#liked-nav svg path {
+    fill: url(#likedGradient);
+}
+
+/* Gradient stops */
+.nav defs linearGradient#homeGradient stop:first-child { stop-color:#64b5f6; }
+.nav defs linearGradient#homeGradient stop:last-child { stop-color:#1e88e5; }
+
+.nav defs linearGradient#moodGradient stop:first-child { stop-color:#ffb74d; }
+.nav defs linearGradient#moodGradient stop:last-child { stop-color:#f57c00; }
+
+.nav defs linearGradient#likedGradient stop:first-child { stop-color:#e91e63; }
+.nav defs linearGradient#likedGradient stop:last-child { stop-color:#c2185b; }
+
+.nav-item svg {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+.nav-item:hover svg {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.nav-item.active svg {
+    filter: saturate(1.5) brightness(1.3);
+    transform: scale(1.15);
+}
+
+
+/* Gradient stops */
+.nav defs linearGradient#homeGradient stop:first-child { stop-color:#64b5f6; }
+.nav defs linearGradient#homeGradient stop:last-child { stop-color:#1e88e5; }
+
+.nav defs linearGradient#moodGradient stop:first-child { stop-color:#ffb74d; }
+.nav defs linearGradient#moodGradient stop:last-child { stop-color:#f57c00; }
+
+.nav defs linearGradient#likedGradient stop:first-child { stop-color:#e91e63; }
+.nav defs linearGradient#likedGradient stop:last-child { stop-color:#c2185b; }
+
+
+
+.head1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 20px;
+    padding: 0;
+    margin-top: 100px;
+    width: 100%;
+}
+
+.head1 h1 {
+    margin: 0 0 20px 0; 
+    text-align: left;
+    padding-left: 20px;
+    color: #fff;
+    font-size: 28px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px;
+}
+
+.heading3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: 600; /* Made bold */
+    font-size: 28px; 
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); 
+}
+
+.heading4 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Update light theme version */
+.light-theme .heading3 {
+    color: #0a0a2e;
+    text-shadow: 0 0 10px rgba(0, 94, 255, 0.3);
+}
+
+.albums-row {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center; 
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.album-container {
+    flex: 0 0 130px;
+    width: 130px;
+    height: 130px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    align-items: center; 
+}
+
+.album-container:first-child {
+    transform: none; 
+    margin: 0; 
+    align-self: auto; 
+}
+
+.album-img {
+    width: 130px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.album-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.album-container:last-child {
+    flex: 0 0 130px; 
+    width: 130px; 
+    height: 130px; 
+    margin-right: 40px; 
+}
+
+.album-container:first-child {
+    margin-top: 0; 
+    transform: translateY(0); 
+    align-self: center; 
+}
+
+.albums-row::-webkit-scrollbar {
+    display: none;
+}
+
+.fixed2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    bottom: -20px;
+    left: 10px;
+    font-size: 13px;
+    margin-top: 100px; 
+    padding: 0;
+}
+
+.fixed3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+    font-size: 13px;
+    margin-top: 40px; /* Adjusted margin */
+    padding: 0;
+    letter-spacing: 3px;
+}
+
+.fixed3 h1 {
+    margin-bottom: 20px;
+    text-align: center; 
+    font-size: 28px; 
+}
+
+.trending-row {
+    display: flex;
+    gap: 12px;
+    padding: 5px 20px;
+    margin-top: 30px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    align-items: center;
+}
+
+.trending-row::-webkit-scrollbar {
+    display: none;
+}
+
+.trending-row img {
+    height: 140px; 
+    width: 200px; 
+    min-width: 200px; 
+    margin: 0 2px;
+    object-fit: contain; 
+    object-position: center;
+    background: rgba(0, 0, 0, 0.1); 
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.trending-row img:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.mashup-row {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    gap: 15px; 
+    padding: 20px 40px;
+    margin: 0 auto;
+    max-width: 1200px;
+    overflow-x: auto; 
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.mashup-row::-webkit-scrollbar {
+    display: none; 
+}
+
+.mashup-row img {
+    width: 160px; 
+    height: 120px; 
+    min-width: 160px; 
+    object-fit: cover;
+    object-position: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.mashup-row img:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.fixed4 {
+    margin-top: 10px;
+    padding: 0 20px;
+    font-weight: 1px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.fixed4 h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 3px;
+    padding-top: 10px;
+}
+
+.heading5 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: 675;
+    font-size: 35px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.overseas-row {
+     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.overseas-row::-webkit-scrollbar {
+    display: none;
+}
+
+.overseas-row img {
+    width: 180px;
+    height: 120px;
+    background-size: cover;
+    min-width: 210px;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.overseas-row img:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mashup-row img:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.theme-toggle {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+#theme-toggle-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+#music-controller {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(18, 18, 18, 0.9);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    font-family: 'Poppins', sans-serif;
+    max-width: 90%;
+    width: 45%;
+    height: 95px;
+    gap: 5px;
+    font-weight: 400;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+#music-controller .controller-main-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+#music-controller img#controller-album-art {
+    width: 58px;
+    height: 55px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+#music-controller #controller-song-info {
+    flex-grow: 1;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+#music-controller #controller-song-title {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    line-height: 1.2;
+}
+
+#music-controller #controller-song-artist {
+    font-size: 0.7rem;
+    color: #b3b3b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+#music-controller .controller-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+#music-controller button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+#music-controller button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
+    color: #00eaff;
+}
+
+#music-controller button#controller-play-pause {
+    font-size: 2rem;
+    color: #00eaff;
+}
+
+#music-controller button#controller-play-pause:hover {
+    background-color: rgba(0, 234, 255, 0.2);
+    transform: scale(1.15);
+}
+
+#music-controller button#controller-prev,
+#music-controller button#controller-next {
+    font-size: 1.7rem;
+}
+
+#music-controller .controller-progress-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+#music-controller #controller-progress {
+    flex-grow: 1;
+    cursor: pointer;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #444;
+    border-radius: 2px;
+    outline: none;
+    margin: 0 8px;
+    --progress-value: 0%;
+    border: none;
+}
+
+/* Thumb for WebKit browsers */
+#music-controller #controller-progress::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #00eaff;
+    cursor: grab;
+    box-shadow: 0 0 8px rgba(0, 234, 255, 0.8);
+    margin-top: -4px;
+    z-index: 2;
+    position: relative;
+    border: none;
+    outline: none;
+}
+
+/* Thumb for Firefox */
+#music-controller #controller-progress::-moz-range-thumb {
+    -moz-appearance: none !important;
+    appearance: none !important;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #00eaff;
+    cursor: grab;
+    box-shadow: 0 0 8px rgba(0, 234, 255, 0.8);
+    z-index: 2;
+    position: relative;
+    border: none;
+    outline: none;
+}
+
+/* Track for WebKit */
+#music-controller #controller-progress::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right,
+                #00aaff var(--progress-value),
+                #444 var(--progress-value)
+    );
+}
+
+/* Track for Firefox */
+#music-controller #controller-progress::-moz-range-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right,
+                #00aaff var(--progress-value),
+                #444 var(--progress-value)
+    );
+}
+
+
+
+
+body {
+
+    padding-bottom: 170px;
+}
+
+.playlist {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+.playlist.active {
+    display: block;
+}
+
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.song-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.song-list li {
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.song-list li:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+/* Light Theme Colors */
+body.light-theme {
+    background: linear-gradient(180deg, #ffffff 0%, #e6f3ff 40%, #99d6ff 100%);
+    color: #0a0a2e;
+}
+
+.light-theme .fixed {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), transparent);
+}
+
+.light-theme #main-search {
+    background: rgba(10, 10, 46, 0.1);
+    color: #0a0a2e;
+}
+
+.light-theme #main-search::placeholder {
+    color: rgba(10, 10, 46, 0.6);
+}
+
+.light-theme .title {
+    color: #0a0a2e;
+    text-shadow: 
+        0 0 1px #005eff,
+        0 0 2px #005eff,
+        0 0 3px #005eff;
+}
+
+/* Light theme nav styles */
+.light-theme .nav {
+    background: rgba(255, 255, 255, 0.55); 
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(10, 10, 46, 0.08);
+}
+
+.light-theme .nav-item:hover,
+.light-theme .nav-item.active {
+    background: rgba(10, 10, 46, 0.15); 
+}
+
+.light-theme .nav-item span {
+    color: #0a0a2e;
+}
+
+.light-theme .nav-icon:not(.liked-icon) {
+    filter: invert(9%) sepia(19%) saturate(3975%) hue-rotate(201deg) brightness(94%) contrast(98%);
+}
+
+.light-theme .nav-item:hover,
+.light-theme .nav-item.active {
+    background: rgba(10, 10, 46, 0.1);
+}
+
+.light-theme .nav-item.active {
+    background: rgba(10, 10, 46, 0.1);
+}
+
+.light-theme #theme-toggle-btn {
+    color: #0a0a2e;
+}
+
+.light-theme .album-img:hover,
+.light-theme .trending-row img:hover,
+.light-theme .mashup-row img:hover {
+    box-shadow: 0 8px 20px rgba(0, 94, 255, 0.2);
+}
+
+/* Light Theme Colors for headings */
+.light-theme .head1 h1,
+.light-theme .heading2,
+.light-theme .heading3 {
+    color: #0a0a2e;
+    text-shadow: 0 0 10px rgba(0, 94, 255, 0.3);
+}
+
+.light-theme .heading4,
+.light-theme .heading5 {
+    color: #0a0a2e;
+    text-shadow: 0 0 10px rgba(0, 94, 255, 0.3);
+}
+
+.light-theme .fixed2,
+.light-theme .fixed3,
+.light-theme .fixed4 {
+    color: #0a0a2e;
+}
+
+/* Album view styles */
+.album-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), #0a0a2e);
+    z-index: 2000;
+    display: none;
+    overflow-y: auto;
+}
+
+.album-view.active {
+    display: block;
+}
+
+.album-header {
+    display: flex;
+    padding: 60px 30px 30px 30px;
+    gap: 24px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.album-cover {
+    width: 280px; 
+    height: 280px;
+    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.album-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.album-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.album-songs {
+    padding: 20px 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.song-item {
+    display: grid;
+    grid-template-columns: 40px 1fr 50px;
+    padding: 12px;
+    color: #b3b3b3;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.head1 h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 28px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px;
+}
+
+.head1,
+.fixed2,
+.fixed3,
+.fixed4,
+.search-container,
+.album-view,
+.music-controller,
+.nav-item span,
+.song-info,
+.album-info,
+.album-songs,
+.song-item,
+.search-results,
+.result-info {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 0 0 1px #00aac0,
+                 0 0 2px #00aac0,
+                 0 0 3px #00aac0;
+}
+
+.nav-item span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.fixed4 h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+.album-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.album-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.album-songs-list {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    transition: bottom 0.3s ease;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.album-container:hover .album-songs-list {
+    bottom: 0;
+}
+
+.song-list-item {
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.song-list-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+        #controller-like-btn {
+            background: none;
+            border: none;
+            color: #b3b3b3;
+            font-size: 1.8em;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        #controller-like-btn:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        #controller-like-btn.liked {
+            color: #ff0050; /* Red color for liked state */
+            text-shadow: 0 0 8px rgba(255, 0, 80, 0.6);
+        }
+
+/* General layout adjustments for music controller */
+#music-controller .controller-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between buttons */
+}
+
+/* Bhakti songs horizontal arrangement and hover effect */
+.bhakti-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.bhakti-row::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.bhakti-row img {
+    width: 300px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+
+.bhakti-row img:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== MOBILE RESPONSIVENESS FIXES (MATCHING IMAGE EXACTLY) ===== */
+@media (max-width: 768px) {
+
+  /*
+  ** Global Body and HTML Reset for Maximum Control
+  */
+  html, body {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important; /* Ensure no horizontal scroll from body itself */
+    background-size: cover !important;
+    background-attachment: fixed !important;
+  }
+
+  body {
+    /* **CRITICAL:** Reduced padding-top to lessen gap between search bar and first content section */
+    padding-top: 120px !important;
+    padding-bottom: 200px !important; /* Ensures content scrolls above music controller & nav */
+  }
+
+  /*
+  ** Fixed Header Container: Precise Positioning for Contents
+  */
+  .fixed {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important; /* Override any negative left offset from base CSS */
+    right: 0 !important;
+    z-index: 99999 !important; /* Ensure header is on top */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent) !important;
+    height: 65px !important; /* Fixed height for consistency */
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important; /* Vertically center items */
+    justify-content: flex-start !important; /* Align content to the left */
+    padding: 0 5px !important; /* Reduced overall left/right padding for elements to go more to edges */
+    box-sizing: border-box !important;
+  }
+
+  /*
+  ** Header Container (for Logo and Title): Shifted to Far Left, Compact
+  */
+  .header-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    /* We'll handle the search bar separately below for mobile */
+    flex-grow: 1 !important; /* Allows it to take available space for title/logo */
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .title-logo { /* Targeting the div containing the image and title */
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important; /* Gap between image and title */
+    margin-left: 10px !important; /* Shift title-logo group slightly right from edge */
+  }
+
+  .image1 {
+    height: 40px !important;
+    width: 40px !important; /* Ensure width is also set */
+    object-fit: contain !important;
+    margin: 0 !important; /* No additional margins here */
+  }
+
+  .title {
+    font-size: 1.4em !important; /* Increased font size slightly for "headphone title" */
+    letter-spacing: 2px !important; /* **CRITICAL:** Increased letter spacing for "hemisphere" */
+    margin: 0 !important; /* Reset any default margins */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 200px !important; /* Adjusted max-width to allow full visibility, will truncate very long titles */
+  }
+
+  /*
+  ** Dark Theme Button: Shifted Upwards and to Extreme Right (within Fixed Header)
+  */
+  .theme-toggle { /* Targeting the theme-toggle div */
+    position: absolute !important; /* Absolute position within the .fixed header */
+    top: 15px !important; /* Shifted more upwards and aligned with title */
+    right: 10px !important; /* Shifted right for better spacing */
+    transform: none !important; /* Remove translateY as 'top' is no longer 50% */
+    z-index: 100000 !important; /* Super high z-index to be on top of everything */
+    background-color: transparent !important; /* Ensure background is transparent */
+    border: none !important;
+    border-radius: 50% !important;
+    width: 35px !important;
+    height: 35px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+  }
+  .theme-toggle button { /* Targeting the button inside theme-toggle */
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .theme-toggle button i { /* Targeting the icon inside the button */
+    font-size: 25px !important; /* Adjust icon size */
+    color: #fff !important; /* Set icon color */
+  }
+
+
+  /*
+  ** Search Bar: Repositioned for Mobile (Even though it's in header HTML)
+  */
+  .fixed .header-container .search-container { /* Targeting the search-container specifically when nested */
+    position: absolute !important; /* Take it out of normal flow for mobile */
+    top: 75px !important; /* Positioned right below the fixed header (65px header + 10px gap) */
+    left: 50% !important; /* Center horizontally relative to viewport */
+    transform: translateX(-50%) !important; /* Adjust for perfect horizontal centering */
+    width: 95% !important; /* Increased width for more space */
+    z-index: 100000 !important; /* **CRITICAL:** Ensure search bar stays on top of scrolling content */
+    box-sizing: border-box !important;
+    margin: 0 !important; /* Remove any desktop margins that might interfere */
+
+    /* **CRITICAL:** Dark Theme Search Bar Colors */
+    background-color: #ffffff !important; /* White background */
+    border: 1px solid rgba(0, 0, 0, 0.3) !important; /* Darker border */
+    border-radius: 25px !important;
+    padding: 8px 15px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .search-input-wrapper { /* Ensure wrapper handles its contents correctly */
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  #main-search {
+    /* Removed width: 100% and rely on flex-grow for proper spacing */
+    flex-grow: 1 !important; /* Ensure it takes remaining space */
+    color: #000000 !important; /* **CRITICAL:** Black text */
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    font-size: 0.9em !important;
+    padding: 0 0 0 28px !important; /* **CRITICAL:** Increased left padding for placeholder text, fixing overlap */
+    box-sizing: border-box !important;
+  }
+  #main-search::placeholder {
+    color: rgba(0, 0, 0, 0.7) !important; /* **CRITICAL:** Dark placeholder text */
+  }
+  .search-icon {
+    color: #000000 !important; /* **CRITICAL:** Black icon */
+    margin-right: 8px !important; /* Ensures space between icon and input */
+    font-size: 1.1em !important; /* Adjust search icon size */
+  }
+
+  /* **CRITICAL:** Light Theme Search Bar Colors (when body has .light-theme class) */
+  body.light-theme .fixed .header-container .search-container {
+    background-color: #000000 !important; /* Black background */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Lighter border */
+  }
+  body.light-theme #main-search {
+    color: #ffffff !important; /* White text */
+  }
+  body.light-theme #main-search::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important; /* White placeholder text */
+  }
+  body.light-theme .search-icon {
+    color: #ffffff !important; /* White icon */
+  }
+
+
+  /* Search results dropdown positioning (relative to the absolutely positioned search bar) */
+  #search-results {
+    width: calc(100% - 30px) !important; /* Adjusted width for results dropdown */
+    left: 15px !important; /* Positioned relative to its parent (.search-container) */
+    top: 45px !important; /* Positioned relative to its parent (.search-container) */
+    background: #282828 !important;
+    border: 1px solid #444 !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    border-radius: 8px !important;
+    position: absolute !important; /* Ensure it's absolutely positioned within search-container */
+  }
+
+
+  /*
+  ** Section Headings (General Styling for all except Top Albums)
+  */
+  .heading4,
+  .heading5,
+  .fixed3 h1,
+  .fixed4 h1,
+  .head1 h1 {
+    font-size: 1.0em !important; /* Increased general heading size */
+    text-align: center !important;
+    padding: 5px 10px !important;
+    margin-top: 30px !important; /* Default margin-top for most headings */
+    margin-bottom: 10px !important; /* Decreased space below heading (pulls images up) */
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* **CRITICAL:** ONLY push "Top Albums" heading further down (assuming it uses .heading3) */
+  .heading3 {
+    margin-top: 40px !important; /* Increased only for Top Albums (if it's .heading3) */
+    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for Top Albums heading */
+  }
+
+  /* **CRITICAL:** Increased font size for "Trending Songs" */
+  .heading4 {
+    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for Trending Songs heading */
+  }
+
+  /* **CRITICAL:** Increased font size for "Overseas Songs" heading */
+  .overseas-songs-heading, .heading5 {
+    font-size: 0.9em !important; /* **CRITICAL:** Increased font size for overseas songs */
+  }
+
+
+  /* **CRITICAL:** Style for section descriptions (like "Dive into world of Bhakti Songs") */
+  /* You MUST add 'class="section-description"' to the HTML tag for this text */
+  .section-description {
+    white-space: normal !important; /* Allow text to wrap */
+    overflow: visible !important;   /* Ensure all text is visible */
+    text-overflow: clip !important; /* Prevent ellipsis */
+    font-size: 0.75em !important;    /* Slightly smaller font size */
+    color: rgba(255,255,255,0.7) !important; /* A subtle white */
+    margin-top: 5px !important;     /* Small space above */
+    margin-bottom: 5px !important;  /* Small space below */
+    text-align: center !important;  /* Center align the description */
+    padding: 0 10px !important; /* Add some horizontal padding */
+    box-sizing: border-box !important; /* Include padding in element's total width */
+  }
+
+  /*
+  ** Image Rows: Now HORIZONTAL SCROLLING (NOT GRID)
+  */
+  .albums-row,
+  .trending-row,
+  .mashup-row,
+  .overseas-row,
+  .bhakti-row {
+    display: flex !important; /* Ensure flexbox */
+    flex-wrap: nowrap !important; /* Force items to stay in a single row (horizontal scroll) */
+    overflow-x: auto !important; /* Enable horizontal scrollbar */
+    -webkit-overflow-scrolling: touch !important; /* Improves scroll feel on iOS */
+    scrollbar-width: none !important; /* For Firefox */
+    -ms-overflow-style: none !important; /* For IE/Edge */
+    padding: 0 10px !important; /* Padding for the container itself */
+    gap: 10px !important; /* Consistent slightly reduced spacing between items */
+    justify-content: flex-start !important; /* Align content to the start for scrolling */
+    align-items: flex-start !important;
+    scroll-snap-type: x mandatory !important; /* For smooth item snapping on scroll */
+    margin-top: 20px !important; /* **CRITICAL:** Added vertical space between image rows */
+  }
+
+  /* Hide scrollbar for Webkit browsers */
+  .albums-row::-webkit-scrollbar,
+  .trending-row::-webkit-scrollbar,
+  .mashup-row::-webkit-scrollbar,
+  .overseas-row::-webkit-scrollbar,
+  .bhakti-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Album Item Containers (wrappers around image + text) */
+  .album-container,
+  .album-item, /* Assuming .album-item is a common wrapper */
+  .trending-row > div,
+  .mashup-row > div,
+  .overseas-row > div,
+  .bhakti-row > div {
+    flex-shrink: 0 !important; /* Prevent items from shrinking in horizontal scroll */
+    width: 120px !important; /* Consistent reduced width for item container */
+    height: 160px !important; /* Consistent reduced height for item container (image + text) */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* Center image/text within each item container */
+    text-align: center !important; /* Center text below image */
+    min-width: 0 !important;
+    scroll-snap-align: start !important; /* Snap each item to the start of the scroll area */
+  }
+
+  /*
+  ** Image Thumbnails: Consistent 120x120px Size for All (MAXIMUM SPECIFICITY)
+  */
+  .album-img,
+  .mashup-row img,
+  .trending-row img,
+  .overseas-row img,
+  .bhakti-row img {
+    width: 120px !important; /* Reduced image width */
+    height: 120px !important; /* Reduced image height */
+    object-fit: cover !important; /* Ensure images fill space without distortion */
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /*
+  ** Music Controller and Nav Bar (Fixed at Bottom, Always Visible)
+  */
+  #music-controller {
+    width: 90% !important;
+    height: auto !important;
+    padding: 10px !important;
+    bottom: 80px !important; /* Positioned above the bottom navigation */
+    position: fixed !important; /* Ensure it stays fixed */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1040 !important; /* Below footer, above content */
+    background-color: rgba(0, 0, 0, 0.9) !important; /* Add background to avoid transparency issues */
+    border-radius: 15px !important;
+  }
+
+  #music-controller img#controller-album-art {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  /* **CRITICAL:** Music Controller "No song playing" text visibility */
+  #music-controller p,
+  #music-controller span,
+  #music-controller .song-details > *,
+  #music-controller .song-title,
+  #music-controller .artist-name {
+    font-size: 0.7em !important; /* **CRITICAL:** Further reduced font size to ensure full visibility */
+    white-space: normal !important; /* Allow text to wrap to next line */
+    text-align: center !important; /* Center align the text */
+    max-width: 100% !important; /* Ensure it doesn't overflow its container */
+    overflow: visible !important; /* **CRITICAL:** Ensure text is not hidden */
+    text-overflow: clip !important; /* **CRITICAL:** Prevent ellipsis, allow full text */
+    line-height: 1.2em !important; /* Added for better line spacing if text wraps */
+    margin: 0 !important; /* Remove any default margins */
+    padding: 0 !important; /* Remove any default padding */
+  }
+
+
+  /* --- Footer Position Fix (Bottom Navigation Bar) --- */
+  /* IMPORTANT: Replace '.bottom-nav' with the actual class/ID of your footer/bottom navigation bar */
+  .bottom-nav,
+  footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1050 !important; /* Higher z-index to be on top of music controller */
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    padding: 10px 0 !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 60px !important;
+  }
+
+  .nav-item {
+    padding: 6px 8px !important;
+  }
+
+  .nav-icon {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 4px !important;
+  }
+
+  .nav-item span {
+    font-size: 10px !important;
+  }
+
+  .song-item {
+    grid-template-columns: 30px 1fr 40px !important;
+    font-size: 14px !important;
+  }
+}
