@@ -1356,7 +1356,7 @@ body.light-theme {
     text-align: center !important;
     padding: 5px 10px !important;
     margin-top: 20px !important;
-    margin-bottom: 10px !important; /* **CRITICAL:** Consistent space between heading and its row */
+    margin-bottom: 15px !important; /* **CRITICAL:** Increased space between heading and its row */
     display: block !important; /* Ensure block display for margin effectiveness */
     white-space: nowrap !important; /* **CRITICAL:** Force text to stay on one line */
     overflow: hidden !important; /* **CRITICAL:** Hide overflowing text */
@@ -1367,6 +1367,21 @@ body.light-theme {
   /* This requires adding 'overseas-songs-heading' class to its HTML tag */
   .overseas-songs-heading {
     font-size: 0.8em !important; /* Even smaller font size for overseas songs */
+  }
+
+  /* **CRITICAL:** Style for section descriptions (like "Dive into world of Bhakti Songs") */
+  /* You MUST add 'class="section-description"' to the HTML tag for this text */
+  .section-description {
+    white-space: normal !important; /* Allow text to wrap */
+    overflow: visible !important;   /* Ensure all text is visible */
+    text-overflow: clip !important; /* Prevent ellipsis */
+    font-size: 0.75em !important;    /* Slightly smaller font size */
+    color: rgba(255,255,255,0.7) !important; /* A subtle white */
+    margin-top: 5px !important;     /* Small space above */
+    margin-bottom: 5px !important;  /* Small space below */
+    text-align: center !important;  /* Center align the description */
+    padding: 0 10px !important; /* Add some horizontal padding */
+    box-sizing: border-box !important; /* Include padding in element's total width */
   }
 
   /*
@@ -1509,5 +1524,3 @@ body.light-theme {
     font-size: 14px !important;
   }
 }
-
-
