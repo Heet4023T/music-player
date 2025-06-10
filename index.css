@@ -1247,7 +1247,7 @@ body.light-theme {
 
   .title {
     font-size: 1.2em !important; /* Adjusted font size for compact look matching image */
-    letter-spacing: 6.5px !important; /* Adjusted letter spacing for compact look matching image */
+    letter-spacing: 7px !important; /* Adjusted letter spacing for compact look matching image */
     margin: 0 !important; /* Reset any default margins */
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -1260,7 +1260,7 @@ body.light-theme {
   */
   .theme-toggle { /* Targeting the theme-toggle div */
     position: absolute !important; /* Absolute position within the .fixed header */
-    top: 10px !important; /* **CRITICAL:** Shifted more upwards (overrides inline style) */
+    top: 9px !important; /* **CRITICAL:** Shifted more upwards (overrides inline style) */
     right: 0px !important; /* **CRITICAL:** Shifted more right (overrides inline style) */
     transform: none !important; /* Remove translateY as 'top' is no longer 50% */
     z-index: 100000 !important; /* Super high z-index to be on top of everything */
