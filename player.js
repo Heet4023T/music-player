@@ -2419,33 +2419,4 @@ window.playMashup = playMashup;
 window.playbhakti = playbhakti;
 window.playover = playover;
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Existing initialization code...
-    initializeMusicController();
-    updateMusicControllerUI();
-    renderLikedSongs();
 
-    // Add back button functionality
-    const backButton = document.querySelector('.back-button');
-    if (backButton) {
-        // Logic to handle back action (shared between click and touch)
-        const handleBackAction = (event) => {
-            event.preventDefault(); // Prevent default behavior
-            const activeAlbumView = document.querySelector('.album-view.active');
-            if (activeAlbumView) {
-                const albumId = activeAlbumView.id.replace('-album-view', '');
-                closeAlbumView(albumId);
-            } else {
-                window.history.back();
-            }
-        };
-
-        // Existing click event listener for laptop (unchanged)
-        backButton.addEventListener('click', handleBackAction);
-
-        // Add touchstart event listener for mobile devices
-        backButton.addEventListener('touchstart', handleBackAction, { passive: false });
-    }
-
-    // Rest of the existing DOMContentLoaded code...
-});
