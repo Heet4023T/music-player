@@ -1246,13 +1246,13 @@ body.light-theme {
   }
 
   .title {
-    font-size: 1.4em !important; /* **CRITICAL:** Increased font size slightly for "headphone title" */
-    letter-spacing: 1px !important; /* Adjusted letter spacing for compact look matching image */
+    font-size: 1.4em !important; /* Increased font size slightly for "headphone title" */
+    letter-spacing: 2px !important; /* **CRITICAL:** Increased letter spacing for "hemisphere" */
     margin: 0 !important; /* Reset any default margins */
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    max-width: 200px !important; /* **CRITICAL:** Adjusted max-width to allow full visibility, will truncate very long titles */
+    max-width: 200px !important; /* Adjusted max-width to allow full visibility, will truncate very long titles */
   }
 
   /*
@@ -1260,8 +1260,8 @@ body.light-theme {
   */
   .theme-toggle { /* Targeting the theme-toggle div */
     position: absolute !important; /* Absolute position within the .fixed header */
-    top: 15px !important; /* **CRITICAL:** Shifted more upwards and aligned with title */
-    right: 10px !important; /* **CRITICAL:** Shifted right for better spacing */
+    top: 15px !important; /* Shifted more upwards and aligned with title */
+    right: 10px !important; /* Shifted right for better spacing */
     transform: none !important; /* Remove translateY as 'top' is no longer 50% */
     z-index: 100000 !important; /* Super high z-index to be on top of everything */
     background-color: transparent !important; /* Ensure background is transparent */
@@ -1290,10 +1290,10 @@ body.light-theme {
   */
   .fixed .header-container .search-container { /* Targeting the search-container specifically when nested */
     position: absolute !important; /* Take it out of normal flow for mobile */
-    top: 75px !important; /* **CRITICAL:** Positioned right below the fixed header (65px header + 10px gap) */
+    top: 75px !important; /* Positioned right below the fixed header (65px header + 10px gap) */
     left: 50% !important; /* Center horizontally relative to viewport */
     transform: translateX(-50%) !important; /* Adjust for perfect horizontal centering */
-    width: 90% !important; /* Set its width for mobile */
+    width: 95% !important; /* **CRITICAL:** Increased width for more space */
     z-index: 99998 !important; /* Ensure it's above content but below the main header */
     box-sizing: border-box !important;
     margin: 0 !important; /* Remove any desktop margins that might interfere */
@@ -1314,14 +1314,15 @@ body.light-theme {
   }
 
   #main-search {
-    /* **CRITICAL:** Removed width: 100% !important; to prevent placeholder overlap */
+    /* **CRITICAL:** Removed width: 100% and rely on flex-grow for proper spacing */
     flex-grow: 1 !important; /* Ensure it takes remaining space */
     color: #fff !important;
     background-color: transparent !important;
     border: none !important;
     outline: none !important;
     font-size: 0.9em !important;
-    padding: 0 !important; /* No internal padding to avoid issues */
+    padding: 0 0 0 2px !important; /* **CRITICAL:** Added small left padding for placeholder text */
+    box-sizing: border-box !important;
   }
   .search-icon {
     color: rgba(255, 255, 255, 0.8) !important;
@@ -1351,8 +1352,8 @@ body.light-theme {
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.0em !important; /* Consistent small font size for all these headings */
-    text-align: left !important; /* All headings are now LEFT-ALIGNED as per image */
+    font-size: 0.95em !important; /* **CRITICAL:** Consistent slightly reduced font size for all headings */
+    text-align: center !important; /* **CRITICAL:** All headings are now CENTER-ALIGNED */
     padding: 5px 10px !important; /* Consistent padding */
     margin-top: 0px !important; /* Set top margin to 0 */
     margin-bottom: 5px !important; /* Small bottom margin */
@@ -1367,16 +1368,16 @@ body.light-theme {
   .overseas-row,
   .bhakti-row {
     display: flex !important; /* Ensure flexbox */
-    flex-wrap: nowrap !important; /* **CRITICAL:** Force items to stay in a single row (horizontal scroll) */
-    overflow-x: auto !important; /* **CRITICAL:** Enable horizontal scrollbar */
+    flex-wrap: nowrap !important; /* Force items to stay in a single row (horizontal scroll) */
+    overflow-x: auto !important; /* Enable horizontal scrollbar */
     -webkit-overflow-scrolling: touch !important; /* Improves scroll feel on iOS */
     scrollbar-width: none !important; /* For Firefox */
     -ms-overflow-style: none !important; /* For IE/Edge */
     padding: 0 10px !important; /* Padding for the container itself */
-    gap: 12px !important; /* Consistent spacing between items */
+    gap: 10px !important; /* **CRITICAL:** Consistent slightly reduced spacing between items */
     justify-content: flex-start !important; /* Align content to the start for scrolling */
     align-items: flex-start !important;
-    scroll-snap-type: x mandatory !important; /* **CRITICAL:** For smooth item snapping on scroll */
+    scroll-snap-type: x mandatory !important; /* For smooth item snapping on scroll */
   }
 
   /* Hide scrollbar for Webkit browsers */
@@ -1396,26 +1397,26 @@ body.light-theme {
   .overseas-row > div,
   .bhakti-row > div {
     flex-shrink: 0 !important; /* Prevent items from shrinking in horizontal scroll */
-    width: 140px !important; /* **CRITICAL:** Consistent width for item container as per image */
-    height: 180px !important; /* Consistent height for item container (image + text) */
+    width: 120px !important; /* **CRITICAL:** Consistent reduced width for item container */
+    height: 160px !important; /* **CRITICAL:** Consistent reduced height for item container (image + text) */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important; /* Center image/text within each item container */
     text-align: center !important; /* Center text below image */
     min-width: 0 !important;
-    scroll-snap-align: start !important; /* **CRITICAL:** Snap each item to the start of the scroll area */
+    scroll-snap-align: start !important; /* Snap each item to the start of the scroll area */
   }
 
   /*
-  ** Image Thumbnails: Consistent 140x140px Size for All (MAXIMUM SPECIFICITY)
+  ** Image Thumbnails: Consistent 120x120px Size for All (MAXIMUM SPECIFICITY)
   */
   .album-img,
   .mashup-row img,
   .trending-row img,
   .overseas-row img,
   .bhakti-row img {
-    width: 140px !important; /* **CRITICAL:** Image width as per image */
-    height: 140px !important; /* **CRITICAL:** Image height as per image, overriding 'height: auto' */
+    width: 120px !important; /* **CRITICAL:** Reduced image width */
+    height: 120px !important; /* **CRITICAL:** Reduced image height */
     object-fit: cover !important; /* Ensure images fill space without distortion */
     border-radius: 8px !important;
     margin-bottom: 8px !important;
@@ -1445,13 +1446,16 @@ body.light-theme {
   /* **CRITICAL:** Music Controller "No song playing" text visibility */
   #music-controller p,
   #music-controller span,
-  #music-controller .song-details > * { /* Targeting common text elements within music controller */
-    font-size: 0.8em !important; /* Reduce font size to ensure visibility */
-    white-space: normal !important; /* Allow text to wrap to next line */
+  #music-controller .song-details > *,
+  #music-controller .song-title, /* Added common song title/artist classes if they exist */
+  #music-controller .artist-name {
+    font-size: 0.75em !important; /* **CRITICAL:** Reduced font size to ensure visibility */
+    white-space: normal !important; /* **CRITICAL:** Allow text to wrap to next line */
     text-align: center !important; /* Center align the text */
     max-width: 100% !important; /* Ensure it doesn't overflow its container */
-    overflow: hidden !important;
-    text-overflow: ellipsis !important; /* Add ellipsis for extremely long text */
+    overflow: hidden !important; /* Hide overflow */
+    text-overflow: ellipsis !important; /* Add ellipsis for extremely long text that still won't fit */
+    line-height: 1.2em !important; /* **CRITICAL:** Added for better line spacing if text wraps */
     margin: 0 !important; /* Remove any default margins */
     padding: 0 !important; /* Remove any default padding */
   }
