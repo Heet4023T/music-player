@@ -1524,10 +1524,21 @@ body.light-theme {
 .heading4{
     font-size : -1.0em;
      align:center;
+   
+     
 }
 
 .heading5{
     font-size : -1.0em;
      align:center;
+}
+
+.album-img {
+    width: 130px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
