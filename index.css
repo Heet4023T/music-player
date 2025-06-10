@@ -1194,7 +1194,8 @@ body.light-theme {
   }
 
   body {
-    padding-top: 65px !important; /* Adjusted body padding to accommodate the fixed header */
+    /* Adjusted body padding to account for fixed header + absolutely positioned search bar */
+    padding-top: 125px !important;
     padding-bottom: 200px !important; /* Ensures content scrolls above music controller & nav */
   }
 
@@ -1218,17 +1219,23 @@ body.light-theme {
   }
 
   /*
-  ** Hemisphere Title and Icon: Shifted to Far Left, Compact
+  ** Header Container (for Logo and Title): Shifted to Far Left, Compact
   */
   .header-container {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 5px !important; /* Small gap between icon and title */
-    flex-grow: 1 !important; /* Allows it to take available space */
-    padding-left: 0 !important; /* Ensure no extra left padding */
-    margin-left: 3 !important; /* Ensure no extra left margin */
+    /* We'll handle the search bar separately below for mobile */
+    flex-grow: 1 !important; /* Allows it to take available space for title/logo */
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .title-logo { /* Targeting the div containing the image and title */
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important; /* Gap between image and title */
   }
 
   .image1 {
@@ -1251,14 +1258,13 @@ body.light-theme {
   /*
   ** Dark Theme Button: Shifted to Extreme Right (within Fixed Header)
   */
-  .theme-toggle-button,
-  #yourThemeToggleButtonId { /* Ensure this selector matches your actual HTML button's class/ID */
+  .theme-toggle { /* Targeting the theme-toggle div */
     position: absolute !important; /* Absolute position within the .fixed header */
-    top: 50% !important; /* Vertically center */
-    right: 5px !important; /* Position from the right edge of the header, closer to edge */
+    top: 50% !important; /* Vertically center (overrides inline style) */
+    right: 5px !important; /* Position from the right edge (overrides inline style) */
     transform: translateY(-50%) !important; /* Adjust for perfect vertical centering */
     z-index: 100000 !important; /* Super high z-index to be on top of everything */
-    background-color: transparent !important;
+    background-color: transparent !important; /* Ensure background is transparent */
     border: none !important;
     border-radius: 50% !important;
     width: 35px !important;
@@ -1268,32 +1274,46 @@ body.light-theme {
     align-items: center !important;
     padding: 0 !important;
   }
-  .theme-toggle-button img,
-  #yourThemeToggleButtonId img {
-    width: 25px !important; /* Adjusted icon size for better visibility */
-    height: 25px !important;
-    object-fit: contain !important;
+  .theme-toggle button { /* Targeting the button inside theme-toggle */
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .theme-toggle button i { /* Targeting the icon inside the button */
+    font-size: 25px !important; /* Adjust icon size */
+    color: #fff !important; /* Set icon color */
   }
 
+
   /*
-  ** Search Bar: Middle of website & little bit above top albums
+  ** Search Bar: Repositioned for Mobile (Even though it's in header HTML)
   */
-  .search-container {
-    width: 90% !important;
-    margin: 10px auto 8px auto !important; /* **CRITICAL:** Reduced bottom margin for tight spacing above headings */
+  .fixed .header-container .search-container { /* Targeting the search-container specifically when nested */
+    position: absolute !important; /* Take it out of normal flow for mobile */
+    top: 65px !important; /* Position it right below the fixed header's height */
+    left: 50% !important; /* Center horizontally relative to viewport */
+    transform: translateX(-50%) !important; /* Adjust for perfect horizontal centering */
+    width: 90% !important; /* Set its width for mobile */
+    z-index: 99998 !important; /* Ensure it's above content but below the main header */
+    box-sizing: border-box !important;
+    margin: 0 !important; /* Remove any desktop margins that might interfere */
+
+    /* Re-apply and fine-tune search bar styling */
     background-color: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 25px !important;
     padding: 8px 15px !important;
     display: flex !important;
     align-items: center !important;
-    box-sizing: border-box !important;
-    z-index: 1 !important; /* Lower z-index than fixed header/button */
-    position: relative !important; /* To ensure it's in flow and z-index works */
-    bottom : 30px;
   }
 
-  #search-input {
+  .search-input-wrapper { /* Ensure wrapper handles its contents correctly */
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  #main-search { /* Changed from #search-input to #main-search based on your HTML */
     width: 100% !important; /* Ensure input takes full width */
     color: #fff !important;
     background-color: transparent !important;
@@ -1306,7 +1326,22 @@ body.light-theme {
   .search-icon {
     color: rgba(255, 255, 255, 0.8) !important;
     margin-right: 8px !important;
+    font-size: 1.1em !important; /* Adjust search icon size */
   }
+
+  /* Search results dropdown positioning (relative to the absolutely positioned search bar) */
+  #search-results {
+    width: calc(100% - 30px) !important; /* Adjusted width for results dropdown */
+    left: 15px !important; /* Positioned relative to its parent (.search-container) */
+    top: 45px !important; /* Positioned relative to its parent (.search-container) */
+    background: #282828 !important;
+    border: 1px solid #444 !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    border-radius: 8px !important;
+    position: absolute !important; /* Ensure it's absolutely positioned within search-container */
+  }
+
 
   /*
   ** Section Headings (e.g., "Top Albums") - All Left-Aligned
@@ -1317,7 +1352,7 @@ body.light-theme {
   .fixed4 h1,
   .head1 h1 {
     font-size: 1.0em !important; /* Consistent small font size for all these headings */
-    text-align: left !important; /* **CRITICAL:** All headings are now LEFT-ALIGNED as per image */
+    text-align: left !important; /* All headings are now LEFT-ALIGNED as per image */
     padding: 5px 10px !important; /* Consistent padding */
     margin-top: 0px !important; /* Set top margin to 0 */
     margin-bottom: 5px !important; /* Small bottom margin */
@@ -1445,5 +1480,4 @@ body.light-theme {
     font-size: 14px !important;
   }
 }
-
 
