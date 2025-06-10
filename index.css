@@ -1364,34 +1364,37 @@ body.light-theme {
 
 
   /*
-  ** Section Headings (e.g., "Top Albums", "Trending Songs", "Bhakti Songs", "Trending Mashups", "Overseas Songs")
+  ** Section Headings (General Styling)
   */
-  .heading3,
+  .heading3, /* This will be overridden for margin-top by more specific rule below */
   .heading4,
-  .heading5, /* Added heading5 here for general styling */
+  .heading5,
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
     font-size: 0.9em !important; /* Default smaller size for most headings (e.g., mashups, bhakti) */
     text-align: center !important;
     padding: 5px 10px !important;
-    margin-top: 30px !important; /* **CRITICAL:** Increased space above heading (pushes down from search bar) */
-    margin-bottom: 10px !important; /* **CRITICAL:** Decreased space below heading (pulls images up) */
-    display: block !important; /* Ensure block display for margin effectiveness */
-    white-space: nowrap !important; /* **CRITICAL:** Force text to stay on one line */
-    overflow: hidden !important; /* **CRITICAL:** Hide overflowing text */
-    text-overflow: ellipsis !important; /* **CRITICAL:** Show ellipsis for overflowing text */
+    margin-top: 30px !important; /* **CRITICAL:** Default margin-top for most headings */
+    margin-bottom: 10px !important; /* Decreased space below heading (pulls images up) */
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
-  /* **CRITICAL:** Slightly larger font size for "Top Albums" and "Trending Songs" */
+  /* **CRITICAL:** ONLY push "Top Albums" heading further down (assuming it uses .heading3) */
+  .heading3 {
+    margin-top: 40px !important; /* Increased only for Top Albums (if it's .heading3) */
+  }
+
+  /* Slightly larger font size for "Top Albums" and "Trending Songs" */
   .heading3, .heading4 {
-    font-size: 1.0em !important; /* Increased size for these specific headings */
+    font-size: 1.0em !important;
   }
-
-  /* **CRITICAL:** Specific smallest font size for "Overseas Songs" heading */
-  /* This now correctly targets both the `overseas-songs-heading` class and the `heading5` class */
+  /* Smallest font size for "Overseas Songs" */
   .overseas-songs-heading, .heading5 {
-    font-size: 0.8em !important; /* Even smaller font size for overseas songs */
+    font-size: 0.8em !important;
   }
 
   /* **CRITICAL:** Style for section descriptions (like "Dive into world of Bhakti Songs") */
