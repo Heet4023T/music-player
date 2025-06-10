@@ -1517,17 +1517,17 @@ body.light-theme {
 }
 
 .heading3{
-    font-size : 1.0em;
+    font-size : -1.0em;
     align:center;
 }
 
 .heading4{
-    font-size : 1.0em;
+    font-size : -1.0em;
      align:center;
 }
 
 .heading5{
-    font-size : 1.0em;
+    font-size : -1.0em;
      align:center;
 }
 
