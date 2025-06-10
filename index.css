@@ -1247,7 +1247,7 @@ body.light-theme {
 
   .title {
     font-size: 1.2em !important; /* Adjusted font size for compact look matching image */
-    letter-spacing: 3px !important; /* Adjusted letter spacing for compact look matching image */
+    letter-spacing: 6.5px !important; /* Adjusted letter spacing for compact look matching image */
     margin: 0 !important; /* Reset any default margins */
     white-space: nowrap !important;
     overflow: hidden !important;
