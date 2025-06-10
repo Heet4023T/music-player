@@ -1176,7 +1176,6 @@ body.light-theme {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
-
 /* ===== MOBILE RESPONSIVENESS FIXES (MATCHING IMAGE EXACTLY) ===== */
 @media (max-width: 768px) {
 
@@ -1193,8 +1192,8 @@ body.light-theme {
   }
 
   body {
-    /* Adjusted body padding to account for fixed header + absolutely positioned search bar */
-    padding-top: 130px !important; /* Increased for more space below header and search bar */
+    /* **CRITICAL:** Reduced padding-top to lessen gap between search bar and first content section */
+    padding-top: 120px !important;
     padding-bottom: 200px !important; /* Ensures content scrolls above music controller & nav */
   }
 
@@ -1294,7 +1293,7 @@ body.light-theme {
     left: 50% !important; /* Center horizontally relative to viewport */
     transform: translateX(-50%) !important; /* Adjust for perfect horizontal centering */
     width: 95% !important; /* Increased width for more space */
-    z-index: 99998 !important; /* Ensure it's above content but below the main header */
+    z-index: 100000 !important; /* **CRITICAL:** Ensure search bar stays on top of scrolling content */
     box-sizing: border-box !important;
     margin: 0 !important; /* Remove any desktop margins that might interfere */
 
@@ -1345,18 +1344,29 @@ body.light-theme {
 
 
   /*
-  ** Section Headings (e.g., "Top Albums") - All Left-Aligned
+  ** Section Headings (e.g., "Top Albums")
   */
+    .heading5
+  .heading
   .heading3,
   .heading4,
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.0em !important; /* **CRITICAL:** Increased font size for most headings */
-    text-align: center !important; /* All headings are now CENTER-ALIGNED */
-    padding: 5px 10px !important; /* Consistent padding */
-    margin-top: 20px !important; /* Added top margin for consistent spacing between sections */
-    margin-bottom: 15px !important; /* **CRITICAL:** Increased bottom margin for consistent space between heading and its row */
+    font-size: 1.5em !important; /* **CRITICAL:** Increased font size for main headings (Top, Trending, Mashup, Bhakti) */
+    text-align: center !important;
+    padding: 5px 10px !important;
+    margin-top: 20px !important;
+    margin-bottom: 10px !important; /* **CRITICAL:** Consistent space between heading and its row */
+    display: block !important; /* Ensure block display for margin effectiveness */
+  }
+
+  /* **CRITICAL:** Specific font size reduction for "Overseas Songs" heading */
+  /* This requires a unique class/ID for the "Overseas Songs" heading in your HTML */
+  /* If your "Overseas Songs" heading is, for example, <h1 class="heading4">Overseas Songs</h1> */
+  /* you need to change it to <h1 class="heading4 overseas-songs-heading">Overseas Songs</h1> */
+  .overseas-songs-heading {
+    font-size: 0.9em !important;
   }
 
   /*
@@ -1415,9 +1425,9 @@ body.light-theme {
   .trending-row img,
   .overseas-row img,
   .bhakti-row img {
-    width: 120px !important; /* **CRITICAL:** Consistent reduced image width, overriding desktop */
-    height: 120px !important; /* **CRITICAL:** Consistent reduced image height, overriding desktop */
-    object-fit: cover !important; /* **CRITICAL:** Ensure images fill space without distortion or cutoff */
+    width: 120px !important; /* Reduced image width */
+    height: 120px !important; /* Reduced image height */
+    object-fit: cover !important; /* Ensure images fill space without distortion */
     border-radius: 8px !important;
     margin-bottom: 8px !important;
   }
@@ -1449,12 +1459,12 @@ body.light-theme {
   #music-controller .song-details > *,
   #music-controller .song-title,
   #music-controller .artist-name {
-    font-size: 0.7em !important; /* Further reduced font size to ensure full visibility */
+    font-size: 0.7em !important; /* **CRITICAL:** Further reduced font size to ensure full visibility */
     white-space: normal !important; /* Allow text to wrap to next line */
     text-align: center !important; /* Center align the text */
     max-width: 100% !important; /* Ensure it doesn't overflow its container */
-    overflow: visible !important; /* Ensure text is not hidden */
-    text-overflow: clip !important; /* Prevent ellipsis, allow full text */
+    overflow: visible !important; /* **CRITICAL:** Ensure text is not hidden */
+    text-overflow: clip !important; /* **CRITICAL:** Prevent ellipsis, allow full text */
     line-height: 1.2em !important; /* Added for better line spacing if text wraps */
     margin: 0 !important; /* Remove any default margins */
     padding: 0 !important; /* Remove any default padding */
