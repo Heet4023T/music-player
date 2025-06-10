@@ -1220,7 +1220,7 @@ body.light-theme {
   }
 
   .image1 {
-    height: 60px !important;
+    height: 40px !important;
     margin-left: 10px !important; /* **CRITICAL:** Shift icon a bit right from the very edge */
     margin-right: 5px !important; /* Small space between icon and title */
   }
