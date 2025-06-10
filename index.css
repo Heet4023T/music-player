@@ -1509,22 +1509,25 @@ body.light-theme {
 }
 
 .heading{
-    font-size : 1.4em
+    font-size : 1.4em;
 }
 
 .heading2{
-    font-size : 1.4em
+    font-size : 1.4em;
 }
 
 .heading3{
-    font-size : 1.0em
+    font-size : 1.0em;
+    align:center;
 }
 
 .heading4{
-    font-size : 1.0em
+    font-size : 1.0em;
+     align:center;
 }
 
 .heading5{
-    font-size : 1.0em
+    font-size : 1.0em;
+     align:center;
 }
 
