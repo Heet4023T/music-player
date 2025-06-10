@@ -1525,3 +1525,8 @@ body.light-theme {
     font-size: 14px !important;
   }
 }
+
+.heading5{
+    font-size: 1.1em;
+    align: center;
+}
