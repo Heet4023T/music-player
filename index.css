@@ -1347,13 +1347,13 @@ body.light-theme {
   /*
   ** Section Headings (e.g., "Top Albums", "Trending Songs", "Bhakti Songs", "Trending Mashups")
   */
-    .heading5
+   
   .heading3,
   .heading4,
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 0.9em !important; /* **CRITICAL:** Reduced font size for main headings */
+    font-size: 1.1em !important; /* **CRITICAL:** Reduced font size for main headings */
     text-align: center !important;
     padding: 5px 10px !important;
     margin-top: 20px !important;
