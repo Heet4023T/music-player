@@ -1368,15 +1368,15 @@ body.light-theme {
   */
   .heading3,
   .heading4,
-  .heading5, /* **CRITICAL:** Added heading5 here for general styling */
+  .heading5, /* Added heading5 here for general styling */
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
     font-size: 0.9em !important; /* Default smaller size for most headings (e.g., mashups, bhakti) */
     text-align: center !important;
     padding: 5px 10px !important;
-    margin-top: 20px !important;
-    margin-bottom: 20px !important; /* **CRITICAL:** Increased space between heading and its row */
+    margin-top: 30px !important; /* **CRITICAL:** Increased space above heading (pushes down from search bar) */
+    margin-bottom: 10px !important; /* **CRITICAL:** Decreased space below heading (pulls images up) */
     display: block !important; /* Ensure block display for margin effectiveness */
     white-space: nowrap !important; /* **CRITICAL:** Force text to stay on one line */
     overflow: hidden !important; /* **CRITICAL:** Hide overflowing text */
