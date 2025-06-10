@@ -1353,7 +1353,7 @@ body.light-theme {
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.3em !important; /* **CRITICAL:** Increased font size for most headings */
+    font-size: 1.5em !important; /* **CRITICAL:** Increased font size for most headings */
     text-align: center !important; /* All headings are now CENTER-ALIGNED */
     padding: 5px 10px !important; /* Consistent padding */
     margin-top: 20px !important; /* Added top margin for consistent spacing between sections */
