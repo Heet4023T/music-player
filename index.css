@@ -1179,7 +1179,6 @@ body.light-theme {
 
 /* ===== MOBILE RESPONSIVENESS FIXES (MATCHING IMAGE EXACTLY) ===== */
 @media (max-width: 768px) {
-
   /*
   ** Global Body and HTML Reset for Maximum Control
   */
@@ -1187,15 +1186,14 @@ body.light-theme {
     height: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow-x: hidden !important; /* Ensure no horizontal scroll from body itself */
+    overflow-x: hidden !important;
     background-size: cover !important;
     background-attachment: fixed !important;
   }
 
   body {
-    /* **CRITICAL:** Reduced padding-top to lessen gap between search bar and first content section */
     padding-top: 120px !important;
-    padding-bottom: 200px !important; /* Ensures content scrolls above music controller & nav */
+    padding-bottom: 200px !important;
   }
 
   /*
@@ -1204,16 +1202,16 @@ body.light-theme {
   .fixed {
     position: fixed !important;
     top: 0 !important;
-    left: 0 !important; /* Override any negative left offset from base CSS */
+    left: 0 !important;
     right: 0 !important;
-    z-index: 99999 !important; /* Ensure header is on top */
+    z-index: 99999 !important;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent) !important;
-    height: 65px !important; /* Fixed height for consistency */
+    height: 65px !important;
     display: flex !important;
     flex-direction: row !important;
-    align-items: center !important; /* Vertically center items */
-    justify-content: flex-start !important; /* Align content to the left */
-    padding: 0 5px !important; /* Reduced overall left/right padding for elements to go more to edges */
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0 5px !important;
     box-sizing: border-box !important;
   }
 
@@ -1225,46 +1223,58 @@ body.light-theme {
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    /* We'll handle the search bar separately below for mobile */
-    flex-grow: 1 !important; /* Allows it to take available space for title/logo */
+    flex-grow: 1 !important;
     padding-left: 0 !important;
     margin-left: 0 !important;
   }
 
-  .title-logo { /* Targeting the div containing the image and title */
+  /* Back Button: Repositioned Lower for Better Accessibility */
+  .back-button {
+    position: absolute !important;
+    top: 32px !important; /* Moved below status bar (24px) + 8px padding */
+    left: 8px !important;
+    z-index: 100001 !important;
+    padding: 8px !important; /* Easier to tap */
+    font-size: 24px !important;
+    color: #fff !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+
+  .title-logo {
     display: flex !important;
     align-items: center !important;
-    gap: 5px !important; /* Gap between image and title */
-    margin-left: 10px !important; /* Shift title-logo group slightly right from edge */
+    gap: 5px !important;
+    margin-left: 40px !important; /* Adjusted to avoid overlap with back button */
   }
 
   .image1 {
     height: 40px !important;
-    width: 40px !important; /* Ensure width is also set */
+    width: 40px !important;
     object-fit: contain !important;
-    margin: 0 !important; /* No additional margins here */
+    margin: 0 !important;
   }
 
   .title {
-    font-size: 1.4em !important; /* Increased font size slightly for "headphone title" */
-    letter-spacing: 2px !important; /* **CRITICAL:** Increased letter spacing for "hemisphere" */
-    margin: 0 !important; /* Reset any default margins */
+    font-size: 1.4em !important;
+    letter-spacing: 2px !important;
+    margin: 0 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    max-width: 200px !important; /* Adjusted max-width to allow full visibility, will truncate very long titles */
+    max-width: 200px !important;
   }
 
   /*
-  ** Dark Theme Button: Shifted Upwards and to Extreme Right (within Fixed Header)
+  ** Dark Theme Button: Shifted Upwards and to Extreme Right
   */
-  .theme-toggle { /* Targeting the theme-toggle div */
-    position: absolute !important; /* Absolute position within the .fixed header */
-    top: 15px !important; /* Shifted more upwards and aligned with title */
-    right: 10px !important; /* Shifted right for better spacing */
-    transform: none !important; /* Remove translateY as 'top' is no longer 50% */
-    z-index: 100000 !important; /* Super high z-index to be on top of everything */
-    background-color: transparent !important; /* Ensure background is transparent */
+  .theme-toggle {
+    position: absolute !important;
+    top: 15px !important;
+    right: 10px !important;
+    z-index: 100000 !important;
+    background-color: transparent !important;
     border: none !important;
     border-radius: 50% !important;
     width: 35px !important;
@@ -1274,208 +1284,156 @@ body.light-theme {
     align-items: center !important;
     padding: 0 !important;
   }
-  .theme-toggle button { /* Targeting the button inside theme-toggle */
+
+  .theme-toggle button {
     background-color: transparent !important;
     border: none !important;
     padding: 0 !important;
   }
-  .theme-toggle button i { /* Targeting the icon inside the button */
-    font-size: 25px !important; /* Adjust icon size */
-    color: #fff !important; /* Set icon color */
+
+  .theme-toggle button i {
+    font-size: 25px !important;
+    color: #fff !important;
   }
 
-
   /*
-  ** Search Bar: Repositioned for Mobile (Even though it's in header HTML)
+  ** Search Bar: Repositioned for Mobile to Avoid Overlap
   */
-  .fixed .header-container .search-container { /* Targeting the search-container specifically when nested */
-    position: absolute !important; /* Take it out of normal flow for mobile */
-    top: 75px !important; /* Positioned right below the fixed header (65px header + 10px gap) */
-    left: 50% !important; /* Center horizontally relative to viewport */
-    transform: translateX(-50%) !important; /* Adjust for perfect horizontal centering */
-    width: 95% !important; /* Increased width for more space */
-    z-index: 100000 !important; /* **CRITICAL:** Ensure search bar stays on top of scrolling content */
+  .fixed .header-container .search-container {
+    position: absolute !important;
+    top: 65px !important; /* Moved up to sit just below header (65px) */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 95% !important;
+    z-index: 100000 !important;
     box-sizing: border-box !important;
-    margin: 0 !important; /* Remove any desktop margins that might interfere */
-
-    /* **CRITICAL:** Dark Theme Search Bar Colors */
-    background-color: #ffffff !important; /* White background */
-    border: 1px solid rgba(0, 0, 0, 0.3) !important; /* Darker border */
+    margin: 0 !important;
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
     border-radius: 25px !important;
     padding: 8px 15px !important;
     display: flex !important;
     align-items: center !important;
   }
 
-  .search-input-wrapper { /* Ensure wrapper handles its contents correctly */
+  .search-input-wrapper {
     display: flex !important;
     align-items: center !important;
     width: 100% !important;
   }
 
   #main-search {
-    /* Removed width: 100% and rely on flex-grow for proper spacing */
-    flex-grow: 1 !important; /* Ensure it takes remaining space */
-    color: #000000 !important; /* **CRITICAL:** Black text */
+    flex-grow: 1 !important;
+    color: #000000 !important;
     background-color: transparent !important;
     border: none !important;
     outline: none !important;
     font-size: 0.9em !important;
-    padding: 0 0 0 28px !important; /* **CRITICAL:** Increased left padding for placeholder text, fixing overlap */
+    padding: 0 0 0 28px !important;
     box-sizing: border-box !important;
   }
+
   #main-search::placeholder {
-    color: rgba(0, 0, 0, 0.7) !important; /* **CRITICAL:** Dark placeholder text */
+    color: rgba(0, 0, 0, 0.7) !important;
   }
+
   .search-icon {
-    color: #000000 !important; /* **CRITICAL:** Black icon */
-    margin-right: 8px !important; /* Ensures space between icon and input */
-    font-size: 1.1em !important; /* Adjust search icon size */
+    color: #000000 !important;
+    margin-right: 8px !important;
+    font-size: 1.1em !important;
   }
 
-  /* **CRITICAL:** Light Theme Search Bar Colors (when body has .light-theme class) */
+  /* Light Theme Search Bar Colors */
   body.light-theme .fixed .header-container .search-container {
-    background-color: #000000 !important; /* Black background */
-    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Lighter border */
+    background-color: #000000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
   }
+
   body.light-theme #main-search {
-    color: #ffffff !important; /* White text */
+    color: #ffffff !important;
   }
+
   body.light-theme #main-search::placeholder {
-    color: rgba(255, 255, 255, 0.7) !important; /* White placeholder text */
+    color: rgba(255, 255, 255, 0.7) !important;
   }
+
   body.light-theme .search-icon {
-    color: #ffffff !important; /* White icon */
+    color: #ffffff !important;
   }
 
-
-  /* Search results dropdown positioning (relative to the absolutely positioned search bar) */
+  /* Search Results Dropdown Positioning */
   #search-results {
-    width: calc(100% - 30px) !important; /* Adjusted width for results dropdown */
-    left: 15px !important; /* Positioned relative to its parent (.search-container) */
-    top: 45px !important; /* Positioned relative to its parent (.search-container) */
+    width: calc(100% - 30px) !important;
+    left: 15px !important;
+    top: 45px !important;
     background: #282828 !important;
     border: 1px solid #444 !important;
     max-height: 200px !important;
     overflow-y: auto !important;
     border-radius: 8px !important;
-    position: absolute !important; /* Ensure it's absolutely positioned within search-container */
+    position: absolute !important;
   }
 
-
   /*
-  ** Section Headings (General Styling for all except Top Albums)
+  ** Album View (Top Albums Container): Resized for Better Visibility
   */
-  .fixed5 h1
-. fixed2 h1
-  .fixed3 h1,
-  .fixed4 h1,
-  .head1 h1 {
-    font-size: 0.5em !important; /* Increased general heading size */
-    text-align: center !important;
-    padding: 5px 10px !important;
-    margin-top: 30px !important; /* Default margin-top for most headings */
-    margin-bottom: 10px !important; /* Decreased space below heading (pulls images up) */
-    display: block !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+  .album-view {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), #0a0a2e) !important;
+    z-index: 2000 !important;
+    overflow-y: auto !important;
   }
 
- 
-
-  /* **CRITICAL:** Style for section descriptions (like "Dive into world of Bhakti Songs") */
-  /* You MUST add 'class="section-description"' to the HTML tag for this text */
-  .section-description {
-    white-space: normal !important; /* Allow text to wrap */
-    overflow: visible !important;   /* Ensure all text is visible */
-    text-overflow: clip !important; /* Prevent ellipsis */
-    font-size: 0.75em !important;    /* Slightly smaller font size */
-    color: rgba(255,255,255,0.7) !important; /* A subtle white */
-    margin-top: 5px !important;     /* Small space above */
-    margin-bottom: 5px !important;  /* Small space below */
-    text-align: center !important;  /* Center align the description */
-    padding: 0 10px !important; /* Add some horizontal padding */
-    box-sizing: border-box !important; /* Include padding in element's total width */
+  .album-header {
+    padding: 90px 30px 30px 30px !important; /* Adjusted padding to account for search bar */
+    gap: 24px !important;
   }
 
-  /*
-  ** Image Rows: Now HORIZONTAL SCROLLING (NOT GRID)
-  */
-  .albums-row,
-  .trending-row,
-  .mashup-row,
-  .overseas-row,
-  .bhakti-row {
-    display: flex !important; /* Ensure flexbox */
-    flex-wrap: nowrap !important; /* Force items to stay in a single row (horizontal scroll) */
-    overflow-x: auto !important; /* Enable horizontal scrollbar */
-    -webkit-overflow-scrolling: touch !important; /* Improves scroll feel on iOS */
-    scrollbar-width: none !important; /* For Firefox */
-    -ms-overflow-style: none !important; /* For IE/Edge */
-    padding: 0 10px !important; /* Padding for the container itself */
-    gap: 10px !important; /* Consistent slightly reduced spacing between items */
-    justify-content: flex-start !important; /* Align content to the start for scrolling */
-    align-items: flex-start !important;
-    scroll-snap-type: x mandatory !important; /* For smooth item snapping on scroll */
-    margin-top: 20px !important; /* **CRITICAL:** Added vertical space between image rows */
+  .album-cover {
+    width: 120px !important; /* Reduced size for mobile */
+    height: 120px !important;
+    margin-top: 20px !important; /* Ensure it doesn't overlap with search bar */
   }
 
-  /* Hide scrollbar for Webkit browsers */
-  .albums-row::-webkit-scrollbar,
-  .trending-row::-webkit-scrollbar,
-  .mashup-row::-webkit-scrollbar,
-  .overseas-row::-webkit-scrollbar,
-  .bhakti-row::-webkit-scrollbar {
-    display: none !important;
+  .album-songs {
+    padding: 20px 30px !important;
   }
 
-  /* Album Item Containers (wrappers around image + text) */
-  .album-container,
-  .album-item, /* Assuming .album-item is a common wrapper */
-  .trending-row > div,
-  .mashup-row > div,
-  .overseas-row > div,
-  .bhakti-row > div {
-    flex-shrink: 0 !important; /* Prevent items from shrinking in horizontal scroll */
-    width: 120px !important; /* Consistent reduced width for item container */
-    height: 160px !important; /* Consistent reduced height for item container (image + text) */
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important; /* Center image/text within each item container */
-    text-align: center !important; /* Center text below image */
-    min-width: 0 !important;
-    scroll-snap-align: start !important; /* Snap each item to the start of the scroll area */
+  /* Song List Container: Resized to Show 4 Songs */
+  .album-songs-list {
+    position: relative !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: transparent !important;
+    padding: 10px !important;
+    max-height: 200px !important; /* Height for 4 songs (each ~50px) */
+    overflow-y: auto !important;
+    margin-bottom: 24px !important; /* Space above nav bar */
+  }
+
+  .song-list-item {
+    padding: 8px !important;
+    font-size: 14px !important;
   }
 
   /*
-  ** Image Thumbnails: Consistent 120x120px Size for All (MAXIMUM SPECIFICITY)
-  */
-  .album-img,
-  .mashup-row img,
-  .trending-row img,
-  .overseas-row img,
-  .bhakti-row img {
-    width: 120px !important; /* Reduced image width */
-    height: 120px !important; /* Reduced image height */
-    object-fit: cover !important; /* Ensure images fill space without distortion */
-    border-radius: 8px !important;
-    margin-bottom: 8px !important;
-  }
-
-  /*
-  ** Music Controller and Nav Bar (Fixed at Bottom, Always Visible)
+  ** Music Controller and Nav Bar (Fixed at Bottom)
   */
   #music-controller {
     width: 90% !important;
     height: auto !important;
     padding: 10px !important;
-    bottom: 80px !important; /* Positioned above the bottom navigation */
-    position: fixed !important; /* Ensure it stays fixed */
+    bottom: 80px !important;
+    position: fixed !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
-    z-index: 1040 !important; /* Below footer, above content */
-    background-color: rgba(0, 0, 0, 0.9) !important; /* Add background to avoid transparency issues */
+    z-index: 1040 !important;
+    background-color: rgba(0, 0, 0, 0.9) !important;
     border-radius: 15px !important;
   }
 
@@ -1484,33 +1442,12 @@ body.light-theme {
     height: 50px !important;
   }
 
-  /* **CRITICAL:** Music Controller "No song playing" text visibility */
-  #music-controller p,
-  #music-controller span,
-  #music-controller .song-details > *,
-  #music-controller .song-title,
-  #music-controller .artist-name {
-    font-size: 0.7em !important; /* **CRITICAL:** Further reduced font size to ensure full visibility */
-    white-space: normal !important; /* Allow text to wrap to next line */
-    text-align: center !important; /* Center align the text */
-    max-width: 100% !important; /* Ensure it doesn't overflow its container */
-    overflow: visible !important; /* **CRITICAL:** Ensure text is not hidden */
-    text-overflow: clip !important; /* **CRITICAL:** Prevent ellipsis, allow full text */
-    line-height: 1.2em !important; /* Added for better line spacing if text wraps */
-    margin: 0 !important; /* Remove any default margins */
-    padding: 0 !important; /* Remove any default padding */
-  }
-
-
-  /* --- Footer Position Fix (Bottom Navigation Bar) --- */
-  /* IMPORTANT: Replace '.bottom-nav' with the actual class/ID of your footer/bottom navigation bar */
-  .bottom-nav,
-  footer {
+  .nav {
     position: fixed !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    z-index: 1050 !important; /* Higher z-index to be on top of music controller */
+    z-index: 1050 !important;
     background-color: rgba(0, 0, 0, 0.9) !important;
     padding: 10px 0 !important;
     display: flex !important;
