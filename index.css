@@ -1246,13 +1246,13 @@ body.light-theme {
   }
 
   .title {
-    font-size: 1.2em !important; /* Adjusted font size for compact look matching image */
-    letter-spacing: 7px !important; /* Adjusted letter spacing for compact look matching image */
+    font-size: 1.4em !important; /* **CRITICAL:** Increased font size slightly for "headphone title" */
+    letter-spacing: 1px !important; /* Adjusted letter spacing for compact look matching image */
     margin: 0 !important; /* Reset any default margins */
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    max-width: calc(100% - 50px) !important; /* Limit title width for potential overlap */
+    max-width: 200px !important; /* **CRITICAL:** Adjusted max-width to allow full visibility, will truncate very long titles */
   }
 
   /*
@@ -1260,8 +1260,8 @@ body.light-theme {
   */
   .theme-toggle { /* Targeting the theme-toggle div */
     position: absolute !important; /* Absolute position within the .fixed header */
-    top: 9px !important; /* **CRITICAL:** Shifted more upwards (overrides inline style) */
-    right: 0px !important; /* **CRITICAL:** Shifted more right (overrides inline style) */
+    top: 15px !important; /* **CRITICAL:** Shifted more upwards and aligned with title */
+    right: 10px !important; /* **CRITICAL:** Shifted right for better spacing */
     transform: none !important; /* Remove translateY as 'top' is no longer 50% */
     z-index: 100000 !important; /* Super high z-index to be on top of everything */
     background-color: transparent !important; /* Ensure background is transparent */
@@ -1313,19 +1313,19 @@ body.light-theme {
     width: 100% !important;
   }
 
-  #main-search { /* Changed from #search-input to #main-search based on your HTML */
-    width: 100% !important; /* Ensure input takes full width */
+  #main-search {
+    /* **CRITICAL:** Removed width: 100% !important; to prevent placeholder overlap */
+    flex-grow: 1 !important; /* Ensure it takes remaining space */
     color: #fff !important;
     background-color: transparent !important;
     border: none !important;
     outline: none !important;
-    flex-grow: 1 !important;
     font-size: 0.9em !important;
-    padding: 0 !important;
+    padding: 0 !important; /* No internal padding to avoid issues */
   }
   .search-icon {
     color: rgba(255, 255, 255, 0.8) !important;
-    margin-right: 8px !important;
+    margin-right: 8px !important; /* Ensures space between icon and input */
     font-size: 1.1em !important; /* Adjust search icon size */
   }
 
@@ -1441,6 +1441,21 @@ body.light-theme {
     width: 50px !important;
     height: 50px !important;
   }
+
+  /* **CRITICAL:** Music Controller "No song playing" text visibility */
+  #music-controller p,
+  #music-controller span,
+  #music-controller .song-details > * { /* Targeting common text elements within music controller */
+    font-size: 0.8em !important; /* Reduce font size to ensure visibility */
+    white-space: normal !important; /* Allow text to wrap to next line */
+    text-align: center !important; /* Center align the text */
+    max-width: 100% !important; /* Ensure it doesn't overflow its container */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; /* Add ellipsis for extremely long text */
+    margin: 0 !important; /* Remove any default margins */
+    padding: 0 !important; /* Remove any default padding */
+  }
+
 
   /* --- Footer Position Fix (Bottom Navigation Bar) --- */
   /* IMPORTANT: Replace '.bottom-nav' with the actual class/ID of your footer/bottom navigation bar */
