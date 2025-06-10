@@ -1183,75 +1183,75 @@ body.light-theme {
   ** General Body & Fixed Header Adjustments
   */
   html body {
-    padding-top: 90px !important; /* Adjust body padding to accommodate the fixed header */
-    padding-bottom: 250px !important; /* Ensure content scrolls above music controller & nav */
-    overflow-x: hidden !important; /* Prevent any horizontal scroll on the body */
+    padding-top: 90px !important;
+    padding-bottom: 250px !important;
+    overflow-x: hidden !important;
   }
 
   .fixed {
     position: fixed !important;
     top: 0 !important;
-    left: 0 !important; /* Remove any negative left offset from index.css */
+    left: 0 !important;
     right: 0 !important;
     z-index: 1000 !important;
-    padding: 10px 0 !important; /* Top/bottom padding for the fixed header itself */
+    padding: 10px 0 !important;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.98), transparent) !important;
     display: flex !important;
-    flex-direction: row !important; /* Ensure children are in a row */
-    align-items: center !important; /* Vertically center items in the fixed header */
-    justify-content: flex-start !important; /* Align content to the start (left) */
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
     box-sizing: border-box !important;
-    height: auto !important; /* Allow height to adjust to content */
+    height: auto !important;
   }
 
   /*
-  ** Hemisphere Title and Icon: Shifted slightly right to be visible
+  ** Hemisphere Title and Icon: Shifted left, close together
   */
   .header-container {
-    flex-direction: row !important; /* Ensure horizontal layout for icon and title */
-    gap: 0px !important; /* Remove gap between icon and title */
+    flex-direction: row !important;
+    gap: 5px !important;
     text-align: left !important;
-    width: auto !important; /* Allow width to content */
-    padding-left: 0px !important; /* Ensure no padding pushing from left */
-    margin-left: 0px !important; /* Ensure no margin pushing from left */
+    width: auto !important;
+    padding-left: 10px !important;
+    margin-left: 0px !important;
     display: flex !important;
-    align-items: center !important; /* Vertically align icon and text */
+    align-items: center !important;
     justify-content: flex-start !important;
   }
 
   .image1 {
     height: 60px !important;
-    margin-left: 10px !important; /* **CRITICAL:** Shift icon a bit right from the very edge */
-    margin-right: 5px !important; /* Small space between icon and title */
+    margin-left: 10px !important;
+    margin-right: 5px !important;
   }
 
   .title {
     font-size: 24px !important;
     letter-spacing: 2px !important;
-    margin: 0 !important; /* Reset any default margins */
+    margin: 0 !important;
   }
 
   /*
-  ** Dark Theme Button: Shifted to Extreme Right (Fixed Top-Right)
+  ** Dark Theme Button: Fixed at top-right
   */
-  /* IMPORTANT: Ensure this selector matches your actual HTML button's class/ID */
   .theme-toggle-button,
-  #yourThemeToggleButtonId { /* You may need to replace #yourThemeToggleButtonId with the actual ID */
+  #yourThemeToggleButtonId {
     position: fixed !important;
-    top: 0px !important;
-    right: 0px !important; /* **CRITICAL:** Position at the extreme right */
-    left: auto !important; /* Ensure no left positioning interferes */
-    bottom: auto !important; /* Ensure no bottom positioning interferes */
-    z-index: 99999 !important; /* Super high z-index to be on top of everything */
-    padding: 5px !important; /* Small internal padding to give space from corner */
-    background-color: rgba(255, 255, 255, 0.1) !important; /* Example styling */
+    top: 10px !important;
+    right: 10px !important;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 99999 !important;
+    padding: 5px !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
     border-radius: 50% !important;
-    width: 35px !important; /* Example size */
-    height: 35px !important; /* Example size */
+    width: 35px !important;
+    height: 35px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
   }
+
   .theme-toggle-button img,
   #yourThemeToggleButtonId img {
     width: 22px !important;
@@ -1260,11 +1260,11 @@ body.light-theme {
   }
 
   /*
-  ** Search Bar: Above Top Albums (in main content flow)
+  ** Search Bar: Centered above album sections
   */
   .search-container {
     width: 90% !important;
-    margin: 20px auto 20px auto !important; /* Shifted down from fixed header, and centered with margin below */
+    margin: 20px auto 20px auto !important;
     background-color: rgba(255, 255, 255, 0.15) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 25px !important;
@@ -1272,12 +1272,12 @@ body.light-theme {
     display: flex !important;
     align-items: center !important;
     box-sizing: border-box !important;
-    z-index: 1 !important; /* Lower z-index than fixed header/button */
-    position: relative !important; /* To ensure it's in flow and z-index works */
+    z-index: 1 !important;
+    position: relative !important;
   }
 
   #search-input {
-    width: 100% !important; /* Ensure input takes full width */
+    width: 100% !important;
     color: #fff !important;
     background-color: transparent !important;
     border: none !important;
@@ -1286,33 +1286,33 @@ body.light-theme {
     font-size: 1em !important;
     padding: 0 !important;
   }
+
   .search-icon {
     color: rgba(255, 255, 255, 0.8) !important;
     margin-right: 8px !important;
   }
 
   /*
-  ** Image Rows: All in Grid, Equal Size, No Horizontal Scroll
+  ** Image Rows
   */
   .albums-row,
   .trending-row,
   .mashup-row,
   .overseas-row,
   .bhakti-row {
-    display: flex !important; /* Ensure flexbox */
-    flex-wrap: wrap !important; /* **CRITICAL:** Force items to wrap to a new line */
-    overflow-x: hidden !important; /* **CRITICAL:** Hide horizontal scrollbar */
-    -webkit-overflow-scrolling: auto !important; /* Adjust scroll behavior */
-    scrollbar-width: none !important; /* For Firefox */
-    -ms-overflow-style: none !important; /* For IE/Edge */
+    display: flex !important;
+    flex-wrap: wrap !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: auto !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
     padding: 10px !important;
-    gap: 15px !important; /* Consistent spacing between items */
-    justify-content: center !important; /* Center items in the grid */
+    gap: 15px !important;
+    justify-content: center !important;
     align-items: flex-start !important;
-    scroll-snap-type: none !important; /* Disable scroll snapping */
+    scroll-snap-type: none !important;
   }
 
-  /* Hide scrollbar for Webkit browsers */
   .albums-row::-webkit-scrollbar,
   .trending-row::-webkit-scrollbar,
   .mashup-row::-webkit-scrollbar,
@@ -1321,39 +1321,35 @@ body.light-theme {
     display: none !important;
   }
 
-  /* Album Item Containers (wrappers around image + text) */
   .album-container,
-  .album-item, /* Assuming .album-item is a common wrapper */
+  .album-item,
   .trending-row > div,
   .mashup-row > div,
   .overseas-row > div,
   .bhakti-row > div {
-    flex-shrink: 0 !important; /* Prevent items from shrinking */
-    width: 140px !important; /* Consistent width for item container */
-    height: 180px !important; /* Consistent height for item container (image + text) */
+    flex-shrink: 0 !important;
+    width: 140px !important;
+    height: 180px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
   }
 
-  /*
-  ** Image Thumbnails: Consistent 140x140px Size for All (MAXIMUM SPECIFICITY)
-  */
   .album-img,
   .mashup-row img,
   .trending-row img,
   .overseas-row img,
   .bhakti-row img {
     width: 140px !important;
-    height: 140px !important; /* **CRITICAL:** Force equal height, overriding 'height: auto' */
-    object-fit: cover !important; /* Ensure images fill space without distortion */
+    height: 140px !important;
+    object-fit: cover !important;
     border-radius: 8px !important;
     margin-bottom: 8px !important;
   }
 
   /*
-  ** Section Headings (e.g., "Top Albums")
+  ** Section Headings
   */
   .heading3,
   .heading4,
@@ -1361,10 +1357,10 @@ body.light-theme {
   .fixed4 h1,
   .head1 h1 {
     font-size: 20px !important;
-    text-align: left !important; /* Align headings to left */
+    text-align: left !important;
     padding: 0 10px !important;
-    margin-top: 15px !important; /* Consistent space above headings */
-    margin-bottom: 10px !important; /* Consistent space below headings */
+    margin-top: 15px !important;
+    margin-bottom: 10px !important;
   }
 
   /*
@@ -1401,8 +1397,9 @@ body.light-theme {
     font-size: 14px !important;
   }
 
-  /* --- Footer Position Fix --- */
-  /* IMPORTANT: Replace '.bottom-nav' with the actual class/ID of your footer/bottom navigation bar */
+  /*
+  ** Footer / Bottom Nav
+  */
   .bottom-nav,
   footer {
     position: fixed !important;
