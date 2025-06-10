@@ -1290,6 +1290,7 @@ body.light-theme {
     box-sizing: border-box !important;
     z-index: 1 !important; /* Lower z-index than fixed header/button */
     position: relative !important; /* To ensure it's in flow and z-index works */
+    bottom : 30px;
   }
 
   #search-input {
