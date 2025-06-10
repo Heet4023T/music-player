@@ -1353,7 +1353,7 @@ body.light-theme {
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 0.20em !important; /* **CRITICAL:** Reduced font size for main headings */
+    font-size: 0.5em !important; /* **CRITICAL:** Reduced font size for main headings */
     text-align: center !important;
     padding: 5px 10px !important;
     margin-top: 20px !important;
