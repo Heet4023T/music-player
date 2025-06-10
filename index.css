@@ -1366,8 +1366,7 @@ body.light-theme {
   /*
   ** Section Headings (General Styling for all except Top Albums)
   */
-  .heading4,
-  .heading5,
+  .fixed5 h1
 . fixed2 h1
   .fixed3 h1,
   .fixed4 h1,
