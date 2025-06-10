@@ -1347,17 +1347,16 @@ body.light-theme {
   /*
   ** Section Headings (e.g., "Top Albums") - All Left-Aligned
   */
-   .heading 
   .heading3,
   .heading4,
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.5em !important; /* **CRITICAL:** Increased font size for most headings */
+    font-size: 1.0em !important; /* **CRITICAL:** Increased font size for most headings */
     text-align: center !important; /* All headings are now CENTER-ALIGNED */
     padding: 5px 10px !important; /* Consistent padding */
     margin-top: 20px !important; /* Added top margin for consistent spacing between sections */
-    margin-bottom: 10px !important; /* **CRITICAL:** Increased bottom margin for consistent space between heading and its row */
+    margin-bottom: 15px !important; /* **CRITICAL:** Increased bottom margin for consistent space between heading and its row */
   }
 
   /*
@@ -1416,9 +1415,9 @@ body.light-theme {
   .trending-row img,
   .overseas-row img,
   .bhakti-row img {
-    width: 120px !important; /* Reduced image width */
-    height: 120px !important; /* Reduced image height */
-    object-fit: cover !important; /* Ensure images fill space without distortion */
+    width: 120px !important; /* **CRITICAL:** Consistent reduced image width, overriding desktop */
+    height: 120px !important; /* **CRITICAL:** Consistent reduced image height, overriding desktop */
+    object-fit: cover !important; /* **CRITICAL:** Ensure images fill space without distortion or cutoff */
     border-radius: 8px !important;
     margin-bottom: 8px !important;
   }
@@ -1450,12 +1449,12 @@ body.light-theme {
   #music-controller .song-details > *,
   #music-controller .song-title,
   #music-controller .artist-name {
-    font-size: 0.7em !important; /* **CRITICAL:** Further reduced font size to ensure full visibility */
+    font-size: 0.7em !important; /* Further reduced font size to ensure full visibility */
     white-space: normal !important; /* Allow text to wrap to next line */
     text-align: center !important; /* Center align the text */
     max-width: 100% !important; /* Ensure it doesn't overflow its container */
-    overflow: visible !important; /* **CRITICAL:** Ensure text is not hidden */
-    text-overflow: clip !important; /* **CRITICAL:** Prevent ellipsis, allow full text */
+    overflow: visible !important; /* Ensure text is not hidden */
+    text-overflow: clip !important; /* Prevent ellipsis, allow full text */
     line-height: 1.2em !important; /* Added for better line spacing if text wraps */
     margin: 0 !important; /* Remove any default margins */
     padding: 0 !important; /* Remove any default padding */
