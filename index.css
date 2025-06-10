@@ -1364,18 +1364,17 @@ body.light-theme {
 
 
   /*
-  ** Section Headings (General Styling)
+  ** Section Headings (General Styling for all except Top Albums)
   */
-  .heading3, /* This will be overridden for margin-top by more specific rule below */
   .heading4,
   .heading5,
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 0.9em !important; /* Default smaller size for most headings (e.g., mashups, bhakti) */
+    font-size: 1.0em !important; /* Increased general heading size */
     text-align: center !important;
     padding: 5px 10px !important;
-    margin-top: 30px !important; /* **CRITICAL:** Default margin-top for most headings */
+    margin-top: 30px !important; /* Default margin-top for most headings */
     margin-bottom: 10px !important; /* Decreased space below heading (pulls images up) */
     display: block !important;
     white-space: nowrap !important;
@@ -1386,16 +1385,19 @@ body.light-theme {
   /* **CRITICAL:** ONLY push "Top Albums" heading further down (assuming it uses .heading3) */
   .heading3 {
     margin-top: 40px !important; /* Increased only for Top Albums (if it's .heading3) */
+    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for Top Albums heading */
   }
 
-  /* Slightly larger font size for "Top Albums" and "Trending Songs" */
-  .heading3, .heading4 {
-    font-size: 1.0em !important;
+  /* **CRITICAL:** Increased font size for "Trending Songs" */
+  .heading4 {
+    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for Trending Songs heading */
   }
-  /* Smallest font size for "Overseas Songs" */
+
+  /* **CRITICAL:** Increased font size for "Overseas Songs" heading */
   .overseas-songs-heading, .heading5 {
-    font-size: 0.8em !important;
+    font-size: 0.9em !important; /* **CRITICAL:** Increased font size for overseas songs */
   }
+
 
   /* **CRITICAL:** Style for section descriptions (like "Dive into world of Bhakti Songs") */
   /* You MUST add 'class="section-description"' to the HTML tag for this text */
