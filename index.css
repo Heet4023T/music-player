@@ -1298,9 +1298,9 @@ body.light-theme {
     box-sizing: border-box !important;
     margin: 0 !important; /* Remove any desktop margins that might interfere */
 
-    /* Re-apply and fine-tune search bar styling */
-    background-color: rgba(255, 255, 255, 0.15) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    /* **CRITICAL:** Dark Theme Search Bar Colors */
+    background-color: #ffffff !important; /* White background */
+    border: 1px solid rgba(0, 0, 0, 0.3) !important; /* Darker border */
     border-radius: 25px !important;
     padding: 8px 15px !important;
     display: flex !important;
@@ -1316,7 +1316,7 @@ body.light-theme {
   #main-search {
     /* Removed width: 100% and rely on flex-grow for proper spacing */
     flex-grow: 1 !important; /* Ensure it takes remaining space */
-    color: #fff !important;
+    color: #000000 !important; /* **CRITICAL:** Black text */
     background-color: transparent !important;
     border: none !important;
     outline: none !important;
@@ -1324,11 +1324,30 @@ body.light-theme {
     padding: 0 0 0 28px !important; /* **CRITICAL:** Increased left padding for placeholder text, fixing overlap */
     box-sizing: border-box !important;
   }
+  #main-search::placeholder {
+    color: rgba(0, 0, 0, 0.7) !important; /* **CRITICAL:** Dark placeholder text */
+  }
   .search-icon {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: #000000 !important; /* **CRITICAL:** Black icon */
     margin-right: 8px !important; /* Ensures space between icon and input */
     font-size: 1.1em !important; /* Adjust search icon size */
   }
+
+  /* **CRITICAL:** Light Theme Search Bar Colors (when body has .light-theme class) */
+  body.light-theme .fixed .header-container .search-container {
+    background-color: #000000 !important; /* Black background */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Lighter border */
+  }
+  body.light-theme #main-search {
+    color: #ffffff !important; /* White text */
+  }
+  body.light-theme #main-search::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important; /* White placeholder text */
+  }
+  body.light-theme .search-icon {
+    color: #ffffff !important; /* White icon */
+  }
+
 
   /* Search results dropdown positioning (relative to the absolutely positioned search bar) */
   #search-results {
@@ -1345,18 +1364,19 @@ body.light-theme {
 
 
   /*
-  ** Section Headings (e.g., "Top Albums", "Trending Songs", "Bhakti Songs", "Trending Mashups")
+  ** Section Headings (e.g., "Top Albums", "Trending Songs", "Bhakti Songs", "Trending Mashups", "Overseas Songs")
   */
   .heading3,
   .heading4,
+  .heading5, /* **CRITICAL:** Added heading5 here for general styling */
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 0.9em !important; /* Default smaller size for most headings */
+    font-size: 0.9em !important; /* Default smaller size for most headings (e.g., mashups, bhakti) */
     text-align: center !important;
     padding: 5px 10px !important;
     margin-top: 20px !important;
-    margin-bottom: 15px !important; /* **CRITICAL:** Increased space between heading and its row */
+    margin-bottom: 20px !important; /* **CRITICAL:** Increased space between heading and its row */
     display: block !important; /* Ensure block display for margin effectiveness */
     white-space: nowrap !important; /* **CRITICAL:** Force text to stay on one line */
     overflow: hidden !important; /* **CRITICAL:** Hide overflowing text */
@@ -1368,9 +1388,9 @@ body.light-theme {
     font-size: 1.0em !important; /* Increased size for these specific headings */
   }
 
-  /* **CRITICAL:** Specific font size reduction for "Overseas Songs" heading */
-  /* This requires adding 'overseas-songs-heading' class to its HTML tag */
-  .overseas-songs-heading {
+  /* **CRITICAL:** Specific smallest font size for "Overseas Songs" heading */
+  /* This now correctly targets both the `overseas-songs-heading` class and the `heading5` class */
+  .overseas-songs-heading, .heading5 {
     font-size: 0.8em !important; /* Even smaller font size for overseas songs */
   }
 
@@ -1529,9 +1549,4 @@ body.light-theme {
     grid-template-columns: 30px 1fr 40px !important;
     font-size: 14px !important;
   }
-}
-
-.heading5{
-    font-size: 1.1em;
-    align: center;
 }
