@@ -1346,10 +1346,8 @@ body.light-theme {
   /*
   ** Section Headings (e.g., "Top Albums")
   */
-    .heading5
-  .heading
-  .heading3,
-  .heading4,
+ 
+ 
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
