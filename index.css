@@ -1646,6 +1646,8 @@ body.light-theme {
   }
 
   /* Enable horizontal scroll for albums row */
+ /* --- MOBILE ONLY: Fix horizontal scroll for Top Albums (albums-row) and make it smooth --- */
+@media (max-width: 768px) {
   .albums-row {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -1660,6 +1662,7 @@ body.light-theme {
     scroll-snap-type: x mandatory !important;
     margin-top: 20px !important;
     width: 100vw !important;
+    white-space: nowrap !important; /* Prevent wrapping */
   }
   .albums-row::-webkit-scrollbar {
     display: none !important;
@@ -1672,7 +1675,7 @@ body.light-theme {
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    min-width: 0 !important;
+    min-width: 120px !important; /* Ensure each album stays same width */
     scroll-snap-align: start !important;
     margin: 0 !important;
     padding: 0 !important;
