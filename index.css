@@ -1596,23 +1596,28 @@ body.light-theme {
 /* --- MOBILE ONLY: Force marquee effect for song title in music controller --- */
 /* --- MOBILE ONLY: Force marquee effect for song title in music controller --- */
 @media (max-width: 768px) {
-  #controller-song-title {
-    display: block !important;
+ #controller-song-title {
+    /* Ensure it can take up all necessary space */
+    width: auto !important;
+    min-width: 0 !important; /* Crucial for flex/grid items */
+    max-width: none !important; /* Remove any max-width */
+
+    /* Ensure text doesn't wrap and displays inline */
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important; /* Keep for non-marquee state */
-    /* REMOVE OR ADJUST THIS LINE */
-    /* max-width: 60vw !important; */ 
-    font-weight: 600;
-    font-size: 1em;
-    line-height: 1.2em;
-    position: relative;
-      flex-grow: 1; /* If it's a flex item */
-    min-width: 0; /* Crucial for long text within flex items */
+    
+    /* Crucial for marquee to show full text */
+    overflow: visible !important; /* Temporarily allow overflow to see if text renders fully */
+    text-overflow: clip !important; /* No ellipsis when full text is attempted */
+
+    /* If it's a flex item within a parent, ensure it can grow */
+    flex-grow: 1 !important;
+    flex-shrink: 0 !important; /* Prevent it from shrinking */
+    flex-basis: auto !important;
   }
   #controller-song-title.marquee {
     animation: marquee-mob 7s linear infinite !important;
     text-overflow: clip !important; /* Ensure no ellipsis when marquee is active */
+      overflow: hidden !important;
   }
   @keyframes marquee-mob {
     0% { transform: translateX(100%); }
