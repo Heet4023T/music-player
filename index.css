@@ -1561,7 +1561,7 @@ body.light-theme {
 @media (max-width: 768px) {
   /* Move search bar higher so it doesn't overlap album image */
   .fixed .header-container .search-container {
-    top: 35px !important;
+    top: 55px !important;
   }
 
   /* Album header: push album image/info further down */
