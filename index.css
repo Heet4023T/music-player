@@ -1738,5 +1738,52 @@ body.light-theme {
   }
 }
 }
-  
+
+/* --- MOBILE ONLY: Make "No song playing" fully visible in music controller --- */
+@media (max-width: 768px) {
+  #music-controller {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    height: auto !important;
+    min-height: 110px !important;
+    padding: 12px 10px !important;
+    font-size: 0.95em !important;
+    max-width: 98vw !important;
+    width: 98vw !important;
+    box-sizing: border-box !important;
+  }
+  #music-controller .controller-main-row,
+  #music-controller .controller-progress-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    gap: 5px !important;
+  }
+  #music-controller p,
+  #music-controller span,
+  #music-controller .song-details > *,
+  #music-controller .song-title,
+  #music-controller .artist-name {
+    font-size: 1em !important;
+    white-space: normal !important;
+    text-align: left !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    line-height: 1.4em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    word-break: break-word !important;
+    display: block !important;
+  }
+  #music-controller .song-details {
+    width: 100% !important;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    overflow: visible !important;
+  }
+}
 
