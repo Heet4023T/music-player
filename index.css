@@ -1555,17 +1555,19 @@ body.light-theme {
   }
 }
 
-/* --- MOBILE ONLY: Back button style and position for album view --- */
+
+/* --- MOBILE ONLY: Fix back button and album image overlap with search bar --- */
 @media (max-width: 768px) {
+  /* 1. Move back button below search bar and above album image */
   .album-view .back-button {
     position: absolute !important;
-    top: 135px !important;      /* Place below the search bar and above album image */
+    top: 230px !important;   /* Pushes it below the search bar */
     left: 20px !important;
     z-index: 2100 !important;
     background: rgba(0,0,0,0.7) !important;
     border-radius: 50% !important;
-    width: 38px !important;
-    height: 38px !important;
+    width: 29px !important;
+    height: 29px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1573,5 +1575,15 @@ body.light-theme {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
     color: #fff !important;
   }
+  
+  /* 2. Push album header (image/info) and song list further down */
+  .album-header {
+    margin-top: 70px !important; /* Pushes album image/info below search bar and back button */
+    padding-top: 30px !important;
+  }
+  .album-songs {
+    margin-top: 10px !important;
+  }
+}
   
 
