@@ -1472,8 +1472,8 @@ body.light-theme {
   */
   .album-img,
   .mashup-row img,
-  .overseas-row img,
-  .bhakti-row img {
+  .overseas-row img
+   {
     width: 100px !important; /* Reduced image width */
     height: 100px !important; /* Reduced image height */
     object-fit: cover !important; /* Ensure images fill space without distortion */
@@ -1481,6 +1481,14 @@ body.light-theme {
     margin-bottom: 8px !important;
   }
 
+
+    .bhakti-row img{
+            width: 180px !important;         /* Increased width for better fit */
+    height: 100px !important;        /* Slightly increased height */
+    object-fit: contain !important;
+         border-radius: 18px !important;  /* More rounded corners */
+    margin-bottom: 8px !important;
+    }
    .trending-row img {
     width: 180px !important;         /* Increased width for better fit */
     height: 100px !important;        /* Slightly increased height */
