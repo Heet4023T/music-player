@@ -1592,15 +1592,13 @@ body.light-theme {
     margin-right: 8px !important;
   }
   #controller-song-title {
-    font-size: 1.08em !important;
-    font-weight: 600 !important;
-    color: #fff !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    max-width: 100% !important;
-    line-height: 1.1em !important;
-  }
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 180px; /* Adjust as needed for your controller width */
+  vertical-align: middle;
+  position: relative;
+}
   #controller-song-artist {
     font-size: 0.97em !important;
     color: #e0e0e0 !important;
@@ -1610,6 +1608,25 @@ body.light-theme {
     max-width: 100% !important;
     line-height: 1.1em !important;
   }
+
+    .marquee {
+  animation: marquee 7s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  10% {
+    transform: translateX(100%);
+  }
+  90% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
   .controller-buttons {
     display: flex !important;
     align-items: center !important;
