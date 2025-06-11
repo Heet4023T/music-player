@@ -1691,7 +1691,17 @@ body.light-theme {
     margin-bottom: 8px !important;
   }
 }
- 
+
+/* --- MOBILE ONLY: Push album image and info further down --- */
+@media (max-width: 768px) {
+  .album-header {
+    margin-top: 130px !important;   /* Increased from 80px to 130px */
+    padding-top: 30px !important;   /* Increased from 20px to 30px */
+  }
+  .album-view .back-button {
+    top: 210px !important;          /* Move back button down to match new spacing */
+  }
+}
 
   
 
