@@ -1483,7 +1483,8 @@ body.light-theme {
   }
 
  /* --- MOBILE ONLY: Make music controller look like desktop, full width, horizontal layout --- */
-@media (max-width: 768px) {
+
+
   #music-controller {
     position: fixed !important;
     left: 0 !important;
@@ -1577,7 +1578,7 @@ body.light-theme {
     color: #fff !important;
     opacity: 0.8 !important;
   }
-}
+
 
 
 
