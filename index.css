@@ -1485,78 +1485,74 @@ body.light-theme {
  /* --- MOBILE ONLY: Make music controller look like desktop, full width, horizontal layout --- */
 
 
-/* --- MOBILE ONLY: Make music controller look like your screenshot and ensure "No song playing" is fully visible --- */
+/* --- MOBILE ONLY: Music controller row layout, clean, no overlap, all elements visible --- */
 @media (max-width: 768px) {
   #music-controller {
     position: fixed !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     bottom: 80px !important;
-    width: 92vw !important;
+    width: 96vw !important;
     max-width: 98vw !important;
     min-width: 0 !important;
-    border-radius: 18px !important;
+    border-radius: 12px !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.8) !important;
-    padding: 10px 14px 16px 10px !important;
+    padding: 8px 10px !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    gap: 12px !important;
-    height: 70px !important;
+    gap: 10px !important;
+    height: 60px !important;
     font-size: 1em !important;
     z-index: 1050 !important;
-    background: rgba(18, 18, 18, 0.95) !important;
+    background: #2a1812 !important; /* Example brown, change as needed */
   }
   #music-controller img#controller-album-art {
-    width: 48px !important;
-    height: 48px !important;
+    width: 44px !important;
+    height: 44px !important;
     border-radius: 8px !important;
-    margin-right: 10px !important;
     flex-shrink: 0 !important;
     object-fit: cover !important;
     background: #333 !important;
+    margin-right: 8px !important;
   }
-  #music-controller .controller-main-row {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    width: 100% !important;
+  #controller-song-info {
+    flex: 1 1 0 !important;
     min-width: 0 !important;
-    gap: 10px !important;
-  }
-  #music-controller #controller-song-info {
-    flex-grow: 1 !important;
-    min-width: 0 !important;
-    margin: 0 10px 0 0 !important;
     overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
+    margin-right: 8px !important;
   }
-  #music-controller #controller-song-title,
-  #music-controller #controller-song-artist,
-  #music-controller p,
-  #music-controller span {
+  #controller-song-title {
     font-size: 1em !important;
+    font-weight: 600 !important;
+    color: #fff !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    color: #fff !important;
-    max-width: 100vw !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.5px !important;
+    max-width: 100% !important;
+    line-height: 1.1em !important;
   }
-  #music-controller .controller-buttons {
+  #controller-song-artist {
+    font-size: 0.92em !important;
+    color: #e0e0e0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+    line-height: 1.1em !important;
+  }
+  .controller-buttons {
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
-    flex-shrink: 0 !important;
+    gap: 6px !important;
+    margin-right: 6px !important;
   }
   #music-controller button {
-    font-size: 1.3em !important;
+    font-size: 1.2em !important;
     padding: 4px !important;
     background: none !important;
     border: none !important;
@@ -1565,37 +1561,49 @@ body.light-theme {
     transition: background 0.2s, color 0.2s, transform 0.2s !important;
   }
   #music-controller button#controller-play-pause {
-    font-size: 1.7em !important;
+    font-size: 1.5em !important;
     color: #00eaff !important;
   }
-  #music-controller .controller-progress-row {
-    position: absolute !important;
-    left: 65px !important;
-    right: 18px !important;
-    bottom: 8px !important;
-    width: auto !important;
+  /* Progress bar and time */
+  .controller-progress-row {
     display: flex !important;
     align-items: center !important;
     gap: 6px !important;
-    z-index: 1 !important;
+    flex: 0 0 auto !important;
+    min-width: 120px !important;
+    margin-left: 8px !important;
   }
-  #music-controller #controller-progress {
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 8px 0 0 !important;
+  #controller-progress {
+    width: 70px !important;
+    min-width: 40px !important;
+    max-width: 90px !important;
     height: 4px !important;
     background: #444 !important;
     border-radius: 2px !important;
+    accent-color: #00eaff !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
   }
-  #music-controller #controller-current-time,
-  #music-controller #controller-duration {
-    font-size: 0.85em !important;
-    min-width: 38px !important;
+  #controller-time {
+    font-size: 0.95em !important;
+    min-width: 54px !important;
     color: #fff !important;
-    opacity: 0.8 !important;
+    opacity: 0.85 !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    margin-left: 2px !important;
+  }
+  #controller-like-btn {
+    margin-left: 8px !important;
+    font-size: 1.3em !important;
+    color: #fff !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
   }
 }
-
 
 
 
