@@ -477,6 +477,13 @@ const trendingSongs = {
         displayName: "Pehle Bhi Main", // Added displayName
         artist: "Vishal and Raj" 
     },
+
+     huaMain: {
+        path: "audio/Hua Main - Animal 128 Kbps.mp3",
+        albumArt: "https://i.ibb.co/VYQWszG7/sddefault-1.jpg",
+        displayName: "Hua Main", // Added displayName
+        artist: "Pritam  Chakraborty" 
+    },
 };
 
 const Allsongs = {
@@ -2418,4 +2425,23 @@ window.playTrendingSong = playTrendingSong;
 window.playMashup = playMashup;
 window.playbhakti = playbhakti;
 window.playover = playover;
+
+// Add this logic after updating the song title in the controller
+function updateControllerSongTitle(title) {
+    const titleElem = document.getElementById('controller-song-title');
+    titleElem.textContent = title;
+
+    // Remove marquee if already present
+    titleElem.classList.remove('marquee');
+
+    // Only animate if text is overflowing
+    setTimeout(() => {
+        if (titleElem.scrollWidth > titleElem.clientWidth) {
+            titleElem.classList.add('marquee');
+        }
+    }, 100);
+}
+
+// Example usage: call this function whenever a new song is played
+// updateControllerSongTitle('Your Song Name Here');
 
