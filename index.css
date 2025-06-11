@@ -1591,13 +1591,15 @@ body.light-theme {
     justify-content: center !important;
     margin-right: 8px !important;
   }
-  #controller-song-title {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 180px; /* Adjust as needed for your controller width */
-  vertical-align: middle;
-  position: relative;
+ #controller-song-title {
+  display: block;
+  white-space: normal;      /* Allow wrapping */
+  overflow: visible;        /* Show all text */
+  text-overflow: unset;     /* No ellipsis */
+  max-width: 100%;          /* Take full width of container */
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 1.2em;
 }
   #controller-song-artist {
     font-size: 0.97em !important;
