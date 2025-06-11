@@ -1461,10 +1461,14 @@ body.light-theme {
 .bhakti-row {
 
     margin-top: 0 !important; /* Remove extra space above image rows */
+    
+}
+    trending-row,
+  .mashup-row {
     padding-left: 0 !important;
     padding-right: 0 !important;
     padding: 5px 0 !important;
-}
+  }
     
 .albums-row::-webkit-scrollbar,
 .trending-row::-webkit-scrollbar,
