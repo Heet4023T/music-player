@@ -1381,15 +1381,15 @@ body.light-theme {
     text-overflow: ellipsis !important;
   }
 
-  /* **CRITICAL:** ONLY push "Top Albums" heading further down (assuming it uses .heading3) */
+ 
   .heading3 {
-    margin-top: 40px !important; /* Increased only for Top Albums (if it's .heading3) */
-    font-size: 1.4em !important; /* **CRITICAL:** Increased font size for Top Albums heading */
+    margin-top: 40px !important; 
+    font-size: 1.4em !important; 
   }
 
   /* **CRITICAL:** Increased font size for "Trending Songs" */
   .heading4 {
-    font-size: 1.3em !important; /* **CRITICAL:** Increased font size for Trending Songs heading */
+    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for Trending Songs heading */
   }
 
   /* **CRITICAL:** Increased font size for "Overseas Songs" heading */
