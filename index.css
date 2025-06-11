@@ -1421,7 +1421,7 @@ body.light-theme {
   .mashup-row,
   .overseas-row,
   .bhakti-row {
-    display: flex !important; /* Ensure flexbox */
+    display: flex !important;
     flex-wrap: nowrap !important; /* Force items to stay in a single row (horizontal scroll) */
     overflow-x: auto !important; /* Enable horizontal scrollbar */
     -webkit-overflow-scrolling: touch !important; /* Improves scroll feel on iOS */
@@ -1435,7 +1435,8 @@ body.light-theme {
     margin-top: 20px !important; /* **CRITICAL:** Added vertical space between image rows */
   }
 
-  /* Hide scrollbar for Webkit browsers */
+
+ /* Hide scrollbar for Webkit browsers */
   .albums-row::-webkit-scrollbar,
   .trending-row::-webkit-scrollbar,
   .mashup-row::-webkit-scrollbar,
@@ -1444,9 +1445,11 @@ body.light-theme {
     display: none !important;
   }
 
-  /* Album Item Containers (wrappers around image + text) */
+ /* Album Item Containers (wrappers around image + text) */
+  /* Added .albums-row > * to specifically target direct children of albums-row */
   .album-container,
   .album-item, /* Assuming .album-item is a common wrapper */
+  .albums-row > *, /* <-- ADD THIS LINE */
   .trending-row > div,
   .mashup-row > div,
   .overseas-row > div,
@@ -1458,9 +1461,11 @@ body.light-theme {
     flex-direction: column !important;
     align-items: center !important; /* Center image/text within each item container */
     text-align: center !important; /* Center text below image */
-    min-width: 0 !important;
+    min-width: 0 !important; /* Allows flex items to shrink if necessary, but flex-shrink: 0 overrides this for desired effect */
     scroll-snap-align: start !important; /* Snap each item to the start of the scroll area */
   }
+
+  /* ... (your existing code for image thumbnails, music controller, etc.) ... */
 
   /*
   ** Image Thumbnails: Consistent 120x120px Size for All (MAXIMUM SPECIFICITY)
@@ -1480,9 +1485,9 @@ body.light-theme {
   /*
   ** Music Controller and Nav Bar (Fixed at Bottom, Always Visible)
   */
-  #music-controller {
+   #music-controller {
     width: 90% !important;
-    height: auto !important;
+    height: auto !important; /* Let height adjust based on content */
     padding: 10px !important;
     bottom: 80px !important; /* Positioned above the bottom navigation */
     position: fixed !important; /* Ensure it stays fixed */
@@ -1491,11 +1496,17 @@ body.light-theme {
     z-index: 1040 !important; /* Below footer, above content */
     background-color: rgba(0, 0, 0, 0.9) !important; /* Add background to avoid transparency issues */
     border-radius: 15px !important;
+    /* ADDED: Ensure flex layout for internal content */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important; /* Distribute items */
+    gap: 10px !important; /* Space between elements within the controller */
   }
 
-  #music-controller img#controller-album-art {
+ #music-controller img#controller-album-art {
     width: 50px !important;
     height: 50px !important;
+    flex-shrink: 0 !important; /* Prevents image from shrinking */
   }
 
   /* **CRITICAL:** Music Controller "No song playing" text visibility */
@@ -1504,16 +1515,43 @@ body.light-theme {
   #music-controller .song-details > *,
   #music-controller .song-title,
   #music-controller .artist-name {
-    font-size: 0.7em !important; /* **CRITICAL:** Further reduced font size to ensure full visibility */
+    font-size: 0.7em !important; /* Further reduced font size, adjust as needed */
     white-space: normal !important; /* Allow text to wrap to next line */
-    text-align: center !important; /* Center align the text */
+    text-align: left !important; /* Align text to the left within its container */
     max-width: 100% !important; /* Ensure it doesn't overflow its container */
-    overflow: visible !important; /* **CRITICAL:** Ensure text is not hidden */
-    text-overflow: clip !important; /* **CRITICAL:** Prevent ellipsis, allow full text */
-    line-height: 1.2em !important; /* Added for better line spacing if text wraps */
+    overflow: visible !important; /* Ensure text is not hidden */
+    text-overflow: clip !important; /* Prevent ellipsis, allow full text */
+    line-height: 1.3em !important; /* Slightly increased for better readability if wrapped */
     margin: 0 !important; /* Remove any default margins */
     padding: 0 !important; /* Remove any default padding */
+    flex-grow: 1 !important; /* Allow the text container to take available space */
   }
+
+     #music-controller p,
+  #music-controller span,
+  #music-controller .song-details > *,
+  #music-controller .song-title,
+  #music-controller .artist-name {
+    font-size: 0.7em !important; /* Further reduced font size, adjust as needed */
+    white-space: normal !important; /* Allow text to wrap to next line */
+    text-align: left !important; /* Align text to the left within its container */
+    max-width: 100% !important; /* Ensure it doesn't overflow its container */
+    overflow: visible !important; /* Ensure text is not hidden */
+    text-overflow: clip !important; /* Prevent ellipsis, allow full text */
+    line-height: 1.3em !important; /* Slightly increased for better readability if wrapped */
+    margin: 0 !important; /* Remove any default margins */
+    padding: 0 !important; /* Remove any default padding */
+    flex-grow: 1 !important; /* Allow the text container to take available space */
+  }
+
+     #music-controller .song-details {
+      flex-grow: 1 !important; /* Allow the details container to take remaining space */
+      display: flex !important;
+      flex-direction: column !important; /* Stack title and artist vertically */
+      justify-content: center !important;
+      overflow: hidden !important; /* Ensure content within this container is handled */
+  }
+
 
 
   /* --- Footer Position Fix (Bottom Navigation Bar) --- */
