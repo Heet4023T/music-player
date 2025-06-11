@@ -1474,16 +1474,16 @@ body.light-theme {
   .mashup-row img,
   .overseas-row img,
   .bhakti-row img {
-    width: 120px !important; /* Reduced image width */
-    height: 120px !important; /* Reduced image height */
+    width: 160px !important; /* Reduced image width */
+    height: 160px !important; /* Reduced image height */
     object-fit: cover !important; /* Ensure images fill space without distortion */
     border-radius: 8px !important;
     margin-bottom: 8px !important;
   }
 
      .trending-row img{
-           width: 140px !important; /* Reduced image width */
-    height: 140px !important; /* Reduced image height */
+           width: 180px !important; /* Reduced image width */
+    height: 180px !important; /* Reduced image height */
     object-fit: cover !important; /* Ensure images fill space without distortion */
     border-radius: 8px !important;
     margin-bottom: 8px !important;
