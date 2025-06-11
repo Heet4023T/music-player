@@ -1571,8 +1571,7 @@ body.light-theme {
     align-items: center !important;
     justify-content: center !important;
     font-size: 1.7em !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-    color: #fff !important;
+   
   }
   
   .album-header {
