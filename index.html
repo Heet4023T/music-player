@@ -45,21 +45,19 @@
 </div>
 
 <div class="album-view" id="newSongs-album-view">
-   <button class="back-button" onclick="closeAlbumView()"></button>
+  <div class="album-header">
+    <div class="album-cover-col">
+      <img src="https://placehold.co/110x110/000000/FFFFFF?text=New+Songs" alt="New Songs" class="album-cover">
+      <button class="back-button" onclick="closeAlbumView('newSongs')">
         <i class="bi bi-arrow-left"></i>
-    </button>
-        <img src="https://placehold.co/150x150/000000/FFFFFF?text=New+Songs" alt="New Songs" class="album-cover">
-      <div class="album-header">
-  <div class="album-cover-and-back">
-    <img class="album-cover" src="..." alt="Album Art">
-    <button class="back-button">←</button>
-  </div>
-        <div class="album-info">
-            <span>Album</span>
-            <h1 class="album-title">New Songs Collection</h1>
-            <p>2024 • 12 songs</p>
-        </div>
+      </button>
     </div>
+    <div class="album-info">
+      <span>Album</span>
+      <h1 class="album-title">New Songs Collection</h1>
+      <p>2024 • 12 songs</p>
+    </div>
+  </div>
     <div class="album-songs">
         <div class="song-item" onclick="playSong('newSongs', 0)">
             <div class="song-number">1</div>
