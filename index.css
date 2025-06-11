@@ -1777,117 +1777,86 @@ body.light-theme {
   .fixed .header-container .search-container {
     top: 100px !important;
   }
- .album-header {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-end !important;
-    gap: 18px !important;
-    width: 100% !important;
-    padding: 0 0 0 0 !important;
-    margin-top: 70px !important;
-    margin-bottom: 0 !important;
-    box-sizing: border-box !important;
-    min-height: 130px !important;
-    position: relative !important;
-  }
 
-  /* Album cover: left side, square, slightly smaller */
-  .album-cover {
-    width: 100px !important;
-    height: 100px !important;
-    border-radius: 10px !important;
-    object-fit: cover !important;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.4) !important;
-    margin: 0 !important;
-    display: block !important;
-  }
-
-   .album-info {
-    display: flex !important;
+  /* Album header: push album image/info further down */
+  .album-header {
+    margin-top: 80px !important;
+    padding-top: 20px !important;
     flex-direction: column !important;
-    justify-content: flex-end !important;
-    align-items: flex-start !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Album cover smaller for mobile */
+  .album-cover {
+    width: 120px !important;
+    height: 120px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Album info compact and centered */
+  .album-info {
     padding: 0 !important;
     margin: 0 !important;
-    font-size: 1em !important;
-    color: #fff !important;
-    text-align: left !important;
-    min-width: 0 !important;
-    flex: 1 1 0 !important;
-    gap: 2px !important;
+    font-size: 0.95em !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
   }
   .album-title {
-    font-size: 1.15em !important;
-    font-weight: 700 !important;
-    margin-bottom: 2px !important;
+    font-size: 1.1em !important;
+    margin-bottom: 4px !important;
     word-break: break-word !important;
-    color: #fff !important;
   }
-    
   .album-header p,
   .album-header span {
     font-size: 0.95em !important;
   }
 
-     .album-info span, .album-info p {
-    font-size: 0.98em !important;
-    color: #ccc !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-    
   /* Back button: below search bar, above album image */
-.album-view .back-button {
+  .album-view .back-button {
     position: absolute !important;
-    left: -8px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    z-index: 10 !important;
+    top: 170px !important;
+    left: 20px !important;
+    z-index: 2100 !important;
     background: rgba(0,0,0,0.7) !important;
     border-radius: 50% !important;
-    width: 32px !important;
-    height: 32px !important;
+    width: 29px !important;
+    height: 29px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.7em !important;
+    font-size: 1.5em !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
     color: #fff !important;
-    border: none !important;
-    outline: none !important;
   }
-
-}
   
 
   /* Album songs list: smaller and compact */
   .album-songs {
     margin-top: 10px !important;
-    padding: 8px 0 0 0 !important;
+    padding: 8px 2vw !important;
     max-width: 100vw !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    font-size: 13px !important;
   }
   .album-songs .song-item {
-    grid-template-columns: 28px 1fr 38px !important;
-    font-size: 13px !important;
+    grid-template-columns: 22px 1fr 32px !important;
+    font-size: 12px !important;
     padding: 7px 4px !important;
     margin-bottom: 2px !important;
-    background: transparent !important;
-    border-radius: 0 !important;
-    color: #fff !important;
+    background: rgba(0,0,0,0.15) !important;
+    border-radius: 5px !important;
   }
   .album-songs .song-number,
   .album-songs .song-details,
   .album-songs .song-duration {
-    font-size: 13px !important;
-    color: #fff !important;
+    font-size: 12px !important;
   }
   .album-songs .song-duration {
-    font-size: 12px !important;
-    color: #b3b3b3 !important;
+    font-size: 11px !important;
   }
 
   /* Enable horizontal scroll for albums row */
@@ -1897,41 +1866,42 @@ body.light-theme {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    padding: 0 10px !important;
     gap: 10px !important;
-    padding: 0 8px !important;
     justify-content: flex-start !important;
-    align-items: center !important; /* Center vertically */
+    align-items: flex-start !important;
+    scroll-snap-type: x mandatory !important;
+    margin-top: 20px !important;
     width: 100vw !important;
-    margin-top: 10px !important;
-    white-space: nowrap !important;
+    white-space: nowrap !important; /* Prevent wrapping */
   }
   .albums-row::-webkit-scrollbar {
     display: none !important;
   }
   .album-container {
     flex-shrink: 0 !important;
-    width: 90px !important;      /* Smaller container */
-    height: 90px !important;
+    width: 120px !important;
+    height: 160px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
+    text-align: center !important;
+    min-width: 120px !important; /* Ensure each album stays same width */
+    scroll-snap-align: start !important;
     margin: 0 !important;
     padding: 0 !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    background: none !important;
   }
   .album-img {
-    width: 90px !important;      /* Match container */
-    height: 90px !important;
+    width: 120px !important;
+    height: 120px !important;
     object-fit: cover !important;
     border-radius: 8px !important;
-    margin-bottom: 0 !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    display: block !important;
+    margin-bottom: 8px !important;
   }
-
+}
 
 /* --- MOBILE ONLY: Push album image and info further down --- */
 @media (max-width: 768px) {
