@@ -1596,24 +1596,24 @@ body.light-theme {
 /* --- MOBILE ONLY: Force marquee effect for song title in music controller --- */
 /* --- MOBILE ONLY: Force marquee effect for song title in music controller --- */
 @media (max-width: 768px) {
-  .controller-title-wrapper {
+  .marquee-container {
     width: 60vw;
     overflow: hidden;
     position: relative;
   }
 
-  #controller-song-title {
+  .marquee-content {
     display: inline-block;
     white-space: nowrap;
     font-weight: 600;
     font-size: 1em;
     line-height: 1.2em;
     color: white;
-    padding-left: 100%;
-    animation: marquee-mob 10s linear infinite;
+    padding-left: 100%; /* Slide in from the right */
+    animation: marquee-move 10s linear infinite;
   }
 
-  @keyframes marquee-mob {
+  @keyframes marquee-move {
     0% {
       transform: translateX(0%);
     }
@@ -1621,17 +1621,9 @@ body.light-theme {
       transform: translateX(-100%);
     }
   }
-
-  #controller-song-artist {
-    font-size: 0.9em;
-    color: #e0e0e0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    line-height: 1.1em;
-  }
 }
+}
+
 
 
 
