@@ -1505,7 +1505,7 @@ body.light-theme {
     justify-content: flex-start !important;
     gap: 6px !important;
     height: 92px !important; /* Increased height for dragger/slider */
-    font-size: 1em !important;
+    font-size: 0.90em !important;
     z-index: 1050 !important;
     background: black !important; /* Example brown, change as needed */
   }
