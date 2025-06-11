@@ -1444,29 +1444,33 @@ body.light-theme {
     padding: 0 10px !important; /* Add some horizontal padding */
     box-sizing: border-box !important; /* Include padding in element's total width */
   }
+    .fixed2 .head1 .heading,
+.fixed3 .heading2,
+.fixed4 .heading3,
+.fixed5 .heading4,
+.fixed6 .heading5 {
+    margin-bottom: 28px !important; /* Increased for clear separation between heading and images */
+}
+
+/* Consistent spacing above all section headings */
+.fixed3 .heading2,
+.fixed4 .heading3,
+.fixed5 .heading4,
+.fixed6 .heading5 {
+    margin-top: 48px !important; /* Increased for clear separation between sections */
+}
+
 
   /*
   ** Image Rows: Now HORIZONTAL SCROLLING (NOT GRID)
   */
-  .albums-row,
-  .trending-row,
-  .mashup-row,
-  .overseas-row,
-  .bhakti-row {
-    display: flex !important;
-    flex-wrap: nowrap !important; /* Force items to stay in a single row (horizontal scroll) */
-    overflow-x: auto !important; /* Enable horizontal scrollbar */
-    -webkit-overflow-scrolling: touch !important; /* Improves scroll feel on iOS */
-    scrollbar-width: none !important; /* For Firefox */
-    -ms-overflow-style: none !important; /* For IE/Edge */
-    padding: 0 10px !important; /* Padding for the container itself */
-    gap: 10px !important; /* Consistent slightly reduced spacing between items */
-    justify-content: flex-start !important; /* Align content to the start for scrolling */
-    align-items: flex-start !important;
-    scroll-snap-type: x mandatory !important; /* For smooth item snapping on scroll */
-    margin-top: 20px !important; /* **CRITICAL:** Added vertical space between image rows */
-  }
-
+.albums-row,
+.trending-row,
+.mashup-row,
+.overseas-row,
+.bhakti-row {
+    margin-top: 0 !important; /* Remove extra space above image rows */
+}
 
  /* Hide scrollbar for Webkit browsers */
   .albums-row::-webkit-scrollbar,
