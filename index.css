@@ -1613,19 +1613,33 @@ body.light-theme {
     animation: marquee-mob 7s linear infinite !important;
   
   }
-  @keyframes marquee-mob {
-   0% { transform: translateX(100%); }
-   100% { transform: translateX(-100%);}
+ @media (max-width: 768px) {
+  .controller-title-wrapper {
+    width: 60vw;
+    overflow: hidden;
+    position: relative;
   }
-}
 
-/* Prevent accidental overrides anywhere else */
-#controller-song-title {
-  white-space: nowrap !important;
-  overflow: hidden !important;
+  #controller-song-title {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 1.2em;
+    color: white;
+    will-change: transform;
+  }
 
-}
-    
+  #controller-song-title.marquee {
+    animation: marquee-mob 7s linear infinite !important;
+  }
+
+  @keyframes marquee-mob {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
   #controller-song-artist {
     font-size: 0.97em !important;
     color: #e0e0e0 !important;
@@ -1635,25 +1649,8 @@ body.light-theme {
     max-width: 100% !important;
     line-height: 1.1em !important;
   }
-
-    .marquee {
-  animation: marquee 7s linear infinite;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  10% {
-    transform: translateX(100%);
-  }
-  90% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
   .controller-buttons {
     display: flex !important;
     align-items: center !important;
