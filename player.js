@@ -2434,12 +2434,16 @@ function updateControllerSongTitle(title) {
   titleElem.classList.remove('marquee');
   titleElem.textContent = title;
 
+  // Force reflow
+  void titleElem.offsetWidth;
+
   setTimeout(() => {
     if (titleElem.scrollWidth > wrapper.clientWidth) {
       titleElem.classList.add('marquee');
     }
-  }, 100);
+  }, 50);
 }
+
 
 
 
