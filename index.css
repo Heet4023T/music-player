@@ -1573,12 +1573,5 @@ body.light-theme {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
     color: #fff !important;
   }
-  .album-view .back-button::before {
-    content: '\2190'; /* Unicode left arrow */
-    font-size: 1.2em;
-    color: #fff;
-    display: block;
-    line-height: 1;
-  }
-}
+  
 
