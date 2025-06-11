@@ -2430,18 +2430,13 @@ window.playover = playover;
 function updateControllerSongTitle(title) {
     const titleElem = document.getElementById('controller-song-title');
     titleElem.textContent = title;
-
-    // Remove marquee if already present
     titleElem.classList.remove('marquee');
-
-    // Only animate if text is overflowing
+    // Only animate if text is overflowing (on mobile)
     setTimeout(() => {
-        if (titleElem.scrollWidth > titleElem.clientWidth) {
+        if (window.innerWidth <= 768 && titleElem.scrollWidth > titleElem.clientWidth) {
             titleElem.classList.add('marquee');
         }
     }, 100);
 }
 
-// Example usage: call this function whenever a new song is played
-// updateControllerSongTitle('Your Song Name Here');
-
+// Call updateControllerSongTitle(songName) whenever a new song is played.
