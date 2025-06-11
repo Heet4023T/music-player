@@ -1307,7 +1307,7 @@ const updateMusicControllerUI = debounce(function() {
         }
     }
 
-    controller.songTitle.textContent = songInfo.title;
+ updateControllerSongTitle(songInfo.title);
     if (controller.songArtist) { 
         controller.songArtist.textContent = songInfo.artist;
     }
