@@ -1394,7 +1394,7 @@ body.light-theme {
 
   /* **CRITICAL:** Increased font size for "Overseas Songs" heading */
   .overseas-songs-heading, .heading5 {
-    font-size: 0.9em !important; /* **CRITICAL:** Increased font size for overseas songs */
+    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for overseas songs */
   }
 
 
