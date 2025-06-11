@@ -1484,7 +1484,7 @@ body.light-theme {
      .trending-row img{
            width: 90px !important; /* Reduced image width */
     height: 90px !important; /* Reduced image height */
-    object-fit: cover !important; /* Ensure images fill space without distortion */
+    object-fit: contain !important; /* Ensure images fill space without distortion */
     border-radius: 8px !important;
     margin-bottom: 8px !important;
      }
