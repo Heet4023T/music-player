@@ -1365,7 +1365,8 @@ body.light-theme {
 .fixed4 .heading3,
 .fixed5 .heading4,
 .fixed6 .heading5 {
-    margin-bottom: 28px !important; /* Equal space below all section headings */
+  margin-top: 18px !important;     /* Less space above headings */
+    margin-bottom: 10px !important;  /* Less space below headings */
 }
 
 .fixed2 .head1 .heading {
@@ -1452,17 +1453,7 @@ body.light-theme {
 .mashup-row,
 .overseas-row,
 .bhakti-row {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-    padding: 0 10px !important;
-    gap: 10px !important;
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
-    scroll-snap-type: x mandatory !important;
+
     margin-top: 0 !important; /* Remove extra space above image rows */
 }
     
