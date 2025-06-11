@@ -1600,7 +1600,7 @@ body.light-theme {
     /* Ensure it can take up all necessary space */
     width: auto !important;
     min-width: 0 !important; /* Crucial for flex/grid items */
-    max-width: none !important; /* Remove any max-width */
+    max-width: 70w !important; 
 
     /* Ensure text doesn't wrap and displays inline */
     white-space: nowrap !important;
