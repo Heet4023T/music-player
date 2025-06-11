@@ -1609,8 +1609,8 @@ body.light-theme {
     z-index: 2100 !important;
     background: rgba(0,0,0,0.7) !important;
     border-radius: 50% !important;
-    width: 32px !important;
-    height: 32px !important;
+    width: 29px !important;
+    height: 29px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1618,13 +1618,7 @@ body.light-theme {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
     color: #fff !important;
   }
-  .album-view .back-button::before {
-    content: '\2190';
-    font-size: 1.2em;
-    color: #fff;
-    display: block;
-    line-height: 1;
-  }
+  
 
   /* Album songs list: smaller and compact */
   .album-songs {
