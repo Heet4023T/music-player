@@ -1591,15 +1591,28 @@ body.light-theme {
     justify-content: center !important;
     margin-right: 8px !important;
   }
- #controller-song-title {
-  display: block;
-  white-space: normal;      /* Allow wrapping */
-  overflow: visible;        /* Show all text */
-  text-overflow: unset;     /* No ellipsis */
-  max-width: 100%;          /* Take full width of container */
-  font-weight: 600;
-  font-size: 1em;
-  line-height: 1.2em;
+/* --- MOBILE ONLY: Marquee effect for song title in music controller --- */
+@media (max-width: 768px) {
+  #controller-song-title {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90vw;
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 1.2em;
+    position: relative;
+  }
+  #controller-song-title.marquee {
+    animation: marquee-mob 7s linear infinite;
+  }
+  @keyframes marquee-mob {
+    0% { transform: translateX(100%); }
+    10% { transform: translateX(100%); }
+    90% { transform: translateX(-100%); }
+    100% { transform: translateX(-100%); }
+  }
 }
   #controller-song-artist {
     font-size: 0.97em !important;
