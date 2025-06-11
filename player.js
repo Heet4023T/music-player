@@ -2428,22 +2428,12 @@ window.playbhakti = playbhakti;
 window.playover = playover;
 
 // Add this logic after updating the song title in the controller
-function updateControllerSongTitle(title) {
+function updateControllerSongTitle(title, artist) {
   const titleElem = document.getElementById('controller-song-title');
-  const wrapper = titleElem.parentElement;
+  const artistElem = document.getElementById('controller-song-artist');
 
-  // Remove previous animation class
-  titleElem.classList.remove('marquee');
-
-  // Set new title
   titleElem.textContent = title;
-
-  // Wait for rendering
-  setTimeout(() => {
-    if (titleElem.scrollWidth > wrapper.clientWidth) {
-      titleElem.classList.add('marquee');
-    }
-  }, 100);
+  if (artistElem) artistElem.textContent = artist || '';
 }
 
 
