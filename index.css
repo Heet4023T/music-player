@@ -1384,7 +1384,7 @@ body.light-theme {
  
   .heading3 {
     margin-top: 40px !important; 
-    font-size: 1.4em !important; 
+    font-size: 1.5em !important; 
   }
 
   /* **CRITICAL:** Increased font size for "Trending Songs" */
@@ -1397,10 +1397,9 @@ body.light-theme {
     font-size: 1.3em !important; /* **CRITICAL:** Increased font size for overseas songs */
   }
 
-    .heading,
-    .heading2
+    .heading
     {
-     font-size : 1.4em;   
+     font-size : 1.8em;   
     }
 
 
@@ -1495,6 +1494,7 @@ body.light-theme {
          border-radius: 18px !important;  /* More rounded corners */
     margin-bottom: 8px !important;
     }
+    
    .trending-row img {
     width: 180px !important;         /* Increased width for better fit */
     height: 100px !important;        /* Slightly increased height */
@@ -1506,6 +1506,7 @@ body.light-theme {
     padding: 8px 12px !important;    /* More padding left/right for better fit */
     display: block !important;
 }
+    
  /* --- MOBILE ONLY: Make music controller look like desktop, full width, horizontal layout --- */
 
 
