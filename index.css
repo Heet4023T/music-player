@@ -1482,75 +1482,53 @@ body.light-theme {
     margin-bottom: 8px !important;
   }
 
-  /*
-  ** Music Controller and Nav Bar (Fixed at Bottom, Always Visible)
-  */
-   #music-controller {
-    width: 90% !important;
-    height: auto !important; /* Let height adjust based on content */
-    padding: 10px !important;
-    bottom: 80px !important; /* Positioned above the bottom navigation */
-    position: fixed !important; /* Ensure it stays fixed */
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 1040 !important; /* Below footer, above content */
-    background-color: rgba(0, 0, 0, 0.9) !important; /* Add background to avoid transparency issues */
-    border-radius: 15px !important;
-    /* ADDED: Ensure flex layout for internal content */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important; /* Distribute items */
-    gap: 10px !important; /* Space between elements within the controller */
-  }
+ /* --- MOBILE ONLY: Make "No song playing" fully visible in music controller --- */
 
- #music-controller img#controller-album-art {
-    width: 50px !important;
-    height: 50px !important;
-    flex-shrink: 0 !important; /* Prevents image from shrinking */
+  #music-controller {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    height: auto !important;
+    min-height: 110px !important;
+    padding: 12px 10px !important;
+    font-size: 0.95em !important;
+    max-width: 98vw !important;
+    width: 98vw !important;
+    box-sizing: border-box !important;
   }
-
-  /* **CRITICAL:** Music Controller "No song playing" text visibility */
+  #music-controller .controller-main-row,
+  #music-controller .controller-progress-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    gap: 5px !important;
+  }
   #music-controller p,
   #music-controller span,
   #music-controller .song-details > *,
   #music-controller .song-title,
   #music-controller .artist-name {
-    font-size: 0.7em !important; /* Further reduced font size, adjust as needed */
-    white-space: normal !important; /* Allow text to wrap to next line */
-    text-align: left !important; /* Align text to the left within its container */
-    max-width: 100% !important; /* Ensure it doesn't overflow its container */
-    overflow: visible !important; /* Ensure text is not hidden */
-    text-overflow: clip !important; /* Prevent ellipsis, allow full text */
-    line-height: 1.3em !important; /* Slightly increased for better readability if wrapped */
-    margin: 0 !important; /* Remove any default margins */
-    padding: 0 !important; /* Remove any default padding */
-    flex-grow: 1 !important; /* Allow the text container to take available space */
+    font-size: 1em !important;
+    white-space: normal !important;
+    text-align: left !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    line-height: 1.4em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    word-break: break-word !important;
+    display: block !important;
+  }
+  #music-controller .song-details {
+    width: 100% !important;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    overflow: visible !important;
   }
 
-     #music-controller p,
-  #music-controller span,
-  #music-controller .song-details > *,
-  #music-controller .song-title,
-  #music-controller .artist-name {
-    font-size: 0.7em !important; /* Further reduced font size, adjust as needed */
-    white-space: normal !important; /* Allow text to wrap to next line */
-    text-align: left !important; /* Align text to the left within its container */
-    max-width: 100% !important; /* Ensure it doesn't overflow its container */
-    overflow: visible !important; /* Ensure text is not hidden */
-    text-overflow: clip !important; /* Prevent ellipsis, allow full text */
-    line-height: 1.3em !important; /* Slightly increased for better readability if wrapped */
-    margin: 0 !important; /* Remove any default margins */
-    padding: 0 !important; /* Remove any default padding */
-    flex-grow: 1 !important; /* Allow the text container to take available space */
-  }
-
-     #music-controller .song-details {
-      flex-grow: 1 !important; /* Allow the details container to take remaining space */
-      display: flex !important;
-      flex-direction: column !important; /* Stack title and artist vertically */
-      justify-content: center !important;
-      overflow: hidden !important; /* Ensure content within this container is handled */
-  }
 
 
 
@@ -1739,51 +1717,5 @@ body.light-theme {
 }
 }
 
-/* --- MOBILE ONLY: Make "No song playing" fully visible in music controller --- */
-@media (max-width: 768px) {
-  #music-controller {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    height: auto !important;
-    min-height: 110px !important;
-    padding: 12px 10px !important;
-    font-size: 0.95em !important;
-    max-width: 98vw !important;
-    width: 98vw !important;
-    box-sizing: border-box !important;
-  }
-  #music-controller .controller-main-row,
-  #music-controller .controller-progress-row {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    width: 100% !important;
-    gap: 5px !important;
-  }
-  #music-controller p,
-  #music-controller span,
-  #music-controller .song-details > *,
-  #music-controller .song-title,
-  #music-controller .artist-name {
-    font-size: 1em !important;
-    white-space: normal !important;
-    text-align: left !important;
-    max-width: 100% !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-    line-height: 1.4em !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    word-break: break-word !important;
-    display: block !important;
-  }
-  #music-controller .song-details {
-    width: 100% !important;
-    flex-grow: 1 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    overflow: visible !important;
-  }
-}
+
 
