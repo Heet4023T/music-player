@@ -1370,7 +1370,7 @@ body.light-theme {
   .fixed3 h1,
   .fixed4 h1,
   .head1 h1 {
-    font-size: 1.0em !important; /* Increased general heading size */
+    font-size: 1.2em !important; /* Increased general heading size */
     text-align: center !important;
     padding: 5px 10px !important;
     margin-top: 30px !important; /* Default margin-top for most headings */
@@ -1387,19 +1387,17 @@ body.light-theme {
     font-size: 1.5em !important; 
   }
 
-  /* **CRITICAL:** Increased font size for "Trending Songs" */
-  .heading4 {
-    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for Trending Songs heading */
-  }
+ 
+  
 
   /* **CRITICAL:** Increased font size for "Overseas Songs" heading */
   .overseas-songs-heading, .heading5 {
     font-size: 1.3em !important; /* **CRITICAL:** Increased font size for overseas songs */
   }
 
-    .heading
+    . fixed 2 heading
     {
-     font-size : 1.8em;   
+     font-size : 1.4em;   
     }
 
 
