@@ -1493,7 +1493,7 @@ body.light-theme {
 
   
  .album-img,
-.mashup-row img,
+
 .overseas-row img {
     width: 100px !important;
     height: 100px !important;
@@ -1501,7 +1501,11 @@ body.light-theme {
     border-radius: 8px !important;
     margin-bottom: 8px !important;
 }
-
+.mashup-row img{
+     width: 180px !important;
+    height: 100px !important;
+    object-fit: contain !important;
+}
 
    .bhakti-row img {
     width: 180px !important;
