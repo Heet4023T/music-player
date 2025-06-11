@@ -1590,6 +1590,7 @@ body.light-theme {
     flex-direction: column !important;
     justify-content: center !important;
     margin-right: 8px !important;
+    flex-shrink: 1;
   }
 /* --- MOBILE ONLY: Marquee effect for song title in music controller --- */
 /* --- MOBILE ONLY: Force marquee effect for song title in music controller --- */
@@ -1606,6 +1607,8 @@ body.light-theme {
     font-size: 1em;
     line-height: 1.2em;
     position: relative;
+      flex-grow: 1; /* If it's a flex item */
+    min-width: 0; /* Crucial for long text within flex items */
   }
   #controller-song-title.marquee {
     animation: marquee-mob 7s linear infinite !important;
