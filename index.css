@@ -1778,7 +1778,7 @@ body.light-theme {
     top: 100px !important;
   }
 
-  /* Album header: push album image/info further down */
+  @media (max-width: 768px) {
   .album-header {
     display: flex !important;
     flex-direction: row !important;
@@ -1809,9 +1809,6 @@ body.light-theme {
     margin: 0 !important;
     display: block !important;
   }
-
-  
-
   .album-view .back-button {
     position: static !important;
     margin: 10px auto 0 auto !important;
@@ -1855,6 +1852,11 @@ body.light-theme {
     margin: 0 !important;
     padding: 0 !important;
   }
+}
+
+  
+
+  
   
   
 
