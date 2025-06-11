@@ -1577,7 +1577,7 @@ body.light-theme {
   }
   
   .album-header {
-    margin-top: 70px !important; /* Pushes album image/info down */
+    margin-top: 40px !important; /* Pushes album image/info down */
     padding-top: 30px !important;
   }
 
@@ -1634,3 +1634,7 @@ body.light-theme {
     overflow-x: hidden !important;
   }
 }
+
+.fixed .header-container .search-container {
+    top: 48px !important;   /* Was 75px, now much higher */
+  }
