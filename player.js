@@ -1307,7 +1307,8 @@ const updateMusicControllerUI = debounce(function() {
         }
     }
 
-updateControllerSongTitle("Vikram X Jailer X Leo X Jawan X Pushpa X Bahubali X Salaar");
+
+updateControllerSongTitle(songInfo.title);
 
     if (controller.songArtist) { 
         controller.songArtist.textContent = songInfo.artist;
