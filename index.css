@@ -1483,10 +1483,9 @@ body.light-theme {
 .bhakti-row::-webkit-scrollbar {
     display: none !important;
 }
-
-    
 .album-container,
 .album-item,
+.albums-row > *,
 .trending-row > div,
 .mashup-row > div,
 .overseas-row > div,
@@ -1501,28 +1500,10 @@ body.light-theme {
     min-width: 0 !important;
     scroll-snap-align: start !important;
 }
-.album-container{
-     width: 100px;   /* or your preferred size */
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-    .albums-row {
-  display: flex;
-  align-items: flex-start; /* or center for vertical centering */
-  gap: 10px;
-}
 
   
-.album-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px; /* or your preferred radius */
-  display: block;
-}
+
 
 .overseas-row img {
     width: 100px !important;
