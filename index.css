@@ -1368,7 +1368,7 @@ body.light-theme {
     letter-spacing: 2px !important;
     color: #fff !important;
     text-shadow: 0 2px 8px #0006 !important;
-    margin-top: 32px !important;
+    margin-top: 38px !important;
     margin-bottom: 18px !important;
     text-align: center !important;
 }
@@ -1388,6 +1388,17 @@ body.light-theme {
 /* TRENDING MASHUPS heading only */
 .fixed4 .heading3 {
     font-size: 1.3em !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 8px #0006 !important;
+    margin-top: 32px !important;
+    margin-bottom: 18px !important;
+    text-align: center !important;
+}
+
+    .fixed5 .heading4 {
+    font-size: 1.5em !important;
     font-weight: 900 !important;
     letter-spacing: 2px !important;
     color: #fff !important;
