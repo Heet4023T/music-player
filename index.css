@@ -1783,28 +1783,26 @@ body.light-theme {
     display: flex !important;
     flex-direction: row !important;
     align-items: flex-end !important;
-    gap: 16px !important;
+    gap: 18px !important;
     width: 100% !important;
     margin-top: 70px !important;
     margin-bottom: 0 !important;
-    padding: 0 12px 0 18px !important;
+    padding: 0 0 0 0 !important;
     min-height: 110px !important;
     position: relative !important;
     box-sizing: border-box !important;
   }
-
-  .album-header .album-cover-and-back {
+  .album-cover-col {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: flex-end !important;
+    justify-content: flex-start !important;
     min-width: 0 !important;
-    gap: 8px !important;
+    gap: 10px !important;
   }
-
   .album-cover {
-    width: 80px !important;
-    height: 80px !important;
+    width: 90px !important;
+    height: 90px !important;
     border-radius: 10px !important;
     object-fit: cover !important;
     box-shadow: 0 4px 18px rgba(0,0,0,0.4) !important;
@@ -1812,8 +1810,25 @@ body.light-theme {
     display: block !important;
   }
 
-  /* Album info compact and centered */
-   .album-info {
+  
+
+  .album-view .back-button {
+    position: static !important;
+    margin: 10px auto 0 auto !important;
+    background: rgba(0,0,0,0.7) !important;
+    border-radius: 50% !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.7em !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+    color: #fff !important;
+    border: none !important;
+    outline: none !important;
+  }
+  .album-info {
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-end !important;
@@ -1840,27 +1855,7 @@ body.light-theme {
     margin: 0 !important;
     padding: 0 !important;
   }
-    .album-header p,
-  .album-header span {
-    font-size: 0.95em !important;
-  }
-
- .album-view .back-button {
-    position: static !important;
-    margin: 10px auto 0 auto !important;
-    background: rgba(0,0,0,0.7) !important;
-    border-radius: 50% !important;
-    width: 32px !important;
-    height: 32px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 1.7em !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-    color: #fff !important;
-    border: none !important;
-    outline: none !important;
-  }
+  
   
 
   /* Album songs list: smaller and compact */
