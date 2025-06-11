@@ -1610,7 +1610,7 @@ body.light-theme {
     line-height: 1.2em;
     color: white;
     padding-left: 100%; /* Slide in from the right */
-    animation: marquee-move 10s linear infinite;
+    animation: marquee-move 6s linear infinite;
   }
 
   @keyframes marquee-move {
