@@ -1885,5 +1885,15 @@ body.light-theme {
 }
 }
 
-
+/* Blue heading effect for light theme on mobile */
+@media (max-width: 768px) {
+  .light-theme .fixed2 .head1 .heading,
+  .light-theme .fixed3 .heading2,
+  .light-theme .fixed4 .heading3,
+  .light-theme .fixed5 .heading4,
+  .light-theme .fixed6 .heading5 {
+    color: #0a0a2e !important;
+    text-shadow: 0 0 10px rgba(0, 94, 255, 0.3) !important;
+  }
+}
 
