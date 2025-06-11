@@ -1593,13 +1593,15 @@ body.light-theme {
   }
 /* --- MOBILE ONLY: Marquee effect for song title in music controller --- */
 /* --- MOBILE ONLY: Force marquee effect for song title in music controller --- */
+/* --- MOBILE ONLY: Force marquee effect for song title in music controller --- */
 @media (max-width: 768px) {
   #controller-song-title {
     display: block !important;
     white-space: nowrap !important;
     overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    max-width: 60vw !important; /* Reduced for narrow controllers */
+    text-overflow: ellipsis !important; /* Keep for non-marquee state */
+    /* REMOVE OR ADJUST THIS LINE */
+    /* max-width: 60vw !important; */ 
     font-weight: 600;
     font-size: 1em;
     line-height: 1.2em;
@@ -1607,6 +1609,7 @@ body.light-theme {
   }
   #controller-song-title.marquee {
     animation: marquee-mob 7s linear infinite !important;
+    text-overflow: clip !important; /* Ensure no ellipsis when marquee is active */
   }
   @keyframes marquee-mob {
     0% { transform: translateX(100%); }
@@ -1622,7 +1625,6 @@ body.light-theme {
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
-
     
   #controller-song-artist {
     font-size: 0.97em !important;
