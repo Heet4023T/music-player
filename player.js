@@ -2432,17 +2432,18 @@ function updateControllerSongTitle(title) {
   const titleElem = document.getElementById('controller-song-title');
   const wrapper = titleElem.parentElement;
 
+  // Remove previous animation class
   titleElem.classList.remove('marquee');
+
+  // Set new title
   titleElem.textContent = title;
 
-  // Force reflow
-  void titleElem.offsetWidth;
-
+  // Wait for rendering
   setTimeout(() => {
     if (titleElem.scrollWidth > wrapper.clientWidth) {
       titleElem.classList.add('marquee');
     }
-  }, 50);
+  }, 100);
 }
 
 
