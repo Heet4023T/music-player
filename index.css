@@ -1363,7 +1363,7 @@ body.light-theme {
 
 /* TOP ALBUMS heading only */
 .fixed2 .head1 .heading {
-    font-size: 2.2em !important;
+    font-size: 1.3em !important;
     font-weight: 900 !important;
     letter-spacing: 2px !important;
     color: #fff !important;
@@ -1375,7 +1375,7 @@ body.light-theme {
 
 /* TRENDING MASHUPS heading only */
 .fixed4 .heading3 {
-    font-size: 2em !important;
+    font-size: 1.3em !important;
     font-weight: 900 !important;
     letter-spacing: 2px !important;
     color: #fff !important;
@@ -1387,7 +1387,7 @@ body.light-theme {
  
   .heading3 {
     margin-top: 40px !important; 
-    font-size: 1.5em !important; 
+    font-size: 1.3em !important; 
   }
 
  
@@ -1398,10 +1398,6 @@ body.light-theme {
     font-size: 1.3em !important; /* **CRITICAL:** Increased font size for overseas songs */
   }
 
-    . fixed 2 heading
-    {
-     font-size : 1.4em;   
-    }
 
 
   /* **CRITICAL:** Style for section descriptions (like "Dive into world of Bhakti Songs") */
