@@ -1601,7 +1601,7 @@ body.light-theme {
     display: block !important;
     overflow: hidden !important;
     white-space: nowrap !important;
-    text-overflow: ellipsis !important;
+
     max-width: 60vw !important;
     font-weight: 600;
     font-size: 1em;
@@ -1623,7 +1623,7 @@ body.light-theme {
 #controller-song-title {
   white-space: nowrap !important;
   overflow: hidden !important;
-  text-overflow: ellipsis !important;
+
 }
     
   #controller-song-artist {
