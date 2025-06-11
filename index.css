@@ -1361,21 +1361,25 @@ body.light-theme {
     position: absolute !important; /* Ensure it's absolutely positioned within search-container */
   }
 
+/* TOP ALBUMS heading only */
+.fixed2 .head1 .heading {
+    font-size: 2.2em !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 8px #0006 !important;
+    margin-top: 32px !important;
+    margin-bottom: 18px !important;
+    text-align: center !important;
+}
 
-  /*
-  ** Section Headings (General Styling for all except Top Albums)
-  */
-  /* Increase heading size for Top Albums and Trending Songs */
-.head1 .heading,      /* Top Albums heading */
-.heading2,            /* Trending Songs heading */
-.fixed2 .heading,     /* Top Albums heading inside .fixed2 */
-.fixed3 .heading2     /* Trending Songs heading inside .fixed3 */
-{
-    font-size: 2em !important;      /* Much larger font size */
-    font-weight: 900 !important;    /* Bolder */
-    letter-spacing: 2px !important; /* More spacing for impact */
-    text-shadow: 0 2px 8px #0006 !important; /* Optional: subtle shadow for glow */
-    color: #fff !important;         /* Ensure white color for contrast */
+/* TRENDING MASHUPS heading only */
+.fixed4 .heading3 {
+    font-size: 2em !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+    color: #fff !important;
+    text-shadow: 0 2px 8px #0006 !important;
     margin-top: 32px !important;
     margin-bottom: 18px !important;
     text-align: center !important;
