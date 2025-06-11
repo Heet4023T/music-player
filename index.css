@@ -1481,15 +1481,16 @@ body.light-theme {
     margin-bottom: 8px !important;
   }
 
-     .trending-row img {
-    width: 150px !important;         /* Increase width for landscape images */
-    height: 90px !important;         /* Keep height fixed */
+   .trending-row img {
+    width: 180px !important;         /* Increased width for better fit */
+    height: 100px !important;        /* Slightly increased height */
     object-fit: contain !important;  /* Show the whole image without cropping */
-    background: #181818 !important;  /* Add background for letterboxing */
-    border-radius: 16px !important;  /* Match the rounded corners in your screenshot */
+    background: #181818 !important;  /* Background for letterboxing */
+    border-radius: 18px !important;  /* More rounded corners */
     margin-bottom: 8px !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    padding: 4px !important;         /* Optional: add padding for extra spacing */
+    padding: 8px 12px !important;    /* More padding left/right for better fit */
+    display: block !important;
 }
  /* --- MOBILE ONLY: Make music controller look like desktop, full width, horizontal layout --- */
 
