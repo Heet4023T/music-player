@@ -1394,7 +1394,7 @@ body.light-theme {
 
   /* **CRITICAL:** Increased font size for "Overseas Songs" heading */
   .overseas-songs-heading, .heading5 {
-    font-size: 1.2em !important; /* **CRITICAL:** Increased font size for overseas songs */
+    font-size: 1.3em !important; /* **CRITICAL:** Increased font size for overseas songs */
   }
 
 
@@ -1472,7 +1472,6 @@ body.light-theme {
   */
   .album-img,
   .mashup-row img,
-  .trending-row img,
   .overseas-row img,
   .bhakti-row img {
     width: 120px !important; /* Reduced image width */
@@ -1482,6 +1481,13 @@ body.light-theme {
     margin-bottom: 8px !important;
   }
 
+     .trending-row img{
+           width: 140px !important; /* Reduced image width */
+    height: 140px !important; /* Reduced image height */
+    object-fit: cover !important; /* Ensure images fill space without distortion */
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+     }
  /* --- MOBILE ONLY: Make music controller look like desktop, full width, horizontal layout --- */
 
 
