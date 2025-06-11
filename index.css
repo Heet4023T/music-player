@@ -1560,7 +1560,7 @@ body.light-theme {
   /* 2. Album header: stack info vertically, no horizontal scroll */
 .album-view .back-button {
     position: absolute !important;
-    top: 90px !important;   /* Place just below the search bar */
+    top: 130px !important;   /* Pushes it below the search bar */
     left: 20px !important;
     z-index: 2100 !important;
     background: rgba(0,0,0,0.7) !important;
@@ -1576,7 +1576,7 @@ body.light-theme {
   }
   
   .album-header {
-    margin-top: 60px !important; /* Pushes album image/info down */
+    margin-top: 70px !important; /* Pushes album image/info down */
     padding-top: 30px !important;
   }
 
