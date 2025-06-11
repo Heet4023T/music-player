@@ -1609,22 +1609,30 @@ body.light-theme {
     font-size: 1em;
     line-height: 1.2em;
     color: white;
-    transform: translateX(0);
-  }
-
-  #controller-song-title.marquee {
+    padding-left: 100%;
     animation: marquee-mob 10s linear infinite;
   }
 
   @keyframes marquee-mob {
     0% {
-      transform: translateX(100%);
+      transform: translateX(0%);
     }
     100% {
       transform: translateX(-100%);
     }
   }
+
+  #controller-song-artist {
+    font-size: 0.9em;
+    color: #e0e0e0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    line-height: 1.1em;
+  }
 }
+
 
 
 
