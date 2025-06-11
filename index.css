@@ -1577,7 +1577,7 @@ body.light-theme {
   }
   
   .album-header {
-    margin-top: 100px !important; /* Pushes album image/info down */
+    margin-top: 70px !important; /* Pushes album image/info down */
     padding-top: 30px !important;
   }
 
