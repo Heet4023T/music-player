@@ -1363,7 +1363,7 @@ body.light-theme {
 
 /* TOP ALBUMS heading only */
 .fixed2 .head1 .heading {
-    font-size: 1.3em !important;
+    font-size: 1.44em !important;
     font-weight: 900 !important;
     letter-spacing: 2px !important;
     color: #fff !important;
@@ -1375,7 +1375,7 @@ body.light-theme {
 
 /* TRENDING MASHUPS heading only */
 .fixed4 .heading3 {
-    font-size: 1.3em !important;
+    font-size: 1.2em !important;
     font-weight: 900 !important;
     letter-spacing: 2px !important;
     color: #fff !important;
