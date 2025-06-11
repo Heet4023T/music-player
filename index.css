@@ -1485,7 +1485,7 @@ body.light-theme {
     width: 180px !important;         /* Increased width for better fit */
     height: 100px !important;        /* Slightly increased height */
     object-fit: contain !important;  /* Show the whole image without cropping */
-    background: #181818 !important;  /* Background for letterboxing */
+    background: #232946 !important;  /* Background for letterboxing */
     border-radius: 18px !important;  /* More rounded corners */
     margin-bottom: 8px !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
@@ -1517,7 +1517,7 @@ body.light-theme {
     height: 92px !important; /* Increased height for dragger/slider */
     font-size: 0.90em !important;
     z-index: 1050 !important;
-    background: black !important; /* Example brown, change as needed */
+    background: #181f3a !important; /* Example brown, change as needed */
   }
   #music-controller .controller-main-row {
     width: 100% !important;
