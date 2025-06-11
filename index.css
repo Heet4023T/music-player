@@ -1403,7 +1403,7 @@ body.light-theme {
     text-shadow: 0 2px 8px #0006 !important;
     text-align: center !important;
      margin-top: 8px !important;  /* Reduced from 18px or more to 8px */
-    margin-bottom: 10px !important;
+    margin-bottom: 18px !important;
 }
 
 .fixed5 .heading4 {
@@ -1416,8 +1416,8 @@ body.light-theme {
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-      margin-top: 8px !important;  /* Reduced from 18px or more to 8px */
-    margin-bottom: 10px !important;
+      margin-top: 28px !important;  /* Reduced from 18px or more to 8px */
+    margin-bottom: 12px !important;
 }
 
 .fixed6 .heading5 {
@@ -1427,8 +1427,8 @@ body.light-theme {
     color: #fff !important;
     text-shadow: 0 2px 8px #0006 !important;
     text-align: center !important;
-      margin-top: 8px !important;  /* Reduced from 18px or more to 8px */
-    margin-bottom: 10px !important;
+      margin-top: 28px !important;  /* Reduced from 18px or more to 8px */
+    margin-bottom: 12px !important;
 }
   
 
