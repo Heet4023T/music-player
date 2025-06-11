@@ -1816,9 +1816,9 @@ body.light-theme {
   }
 
   /* Back button: below search bar, above album image */
-  .album-view .back-button {
+.album-view .back-button {
     position: absolute !important;
-    top: 170px !important;
+    top: 115px !important;   /* Just below search bar */
     left: 20px !important;
     z-index: 2100 !important;
     background: rgba(0,0,0,0.7) !important;
@@ -1832,6 +1832,7 @@ body.light-theme {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
     color: #fff !important;
   }
+}
   
 
   /* Album songs list: smaller and compact */
@@ -1866,42 +1867,41 @@ body.light-theme {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-    padding: 0 10px !important;
     gap: 10px !important;
+    padding: 0 8px !important;
     justify-content: flex-start !important;
-    align-items: flex-start !important;
-    scroll-snap-type: x mandatory !important;
-    margin-top: 20px !important;
+    align-items: center !important; /* Center vertically */
     width: 100vw !important;
-    white-space: nowrap !important; /* Prevent wrapping */
+    margin-top: 10px !important;
+    white-space: nowrap !important;
   }
   .albums-row::-webkit-scrollbar {
     display: none !important;
   }
   .album-container {
     flex-shrink: 0 !important;
-    width: 120px !important;
-    height: 160px !important;
+    width: 90px !important;      /* Smaller container */
+    height: 90px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    text-align: center !important;
-    min-width: 120px !important; /* Ensure each album stays same width */
-    scroll-snap-align: start !important;
+    justify-content: center !important;
     margin: 0 !important;
     padding: 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    background: none !important;
   }
   .album-img {
-    width: 120px !important;
-    height: 120px !important;
+    width: 90px !important;      /* Match container */
+    height: 90px !important;
     object-fit: cover !important;
     border-radius: 8px !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 0 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    display: block !important;
   }
-}
+
 
 /* --- MOBILE ONLY: Push album image and info further down --- */
 @media (max-width: 768px) {
