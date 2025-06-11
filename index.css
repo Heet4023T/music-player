@@ -1585,5 +1585,52 @@ body.light-theme {
     margin-top: 10px !important;
   }
 }
+
+.album-songs .song-item {
+    grid-template-columns: 22px 1fr 32px !important;
+    font-size: 12px !important;
+    padding: 7px 4px !important;
+    margin-bottom: 2px !important;
+    background: rgba(0,0,0,0.15) !important;
+    border-radius: 5px !important;
+  }
+  .album-songs .song-number,
+  .album-songs .song-details,
+  .album-songs .song-duration {
+    font-size: 12px !important;
+  }
+  .album-songs .song-duration {
+    font-size: 11px !important;
+  }
+
+  /* 6. Prevent horizontal scroll in album view */
+  .album-view {
+    overflow-x: hidden !important;
+  }
+}
+
+.album-info {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 0.95em !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .album-title {
+    font-size: 1.1em !important;
+    margin-bottom: 4px !important;
+    word-break: break-word !important;
+  }
+  .album-header p,
+  .album-header span {
+    font-size: 0.95em !important;
+  }
+
+.album-cover {
+    width: 110px !important;
+    height: 110px !important;
+    margin-bottom: 8px !important;
+  }
   
 
