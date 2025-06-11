@@ -1363,7 +1363,7 @@ body.light-theme {
 
 /* TOP ALBUMS heading only */
 .fixed2 .head1 .heading {
-    font-size: 1.5em !important;
+    font-size: 1.6em !important;
     font-weight: 900 !important;
     letter-spacing: 2px !important;
     color: #fff !important;
@@ -1374,7 +1374,7 @@ body.light-theme {
 }
 
     .fixed3 .heading2 {
-    font-size: 1.5em !important;
+    font-size: 1.6em !important;
     font-weight: 900 !important;
     letter-spacing: 2px !important;
     color: #fff !important;
@@ -1397,15 +1397,18 @@ body.light-theme {
     text-align: center !important;
 }
 
-    .fixed5 .heading4 {
-    font-size: 1.1m !important;
-    font-weight: 900 !important;
-    letter-spacing: 2px !important;
+   .fixed5 .heading4 {
+    font-size: 1.35em !important;      /* Reduced font size */
+    font-weight: 800 !important;
+    letter-spacing: 1.2px !important;
     color: #fff !important;
     text-shadow: 0 2px 8px #0006 !important;
-    margin-top: 32px !important;
-    margin-bottom: 18px !important;
+    margin-top: 24px !important;
+    margin-bottom: 14px !important;
     text-align: center !important;
+    white-space: nowrap !important;    /* Keep in one line */
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }
 
       .fixed6 .heading5 {
