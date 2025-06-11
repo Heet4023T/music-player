@@ -1557,59 +1557,33 @@ body.light-theme {
 
 
 /* --- MOBILE ONLY: Fix back button and album image overlap with search bar --- */
+/* --- MOBILE ONLY: Fix search bar, album image, back button, and horizontal scroll for albums --- */
 @media (max-width: 768px) {
-  /* 1. Move back button below search bar and above album image */
-  .album-view .back-button {
-    position: absolute !important;
-    top: 230px !important;   /* Pushes it below the search bar */
-    left: 20px !important;
-    z-index: 2100 !important;
-    background: rgba(0,0,0,0.7) !important;
-    border-radius: 50% !important;
-    width: 29px !important;
-    height: 29px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 1.7em !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-    color: #fff !important;
+  /* Move search bar higher so it doesn't overlap album image */
+  .fixed .header-container .search-container {
+    top: 38px !important;
   }
-  
-  /* 2. Push album header (image/info) and song list further down */
+
+  /* Album header: push album image/info further down */
   .album-header {
-    margin-top: 70px !important; /* Pushes album image/info below search bar and back button */
-    padding-top: 30px !important;
-  }
-  .album-songs {
-    margin-top: 10px !important;
-  }
-}
-
-.album-songs .song-item {
-    grid-template-columns: 22px 1fr 32px !important;
-    font-size: 12px !important;
-    padding: 7px 4px !important;
-    margin-bottom: 2px !important;
-    background: rgba(0,0,0,0.15) !important;
-    border-radius: 5px !important;
-  }
-  .album-songs .song-number,
-  .album-songs .song-details,
-  .album-songs .song-duration {
-    font-size: 12px !important;
-  }
-  .album-songs .song-duration {
-    font-size: 11px !important;
+    margin-top: 80px !important;
+    padding-top: 20px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  /* 6. Prevent horizontal scroll in album view */
-  .album-view {
-    overflow-x: hidden !important;
+  /* Album cover smaller for mobile */
+  .album-cover {
+    width: 120px !important;
+    height: 120px !important;
+    margin-bottom: 8px !important;
   }
-}
 
-.album-info {
+  /* Album info compact and centered */
+  .album-info {
     padding: 0 !important;
     margin: 0 !important;
     font-size: 0.95em !important;
@@ -1627,10 +1601,97 @@ body.light-theme {
     font-size: 0.95em !important;
   }
 
-.album-cover {
-    width: 110px !important;
-    height: 110px !important;
+  /* Back button: below search bar, above album image */
+  .album-view .back-button {
+    position: absolute !important;
+    top: 170px !important;
+    left: 20px !important;
+    z-index: 2100 !important;
+    background: rgba(0,0,0,0.7) !important;
+    border-radius: 50% !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.5em !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+    color: #fff !important;
+  }
+  .album-view .back-button::before {
+    content: '\2190';
+    font-size: 1.2em;
+    color: #fff;
+    display: block;
+    line-height: 1;
+  }
+
+  /* Album songs list: smaller and compact */
+  .album-songs {
+    margin-top: 10px !important;
+    padding: 8px 2vw !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .album-songs .song-item {
+    grid-template-columns: 22px 1fr 32px !important;
+    font-size: 12px !important;
+    padding: 7px 4px !important;
+    margin-bottom: 2px !important;
+    background: rgba(0,0,0,0.15) !important;
+    border-radius: 5px !important;
+  }
+  .album-songs .song-number,
+  .album-songs .song-details,
+  .album-songs .song-duration {
+    font-size: 12px !important;
+  }
+  .album-songs .song-duration {
+    font-size: 11px !important;
+  }
+
+  /* Enable horizontal scroll for albums row */
+  .albums-row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    padding: 0 10px !important;
+    gap: 10px !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    scroll-snap-type: x mandatory !important;
+    margin-top: 20px !important;
+    width: 100vw !important;
+  }
+  .albums-row::-webkit-scrollbar {
+    display: none !important;
+  }
+  .album-container {
+    flex-shrink: 0 !important;
+    width: 120px !important;
+    height: 160px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    min-width: 0 !important;
+    scroll-snap-align: start !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .album-img {
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
     margin-bottom: 8px !important;
   }
+}
+ 
+
   
 
