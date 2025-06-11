@@ -2428,15 +2428,20 @@ window.playover = playover;
 
 // Add this logic after updating the song title in the controller
 function updateControllerSongTitle(title) {
-    const titleElem = document.getElementById('controller-song-title');
-    titleElem.textContent = title;
-    titleElem.classList.remove('marquee');
-    // Only animate if text is overflowing (on mobile)
-    setTimeout(() => {
-        if (window.innerWidth <= 768 && titleElem.scrollWidth > titleElem.clientWidth) {
-            titleElem.classList.add('marquee');
-        }
-    }, 100);
+    const titleElem = document.getElementById('controller-song-title');
+    titleElem.textContent = title;
+    titleElem.classList.remove('marquee');
+
+    // Wait for layout to settle
+    setTimeout(() => {
+        // Force reflow (optional, but helps sometimes)
+        const reflow = titleElem.offsetWidth;
+
+        if (window.innerWidth <= 768 && titleElem.scrollWidth > titleElem.clientWidth) {
+            titleElem.classList.add('marquee');
+        }
+    }, 300); // Increased from 100ms to 300ms
 }
+
 
 // Call updateControllerSongTitle(songName) whenever a new song is played.
