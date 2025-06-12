@@ -1936,7 +1936,7 @@ body.light-theme {
 
 @media (max-width: 768px) {
 
-    .album-view .back-button {
+   .album-view .back-button {
     display: flex !important;
     position: absolute !important;
     margin: 10px auto 0 auto !important;
@@ -1951,8 +1951,10 @@ body.light-theme {
     border: none !important;
     outline: none !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-    top: 70px;
-    }
+    top: 16px; /* adjust as needed */
+    left: 16px; /* adjust as needed */
+    z-index: 1001;
+  }
   }
    
 
