@@ -1779,71 +1779,98 @@ body.light-theme {
   }
 }
 
+@media (max-width: 768px) {
+  /* Ensure album section appears below search bar */
+  .album-view {
+    margin-top: 170px !important;
+    padding: 0 12px !important;
+  }
 
- @media (max-width: 768px) {
-     .album-cover-col {
+  /* Compact horizontal layout for album header */
+  .album-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+
+  .album-cover {
+    width: 72px !important;
+    height: 72px !important;
+    border-radius: 10px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .album-info {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    gap: 10px !important;
-  }
-  
-  .album-view .back-button {
-    display: flex !important;
-    position: static !important;
-    margin: 10px auto 0 auto !important;
-    background: rgba(0,0,0,0.7) !important;
-    border-radius: 50% !important;
-    width: 32px !important;
-    height: 32px !important;
-    align-items: center !important;
     justify-content: center !important;
-    font-size: 1.7em !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    flex: 1 1 0 !important;
+    overflow: hidden !important;
+  }
+
+  .album-title {
+    font-size: 1.1em !important;
+    font-weight: 700 !important;
     color: #fff !important;
-    border: none !important;
-    outline: none !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+    line-height: 1.2 !important;
   }
 
-
-.album-view .back-button {
-  display: none;
-}
-     
- 
- 
-  
-
- 
-  .album-songs .song-item {
-    grid-template-columns: 22px 1fr 32px !important;
-    font-size: 12px !important;
-    padding: 7px 4px !important;
-    margin-bottom: 2px !important;
-    background: rgba(0,0,0,0.15) !important;
-    border-radius: 5px !important;
-  }
-
-    .album-info p {
-    font-size: 1em !important;
+  .album-info span,
+  .album-info p {
+    font-size: 0.85em !important;
     color: #ccc !important;
     margin: 0 !important;
     padding: 0 !important;
     font-weight: 400 !important;
   }
+
+  /* Song list container should not push content too far */
+  .album-songs {
+    max-height: 48vh !important;
+    overflow-y: auto !important;
+    margin-top: 10px !important;
+  }
+
+  .album-songs .song-item {
+    grid-template-columns: 22px 1fr 32px !important;
+    font-size: 12px !important;
+    padding: 6px 6px !important;
+    margin-bottom: 4px !important;
+    background: rgba(0, 0, 0, 0.15) !important;
+    border-radius: 5px !important;
+  }
+
   .album-songs .song-number,
   .album-songs .song-details,
   .album-songs .song-duration {
-    font-size: 12px !important;
+    font-size: 11.5px !important;
   }
+
   .album-songs .song-duration {
     font-size: 11px !important;
   }
- }
 
-  /* Enable horizontal scroll for albums row */
- /* --- MOBILE ONLY: Fix horizontal scroll for Top Albums (albums-row) and make it smooth --- */
-@media (max-width: 768px) {
+  /* Optional back button styling (disabled for now) */
+  .album-view .back-button {
+    display: none !important;
+  }
+
+  /* Album cover column (for any vertical fallback layout) */
+  .album-cover-col {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  /* Horizontal scroll for album listings */
   .albums-row {
     display: flex !important;
     flex-wrap: nowrap !important;
@@ -1854,15 +1881,16 @@ body.light-theme {
     padding: 0 10px !important;
     gap: 10px !important;
     justify-content: flex-start !important;
-    align-items: flex-start !important;
     scroll-snap-type: x mandatory !important;
     margin-top: 20px !important;
     width: 100vw !important;
-    white-space: nowrap !important; /* Prevent wrapping */
+    white-space: nowrap !important;
   }
+
   .albums-row::-webkit-scrollbar {
     display: none !important;
   }
+
   .album-container {
     flex-shrink: 0 !important;
     width: 120px !important;
@@ -1871,11 +1899,12 @@ body.light-theme {
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    min-width: 120px !important; /* Ensure each album stays same width */
+    min-width: 120px !important;
     scroll-snap-align: start !important;
     margin: 0 !important;
     padding: 0 !important;
   }
+
   .album-img {
     width: 120px !important;
     height: 120px !important;
@@ -1883,12 +1912,8 @@ body.light-theme {
     border-radius: 8px !important;
     margin-bottom: 8px !important;
   }
-}
 
-
-
-/* Blue heading effect for light theme on mobile */
-@media (max-width: 768px) {
+  /* Optional theme styling for light mode on mobile */
   .light-theme .fixed2 .head1 .heading,
   .light-theme .fixed3 .heading2,
   .light-theme .fixed4 .heading3,
@@ -1896,73 +1921,6 @@ body.light-theme {
   .light-theme .fixed6 .heading5 {
     color: #0a0a2e !important;
     text-shadow: 0 0 10px rgba(0, 94, 255, 0.3) !important;
-  }
-}
-}
-
-@media (max-width: 768px) {
-  .album-header {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 14px !important;
-    width: 100% !important;
-    padding: 0 12px !important;
-    margin-top: 100px !important; /* Added spacing from top (search bar) */
-    margin-bottom: 16px !important;
-    min-height: auto !important;
-    box-sizing: border-box !important;
-    position: relative !important;
-  }
-
-  .album-cover {
-    width: 80px !important; /* Fix width */
-    height: 80px !important; /* Fix height */
-    border-radius: 12px !important;
-    object-fit: cover !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
-    margin: 0 !important;
-    display: block !important;
-    flex-shrink: 0 !important;
-  }
-
-  .album-info {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    font-size: 1em !important;
-    color: #fff !important;
-    text-align: left !important;
-    min-width: 0 !important;
-    flex: 1 1 0 !important;
-    gap: 4px !important;
-    word-break: break-word !important;
-  }
-
-  .album-title {
-    font-size: 1.2em !important;
-    font-weight: 700 !important;
-    color: #fff !important;
-    line-height: 1.3 !important;
-    letter-spacing: 0.01em !important;
-  }
-
-  .album-info span,
-  .album-info p {
-    font-size: 0.95em !important;
-    color: #ccc !important;
-    font-weight: 400 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .album-view {
-    margin-top: 180px !important; /* Fix overlap: push album block below fixed search bar */
   }
 }
 
