@@ -1626,5 +1626,47 @@ body.light-theme .liked-songs-container .result-album {
   }
 }
 
-
+@media (max-width: 768px) {
+  .liked-songs-container {
+    max-width: 98vw !important;
+    width: 98vw !important;
+    margin: 90px auto 0 auto !important;
+    padding: 10px 4px 10px 4px !important;
+    border-radius: 12px !important;
+    font-size: 0.97em !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25) !important;
+    min-height: unset !important;
+  }
+  .liked-songs-container h2 {
+    font-size: 1.3em !important;
+    margin-bottom: 12px !important;
+  }
+  .liked-song-item {
+    padding: 6px 8px !important;
+    font-size: 0.97em !important;
+    margin-bottom: 4px !important;
+  }
+  .liked-song-item img {
+    width: 36px !important;
+    height: 36px !important;
+    margin-right: 8px !important;
+  }
+  .liked-song-info .title {
+    font-size: 0.93em !important;
+  }
+  .liked-song-info .artist-album {
+    font-size: 0.75em !important;
+  }
+  .liked-song-duration {
+    font-size: 0.8em !important;
+    margin-left: 6px !important;
+  }
+  .liked-songs-container .search-container {
+    max-width: 96vw !important;
+    padding: 4px 10px !important;
+  }
+  .liked-songs-container .search-input-wrapper {
+    font-size: 0.97em !important;
+  }
+}
 
