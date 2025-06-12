@@ -1083,57 +1083,110 @@ a {
     margin-left: 8px !important;
   }
 }
+/* Ensure a consistent box model for all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
+/* MOBILE-SPECIFIC STYLES 
+  These rules will apply only when the screen width is 768px or less.
+*/
 @media (max-width: 768px) {
   .mood-selection-container {
+    /* Overrides for mobile (from your original code) */
     margin-top: 16px !important;
     padding-top: 0 !important;
-    display: flex; /* Enable flexbox for centering */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center items vertically if they had different heights */
-    padding-left: 10px; /* Add some left padding for overall container */
-    padding-right: 10px; /* Add some right padding for overall container */
-    width: 100%; /* Ensure it takes full width to apply padding effectively */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
+
+    /* To center both the heading and the button grid: */
+    display: flex;             /* Make it a flex container */
+    flex-direction: column;    /* Stack children (heading, then grid) vertically */
+    align-items: center;       /* Horizontally center the children within this container */
+
+    /* Add equal spacing from the left and right screen edges */
+    padding-left: 15px;        /* Adjust this value as needed for desired left margin */
+    padding-right: 15px;       /* Adjust this value as needed for desired right margin */
+    width: 100%;               /* Ensure container takes full width to respect padding */
+    /* Remove any conflicting position/width properties if they were here */
+    /* For instance, if you had position:relative or width:100vw, ensure they are handled */
   }
 
   .mood-heading {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    text-align: center; /* Center the text */
-    width: 100%; /* Ensure it takes full width to allow text-align to work */
+    text-align: center;      /* Center the text of the heading */
+    width: 100%;             /* Ensure heading spans full width for text-align to work */
+    margin-bottom: 10px;     /* Keep consistent spacing below the heading */
   }
 
   .mood-buttons-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center; /* Center buttons within the grid */
-    align-items: center !important;
-    gap: 10px;
-    width: auto; /* Allow width to be determined by content */
-    overflow-x: auto; /* Keep horizontal scrolling if content overflows */
-    position: static; /* Remove absolute positioning */
-    left: auto; /* Remove left positioning */
-    flex-wrap: nowrap; /* Prevent wrapping for horizontal scroll */
+    /* These !important flags might be remnants, but ensure flex properties are strong */
+    display: flex !important;      /* Ensure flexbox is active */
+    flex-direction: row !important; /* Keep buttons in a single row */
+    flex-wrap: nowrap;             /* CRUCIAL: Prevent buttons from wrapping to a new line */
+    
+    /* When using overflow-x: auto, it's often better to start alignment at the beginning */
+    justify-content: flex-start;  /* Align buttons to the start of the grid */
+    
+    align-items: center !important; /* Vertically center buttons if they had different heights */
+    gap: 10px;                     /* Spacing between individual mood buttons */
+    
+    max-width: 100%;               /* Prevents the grid from expanding beyond its parent's width */
+    overflow-x: auto;              /* Enable horizontal scrolling if buttons exceed screen width */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
+
+    /* Remove any absolute positioning that might interfere with flexbox */
+    position: static;
+    left: auto;
+    
+    /* Optional: Hide scrollbar for aesthetics */
+    /*
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;  // IE and Edge
+    scrollbar-width: none;     // Firefox
+    */
+  }
+
+  .mood-button {
+    min-width: 93px;  /* Maintain minimum width for buttons */
+    flex-shrink: 0;   /* Prevent buttons from shrinking when space is tight */
+    font-size: 0.95em;
+    padding: 8px 10px;
   }
 }
 
-/* Existing styles outside media query (ensure they are present if needed for larger screens) */
-
-.mood-button {
-  min-width: 93px;
-  flex: 0 0 auto;
-  font-size: 0.95em;
-  padding: 8px 10px;
+/* BASE/DEFAULT STYLES 
+  (These would apply globally or for larger screens if not overridden by the @media query)
+  Ensure these exist outside the @media block if they are your default styles.
+  Remove them if they are only intended for mobile and duplicated inside the media query.
+*/
+.mood-selection-container {
+  /* Example: If you have a specific relative positioning for the overall container globally */
+  /* position: relative; */
+  /* width: 100%; */
+  /* z-index: 2; */
 }
 
-.mood-selection-container {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  z-index: 2;
-  /* These properties might be overridden by the media query, but keep them for desktop if needed */
+.mood-heading {
+  /* Default text-align for desktop if you want it centered there too */
+  /* font-size: 1.1em; */
+  /* margin-bottom: 10px; */
+  /* text-align: center; */
+}
+
+.mood-buttons-grid {
+  /* Default flex properties for desktop if not already defined globally */
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  /* gap: 10px; */
+}
+
+.mood-button {
+  /* Default button styles */
+  /* min-width: 93px; */
+  /* flex: 0 0 auto; */
+  /* font-size: 0.95em; */
+  /* padding: 8px 10px; */
 }
 
 
