@@ -1948,6 +1948,42 @@ body.light-theme {
     box-sizing: border-box !important;
   }
 
+    @media (max-width: 768px) {
+  body.album-open .main-header {
+    display: none !important; /* Hide header only when album is open */
+  }
+
+  body.album-open .album-view {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #000 !important;
+    z-index: 99999 !important;
+    overflow-y: auto !important;
+    padding-top: 160px !important;
+    box-sizing: border-box !important;
+  }
+
+  body.album-open .album-songs {
+    background: #111 !important;
+    max-height: 50vh !important;
+    overflow-y: auto !important;
+    padding: 10px 12px !important;
+  }
+
+  body.album-open .album-songs .song-item {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 6px !important;
+    margin-bottom: 6px !important;
+    padding: 8px 10px !important;
+  }
+}
+
+
   /* Optional: Make sure search bar is not appearing */
   .fixed,
   .header-container {
