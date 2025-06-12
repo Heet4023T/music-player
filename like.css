@@ -1628,8 +1628,8 @@ body.light-theme .liked-songs-container .result-album {
 
 @media (max-width: 768px) {
   .liked-songs-container {
-    max-width: 98vw !important;
-    width: 98vw !important;
+    max-width: 75vw !important;
+    width: 75vw !important;
     margin: 90px auto 0 auto !important;
     padding: 10px 4px 10px 4px !important;
     border-radius: 12px !important;
