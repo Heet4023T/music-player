@@ -1096,11 +1096,11 @@ a {
     flex-direction: row !important;
     justify-content: center !important; /* Center horizontally */
     align-items: center !important;
-    gap: 10px;
+    gap: 15px;
     width: 100%;
-    overflow-x: auto;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-left: 5vw !important;  /* Equal left margin */
+    padding-right: 5vw !important; /* Equal right margin */
+    box-sizing: border-box;
   }
 }
 }
