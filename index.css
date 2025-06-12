@@ -1968,6 +1968,13 @@ body.light-theme {
   display: block !important;
 }
 
+@media (max-width: 768px) {
+  .albums-row .album-container:first-child {
+    margin-top: 0 !important;
+    align-self: flex-start !important;
+    transform: none !important;
+  }
+}
 
   /* Optional theme styling for light mode on mobile */
   .light-theme .fixed2 .head1 .heading,
