@@ -2437,6 +2437,16 @@ function updateControllerSongTitle(title, artist) {
   if (artistElem) artistElem.textContent = artist || '';
 }
 
+function openAlbumView(albumId) {
+  document.querySelectorAll('.album-view').forEach(view => view.classList.remove('active'));
+  document.getElementById(albumId + '-album-view').classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent background scroll
+}
+function closeAlbumView(albumId) {
+  document.getElementById(albumId + '-album-view').classList.remove('active');
+  document.body.style.overflow = ''; // Restore scroll
+}
+
 
 
 
