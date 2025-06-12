@@ -1091,15 +1091,16 @@ a {
     padding-top: 0 !important;
   }
  @media (max-width: 768px) {
-  .mood-buttons-grid {
+.mood-buttons-grid {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: center !important; /* Center horizontally */
+    justify-content: center !important; /* Center the buttons */
     align-items: center !important;
-    gap: 15px;
+    gap: 10px;
     width: 100%;
-    padding-left: 0 !important;  /* Equal left margin */
-    padding-right: 0!important; /* Equal right margin */
+    overflow-x: auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 }
