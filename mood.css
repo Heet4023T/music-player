@@ -1128,7 +1128,7 @@ a {
     align-items: center !important; /* Vertically center buttons if they had different heights */
     gap: 10px;                     /* Spacing between individual mood buttons */
     
-    max-width: 100%;               /* Prevents the grid from expanding beyond its parent's width */
+    max-width: 90%;               /* Prevents the grid from expanding beyond its parent's width */
     overflow-x: auto;              /* Enable horizontal scrolling if buttons exceed screen width */
     -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
 
