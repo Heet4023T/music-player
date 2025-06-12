@@ -1098,8 +1098,8 @@ a {
     align-items: center !important;
     gap: 15px;
     width: 100%;
-    padding-left: 5vw !important;  /* Equal left margin */
-    padding-right: 5vw !important; /* Equal right margin */
+    padding-left: 0 !important;  /* Equal left margin */
+    padding-right: 0!important; /* Equal right margin */
     box-sizing: border-box;
   }
 }
