@@ -1119,6 +1119,7 @@ a {
 }
 
 /* Existing styles outside media query (ensure they are present if needed for larger screens) */
+@media (max-width: 768px) 
 .mood-button {
   min-width: 93px;
   flex: 0 0 auto;
@@ -1133,5 +1134,6 @@ a {
   width: 100vw;
   z-index: 2;
   /* These properties might be overridden by the media query, but keep them for desktop if needed */
+}
 }
 
