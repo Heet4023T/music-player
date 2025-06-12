@@ -1939,6 +1939,11 @@ body.light-theme {
     border: none !important;
     outline: none !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+
+        /* Hide back button by default on desktop */
+.album-view .back-button {
+  display: none;
+}
   }
 }
 
@@ -1946,17 +1951,9 @@ body.light-theme {
    
 
 
-  /* Optional: Make sure search bar is not appearing */
-  .fixed,
-  .header-container {
-    display: none !important;
-  }
-}
 
-/* Hide back button by default on desktop */
-.album-view .back-button {
-  display: none;
-}
+
+
 
   /* Optional theme styling for light mode on mobile */
   .light-theme .fixed2 .head1 .heading,
