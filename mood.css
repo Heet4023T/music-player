@@ -550,9 +550,6 @@ a {
     background: linear-gradient(135deg, #8A2BE2, #A020F0, #800080); /* BlueViolet, Purple, Plum */
 }
 
-.mood-button.guilt {
-    background: linear-gradient(135deg, #8B0000, #DC143C, #B22222); /* DarkRed, Crimson, FireBrick */
-}
 
 .mood-button:hover {
     transform: translateY(-5px) scale(1.02); /* Less dramatic hover effect */
@@ -1084,5 +1081,40 @@ a {
     white-space: nowrap !important;
     flex: 0 0 auto !important;
     margin-left: 8px !important;
+  }
+}
+
+/* Make mood buttons horizontal and responsive on mobile */
+@media (max-width: 768px) {
+  .mood-selection-container {
+    margin-top: 16px !important;
+    padding-top: 0 !important;
+  }
+  .mood-buttons-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 4px;
+  }
+  .mood-button {
+    min-width: 90px;
+    flex: 0 0 auto;
+    font-size: 0.95em;
+    padding: 8px 10px;
+  }
+  .mood-heading {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .mood-selection-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 2;
   }
 }
