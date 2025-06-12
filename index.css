@@ -1953,11 +1953,6 @@ body.light-theme {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
     top: 70px;
     }
-
-    /* Optional back button styling (disabled for now) */
-  .album-view .back-button {
-    display: none !important;
-  }
   }
    
 
