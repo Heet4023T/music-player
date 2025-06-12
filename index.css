@@ -1767,7 +1767,7 @@ body.light-theme {
     grid-template-columns: 30px 1fr 40px !important;
     font-size: 14px !important;
   }
-}
+
 
 
 /* --- MOBILE ONLY: Fix back button and album image overlap with search bar --- */
@@ -1790,6 +1790,7 @@ body.light-theme {
 
 
   /* Compact horizontal layout for album header */
+  @media (max-width: 768px) {
   .album-header {
     display: flex !important;
     flex-direction: row !important;
@@ -1931,6 +1932,7 @@ body.light-theme {
     text-shadow: 0 0 10px rgba(0, 94, 255, 0.3) !important;
   }
 }
+
 
 @media (max-width: 768px) {
 
