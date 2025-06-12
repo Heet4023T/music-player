@@ -1960,7 +1960,7 @@ body.light-theme {
 .album-view.active {
   display: block !important;
 }
-}
+
 
   /* Optional theme styling for light mode on mobile */
   .light-theme .fixed2 .head1 .heading,
