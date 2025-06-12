@@ -1094,13 +1094,13 @@ a {
 .mood-buttons-grid {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: center !important; /* Center the buttons */
+  
     align-items: center !important;
     gap: 10px;
     width: 100%;
     overflow-x: auto;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    posistion: absoulte;
+    left: 5px;
   }
 }
 }
