@@ -1090,18 +1090,19 @@ a {
     margin-top: 16px !important;
     padding-top: 0 !important;
   }
-   @media (max-width: 768px) {
+ @media (max-width: 768px) {
   .mood-buttons-grid {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: flex-start !important; /* Shift to left */
+    justify-content: center !important; /* Center horizontally */
     align-items: center !important;
     gap: 10px;
     width: 100%;
     overflow-x: auto;
-    padding-left: 2 !important; /* Adjust this value for how much you want to shift */
-    padding-right: 2 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
+}
 }
   .mood-button {
     min-width: 93px;
@@ -1121,4 +1122,4 @@ a {
     width: 100vw;
     z-index: 2;
   }
-}
+
