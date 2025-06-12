@@ -1912,6 +1912,27 @@ body.light-theme {
     border-radius: 8px !important;
     margin-bottom: 8px !important;
   }
+    .album-view .back-button {
+    display: flex !important;
+    position: static !important;
+    margin: 10px auto 0 auto !important;
+    background: rgba(0,0,0,0.7) !important;
+    border-radius: 50% !important;
+    width: 32px !important;
+    height: 32px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.7em !important;
+    color: #fff !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  }
+}
+/* Hide back button by default on desktop */
+.album-view .back-button {
+  display: none;
+}
 
   /* Optional theme styling for light mode on mobile */
   .light-theme .fixed2 .head1 .heading,
