@@ -1098,7 +1098,7 @@ a {
     width: 100%;
     overflow-x: auto;
     padding-left: 18vw; /* Adjust this value for how much you want to shift */
-    padding-right: 4vw;
+
   }
   .mood-button {
     min-width: 93px;
