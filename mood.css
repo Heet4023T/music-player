@@ -1090,17 +1090,18 @@ a {
     margin-top: 16px !important;
     padding-top: 0 !important;
   }
-  .mood-buttons-grid {
+   .mood-buttons-grid {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: center;
-    gap: 8px;
+    justify-content: flex-start !important; /* Shift to left */
+    gap: 10px;
     width: 100%;
     overflow-x: auto;
-    padding: 0 4px;
+    padding-left: 18vw; /* Adjust this value for how much you want to shift */
+    padding-right: 4vw;
   }
   .mood-button {
-    min-width: 90px;
+    min-width: 93px;
     flex: 0 0 auto;
     font-size: 0.95em;
     padding: 8px 10px;
