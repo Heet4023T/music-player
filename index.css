@@ -1893,8 +1893,8 @@ body.light-theme {
 
   .album-container {
     flex-shrink: 0 !important;
-    width: 120px !important;
-    height: 160px !important;
+    width: 160px !important;
+    height: 190px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
