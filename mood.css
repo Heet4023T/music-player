@@ -1093,12 +1093,13 @@ a {
    .mood-buttons-grid {
     display: flex !important;
     flex-direction: row !important;
-    justify-content: flex-start !important; /* Shift to left */
+    justify-content: center !important; /* Center the buttons */
+    align-items: center !important;
     gap: 10px;
     width: 100%;
     overflow-x: auto;
-    padding-left: 18vw; /* Adjust this value for how much you want to shift */
-
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
   .mood-button {
     min-width: 93px;
