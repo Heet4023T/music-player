@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,9 +64,6 @@
         <button class="mood-button Energetic" data-mood="Energetic">
             <span class="emoji">⚡</span> Energetic
         </button>
-        <button class="mood-button guilt" data-mood="guilt">
-            <span class="emoji">😞</span> Guilt
-        </button>
     </div>
 </div>
 
@@ -89,9 +85,6 @@
   <div id="controller-song-artist"></div>
 </div>
 
-
-
-
     <div class="controller-buttons">
         <button id="controller-prev" title="Previous">
             <i class="bi bi-skip-backward-fill"></i>
@@ -105,8 +98,6 @@
        <button id="controller-like-btn" title="Like/Unlike Song">
                 <i id="like-icon" class="bi bi-heart"></i>
             </button>
-       
-        
     </div>
     </div>
     <div class="controller-progress-row">
@@ -154,10 +145,10 @@
             { title: 'Papa Meri Jaan', artist: 'Pritam, Sonu Nigam', src: 'audio/Papa Meri Jaan - Animal 128 Kbps.mp3', albumArt: 'https://i.ytimg.com/vi/zTmQeQSwwbk/maxresdefault.jpg' },
             { title: 'Pehle Bhi Main', artist: 'Pritam, Vishal Mishra', src: 'audio/Pehle Bhi Main - Animal 128 Kbps.mp3', albumArt: 'https://i.ibb.co/VYQWszG7/sddefault-1.jpg' },
             { title: 'Zindagi Kuch Toh Bata', artist: 'Pritam, Rahat Fateh Ali Khan, Rekha Bhardwaj', src: 'audio/Zindagi Kuch Toh Bata - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
-            { title: 'Tere Mast Mast Do Nain', artist: 'Rahat Fateh Ali Khan', src: 'audio/Tere Mast Mast Do Nain - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
             { title: 'Teri Meri Kahaani', artist: 'Palak Muchhal', src: 'audio/Teri Meri Kahaani - Palak Muchhal Version - Gabbar Is Back 128 Kbps.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/c/c7/Gabbar_is_back_first_look.jpg' },
             
         ],
+        
         Energetic: [
             { title: 'Arjan Vailly', artist: 'Bhupinder Babbal', src: 'audio/Arjan Vailly - Animal 128 Kbps.mp3', albumArt: 'https://c.saavncdn.com/862/Arjan-Vailly-From-ANIMAL-Hindi-2023-20231118001003-500x500.jpg' },
             { title: 'Aziz\'s Introduction', artist: 'Harshavardan Rameshwar', src: 'audio/Aziz\'s Introduction.mp3', albumArt: 'https://i.ytimg.com/vi/g27TPboqE_M/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDAHsUIjwA-nYeLZsuqR-InY4hq4A' },
@@ -201,18 +192,8 @@
             { title: 'Master Raid', artist: 'Anirudh Ravichander', src: 'audio/Master Raid - Vijay the Master 128 Kbps.mp3', albumArt: 'https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg' },
 { title: 'Monster Song Clean Version', artist: 'Ravi Basrur', src: 'audio/SpotiDownloader.com - Monster Song Clean Version (From _KGF Chapter 2 - Tamil_) - Ravi Basrur.mp3', albumArt: 'https://i.ytimg.com/vi/WsBGgvpO-xM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCXswg5D73-EU1Hva9AiUjOlg93QQ' },
             { title: ' Toofan', artist: 'Ravi Barsur', src: 'audio/SpotiDownloader.com - Toofan - Sandesh Datta Naik.mp3', albumArt: 'https://i.ibb.co/39jxsLPM/images.jpg' },
-        ],
-        guilt: [
-            { title: 'Bhar Do Jholi Meri', artist: 'Pritam, Adnan Sami', src: 'audio/Bhar Do Jholi Meri - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
-            { title: 'O Rangrez', artist: 'Shreya Ghoshal', src: 'audio/O Rangrez - Bhaag Milkha Bhaag 128 Kbps.mp3', albumArt: 'https://www.shazam.com/mkimage/image/thumb/Music221/v4/a0/2c/a2/a02ca25f-2d02-e296-0578-93a5b32b0adf/196872829877.jpg/1275x1275bb-60.webp' },
-            { title: 'Tu Chahiye', artist: 'Pritam, Atif Aslam', src: 'audio/Tu Chahiye - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
-            { title: 'Tu Jo Mila', artist: 'Pritam, K.K.', src: 'audio/Tu Jo Mila - Bajrangi Bhaijaan 128 Kbps.mp3', albumArt: 'https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg' },
-            { title: 'Chori Kiya Re Jiya (Male)', artist: 'Sajid-Wajid, Sonu Nigam, Shreya Ghoshal', src: 'audio/Chori Kiya Re Jiya (Male) - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
             { title: 'Dabangg Theme', artist: 'Sajid-Wajid', src: 'audio/Dabangg Theme - Dabangg 128 Kbps.mp3', albumArt: 'https://m.media-amazon.com/images/S/pv-target-images/f757047d0f496d88f41d46696054e053d2215567e54e252ea509721e5085b46f.jpg' },
-         
-            { title: 'Phir Milenge Chalte Chalte', artist: 'Sonu Nigam', src: 'audio/Phir Milenge Chalte Chalte.mp3', albumArt: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ab/Rab_Ne_Bana_Di_Jodi.jpg/250px-Rab_Ne_Bana_Di_Jodi.jpg' },
-
-        ]
+    ]
     };
 
     const moodButtons = document.querySelectorAll('.mood-button');
