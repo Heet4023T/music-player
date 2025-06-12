@@ -1777,35 +1777,11 @@ body.light-theme {
   .fixed .header-container .search-container {
     top: 100px !important;
   }
+}
+
 
  @media (max-width: 768px) {
-    .album-header {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 14px !important;
-    width: 100% !important;
-    padding: 0 12px !important;
-    margin-top: 18px !important;
-    margin-bottom: 0 !important;
-    min-height: 90px !important;
-    box-sizing: border-box !important;
-    position: relative !important;
-  }
-  .album-cover {
-    width: 68px !important;
-    height: 68px !important;
-    border-radius: 12px !important;
-    object-fit: cover !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
-    margin: 0 !important;
-    display: block !important;
-    flex-shrink: 0 !important;
-  }
-     
-
-     
-  .album-cover-col {
+     .album-cover-col {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -1828,53 +1804,17 @@ body.light-theme {
     outline: none !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
   }
-}
-/* Hide back button by default on desktop */
+
+
 .album-view .back-button {
   display: none;
 }
+     
  
-  .album-info span, .album-info p {
-    font-size: 0.95em !important;
-    color: #ccc !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    line-height: 1.1 !important;
-  } 
-
+ 
   
 
-  
-  
-   .album-info {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    font-size: 1em !important;
-    color: #fff !important;
-    text-align: left !important;
-    min-width: 0 !important;
-    flex: 1 1 0 !important;
-    gap: 2px !important;
-    word-break: break-word !important;
-  }
-  .album-info span {
-    font-size: 1em !important;
-    color: #ccc !important;
-    margin-bottom: 2px !important;
-    font-weight: 400 !important;
-  }
-  .album-title {
-    font-size: 1.18em !important;
-    font-weight: 700 !important;
-    margin-bottom: 4px !important;
-    color: #fff !important;
-    line-height: 1.2 !important;
-    letter-spacing: 0.01em !important;
-  }
+ 
   .album-songs .song-item {
     grid-template-columns: 22px 1fr 32px !important;
     font-size: 12px !important;
@@ -1899,6 +1839,7 @@ body.light-theme {
   .album-songs .song-duration {
     font-size: 11px !important;
   }
+ }
 
   /* Enable horizontal scroll for albums row */
  /* --- MOBILE ONLY: Fix horizontal scroll for Top Albums (albums-row) and make it smooth --- */
@@ -1944,17 +1885,7 @@ body.light-theme {
   }
 }
 
-/* --- MOBILE ONLY: Push album image and info further down --- */
-@media (max-width: 768px) {
-  .album-header {
-    margin-top: 130px !important;   /* Increased from 80px to 130px */
-    padding-top: 30px !important;   /* Increased from 20px to 30px */
-  }
-  .album-view .back-button {
-    top: 210px !important;          /* Move back button down to match new spacing */
-  }
-}
-}
+
 
 /* Blue heading effect for light theme on mobile */
 @media (max-width: 768px) {
@@ -1968,3 +1899,67 @@ body.light-theme {
   }
 }
 }
+
+@media (max-width: 768px) {
+  .album-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 14px !important;
+    width: 100% !important;
+    padding: 0 12px !important;
+    margin-top: 18px !important;
+    margin-bottom: 0 !important;
+    min-height: 90px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+  }
+  .album-cover {
+    width: 68px !important;
+    height: 68px !important;
+    border-radius: 12px !important;
+    object-fit: cover !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
+    margin: 0 !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+  }
+  .album-info {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 1em !important;
+    color: #fff !important;
+    text-align: left !important;
+    min-width: 0 !important;
+    flex: 1 1 0 !important;
+    gap: 2px !important;
+    word-break: break-word !important;
+  }
+  .album-info span {
+    font-size: 1em !important;
+    color: #ccc !important;
+    margin-bottom: 2px !important;
+    font-weight: 400 !important;
+  }
+  .album-title {
+    font-size: 1.18em !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+    color: #fff !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.01em !important;
+  }
+  .album-info p {
+    font-size: 1em !important;
+    color: #ccc !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-weight: 400 !important;
+  }
+}
+
+
