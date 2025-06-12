@@ -1779,12 +1779,15 @@ body.light-theme {
   }
 }
 
+
 @media (max-width: 768px) {
-  /* Ensure album section appears below search bar */
-  .album-view {
-    margin-top: 170px !important;
-    padding: 0 12px !important;
+  /* Move search bar higher so it doesn't overlap album image */
+  .fixed .header-container .search-container {
+    top: 100px !important;
   }
+}
+
+
 
   /* Compact horizontal layout for album header */
   .album-header {
@@ -1941,7 +1944,8 @@ body.light-theme {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
     }
 
- .album-view {
+        /* Hide back button by default on desktop */
+.album-view {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -1958,15 +1962,6 @@ body.light-theme {
 }
 }
 
-
-
-   
-
-
-
-
-
-
   /* Optional theme styling for light mode on mobile */
   .light-theme .fixed2 .head1 .heading,
   .light-theme .fixed3 .heading2,
@@ -1976,6 +1971,9 @@ body.light-theme {
     color: #0a0a2e !important;
     text-shadow: 0 0 10px rgba(0, 94, 255, 0.3) !important;
   }
-}
+
+
+
+  
 
 
