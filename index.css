@@ -1960,4 +1960,10 @@ body.light-theme {
   }
 }
 
+@media (max-width: 768px) {
+  .album-view {
+    margin-top: 180px !important; /* Fix overlap: push album block below fixed search bar */
+  }
+}
+
 
