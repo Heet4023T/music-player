@@ -1778,53 +1778,46 @@ body.light-theme {
     top: 100px !important;
   }
 
-  @media (max-width: 768px) {
+ @media (max-width: 768px) {
   .album-header {
     display: flex !important;
     flex-direction: row !important;
     align-items: flex-end !important;
-    gap: 18px !important;
-    width: 100% !important;
-    margin-top: 70px !important;
-    margin-bottom: 0 !important;
-    padding: 0 0 0 0 !important;
-    min-height: 110px !important;
-    position: relative !important;
-    box-sizing: border-box !important;
+    gap: 16px !important;
   }
   .album-cover-col {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: flex-start !important;
-    min-width: 0 !important;
     gap: 10px !important;
   }
   .album-cover {
-    width: 50px !important;
-    height: 50px !important;
+    width: 90px !important;
+    height: 90px !important;
     border-radius: 10px !important;
     object-fit: cover !important;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.4) !important;
-    margin: 0 !important;
-    display: block !important;
   }
   .album-view .back-button {
+    display: flex !important;
     position: static !important;
     margin: 10px auto 0 auto !important;
     background: rgba(0,0,0,0.7) !important;
     border-radius: 50% !important;
     width: 32px !important;
     height: 32px !important;
-    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     font-size: 1.7em !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
     color: #fff !important;
     border: none !important;
     outline: none !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
   }
+}
+/* Hide back button by default on desktop */
+.album-view .back-button {
+  display: none;
+}
   .album-info {
     display: flex !important;
     flex-direction: column !important;
