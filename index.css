@@ -1941,6 +1941,7 @@ body.light-theme {
     border: none !important;
     outline: none !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+     margin-bottom: 10px;
     }
 
     /* Optional back button styling (disabled for now) */
