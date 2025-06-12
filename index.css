@@ -1929,6 +1929,22 @@ body.light-theme {
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
   }
 }
+
+@media (max-width: 768px) {
+  .album-view-page {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 99999 !important;
+    background: #0a0a0a !important; /* Or your preferred dark background */
+    overflow-y: auto !important;
+    padding-top: 170px !important; /* Enough for album header space */
+    box-sizing: border-box !important;
+  }
+}
+
 /* Hide back button by default on desktop */
 .album-view .back-button {
   display: none;
