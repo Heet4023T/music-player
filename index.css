@@ -1915,8 +1915,8 @@ body.light-theme {
     position: relative !important;
   }
   .album-cover {
-    width: 68px !important;
-    height: 68px !important;
+    width: 32x !important;
+    height: 32px !important;
     border-radius: 12px !important;
     object-fit: cover !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
