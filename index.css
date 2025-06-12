@@ -1885,6 +1885,7 @@ body.light-theme {
     margin-top: 20px !important;
     width: 100vw !important;
     white-space: nowrap !important;
+    align-items: flex-start !important; /* Ensures all children align to the top */
   }
 
   .albums-row::-webkit-scrollbar {
@@ -1903,7 +1904,14 @@ body.light-theme {
     scroll-snap-align: start !important;
     margin: 0 !important;
     padding: 0 !important;
+      box-sizing: border-box !important;
   }
+
+.album-container:first-child {
+    margin-top: 0 !important;
+    align-self: flex-start !important;
+    transform: none !important;
+}
 
   .album-img {
     width: 120px !important;
@@ -1968,13 +1976,7 @@ body.light-theme {
   display: block !important;
 }
 
-@media (max-width: 768px) {
-  .albums-row .album-container:first-child {
-    margin-top: 0 !important;
-    align-self: flex-start !important;
-    transform: none !important;
-  }
-}
+
 
   /* Optional theme styling for light mode on mobile */
   .light-theme .fixed2 .head1 .heading,
