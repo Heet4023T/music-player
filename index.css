@@ -1961,7 +1961,7 @@ body.light-theme {
   }
    
 
-        /* Hide back button by default on desktop */
+  @media (max-width: 768px) {  
 .album-view {
   position: fixed !important;
   top: 0 !important;
@@ -1977,6 +1977,7 @@ body.light-theme {
 .album-view.active {
   display: block !important;
 }
+  }
 
 
 
