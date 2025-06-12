@@ -1307,9 +1307,7 @@ const updateMusicControllerUI = debounce(function() {
         }
     }
 
-
 updateControllerSongTitle(songInfo.title);
-
     if (controller.songArtist) { 
         controller.songArtist.textContent = songInfo.artist;
     }
@@ -2428,13 +2426,19 @@ window.playMashup = playMashup;
 window.playbhakti = playbhakti;
 window.playover = playover;
 
-// Add this logic after updating the song title in the controller
-function updateControllerSongTitle(title, artist) {
+// ...existing code...function updateControllerSongTitle(title) {
+  function updateControllerSongTitle(title) {
   const titleElem = document.getElementById('controller-song-title');
-  const artistElem = document.getElementById('controller-song-artist');
+  const wrapper = titleElem.parentElement;
 
+  titleElem.classList.remove('marquee');
   titleElem.textContent = title;
-  if (artistElem) artistElem.textContent = artist || '';
+
+  setTimeout(() => {
+    if (titleElem.scrollWidth > wrapper.clientWidth) {
+      titleElem.classList.add('marquee');
+    }
+  }, 100);
 }
 
 function openAlbumView(albumId) {
@@ -2446,7 +2450,6 @@ function closeAlbumView(albumId) {
   document.getElementById(albumId + '-album-view').classList.remove('active');
   document.body.style.overflow = ''; // Restore scroll
 }
-
 
 
 
