@@ -1832,20 +1832,22 @@ body.light-theme {
   }
 
   /* Song list container should not push content too far */
-  .album-songs {
-    max-height: 48vh !important;
+    .album-songs {
+    background: #111111 !important; /* Less transparent, darker */
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+    max-height: 50vh !important;
     overflow-y: auto !important;
-    margin-top: 10px !important;
   }
 
   .album-songs .song-item {
-    grid-template-columns: 22px 1fr 32px !important;
-    font-size: 12px !important;
-    padding: 6px 6px !important;
-    margin-bottom: 4px !important;
-    background: rgba(0, 0, 0, 0.15) !important;
-    border-radius: 5px !important;
+    background: rgba(255, 255, 255, 0.05) !important; /* subtle contrast */
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    padding: 8px 10px !important;
+    margin-bottom: 6px !important;
+    border-radius: 6px !important;
   }
+
 
   .album-songs .song-number,
   .album-songs .song-details,
@@ -1893,8 +1895,8 @@ body.light-theme {
 
   .album-container {
     flex-shrink: 0 !important;
-    width: 160px !important;
-    height: 190px !important;
+    width: 120px !important;
+    height: 160px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -1931,17 +1933,25 @@ body.light-theme {
 }
 
 @media (max-width: 768px) {
-  .album-view-page {
+  .album-view {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    z-index: 99999 !important;
-    background: #0a0a0a !important; /* Or your preferred dark background */
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #000000 !important; /* Dark solid background */
+    z-index: 100000 !important;
     overflow-y: auto !important;
-    padding-top: 170px !important; /* Enough for album header space */
+    padding-top: 160px !important; /* For album-header spacing */
     box-sizing: border-box !important;
+  }
+
+  /* Optional: Make sure search bar is not appearing */
+  .fixed,
+  .header-container {
+    display: none !important;
   }
 }
 
