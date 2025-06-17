@@ -663,10 +663,14 @@ const Allsongs = {
         artist: "Warriyo, Laura Brehm",
     },
 
-    
+     tainulekemejaavanga :{
+             path: "audio/Tainu Leke - Salaam-E-Ishq 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/Cu3QpWEfqgg/maxresdefault.jpg",
+        displayName: "Tenu leke", // 
+        artist: "Sonu Nigam",
 
+    }
 
-   
 };
 
 const trendingMashups = [
@@ -2451,6 +2455,22 @@ function closeAlbumView(albumId) {
   document.body.style.overflow = ''; // Restore scroll
 }
 
+// ...existing code...
+function playover(songName) {
+    const song = overseasSongs.find(s => s.name.toLowerCase() === songName.toLowerCase());
+    if (!song) {
+        console.error("Overseas song not found:", songName);
+        return;
+    }
+    console.log("Attempting to play:", songName, "Path:", song.path); // <-- Add this line
+    audioElement.src = song.path;
+    audioElement.play().then(() => {
+        updateMusicControllerUI();
+    }).catch(err => {
+        console.error("Playback error for overseas song:", err, "Path:", song.path); // <-- Add this line
+    });
+    isPlaying = true;
+}
+// ...existing code...
 
 
-// Call updateControllerSongTitle(songName) whenever a new song is played.
