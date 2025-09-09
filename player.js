@@ -1106,7 +1106,7 @@ const overseasSongs = [
     glimpseOfHarold: "https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg",
     glimpseOfAntony: "https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg",
     badass: "https://i.ibb.co/k2S5VqzQ/leo-movie-review-vijay-film-2023-10-1e2b26eca663a1c07de3b347b2db49db-3x2.jpg",
-    animal: "https://i.ibb.co/ttxyNmv/animal-rashmika-mandanna-featured.jpg",
+    animal: "https://resizing.flixster.com/uD66K8q1rOGHS7CgcpzkNGbI0mo=/fit-in/352x330/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p25892420_v_h10_aa.jpg",
     master: "https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg",
     bajrangi: "https://i.ibb.co/BV9tCPVM/p11934028-k-v10-aa.jpg",
     raone: "https://i.ibb.co/1YDwJTSn/ra-one.jpg",
