@@ -679,11 +679,9 @@ const Allsongs = {
         albumArt: "https://i.ytimg.com/vi/Cu3QpWEfqgg/maxresdefault.jpg",
         displayName: "Tenu leke", // 
         artist: "Sonu Nigam",
+},
 
-        
-
-    },
-     chapachapa :{
+ chapachapa :{
              path: "audio/Chappa Chappa Maachis 320 Kbps.mp3",
         albumArt: "https://i.ytimg.com/vi/HVa0owi2ZP4/maxresdefault.jpg",
         displayName: "Chappa Chappa", // 
