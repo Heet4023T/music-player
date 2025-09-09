@@ -6,6 +6,7 @@ const progress = document.getElementById('controller-progress');
 const likeButton = document.getElementById('controller-like-btn'); // Get the like button
 const likeIcon = document.getElementById('like-icon'); // Get the like icon
 
+
 function updateProgress() {
     const val = (progress.value - progress.min) / (progress.max - progress.min) * 100;
     progress.style.setProperty('--progress-value', `${val}%`);
@@ -416,6 +417,13 @@ const albums = {
 
 };
 const trendingSongs = {
+
+     Dilkajohaalhai : {
+        path: "audio/Dil Ka Jo Haal Hai(KoshalWorld.Com).mp3", // Use relative path
+        albumArt: "https://i.ytimg.com/vi/LCXtsRCE5Y0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBXYpEBSXj5Cn-UboFgP7aUuXmTvw",
+        displayName: "Dil ka jo haal hai",
+        artist: "RAJEEV BARNWAL, Lalit Pandit, Abhijeet Bhattacharya, Shreya Ghoshal"
+    },
     laalPari: {
         path: "audio/Laal Pari - Housefull 5 128 Kbps.mp3",
         albumId: "housefull5",
@@ -485,6 +493,7 @@ const trendingSongs = {
         artist: "Pritam  Chakraborty" 
     },
 };
+
 
 const Allsongs = {
     huaMain: {
@@ -579,12 +588,13 @@ const Allsongs = {
         artist: "Sajid-Wajid" 
    },
        
-   veeradheera : {
+     veeradheera : {
          path: "audio/Veera Dheera.mp3",
         albumArt: "https://m.media-amazon.com/images/M/MV5BMTM3ZGUwYTEtZTI5NS00ZmMyLTk2YmQtMWU4YjlhZTI3NjRjXkEyXkFqcGc@._V1_.jpg",
         displayName: "Veera Dheera (Kalki)", // Added displayName
         artist: "Santosh Narayan",
    },
+   
 
    orangrez : {
           path: "audio/O Rangrez - Bhaag Milkha Bhaag 128 Kbps.mp3",
@@ -663,14 +673,20 @@ const Allsongs = {
         artist: "Warriyo, Laura Brehm",
     },
 
-     tainulekemejaavanga :{
+
+    tainulekemejaavanga :{
              path: "audio/Tainu Leke - Salaam-E-Ishq 128 Kbps.mp3",
         albumArt: "https://i.ytimg.com/vi/Cu3QpWEfqgg/maxresdefault.jpg",
         displayName: "Tenu leke", // 
         artist: "Sonu Nigam",
 
-    }
+        
 
+    }
+    
+
+
+   
 };
 
 const trendingMashups = [
@@ -1074,7 +1090,7 @@ const overseasSongs = [
     
     {
          name: "Summertime Sadness",
-        displayName: "Summertime Saadness",
+        displayName: "Summertime Sadness",
         path: "audio/Lana Del Rey - Summertime Sadness (Lyrics) 4.mp3",
         album: "Overseas songs",
         albumId: null,
@@ -1085,7 +1101,7 @@ const overseasSongs = [
     {
          name: "Night Changes",
         displayName: "Night changes",
-        path: "audio/One Direction - Night Changes 4.mp3",
+        path: "audio/SpotiDown.App - Night Changes - One Direction.mp3",
         album: "Overseas songs",
         albumId: null,
         albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTICEUygwre-JtSVL4R17KwtABrYn0vKyoi3q6zpfBiNqxtCN0lB_TumxQHNn6DGPPvTCU&usqp=CAU",
@@ -1127,6 +1143,8 @@ const overseasSongs = [
 
    
 };
+
+
 
 // Create a flat list of all songs with metadata for search, including album art image path
 const allSongs = [];
@@ -1457,6 +1475,12 @@ audioElement.addEventListener('ended', () => {
     }
 });
 
+// filepath: c:\Users\heet\OneDrive\Desktop\musicplayer\player.js
+function savePlaybackState() {
+    // Example: Save current time, song, etc. to localStorage
+    // localStorage.setItem('playbackState', JSON.stringify({ ... }));
+}
+
 function playMashup(mashupName) {
     console.log("playMashup called with name:", mashupName);
     const mashup = trendingMashups.find(m => m.name === mashupName || m.displayName.toLowerCase() === mashupName.toLowerCase());
@@ -1611,6 +1635,8 @@ function updatePlayPauseIcon() {
         controller.playPauseIcon.classList.add("bi-play-fill");
     }
 }
+
+
 
 function playSongByPath(path) {
     console.log("playSongByPath called for:", path);
@@ -2322,7 +2348,7 @@ function setPlaylistAndPlay(songsArray, index) {
 // --- Update playTrendingSong to set playlist and index in correct visual sequence ---
 function playTrendingSong(songId) {
     const trendingOrder = [
-        "laalPari", "ishqHai", "dilENadaan", "chorBazari", "uyiAmma", "namonamo",
+       "Dilkajohaalhai", "laalPari", "ishqHai", "dilENadaan", "chorBazari", "uyiAmma", "namonamo",
         "aayaReToofan", "kabira", "kaiseHua", "pehleBhiMain", "huaMain"
     ];
     const trendingArr = trendingOrder.map(id => trendingSongs[id]).filter(Boolean);
@@ -2423,6 +2449,24 @@ function playover(songName) {
     setPlaylistAndPlay(overArr, idx);
 }
 
+// ...existing code...
+function playover(songName) {
+    const song = overseasSongs.find(s => s.name.toLowerCase() === songName.toLowerCase());
+    if (!song) {
+        console.error("Overseas song not found:", songName);
+        return;
+    }
+    console.log("Attempting to play:", songName, "Path:", song.path); // <-- Add this line
+    audioElement.src = song.path;
+    audioElement.play().then(() => {
+        updateMusicControllerUI();
+    }).catch(err => {
+        console.error("Playback error for overseas song:", err, "Path:", song.path); // <-- Add this line
+    });
+    isPlaying = true;
+}
+// ...existing code...
+
 // Make sure these are the only global assignments for these functions:
 window.playSong = playSong;
 window.playTrendingSong = playTrendingSong;
@@ -2455,22 +2499,6 @@ function closeAlbumView(albumId) {
   document.body.style.overflow = ''; // Restore scroll
 }
 
-// ...existing code...
-function playover(songName) {
-    const song = overseasSongs.find(s => s.name.toLowerCase() === songName.toLowerCase());
-    if (!song) {
-        console.error("Overseas song not found:", songName);
-        return;
-    }
-    console.log("Attempting to play:", songName, "Path:", song.path); // <-- Add this line
-    audioElement.src = song.path;
-    audioElement.play().then(() => {
-        updateMusicControllerUI();
-    }).catch(err => {
-        console.error("Playback error for overseas song:", err, "Path:", song.path); // <-- Add this line
-    });
-    isPlaying = true;
-}
-// ...existing code...
 
 
+// Call updateControllerSongTitle(songName) whenever a new song is played.
