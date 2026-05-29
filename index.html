@@ -126,12 +126,18 @@
     <div class="head1">
         <h1 class="heading" style="position: relative; top: 10px"> TOP ALBUMS 💽 </h1>
         <div class="albums-row">
+
             <div class="album-container">
-                <img src="https://resizing.flixster.com/uD66K8q1rOGHS7CgcpzkNGbI0mo=/fit-in/352x330/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p25892420_v_h10_aa.jpg" 
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Dhurandhar_poster.jpg/250px-Dhurandhar_poster.jpg" 
+                     alt="dhurandhar1" 
+                     class="album-img" 
+                     onclick="openAlbumView('dhurandhar1')">
+            </div>
+
+            <img src="https://resizing.flixster.com/uD66K8q1rOGHS7CgcpzkNGbI0mo=/fit-in/352x330/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p25892420_v_h10_aa.jpg" 
                      alt="Animal" 
                      class="album-img" 
                      onclick="openAlbumView('animal')">
-            </div>
             
             <img src="https://i.ibb.co/Df6Q76TR/is-vijay-s-master-based-on-a-true-story-1589393898.jpg" 
                  alt="Master" 
@@ -531,6 +537,81 @@
 </div>
 
 <script src="player.js"></script>
+
+<div class="album-view" id="dhurandhar1-album-view">
+  <div class="album-header">
+    <div class="album-cover-col">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Dhurandhar_poster.jpg/250px-Dhurandhar_poster.jpg" alt="dhurandhar1" class="album-cover">
+      <button class="back-button" onclick="closeAlbumView('dhurandhar1')">
+        <i class="bi bi-arrow-left"></i>
+      </button>
+    </div>
+
+    <div class="album-info">
+      <span>Album</span>
+      <h1 class="album-title">Dhurandhar</h1>
+      <p>2025 • 11 songs</p>
+    </div>
+  </div>
+    <div class="album-songs">
+        <div class="song-item" onclick="playSong('dhurandhar1', 0)">
+            <div class="song-number">1</div>
+            <div class="song-details">Ez-EZ</div>
+            <div class="song-duration">3:02</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 1)">
+            <div class="song-number">2</div>
+            <div class="song-details">Ishq Jalakar</div>
+            <div class="song-duration">4:10</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 2)">
+            <div class="song-number">3</div>
+            <div class="song-details">Move Yeh Ishq Ishq</div>
+            <div class="song-duration">3:24</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 3)">
+            <div class="song-number">4</div>
+            <div class="song-details">Ramba Ho</div>
+            <div class="song-duration">2:47</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 4)">
+            <div class="song-number">5</div>
+            <div class="song-details">Shararat</div>
+            <div class="song-duration">3:44</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 5)">
+            <div class="song-number">6</div>
+            <div class="song-details">Na De Dil Pardesi- Title Track</div>
+            <div class="song-duration">2:35</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 6)">
+            <div class="song-number">7</div>
+            <div class="song-details">Gehra Hua</div>
+            <div class="song-duration">6:02</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 7)">
+            <div class="song-number">8</div>
+            <div class="song-details">Lutt Le Gaya</div>
+            <div class="song-duration">4:13</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 8)">
+            <div class="song-number">9</div>
+            <div class="song-details">Naal Nachna</div>
+            <div class="song-duration">2:35</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 9)">
+            <div class="song-number">10</div>
+            <div class="song-details">Run Down The City Monica</div>
+            <div class="song-duration">2:20</div>
+        </div>
+        <div class="song-item" onclick="playSong('dhurandhar1', 10)">
+            <div class="song-number">11</div>
+            <div class="song-details">Teri Ni Kararan</div>
+            <div class="song-duration">3:58</div>
+        </div>
+    </div>
+</div>
+
 
 <div class="album-view" id="animal-album-view">
   <div class="album-header">
