@@ -61,6 +61,31 @@ function removeLikedSong(songPath) {
     updateLikeButtonState(); // Update the like button state
 }
 
+// Function to normalize the current audio source to a relative song path
+function getCurrentSongPath() {
+    const src = decodeURIComponent(audioElement.src || '');
+    if (!src) return '';
+
+    // If loaded from a file:// URL or absolute URL, extract the relative audio path
+    const audioIndex = src.indexOf('audio/');
+    if (audioIndex !== -1) {
+        return src.substring(audioIndex);
+    }
+
+    const musicIndex = src.indexOf('music-player-main/audio/');
+    if (musicIndex !== -1) {
+        return src.substring(musicIndex);
+    }
+
+    // Fall back to removing origin for normal HTTP URLs
+    try {
+        const url = new URL(src);
+        return url.pathname.replace(/^\//, '');
+    } catch (e) {
+        return src;
+    }
+}
+
 // Function to check if a song is liked
 function isSongLiked(songPath) {
     return likedSongs.some(s => s.path === songPath);
@@ -68,8 +93,10 @@ function isSongLiked(songPath) {
 
 // Function to update the like button icon and class based on current song
 function updateLikeButtonState() {
-    const currentSongPath = audioElement.src.replace(window.location.origin + '/', '');
-    if (isSongLiked(decodeURIComponent(currentSongPath))) {
+    const currentSongPath = getCurrentSongPath();
+    if (!currentSongPath) return;
+
+    if (isSongLiked(currentSongPath)) {
         likeIcon.classList.remove('bi-heart');
         likeIcon.classList.add('bi-heart-fill');
         likeButton.classList.add('liked');
@@ -83,21 +110,36 @@ function updateLikeButtonState() {
 // Event listener for the like button
 if (likeButton) {
     likeButton.addEventListener('click', () => {
-        const currentSongPath = audioElement.src.replace(window.location.origin + '/', '');
-        let foundSong = allSongs.find(song => song.path === decodeURIComponent(currentSongPath));
+        const currentSongPath = getCurrentSongPath();
+        if (!currentSongPath) {
+            console.warn('No current song to like/unlike.');
+            return;
+        }
+
+        let foundSong = allSongs.find(song => song.path === currentSongPath);
 
         // If not found in allSongs, try to find in bhaktiSongs
         if (!foundSong) {
-            foundSong = bhaktiSongs.find(song => song.path === decodeURIComponent(currentSongPath));
+            foundSong = bhaktiSongs.find(song => song.path === currentSongPath);
         }
         if (!foundSong) {
-            foundSong = overseasSongs.find(song => song.path === decodeURIComponent(currentSongPath));
+            foundSong = overseasSongs.find(song => song.path === currentSongPath);
         }
 
         if (!foundSong) {
-            foundSong = songs.find(song => song.path === decodeURIComponent(currentSongPath));
+            foundSong = songs.find(song => song.path === currentSongPath);
         }
-        
+
+        if (!foundSong) {
+            foundSong = {
+                path: currentSongPath,
+                displayName: extractSongTitleFromPath(currentSongPath),
+                album: currentAlbum || '',
+                albumId: currentAlbum || null,
+                albumArt: albumArtMap[currentAlbum] || 'https://placehold.co/50x50/333333/FFFFFF?text=No+Art',
+                artist: getArtistFromPath(currentSongPath)
+            };
+        }
 
 
 
@@ -264,6 +306,19 @@ const controller = {
 
 // Define albums and their songs with file paths
 const albums = {
+    dhurandhar1: [
+        "audio/Ez Ez Dhurandhar 128 Kbps.mp3",
+        "audio/Ishq Jalakar Dhurandhar 128 Kbps.mp3",
+        "audio/Move Yeh Ishq Ishq Dhurandhar 128 Kbps.mp3",
+        "audio/Ramba Ho Dhurandhar 128 Kbps.mp3",
+        "audio/Shararat Dhurandhar 128 Kbps.mp3",
+        "audio/Title Track Dhurandhar 128 Kbps.mp3",
+        "audio/Gehra Hua Dhurandhar 128 Kbps.mp3",
+        "audio/Lutt Le Gaya Dhurandhar 128 Kbps.mp3",
+        "audio/Naal Nachna Dhurandhar 128 Kbps.mp3",
+        "audio/Run Down The City Monica Dhurandhar 128 Kbps.mp3",
+        "audio/Teri Ni Kararan Dhurandhar 128 Kbps.mp3"
+    ],
     animal: [
         "audio/Abrars Entry Jamal Kudu - Animal 128 Kbps.mp3",
         "audio/Saari Duniya Jalaa Denge - Animal 128 Kbps.mp3",
@@ -1143,6 +1198,7 @@ const overseasSongs = [
     Jawan : "https://resizing.flixster.com/lej1aNFjcromN2hYS5-638hSJ-k=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2FiOWE5MWYxLTc0MzctNGNjZi1hMjE0LWNhZmZiMDU2M2RhMS5qcGc=",
     Vaastav : "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p68252_p_v8_ad.jpg",
     yehjawanihaideewani : "https://m.media-amazon.com/images/M/MV5BODA4MjM2ODk4OF5BMl5BanBnXkFtZTcwNDgzODk1OQ@@._V1_FMjpg_UX1000_.jpg",
+    dhurandhar1: "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Dhurandhar_poster.jpg/250px-Dhurandhar_poster.jpg",
     
 
    
