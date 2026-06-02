@@ -38,7 +38,7 @@ body {
     background-size: 100% 100%; /* Fix gradient scaling */
     color: var(--text-color);
     overflow-x: hidden; /* Prevent scroll causing dark gap */
-    padding-bottom: 170px; /* Increased padding to make space for the music controller and nav bar */
+    padding-bottom: 300px; /* More bottom space for music controller and nav */
     font-family: 'Poppins', sans-serif; /* Set a default font */
 }
 
@@ -50,6 +50,17 @@ body {
     z-index: 1000;
     padding: 20px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    pointer-events: none; /* Allow mood buttons beneath the transparent overlay to receive clicks */
+}
+
+.fixed > .header-container,
+.fixed .theme-toggle,
+.fixed .theme-toggle button,
+.fixed .theme-toggle i,
+.fixed .title-logo,
+.fixed .title-logo img,
+.fixed .title-logo h1 {
+    pointer-events: auto; /* Keep header elements clickable */
 }
 
 .light-theme .fixed {
@@ -569,15 +580,29 @@ a {
 
 /* Song List Section */
 .song-list-container {
-    padding: 15px; /* Reduced padding */
+    padding: 15px 15px 25px 15px; /* More bottom padding so last songs aren't cut off */
     max-width: 700px; /* Reduced max width for the song list container */
-    margin: -30px auto 180px auto; /* Adjusted margins */
+    margin: -30px auto 260px auto; /* More bottom margin to clear the music controller */
     background-color: var(--section-bg);
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Adjusted shadow */
     backdrop-filter: blur(5px);
-    max-height: 400px; /* Set a max-height */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 240px); /* Use viewport-based max height so scroll can flex */
+    overflow: hidden; /* Keep scroll inside the list itself */
+    display: flex;
+    flex-direction: column;
+}
+
+#mood-song-list {
+    list-style: none;
+    padding: 0 0 160px 0;
+    margin: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100vh - 340px);
+    padding-right: 6px;
 }
 
 .light-theme .song-list-container {
@@ -612,12 +637,6 @@ a {
     text-align: center;
     margin-bottom: 20px; /* Reduced margin */
     text-shadow: 0 0 8px rgba(0, 234, 255, 0.7); /* Smaller text shadow */
-}
-
-#mood-song-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 .song-item {
@@ -748,10 +767,20 @@ a {
     }
 
     .song-list-container {
-        padding: 15px; /* Further reduced padding */
+        padding: 15px 15px 25px 15px; /* More bottom padding so last songs aren't cut off */
         max-width: 95%; /* Wider on smaller screens */
-        margin: 15px auto 160px auto; /* Adjusted margins for mobile */
-        max-height: 350px; /* Adjusted max-height for mobile */
+        margin: 15px auto 260px auto; /* Adjusted margins for mobile */
+        max-height: calc(100vh - 240px); /* Use viewport-based max height for mobile */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #mood-song-list {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+        padding-bottom: 160px;
     }
 
     #current-mood-title {
