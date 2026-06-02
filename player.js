@@ -29,9 +29,40 @@ audioElement.addEventListener('pause', () => {
 let currentAlbum = null;
 let currentSongIndex = 0;
 let isPlaying = false;
-let playlist = []; 
-let playlistIndex = 0;
-let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || []; 
+let playlist = Array.isArray(window.playlist) ? window.playlist : [];
+let playlistIndex = typeof window.playlistIndex === 'number' ? window.playlistIndex : 0;
+let currentMood = typeof window.currentMood === 'string' ? window.currentMood : null;
+let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+
+Object.defineProperty(window, 'playlist', {
+    get() {
+        return playlist;
+    },
+    set(value) {
+        playlist = value;
+    },
+    configurable: true
+});
+
+Object.defineProperty(window, 'playlistIndex', {
+    get() {
+        return playlistIndex;
+    },
+    set(value) {
+        playlistIndex = value;
+    },
+    configurable: true
+});
+
+Object.defineProperty(window, 'currentMood', {
+    get() {
+        return currentMood;
+    },
+    set(value) {
+        currentMood = value;
+    },
+    configurable: true
+});
 
 
 function saveLikedSongs() {
@@ -242,6 +273,28 @@ function playCurrentSong() {
     }
 }
 
+function setMoodPlaylist(newPlaylist, index, moodName) {
+    const normalizedPlaylist = Array.isArray(newPlaylist) ? newPlaylist.map(song => ({
+        ...song,
+        path: song.path || song.src || song.file || song.audio || ''
+    })) : [];
+
+    playlist = normalizedPlaylist;
+    playlistIndex = typeof index === 'number' ? Math.max(0, Math.min(index, playlist.length - 1)) : 0;
+    currentMood = moodName || null;
+    currentAlbum = null;
+    currentSongIndex = 0;
+
+    if (playlist.length === 0) {
+        console.warn('setMoodPlaylist called with an empty playlist for mood:', moodName);
+        return;
+    }
+
+    playPlaylistSong(playlistIndex);
+}
+
+window.setMoodPlaylist = setMoodPlaylist;
+
 
 document.addEventListener('DOMContentLoaded', () => {
     controllerProgress.value = 0;
@@ -306,6 +359,30 @@ const controller = {
 
 // Define albums and their songs with file paths
 const albums = {
+    dhurandhar2:[
+        "audio/Aakhri Ishq Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Destiny Mann Atkeya Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Hum Pyaar Karne Wale Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Jaiye Sajana Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Kanhaiyya Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Phir Se Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Aari Aari Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Didi Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Jaan Se Guzarte Hain Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Jithe Mera Ghar Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Main Aur Tu Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Rang De Lal Oye Oye Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Tamma Tamma Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Vaari Jaavan Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Tere Ishq Ne Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Wild Ride Dhurandhar The Revenge 128 Kbps.mp3",
+        "audio/Angel of death bgm.mp3",
+        "audio/king of lyari.mp3",
+        "audio/revenge theme.mp3",
+       
+    ],
+
+
     dhurandhar1: [
         "audio/Ez Ez Dhurandhar 128 Kbps.mp3",
         "audio/Ishq Jalakar Dhurandhar 128 Kbps.mp3",
@@ -741,11 +818,131 @@ const Allsongs = {
         albumArt: "https://i.ytimg.com/vi/HVa0owi2ZP4/maxresdefault.jpg",
         displayName: "Chappa Chappa", // 
         artist: "Hariharan",
- }
+ },
+
+    badlapurBadla : {
+         path: "audio/Badla Badla Badlapur 128 Kbps.mp3",
+        albumArt: "https://c.saavncdn.com/747/Badlapur-Hindi-2025-20260404112709-500x500.jpg",
+        displayName: "Badla Badla Badlapur", // Added displayName
+        artist: "Sachin-Jigar",
+        album: "Badlapur"
+   },
+      badlapurRock : {
+         path: "audio/Jee Karda Rock Version Badlapur 128 Kbps.mp3",
+        albumArt: "https://c.saavncdn.com/747/Badlapur-Hindi-2025-20260404112709-500x500.jpg",
+        displayName: "Jee Karda (Rock Version) Badlapur", // Added displayName
+        artist: "Sachin-Jigar",
+        album: "Badlapur"
+   },
+       badlapur : {
+         path: "audio/Jee Karda Badlapur 128 Kbps.mp3",
+        albumArt: "https://c.saavncdn.com/747/Badlapur-Hindi-2025-20260404112709-500x500.jpg",
+        displayName: "Jee Karda Badlapur", // Added displayName
+        artist: "Sachin-Jigar",
+        album: "Badlapur"
+   },
     
+    
+    Tere_liye : {
+         path: "audio/Tere Liye Prince 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/rs5gAjNytAo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAs0UgW-Esww5kN_7ouo6XLNv_UtA",
+        displayName: "Tere Liye Prince", // Added displayName
+        artist: "Atif Aslam",
+        album: "Prince"
+   },
 
+    photocopy : {
+         path: "audio/Photocopy Jai Ho 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/BgWWJfsTIhA/maxresdefault.jpg",
+        displayName: "Photocopy from(Jai Ho)", // Added displayName
+        artist: "Himesh Reshamiya",
+        album: "Jai Ho"
+   },
 
+      pandeyjee_seeti : {
+         path: "audio/Pandeyjee Seeti Dabangg 2 320 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/rFuDDZb4BCI/sddefault.jpg",
+        displayName: "Pandeyjee Seeti Dabangg2", // Added displayName
+        artist: "Wajid Ali",
+        album: "Dabangg2"
+   },
+
+     sau_tarah_Ke : {
+         path: "audio/Sau Tarah Ke Dishoom 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/PIyf0hMc498/maxresdefault.jpg",
+        displayName: "Sau Tarah Ke from(Dishoom)", // Added displayName
+        artist: "Amit Mishra",
+        album: "Dishoom"
+   },
+
+      Tha_kar_Ke : {
+         path: "audio/Tha Kar Ke Golmaal Returns 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/qnIhuRIZ2o4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDQLyFx6vdoZClD-RFB2x6DEIEBKg",
+        displayName: "Tha Kar Ke from(Golmaal Returns)", // Added displayName
+        artist: "Neeraj",
+        album: "Golmaal Returns"
+   },
+    gun_gun_guna :{
+             path: "audio/Gun Gun Guna Agneepath 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/KUfwpfJk2qw/maxresdefault.jpg",
+        displayName: "Gun Gun Guna Agneepath", // 
+        artist: "Ajay Atul",
+ },
+
+  ole_ole :{
+             path: "audio/Ole Ole Yeh Dillagi 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/hcCvSmjHwGY/maxresdefault.jpg",
+        displayName: "Ole Ole", // 
+        artist: "Abhijeet Bhattacharya",
+ },
+
+  ole_ole2_ :{
+             path: "audio/Ole Ole 2.0 Jawaani Jaaneman 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/0oWG2Ss9px4/mqdefault.jpg",
+        displayName: "Ole Ole 2.0", // 
+        artist: "Abhijeet Bhattacharya",
+ },
+
+ kaho_na_kaho :{
    
+             path: "audio/Kaho Na Kahowith Dialogue 128 Kbps.mp3",
+        albumArt: "https://a10.gaanacdn.com/gn_img/albums/koMWQBbqLE/MWQV7azXbq/size_m_1775051381.jpg",
+        displayName: "Kaho Na Kaho Murder", // 
+        artist: "Amir Jamal",
+
+ },
+
+  Dus_Bahane :{
+   
+             path: "audio/Dus Bahane Sunidhi Chauhan 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/qE3DfF66DNA/maxresdefault.jpg",
+        displayName: "Dus Bahane", // 
+        artist: "KK",
+
+ },
+
+ beedi :{
+   
+             path: "audio/Beedi Omkara 128 Kbps.mp3",
+        albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI70A6QTmRSccrixd_m5Otmx_mkSgmJQNfOg&s",
+        displayName: "Beedi", // 
+        artist: "Vishal Bhardwaj",
+
+ },
+
+  kya_mujhe_pyaar_hai :{
+   
+             path: "audio/Kya Mujhe Pyaar Hai Woh Lamhe 128 Kbps.mp3",
+        albumArt: "https://i.ytimg.com/vi/Gg6NMU4ivXM/maxresdefault.jpg",
+        displayName: "Kya Mujhe Pyaar Hai", // 
+        artist: "KK",
+
+ },
+
+
+
+
+
 };
 
 const trendingMashups = [
@@ -1159,12 +1356,32 @@ const overseasSongs = [
 
     {
          name: "Night Changes",
-        displayName: "Night changes",
-        path: "audio/SpotiDown.App - Night Changes - One Direction.mp3",
+        displayName: "Night Changes",
+        path: "audio/One Direction - Night Changes 4.mp3",
         album: "Overseas songs",
         albumId: null,
         albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTICEUygwre-JtSVL4R17KwtABrYn0vKyoi3q6zpfBiNqxtCN0lB_TumxQHNn6DGPPvTCU&usqp=CAU",
         artist: "One Direction"
+    },
+
+    {
+         name: "Rasputin",
+        displayName: "Rasputin",
+        path: "audio/Boni_M_-_Rasputin_(mp3.pm).mp3",
+        album: "Overseas songs",
+        albumId: null,
+        albumArt: "https://i.ytimg.com/vi/x5Oag4hISgU/maxresdefault.jpg",
+        artist: "Boney M."
+    },
+
+        {
+         name: "ahh men",
+        displayName: "ahh men",
+        path: "audio/Ahh Men Doja Cat.mp3",
+        album: "Overseas songs",
+        albumId: null,
+        albumArt: "https://i.ytimg.com/vi/7l_Mtz4va9E/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAKuL0V_KtUfl66xHvXM1P3PWWfIg",
+        artist: "Doja Cat"
     },
 ];
     const albumArtMap = {
@@ -1199,7 +1416,8 @@ const overseasSongs = [
     Vaastav : "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p68252_p_v8_ad.jpg",
     yehjawanihaideewani : "https://m.media-amazon.com/images/M/MV5BODA4MjM2ODk4OF5BMl5BanBnXkFtZTcwNDgzODk1OQ@@._V1_FMjpg_UX1000_.jpg",
     dhurandhar1: "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Dhurandhar_poster.jpg/250px-Dhurandhar_poster.jpg",
-    
+    dhurandhar2:"https://media5.bollywoodhungama.in/wp-content/uploads/2026/02/Dhurandhar-%E2%80%93-The-Revenge.jpeg",
+    badlapur:"https://c.saavncdn.com/747/Badlapur-Hindi-2025-20260404112709-500x500.jpg"
 
    
 };
