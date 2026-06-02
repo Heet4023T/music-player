@@ -905,7 +905,7 @@ const Allsongs = {
 
  kaho_na_kaho :{
    
-             path: "audio/Kaho Na Kahowith Dialogue 128 Kbps.mp3",
+             path: "audio/kaho na kaho.mp3",
         albumArt: "https://a10.gaanacdn.com/gn_img/albums/koMWQBbqLE/MWQV7azXbq/size_m_1775051381.jpg",
         displayName: "Kaho Na Kaho Murder", // 
         artist: "Amir Jamal",
